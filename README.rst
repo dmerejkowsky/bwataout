@@ -5,7 +5,7 @@ A simple system to handle vim configuration.
 
 Usage::
 
-  vim-conf-install VIMCONF_FORK_URL
+  get-vimconf VIMCONF_FORK_URL
 
 VIMCONF_FORK_URL should be a fork of
 
@@ -15,6 +15,12 @@ containing at least::
 
    vimrc
    vimconf.cfg
+
+
+vimconf.cfg should at least contain this::
+
+  [plugins]
+  pathogen       = git://github.com/tpope/vim-pathogen.git
 
 
 This command will:
@@ -31,11 +37,7 @@ This command will:
 
 More can be done like:
 
-* getting a colorscheme and install it
-
-* getting a list of snippets for snippetEmy and install them
-
-...
-
-
+Of course since vimconf is a bundle like any other one bundle,
+you can add your syntax files in syntax/, your colorschemes in
+colors/ and so on :)
 
