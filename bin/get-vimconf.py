@@ -203,6 +203,7 @@ def main():
     vim_conf_url = args.vim_conf_url
     vimconf = os.path.join(VIMCONF_DIR, "vimconf")
     if vim_conf_url:
+        get_from_git("vimconf", vim_conf_url)
         install_vim_conf(vim_conf_url)
     else:
         if not os.path.isdir(vimconf):
