@@ -25,17 +25,14 @@ vimconf.cfg should at least contain this::
 
 This command will:
 
-* backup existing .vim and .vimrc
-
-* get the vimrc from the git repo and install it as new .vimrc
+* backup existing .vimrc, and a a new one to use pathogen,
+  and the vimrc from this repo
 
 * install pathogen
 
 * get the vimconf.cfg and parse it to:
 
   * checkout every plugin mentioned in the config file using pathogen
-
-More can be done like:
 
 Of course since vimconf is a bundle like any other one bundle,
 you can add your syntax files in syntax/, your colorschemes in
