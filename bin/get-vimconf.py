@@ -169,6 +169,19 @@ def get_plugins(cfg_path):
         elif is_vimorg(url):
             get_from_vimorg(name, url)
 
+def build_plugins(cfg_path):
+    """ Build the plugins that need to be built
+
+    """
+    parser = ConfigParser.RawConfigParser()
+    parser.read(cfg_path)
+    to_build = parser.items("build")
+    for (name, command) in to_build:
+        print "Building %s", name, "..."
+        plugin_path = os.path.join(VIMCONF_DIR, name)
+        if command == "rake":
+            subprocess.check_call(["rake", "make"],
+                cwd=plugin_path)
 
 def install_vim_conf(vim_conf_url):
     """ Install vimconf:
@@ -216,6 +229,8 @@ def main():
 
     vimconf_cfg = os.path.join(vimconf, "vimconf.cfg")
     get_plugins(vimconf_cfg)
+    # some plugins need additional build steps
+    build_plugins(vimconf_cfg)
 
 if __name__ == "__main__":
     main()
