@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 # A simple script to get a vim configuration
 # from a git repository
 
@@ -5,7 +7,6 @@ import os
 import re
 import sys
 
-import argparse
 import subprocess
 import shutil
 import urllib
@@ -207,26 +208,13 @@ def main():
     """ Main entry point
 
     """
-    parser = argparse.ArgumentParser()
-    parser.add_argument("vim_conf_url", nargs="?",
-        help="URL from which to get conf. Only required the first time")
-    args = parser.parse_args()
-
-
-    vim_conf_url = args.vim_conf_url
+    # Install this repository as a bundle
+    mkdir_p(VIMCONF_DIR)
     vimconf = os.path.join(VIMCONF_DIR, "vimconf")
-    if vim_conf_url:
-        get_from_git("vimconf", vim_conf_url)
-        install_vim_conf(vim_conf_url)
-    else:
-        if not os.path.isdir(vimconf):
-            mess  = "Could not find vimconf!\n"
-            mess += "(%s does not exist)\n" % vimconf
-            mess += "Please specify vimconf url, for instance: "
-            mess += "git://github.com/yannicklm/vimconf.git\n"
-            sys.stderr.write(mess)
-            sys.exit(2)
-
+    rm_rf(vimconf)
+    this_dir = os.path.dirname(__file__)
+    src_dir  = os.path.join(this_dir, "..")
+    shutil.copytree(src_dir, vimconf)
     vimconf_cfg = os.path.join(vimconf, "vimconf.cfg")
     get_plugins(vimconf_cfg)
     # some plugins need additional build steps
