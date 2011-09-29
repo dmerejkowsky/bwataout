@@ -177,7 +177,7 @@ def build_plugins(cfg_path):
     parser.read(cfg_path)
     to_build = parser.items("build")
     for (name, command) in to_build:
-        print "Building %s", name, "..."
+        print "Building ", name, "..."
         plugin_path = os.path.join(VIMCONF_DIR, name)
         if command == "rake":
             subprocess.check_call(["rake", "make"],
