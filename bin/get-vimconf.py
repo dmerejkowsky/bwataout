@@ -215,6 +215,17 @@ def main():
     this_dir = os.path.dirname(__file__)
     src_dir  = os.path.join(this_dir, "..")
     shutil.copytree(src_dir, vimconf)
+    backup_conf()
+    pathogen_autoload = os.path.join(VIMCONF_DIR,
+      "pathogen/autoload/pathogen.vim")
+    vimrc = os.path.join(VIMCONF_DIR, "vimconf/vimrc")
+    to_write = VIMRC_TEMPLATE.format(
+      vimconf_dir=VIMCONF_DIR,
+      pathogen_autoload=pathogen_autoload,
+      vimrc=vimrc)
+    dest = os.path.expanduser("~/.vimrc")
+    with open(dest, "w") as fp:
+      fp.write(to_write)
     vimconf_cfg = os.path.join(vimconf, "vimconf.cfg")
     get_plugins(vimconf_cfg)
     # some plugins need additional build steps
