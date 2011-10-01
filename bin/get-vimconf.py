@@ -207,8 +207,12 @@ def build_plugins(cfg_path):
         print "Building ", name, "..."
         plugin_path = os.path.join(VIMCONF_DIR, name)
         if command == "rake":
-            subprocess.check_call(["rake", "make"],
-                cwd=plugin_path)
+            try:
+                subprocess.check_call(["rake", "make"],
+                    cwd=plugin_path)
+            except Exception, e:
+                print "Could not build", name
+                print "Error was: ", e
 
 def install_vim_conf(vim_conf_url):
     """ Install vimconf:
