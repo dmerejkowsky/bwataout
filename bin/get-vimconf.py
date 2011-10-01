@@ -61,6 +61,14 @@ def mkdir_p(dest_dir):
     os.makedirs(dest_dir)
 
 
+def get_backup_name(filename):
+  id = 0
+  while True:
+    backup = "%s.%d" % (filename, id)
+    id += 1
+    if not os.path.exists(backup):
+      return backup
+
 def is_git(url):
     """ Check if an url is a git url
 
@@ -169,9 +177,9 @@ def backup_conf():
     """
     vimrc = os.path.expanduser("~/.vimrc")
     if os.path.exists(vimrc):
-        vimrc_back = vimrc + ".back"
-        os.rename(vimrc, vimrc_back)
-        print "~/.vimrc backuped to", vimrc_back
+        backup = get_backup_name(vimrc)
+        os.rename(vimrc, backup)
+        print "~/.vimrc backuped to", backup
 
 def get_plugins(cfg_path):
     """ Install plugins, where plugins in a list
