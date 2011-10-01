@@ -16,6 +16,7 @@ import StringIO
 
 VIMCONF_DIR = "~/.local/share/vimconf"
 VIMCONF_DIR = os.path.expanduser(VIMCONF_DIR)
+VIMCONF_DIR = os.path.normpath(VIMCONF_DIR)
 
 VIMRC_TEMPLATE = """
 " Auto-generated code. Do not edit
