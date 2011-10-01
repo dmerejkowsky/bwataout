@@ -69,6 +69,46 @@ def get_backup_name(filename):
     if not os.path.exists(backup):
       return backup
 
+
+def find_program(executable, env=None):
+    """Get the full path of an executable by
+    looking at PATH environment variable
+    (and PATHEXT on windows)
+
+    return None if program was not found
+    """
+    full_path = None
+    if env:
+        env_path = env.get("PATH", "")
+    else:
+        env_path = os.environ["PATH"]
+    for path in env_path.split(os.pathsep):
+        full_path = os.path.join(path, executable)
+        pathext = os.environ.get("PATHEXT")
+        if pathext:
+            for ext in pathext.split(";"):
+                with_ext = full_path + ext
+                if os.access(with_ext, os.X_OK):
+                    return with_ext
+        if os.access(full_path, os.X_OK):
+            return full_path
+    return None
+
+
+def call(cmd, **kwargs):
+    """ Run subprocess.check_call but look for
+    executable in path.
+
+    """
+    executable = cmd[0]
+    full_path = find_program(executable)
+    if not full_path:
+        raise Exception("Could  not find %s in PATH" % executable)
+    cmd[0] = full_path
+    print cmd
+    subprocess.check_call(cmd, **kwargs)
+
+
 def is_git(url):
     """ Check if an url is a git url
 
@@ -95,12 +135,12 @@ def get_from_git(name, url):
     dest = os.path.join(VIMCONF_DIR, name)
     if not os.path.exists(dest):
         cmd = ["git", "clone", url, dest]
-        subprocess.check_call(cmd, stdout=subprocess.PIPE)
+        call(cmd, stdout=subprocess.PIPE)
     else:
         cmd = ["git", "fetch"]
-        subprocess.check_call(cmd, cwd=dest, stdout=subprocess.PIPE)
+        call(cmd, cwd=dest, stdout=subprocess.PIPE)
         cmd = ["git", "reset", "--hard", "origin/master"]
-        subprocess.check_call(cmd, cwd=dest, stdout=subprocess.PIPE)
+        call(cmd, cwd=dest, stdout=subprocess.PIPE)
 
 def get_vim_script(name, contents):
     """ Install a script given its contents
@@ -208,7 +248,7 @@ def build_plugins(cfg_path):
         plugin_path = os.path.join(VIMCONF_DIR, name)
         if command == "rake":
             try:
-                subprocess.check_call(["rake", "make"],
+                call(["rake", "make"],
                     cwd=plugin_path)
             except Exception, e:
                 print "Could not build", name
