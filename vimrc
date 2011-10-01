@@ -31,8 +31,9 @@ set incsearch
 let g:NERDShutUp=1
 
 " Prevent YankRing.vim from polluting $HOME:
-if has("unix")
-  let g:yankring_history_dir = expand('$HOME') . '/.vim'
+let g:yankring_history_dir = expand('$HOME') . '/.vim'
+if ! isdirectory(g:yankring_history_dir)
+  call mkdir(g:yankring_history_dir, "p")
 endif
 
 " Allow completion on filenames right after a '='.
