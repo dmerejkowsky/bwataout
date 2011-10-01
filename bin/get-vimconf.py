@@ -100,7 +100,10 @@ def get_vim_zip(name, contents):
     dest = os.path.join(VIMCONF_DIR, name)
     rm_rf(dest)
     mkdir_p(dest)
-    archive.extractall(dest)
+    for member in archive.namelist():
+        if member.endswith("/"):
+            continue
+        archive.extract(member, path=dest)
 
 def get_vim_vba(name, contents):
     """ Install a plugin given the raw
