@@ -30,12 +30,26 @@ source {vimrc}
 def rm_rf(dest):
     """ Contrary to shutil.rm_rf,
     this wont't fail if dest does not
-    exist
+    exist and won't fail while trying to remove
+    read-only files
 
     """
+    def _rmtree_handler(func, path, _execinfo):
+        """Call by rmtree when there was an error.
+
+        If this is called because we could not remove a file, then see if
+        it is readonly, change it back to nornal and try again
+        """
+        import stat
+        if (func == os.remove) and not os.access(path, os.W_OK):
+            os.chmod(path, stat.S_IWRITE)
+            os.remove(path)
+        else:
+            # Something else must be wrong...
+            raise
     if not os.path.exists(dest):
         return
-    shutil.rmtree(dest)
+    shutil.rmtree(dest, False, _rmtree_handler)
 
 def mkdir_p(dest_dir):
     """ Contrary to os.makedirs, this
