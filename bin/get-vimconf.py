@@ -105,7 +105,6 @@ def call(cmd, **kwargs):
     if not full_path:
         raise Exception("Could  not find %s in PATH" % executable)
     cmd[0] = full_path
-    print cmd
     subprocess.check_call(cmd, **kwargs)
 
 
