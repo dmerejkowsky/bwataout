@@ -64,10 +64,18 @@ end
 
 " Remove trailing whitespace
 function! CleanWhiteSpace()
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
   :%s/\s\+$//e
+  let @/=_s
+  call cursor(l, c)
 endfunction()
 
 command! -nargs=0 CleanWhiteSpace :call CleanWhiteSpace()
+
+" Remove trailing whitespaces when saving:
+autocmd bufwritepre * :CleanWhiteSpace
 
 " Convert DOS line endings to UNIX line endings
 
@@ -89,8 +97,6 @@ endif
 " Remove menu bar from GUI
 let did_install_default_menus = 1
 
-" Remove trailing whitespaces when saving:
-autocmd bufwritepre * :%s/\s\+$//e
 
 " I've always find it weird that it was not this way ...
 set splitbelow
