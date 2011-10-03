@@ -154,9 +154,6 @@ vmap <C-Down> xp`[V`]
 nmap <leader>! :call FixSheBang(@%) <CR>
 
 
-" Remember where I was and what I searched
-set viminfo='20,\"50
-
 ""
 " Misc
 
