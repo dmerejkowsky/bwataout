@@ -85,18 +85,8 @@ endfunction
 
 command! FromDos call FromDos()
 
-
-" Last, load ~/.vimrc.user
-if has("unix")
-  source ~/.vimrc.user
-else
-  source ~/_vimrc.user
-endif
-
-
 " Remove menu bar from GUI
 let did_install_default_menus = 1
-
 
 " I've always find it weird that it was not this way ...
 set splitbelow
