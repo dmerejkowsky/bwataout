@@ -167,4 +167,14 @@ abbreviate lauch launch
 abbreviate MSCV MSVC
 
 
+if has("gui_running")
+  colorscheme wonbat
+else
+  colorscheme xoria256
+endif
 
+
+if has("gui_win32")
+  " Only available on windows 7 ...
+  set guifont=Consolas:h11:cANSI
+endif
