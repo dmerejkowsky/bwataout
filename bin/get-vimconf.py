@@ -280,10 +280,15 @@ def main():
     # Install this repository as a bundle
     mkdir_p(VIMCONF_DIR)
     vimconf = os.path.join(VIMCONF_DIR, "vimconf")
-    rm_rf(vimconf)
+    if os.path.exists(vimconf):
+        os.remove(vimconf)
     this_dir = os.path.dirname(__file__)
     src_dir  = os.path.join(this_dir, "..")
-    shutil.copytree(src_dir, vimconf)
+    src_dir  = os.path.abspath(src_dir)
+    if sys.platform.startswith("win"):
+        shutil.copytree(src_dir, vimconf)
+    else:
+         os.symlink(src_dir, vimconf)
     backup_conf()
     pathogen_autoload = os.path.join(VIMCONF_DIR,
       "pathogen/autoload/pathogen.vim")
