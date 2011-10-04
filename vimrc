@@ -157,7 +157,8 @@ abbreviate MSCV MSVC
 if has("gui_running")
   colorscheme wonbat
 else
-  colorscheme xoria256
+  "great, but does not keep a transparent background ...
+  "colorscheme xoria256
 endif
 
 
