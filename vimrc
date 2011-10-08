@@ -94,6 +94,7 @@ set splitbelow
 
 " More logical, but not vi-compatible
 noremap Y y$
+set gdefault
 
 " Tabulations
 set shiftwidth=2
@@ -187,4 +188,3 @@ inoremap jk <Esc>
 "     -- Steve Losh (again)
 nnoremap ; :
 vnoremap ; :
-
