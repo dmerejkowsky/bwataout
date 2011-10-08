@@ -1,27 +1,11 @@
 Vim conf
 ========
 
-A simple system to handle vim configuration.
+A simple system to handle vim configuration and plugins.
 
 Usage::
 
-  get-vimconf VIMCONF_FORK_URL
-
-VIMCONF_FORK_URL should be a fork of
-
-https://yannicklm/vimconf.git
-
-containing at least::
-
-   vimrc
-   vimconf.cfg
-
-
-vimconf.cfg should at least contain this::
-
-  [plugins]
-  pathogen       = git://github.com/tpope/vim-pathogen.git
-
+  python bin/get-vimconf
 
 This command will:
 
@@ -30,11 +14,15 @@ This command will:
 
 * install pathogen
 
-* get the vimconf.cfg and parse it to:
+* get the vimconf.cfg and parse it to
 
   * checkout every plugin mentioned in the config file using pathogen
+  * build every plugin that need to be built
+
+Forks welcome, nothing is more personal than a config file anyway.
 
 Of course since vimconf is a bundle like any other one bundle,
 you can add your syntax files in syntax/, your colorschemes in
 colors/ and so on :)
+
 
