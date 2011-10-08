@@ -177,12 +177,8 @@ noremap   <Right>   <nop>
 noremap   <Up>      <nop>
 noremap   <Down>    <nop>
 
-" Disable <ESC> to go to normal mode,
-" and use jk instead
-" exit when using <Esc> in normal mode
+" Simpler way to go to normal mode from insert mode
 inoremap jk <Esc>
-inoremap <Esc> <nop>
-nnoremap <Esc> :noh<CR><Esc>
 
 " « it's one less key to hit every time I want to save a file »
 "     -- Steve Losh (again)
