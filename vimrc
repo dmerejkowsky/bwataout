@@ -183,3 +183,9 @@ noremap   <Down>    <nop>
 inoremap jk <Esc>
 inoremap <Esc> <nop>
 nnoremap <Esc> :noh<CR><Esc>
+
+" « it's one less key to hit every time I want to save a file »
+"     -- Steve Losh (again)
+nnoremap ; :
+vnoremap ; :
+
