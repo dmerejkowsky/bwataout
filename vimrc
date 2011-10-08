@@ -166,3 +166,18 @@ if has("gui_win32")
   " Only available on windows 7 ...
   set guifont=Consolas:h11:cANSI
 endif
+
+
+" Hard core settings:
+
+" Disable arrows keys:
+noremap   <Left>    <nop>
+noremap   <Right>   <nop>
+noremap   <Up>      <nop>
+noremap   <Down>    <nop>
+
+" Disable <ESC> to go to normal mode,
+" and use jk instead
+" exit when using <Esc> in normal mode
+inoremap jk <Esc>
+inoremap <Esc> <nop>
