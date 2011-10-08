@@ -95,6 +95,7 @@ set splitbelow
 " More logical, but not vi-compatible
 noremap Y y$
 set gdefault
+map Q gq
 
 " Tabulations
 set shiftwidth=2
