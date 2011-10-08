@@ -181,3 +181,4 @@ noremap   <Down>    <nop>
 " exit when using <Esc> in normal mode
 inoremap jk <Esc>
 inoremap <Esc> <nop>
+nnoremap <Esc> :noh<CR><Esc>
