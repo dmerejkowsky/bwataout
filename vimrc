@@ -173,6 +173,11 @@ if has("gui_win32")
   set guifont=Consolas:h11:cANSI
 endif
 
+" This is nice if you have something
+" that reset the title of you term at
+" each command, othersize it's annoying ...
+set title
+
 
 " Hard core settings:
 
