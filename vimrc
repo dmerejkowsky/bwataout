@@ -16,6 +16,7 @@ set autowriteall
 
 " nice menu to navigate through possible completions
 set wildmenu
+set wildmode=list:longest,full
 " smarter behavior of 'J' (join lines)
 set nojoinspaces
 
