@@ -102,6 +102,9 @@ set smarttab
 set smartindent
 set tabstop=4
 
+" Nicer scrolling
+set scroll=5
+set scrolloff=2
 
 
 " Status line (requires VimBuddy plugin to be present)
