@@ -188,3 +188,9 @@ inoremap jk <Esc>
 "     -- Steve Losh (again)
 nnoremap ; :
 vnoremap ; :
+
+" use begging-of-history inside command mode
+" with ctrl+n ctrl+p
+cnoremap <C-N> <Down>
+cnoremap <C-P> <Up>
+
