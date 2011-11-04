@@ -128,9 +128,6 @@ map <leader>es :sp <C-R>=expand("%:p:h") . "/" <CR>
 map <leader>ev :vsp <C-R>=expand("%:p:h") . "/" <CR>
 map <leader>et :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
-map <leader>f :FufFile<CR>
-map <leader>b :FufBuffer<CR>
-
 " Navigate through the buffer's list with alt+up, alt+down
 nnoremap <M-Down>  :bp<CR>
 nnoremap <M-Up>    :bn<CR>
