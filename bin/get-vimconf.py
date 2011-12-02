@@ -281,6 +281,34 @@ def install_vim_conf(vim_conf_url):
     with open(dest, "w") as fp:
       fp.write(to_write)
 
+def patch_plugins():
+    """ Look for patches in patches/ directory,
+    and apply them
+
+    """
+    patch = find_program("patch")
+    if not patch:
+        print "Could not find patch command line, skipping"
+        return
+    this_dir = os.path.dirname(__file__)
+    patches_dir  = os.path.join(this_dir, "..", "patches")
+    patches_dir = os.path.abspath(patches_dir)
+    bundle_names = os.listdir(patches_dir)
+    for bundle_name in bundle_names:
+        sys.stdout.write("Patching  %s ... " % bundle_name)
+        sys.stdout.flush()
+        bundle_path = os.path.join(VIMCONF_DIR, bundle_name)
+        if not os.path.exists(bundle_path):
+            sys.stdout.write("no such bundle\n")
+            break
+        bundle_patches_dir = os.path.join(patches_dir, bundle_name)
+        patch_names = os.listdir(bundle_patches_dir)
+        for patch_name in patch_names:
+            patch_path = os.path.join(bundle_patches_dir, patch_name)
+            cmd = ["patch", "-p1", "--input", patch_path]
+            call(cmd, cwd=bundle_path)
+        sys.stdout.write("done\n")
+
 
 def main():
     """ Main entry point
@@ -311,6 +339,8 @@ def main():
       fp.write(to_write)
     vimconf_cfg = posixpath.join(vimconf, "vimconf.cfg")
     get_plugins(vimconf_cfg)
+    # some plugins need patching
+    patch_plugins()
     # some plugins need additional build steps
     build_plugins(vimconf_cfg)
 
