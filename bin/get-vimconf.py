@@ -6,6 +6,7 @@
 import os
 import re
 import sys
+import posixpath
 
 import subprocess
 import shutil
@@ -14,9 +15,11 @@ import zipfile
 import ConfigParser
 import StringIO
 
+ON_WIN = sys.platform.startswith("win")
+
 VIMCONF_DIR = "~/.local/share/vimconf"
 VIMCONF_DIR = os.path.expanduser(VIMCONF_DIR)
-VIMCONF_DIR = os.path.normpath(VIMCONF_DIR)
+VIMCONF_DIR = posixpath.normpath(VIMCONF_DIR)
 
 VIMRC_TEMPLATE = """
 " Auto-generated code. Do not edit
@@ -83,7 +86,7 @@ def find_program(executable, env=None):
     else:
         env_path = os.environ["PATH"]
     for path in env_path.split(os.pathsep):
-        full_path = os.path.join(path, executable)
+        full_path = posixpath.join(path, executable)
         pathext = os.environ.get("PATHEXT")
         if pathext:
             for ext in pathext.split(";"):
@@ -131,7 +134,7 @@ def get_from_git(name, url):
     """ Fetch something from a git url
 
     """
-    dest = os.path.join(VIMCONF_DIR, name)
+    dest = posixpath.join(VIMCONF_DIR, name)
     if not os.path.exists(dest):
         cmd = ["git", "clone", url, dest]
         call(cmd, stdout=subprocess.PIPE)
@@ -145,10 +148,10 @@ def get_vim_script(name, contents):
     """ Install a script given its contents
 
     """
-    dest = os.path.join(VIMCONF_DIR, name)
-    plugin_dir = os.path.join(dest, "plugin")
+    dest = posixpath.join(VIMCONF_DIR, name)
+    plugin_dir = posixpath.join(dest, "plugin")
     mkdir_p(plugin_dir)
-    dest = os.path.join(plugin_dir, name + ".vim")
+    dest = posixpath.join(plugin_dir, name + ".vim")
     with open(dest, "w") as fp:
         fp.write(contents)
 
@@ -159,7 +162,7 @@ def get_vim_zip(name, contents):
     """
     fp = StringIO.StringIO(contents)
     archive = zipfile.ZipFile(fp)
-    dest = os.path.join(VIMCONF_DIR, name)
+    dest = posixpath.join(VIMCONF_DIR, name)
     rm_rf(dest)
     mkdir_p(dest)
     for member in archive.namelist():
@@ -183,11 +186,11 @@ def get_vim_vba(name, contents):
         line_no  += size+2
         to_write[file_name] = file_contents
 
-    dest = os.path.join(VIMCONF_DIR, name)
+    dest = posixpath.join(VIMCONF_DIR, name)
     rm_rf(dest)
     mkdir_p(dest)
     for (file_name, file_contents) in to_write.iteritems():
-        full_filename = os.path.join(dest, file_name)
+        full_filename = posixpath.join(dest, file_name)
         mkdir_p(os.path.dirname(full_filename))
         with open(full_filename, "w") as fp:
             fp.writelines(file_contents)
@@ -214,11 +217,14 @@ def backup_conf():
     """ Backup vim configuration
 
     """
-    vimrc = os.path.expanduser("~/.vimrc")
+    if ON_WIN:
+        vimrc = os.path.expanduser(r"~\_vimrc")
+    else:
+        vimrc = os.path.expanduser("~/.vimrc")
     if os.path.exists(vimrc):
         backup = get_backup_name(vimrc)
         os.rename(vimrc, backup)
-        print "~/.vimrc backuped to", backup
+        print vimrc, "backuped to", backup
 
 def get_plugins(cfg_path):
     """ Install plugins, where plugins in a list
@@ -244,7 +250,7 @@ def build_plugins(cfg_path):
     to_build = parser.items("build")
     for (name, command) in to_build:
         print "Building ", name, "..."
-        plugin_path = os.path.join(VIMCONF_DIR, name)
+        plugin_path = posixpath.join(VIMCONF_DIR, name)
         if command == "rake":
             try:
                 call(["rake", "make"],
@@ -260,15 +266,18 @@ def install_vim_conf(vim_conf_url):
     - create custom vimrc
     """
     backup_conf()
-    pathogen_autoload = os.path.join(VIMCONF_DIR,
+    pathogen_autoload = posixpath.join(VIMCONF_DIR,
       "pathogen/autoload/pathogen.vim")
     get_from_git("vimconf", vim_conf_url)
-    vimrc = os.path.join(VIMCONF_DIR, "vimconf/vimrc")
+    vimrc = posixpath.join(VIMCONF_DIR, "vimconf/vimrc")
     to_write = VIMRC_TEMPLATE.format(
       vimconf_dir=VIMCONF_DIR,
       pathogen_autoload=pathogen_autoload,
       vimrc=vimrc)
-    dest = os.path.expanduser("~/.vimrc")
+    if ON_WIN:
+        dest = os.path.expanduser("~\_vimrc")
+    else:
+        dest = os.path.expanduser("~/.vimrc")
     with open(dest, "w") as fp:
       fp.write(to_write)
 
@@ -279,20 +288,20 @@ def main():
     """
     # Install this repository as a bundle
     mkdir_p(VIMCONF_DIR)
-    vimconf = os.path.join(VIMCONF_DIR, "vimconf")
+    vimconf = posixpath.join(VIMCONF_DIR, "vimconf")
     if os.path.exists(vimconf):
         os.remove(vimconf)
     this_dir = os.path.dirname(__file__)
-    src_dir  = os.path.join(this_dir, "..")
+    src_dir  = posixpath.join(this_dir, "..")
     src_dir  = os.path.abspath(src_dir)
-    if sys.platform.startswith("win"):
+    if ON_WIN:
         shutil.copytree(src_dir, vimconf)
     else:
          os.symlink(src_dir, vimconf)
     backup_conf()
-    pathogen_autoload = os.path.join(VIMCONF_DIR,
+    pathogen_autoload = posixpath.join(VIMCONF_DIR,
       "pathogen/autoload/pathogen.vim")
-    vimrc = os.path.join(VIMCONF_DIR, "vimconf/vimrc")
+    vimrc = posixpath.join(VIMCONF_DIR, "vimconf/vimrc")
     to_write = VIMRC_TEMPLATE.format(
       vimconf_dir=VIMCONF_DIR,
       pathogen_autoload=pathogen_autoload,
@@ -300,7 +309,7 @@ def main():
     dest = os.path.expanduser("~/.vimrc")
     with open(dest, "w") as fp:
       fp.write(to_write)
-    vimconf_cfg = os.path.join(vimconf, "vimconf.cfg")
+    vimconf_cfg = posixpath.join(vimconf, "vimconf.cfg")
     get_plugins(vimconf_cfg)
     # some plugins need additional build steps
     build_plugins(vimconf_cfg)
