@@ -294,6 +294,8 @@ def patch_plugins():
     patches_dir  = os.path.join(this_dir, "..", "patches")
     patches_dir = os.path.abspath(patches_dir)
     bundle_names = os.listdir(patches_dir)
+    bundle_names = [x for x in bundle_names
+        if os.path.isdir(os.path.join(patches_dir, x))]
     for bundle_name in bundle_names:
         sys.stdout.write("Patching  %s ... " % bundle_name)
         sys.stdout.flush()
