@@ -187,7 +187,7 @@ noremap   <Up>      <nop>
 noremap   <Down>    <nop>
 
 " Simpler way to go to normal mode from insert mode
-inoremap jk <Esc>
+inoremap jj <Esc>
 
 " « it's one less key to hit every time I want to save a file »
 "     -- Steve Losh (again)
