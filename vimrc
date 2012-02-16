@@ -177,15 +177,6 @@ endif
 " each command, othersize it's annoying ...
 set title
 
-
-" Hard core settings:
-
-" Disable arrows keys:
-noremap   <Left>    <nop>
-noremap   <Right>   <nop>
-noremap   <Up>      <nop>
-noremap   <Down>    <nop>
-
 " Simpler way to go to normal mode from insert mode
 inoremap jj <Esc>
 
