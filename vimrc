@@ -24,6 +24,8 @@ set hlsearch
 
 " search as you type
 set incsearch
+set ignorecase
+set smartcase
 " The correct way to remove highlight is:
 " :let @/=""
 
