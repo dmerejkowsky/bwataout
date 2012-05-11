@@ -11,8 +11,18 @@ set showmode
 set ruler
 set backspace=2
 set virtualedit=block
-set background=dark
 set autowriteall
+
+
+let os=substitute(system('uname'), '\n', '', '')
+" has('mac') only works on macvim ...
+if os == 'Darwin' || os == 'Mac'
+  set background=light
+else
+  se background=dark
+endif
+" Note that GUI stuff is handled in .gvimrc anyway
+
 
 " nice menu to navigate through possible completions
 set wildmenu
@@ -24,8 +34,6 @@ set hlsearch
 
 " search as you type
 set incsearch
-set ignorecase
-set smartcase
 " The correct way to remove highlight is:
 " :let @/=""
 
