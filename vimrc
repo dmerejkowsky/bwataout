@@ -1,5 +1,6 @@
 " Yannick LM .vimrc
 
+
 syntax on
 filetype plugin on
 set nocompatible
@@ -180,6 +181,11 @@ endif
 if has("gui_win32")
   " Only available on windows 7 ...
   set guifont=Consolas:h11:cANSI
+endif
+if has("gui_macvim")
+  " Only for mac vim
+  set guifont="Menlo Regular:h11"
+  colorscheme xoria256
 endif
 
 " This is nice if you have something
