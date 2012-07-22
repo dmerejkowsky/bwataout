@@ -27,6 +27,7 @@ VIMRC_TEMPLATE = """
 source {pathogen_autoload}
 call pathogen#infect("{vimconf_dir}")
 source {vimrc}
+source {vimrclocal}
 
 """
 
@@ -329,13 +330,19 @@ def main():
     else:
          os.symlink(src_dir, vimconf)
     backup_conf()
+    # Create ~/.vimrc.local
+    vimrclocal = os.path.expanduser("~/.vimrc.local")
+    if not os.path.exists(vimrclocal):
+        with open(vimrclocal, "w") as fp:
+            fp.write('" Put your local settings here\n"')
     pathogen_autoload = posixpath.join(VIMCONF_DIR,
       "pathogen/autoload/pathogen.vim")
     vimrc = posixpath.join(VIMCONF_DIR, "vimconf/vimrc")
     to_write = VIMRC_TEMPLATE.format(
       vimconf_dir=VIMCONF_DIR,
       pathogen_autoload=pathogen_autoload,
-      vimrc=vimrc)
+      vimrc=vimrc,
+      vimrclocal=vimrclocal)
     dest = os.path.expanduser("~/.vimrc")
     with open(dest, "w") as fp:
       fp.write(to_write)
