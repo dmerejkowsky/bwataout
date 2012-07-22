@@ -17,3 +17,4 @@ noremap <buffer> <leader>e Bi*<ESC>Ea*<ESC>
 " pre is with ``
 noremap <buffer> <leader>p Bi``<ESC>Ea``<ESC>
 setlocal iskeyword=@,48-57,_,192-255,-
+setlocal spell spelllang=en
