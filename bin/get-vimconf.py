@@ -11,6 +11,7 @@ import posixpath
 import subprocess
 import shutil
 import urllib
+import tarfile
 import zipfile
 import ConfigParser
 import StringIO
@@ -21,18 +22,17 @@ VIMCONF_DIR = "~/.local/share/vimconf"
 VIMCONF_DIR = os.path.expanduser(VIMCONF_DIR)
 VIMCONF_DIR = posixpath.normpath(VIMCONF_DIR)
 
-VIMRC_TEMPLATE = """
+VIMRC_TEMPLATE = """\
 " Auto-generated code. Do not edit
 
 source {pathogen_autoload}
 call pathogen#infect("{vimconf_dir}")
 source {vimrc}
-source {vimrclocal}
-
+source {vimrclocal} \
 """
 
 def rm_rf(dest):
-    """ Contrary to shutil.rm_rf,
+    """ Contrary to shutil.remove,
     this wont't fail if dest does not
     exist and won't fail while trying to remove
     read-only files
@@ -171,6 +171,18 @@ def get_vim_zip(name, contents):
             continue
         archive.extract(member, path=dest)
 
+def get_vim_tar_gz(name, contents):
+    """ Install a plugin where contents is
+    the raw data of the .tar.gz
+
+    """
+    fp = StringIO.StringIO(contents)
+    gz = tarfile.open(fileobj=fp, mode="r:gz")
+    dest = posixpath.join(VIMCONF_DIR, name)
+    rm_rf(dest)
+    mkdir_p(dest)
+    gz.extractall(path=dest)
+
 def get_vim_vba(name, contents):
     """ Install a plugin given the raw
     data of the .vba
@@ -206,12 +218,17 @@ def get_from_vimorg(name, url):
     url_obj.close()
     content = url_obj.headers.getheader("Content-Disposition")
     attached_file = content.split("=")[-1]
-    if attached_file.endswith(".vim"):
+    extension = attached_file.split(".")[-1]
+    if extension == "vim":
         get_vim_script(name, data)
-    elif attached_file.endswith(".zip"):
+    elif extension == "zip":
         get_vim_zip(name, data)
-    elif attached_file.endswith(".vba"):
+    elif extension == "vba":
         get_vim_vba(name, data)
+    elif attached_file.endswith(".tar.gz"):
+        get_vim_tar_gz(name, data)
+    else:
+        print "Unknown extension: ", extension
 
 
 def backup_conf():
