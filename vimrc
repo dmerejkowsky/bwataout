@@ -169,25 +169,6 @@ abbreviate wich which
 abbreviate lauch launch
 abbreviate MSCV MSVC
 
-
-if has("gui_running")
-  colorscheme wonbat
-else
-  "great, but does not keep a transparent background ...
-  "colorscheme xoria256
-endif
-
-
-if has("gui_win32")
-  " Only available on windows 7 ...
-  set guifont=Consolas:h11:cANSI
-endif
-if has("gui_macvim")
-  " Only for mac vim
-  set guifont="Menlo Regular:h11"
-  colorscheme xoria256
-endif
-
 " This is nice if you have something
 " that reset the title of you term at
 " each command, othersize it's annoying ...
