@@ -200,3 +200,13 @@ function! GAdd()
 endfunction
 
 command! GAdd call GAdd()
+
+" Automatically give executable permissions if file begins with #! and
+" contains '/bin/' in the path
+function! MakeScriptExecuteable()
+  if getline(1) =~ "^#!.*/bin/"
+    silent !chmod +x <afile>
+  endif
+endfunction
+
+au BufWritePost * call MakeScriptExecuteable()
