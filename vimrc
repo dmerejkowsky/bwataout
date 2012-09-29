@@ -210,3 +210,12 @@ function! MakeScriptExecuteable()
 endfunction
 
 au BufWritePost * call MakeScriptExecuteable()
+
+
+" Used to create missing directories before writing a
+" buffer
+function! MkdirP()
+  :!mkdir -p %:h
+endfunction
+
+command! MkdirP call MkdirP()
