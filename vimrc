@@ -14,6 +14,8 @@ set backspace=2
 set virtualedit=block
 set autowriteall
 
+" Disable ex
+nnoremap Q gq
 
 let os=substitute(system('uname'), '\n', '', '')
 " has('mac') only works on macvim ...
