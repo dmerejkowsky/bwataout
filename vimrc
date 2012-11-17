@@ -128,12 +128,16 @@ set statusline=%{VimBuddy()}\ [%n]\ %<%f\ %{fugitive#statusline()}%h%m%r%=%-14.(
 ""
 " Few keybindings
 
-" 'cd' towards the dir in which the current file is edited
-" but only change the path for the current window
-map ,cd :lcd %:h<CR>
-
 " I prefer , for mapleader rather than \
 let mapleader=","
+cnoremap %% <C-R>=expand('%h').'/'<cr>
+
+" 'cd' towards the dir in which the current file is edited
+" but only change the path for the current window
+map <leader>cd :lcd %:h<CR>
+
+" edit the alternate file
+nmap <leader><leader> <C-^>
 
 " Open files located in the same dir in with the current file is edited
 map <leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
