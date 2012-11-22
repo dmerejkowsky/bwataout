@@ -30,57 +30,14 @@ setlocal tabstop=4
 setlocal softtabstop=4
 
 
-" When editing .ini files, VIM will most of the
-" time load syntax/dosini.vim.
-" (Syntax is almost the same as ConfigParser,
-" except for comments).
-" This is a fix in a quick and dirty way:
-": syn match dosiniComment "#.*^"
-"
+""
+" Using custom python plugins in plugins/py.*.vim
 
-
-" Map <leader>I to add an "import" line
-" at the top of the file
-function! AddMissingImport(module)
-  let i = 1
-  let last_import = 0
-  let lines = getline(1, '.')
-  for line in lines
-    if line =~ "import"
-      let last_import = i
-    endif
-    if line =~ 'import\s\+' . a:module
-      return
-    endif
-    let i = i + 1
-  endfor
-  let orig_line = line('.')
-  let orig_col  = line('.')
-  call cursor(last_import, 1)
-  call append('.', "import " . a:module)
-  call cursor(orig_line+1, orig_col)
-endfunction
-
-command! -nargs=1 AddMissingImport :call AddMissingImport('<args>')
-
+" Add an "import" line using work under cursor
 nmap <leader>I :call AddMissingImport('<C-R><C-W>') <CR>
 
-if !exists("*PyAlternate")
-  function! PyAlternate()
-    " Look for alternate.py in runtimepath
-python << EOF
-import vim
-import os
-paths = vim.eval('&runtimepath').split(",")
-for path in paths:
-    alternate_py = os.path.join(path, "python", "alternate.py")
-    if os.path.exists(alternate_py):
-        vim.command(':pyfile %s' % alternate_py)
+" Run pytest
+nmap <leader>k :call RunPyTest()<CR>
 
-EOF
-  endfunction
-endif
-
-
+" Switch between test and production code
 command! -nargs=0 A :call PyAlternate()
-

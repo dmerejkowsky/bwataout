@@ -44,7 +44,7 @@ def find_or_create_buffer(alternate):
 
 def alternate():
     """ Main entry point:
-    Seach the alternate file.
+    Search the alternate file.
 
     If already opened in the same tab, switch to the correct window,
     else call :vs
