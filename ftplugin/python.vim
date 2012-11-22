@@ -65,3 +65,22 @@ command! -nargs=1 AddMissingImport :call AddMissingImport('<args>')
 
 nmap <leader>I :call AddMissingImport('<C-R><C-W>') <CR>
 
+if !exists("*PyAlternate")
+  function! PyAlternate()
+    " Look for alternate.py in runtimepath
+python << EOF
+import vim
+import os
+paths = vim.eval('&runtimepath').split(",")
+for path in paths:
+    alternate_py = os.path.join(path, "python", "alternate.py")
+    if os.path.exists(alternate_py):
+        vim.command(':pyfile %s' % alternate_py)
+
+EOF
+  endfunction
+endif
+
+
+command! -nargs=0 A :call PyAlternate()
+
