@@ -43,6 +43,17 @@ set incsearch
 " Tell NerdCommenter to shut up:
 let g:NERDShutUp=1
 
+" Tell snippy to use <C-Space> (tab conflicts with
+" supetab)
+if has("gui_running")
+  let g:snippetsEmu_key = "<C-Space>"
+else
+  " for some reason when in a term, c-space
+  " is interpreted as c-@
+  let g:snippetsEmu_key = "<C-@>"
+endif
+
+
 " Prevent YankRing.vim from polluting $HOME:
 let g:yankring_history_dir = expand('$HOME') . '/.vim'
 if ! isdirectory(g:yankring_history_dir)
