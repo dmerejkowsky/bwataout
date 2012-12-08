@@ -185,10 +185,11 @@ augroup spell
   autocmd filetype gitcommit  :setlocal spell spelllang=en
 augroup end
 
-" Trigger marker folding on these files
+" Special settings from vim files
 augroup filetype_vim
   autocmd!
-  autocmd Filetype vim setlocal foldmethod=marker
+  autocmd filetype vim setlocal foldmethod=marker
+  autocmd bufwritepost *.vim :source %
 augroup END
 " }}}
 " {{{ Mapping and abbreviations
