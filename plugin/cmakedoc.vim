@@ -13,11 +13,11 @@ function! ShowCMakeDoc(name)
 	setlocal noswapfile
 	set buftype=nofile
 	setlocal modifiable
-	normal ggdG
+	normal! ggdG
     execute  "silent read ! ". "cmake --help-command " . a:name
 	setlocal nomodified
 	set filetype=txt
-	normal 1G
+	normal! 1G
 endfunction
 
 command! -nargs=1 ShowCMakeDoc :call ShowCMakeDoc('<args>')
