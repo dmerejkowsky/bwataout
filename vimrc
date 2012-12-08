@@ -243,3 +243,11 @@ function! MkdirP()
 endfunction
 
 command! MkdirP call MkdirP()
+
+" Spell checking
+augroup spell
+  autocmd!
+  autocmd Filetype rst  :setlocal spell spelllang=en
+  autocmd Filetype tex  :setlocal spell spelllang=en
+  autocmd Filetype gitcommit  :setlocal spell spelllang=en
+augroup end
