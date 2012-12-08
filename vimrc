@@ -203,6 +203,10 @@ abbreviate MSCV MSVC
 " I prefer , for mapleader rather than \
 let mapleader=","
 
+" I prefer running make! to make, but
+" typing :make is much too long anyway
+nnoremap <leader>m :make!<cr>
+
 " Simpler way to go to normal mode from insert mode
 inoremap jj <Esc>
 
