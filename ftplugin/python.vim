@@ -37,7 +37,7 @@ setlocal softtabstop=4
 nmap <leader>I :call AddMissingImport('<C-R><C-W>') <CR>
 
 " Run pytest
-nmap <leader>k :call RunPyTest()<CR>
+nmap <leader>k :call vimpytest#run()<CR>
 
 " Switch between test and production code
-command! -nargs=0 A :call PyAlternate()
+command! -nargs=0 A :call vimpytest#alternate()
