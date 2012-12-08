@@ -1,6 +1,6 @@
 " Yannick LM .vimrc
 
-
+" Sane defaults
 syntax on
 filetype plugin on
 set nocompatible
@@ -13,6 +13,7 @@ set ruler
 set backspace=2
 set virtualedit=block
 set autowriteall
+set shiftround
 
 " Disable ex
 nnoremap Q gq
