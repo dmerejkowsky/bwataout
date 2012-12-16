@@ -41,3 +41,11 @@ nmap <leader>k :call vimpytest#run()<CR>
 
 " Switch between test and production code
 command! -nargs=0 A :call vimpytest#alternate()
+
+function! SetPythonPath()
+  let l:cwd = getcwd()
+  let l:pythonpath = l:cwd . ":" . $PYTHONPATH
+  let $PYTHONPATH = l:pythonpath
+endfunction
+
+command! -nargs=0 SetPythonPath :call SetPythonPath()
