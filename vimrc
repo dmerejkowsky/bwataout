@@ -22,6 +22,21 @@ else
   set clipboard=unnamed
 endif
 
+" Backups with persistent undos
+set backup
+let g:dotvim=expand('$HOME') . '/.vim'
+if ! isdirectory(g:dotvim)
+  call mkdir(g:dotvim, "p")
+endif
+exec "set backupdir=" . g:dotvim
+
+if has('persistent_undo')
+  set undofile
+  set undolevels=1000
+  set undoreload=10000
+  exec "set undodir=" . g:dotvim
+endif
+
 " Nicer scrolling
 set scroll=5
 set scrolloff=2
