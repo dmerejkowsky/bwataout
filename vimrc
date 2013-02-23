@@ -15,6 +15,12 @@ set virtualedit=block
 set autowriteall
 set shiftround
 
+if has("X11")
+  set clipboard=unnamedplus
+else
+  set clipboard=unnamed
+endif
+
 " Nicer scrolling
 set scroll=5
 set scrolloff=2
