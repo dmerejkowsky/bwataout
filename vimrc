@@ -225,6 +225,8 @@ abbreviate MSCV MSVC
 " I prefer , for mapleader rather than \
 let mapleader=","
 
+nmap <silent> <leader>/ :set invhlsearch<CR>
+
 " I prefer running make! to make, but
 " typing :make is much too long anyway
 nnoremap <leader>m :make!<cr>
