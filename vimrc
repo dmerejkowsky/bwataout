@@ -14,6 +14,7 @@ set backspace=2
 set virtualedit=block
 set autowriteall
 set shiftround
+set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
 
 if has("X11")
   set clipboard=unnamedplus
