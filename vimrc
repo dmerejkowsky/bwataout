@@ -256,19 +256,3 @@ vmap <C-Down> xp`[V`]
 nmap <leader>! :call FixSheBang(@%) <CR>
 
 " }}}
-
-" {{{ hard core settings
-nnoremap <Left> <Nop>
-nnoremap <Right> <Nop>
-nnoremap <Up> <Nop>
-nnoremap <Down> <Nop>
-
-inoremap <Left> <Nop>
-inoremap <Right> <Nop>
-inoremap <Up> <Nop>
-inoremap <Down> <Nop>
-
-inoremap <Esc> <Nop>
-nnoremap <Esc> :echo don't do that
-
-" }}}
