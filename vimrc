@@ -226,6 +226,8 @@ abbreviate MSCV MSVC
 let mapleader=","
 
 nmap <silent> <leader>/ :set invhlsearch<CR>
+nmap <leader>sl :SessionList<CR>
+nmap <leader>ss :SessionSave<CR>
 
 " I prefer running make! to make, but
 " typing :make is much too long anyway
