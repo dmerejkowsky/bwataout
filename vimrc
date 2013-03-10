@@ -2,7 +2,7 @@
 
 " {{{ Simple vim settings
 syntax on
-filetype plugin on
+filetype plugin indent on
 set nocompatible
 set history=10000
 set mouse=a
