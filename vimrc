@@ -24,17 +24,17 @@ endif
 
 " Backups with persistent undos
 set backup
-let g:dotvim=expand('$HOME') . '/.vim'
-if ! isdirectory(g:dotvim)
-  call mkdir(g:dotvim, "p")
+let g:dotvim_backups=expand('$HOME') . '/.vim/backups'
+if ! isdirectory(g:dotvim_backups)
+  call mkdir(g:dotvim_backups, "p")
 endif
-exec "set backupdir=" . g:dotvim
+exec "set backupdir=" . g:dotvim_backups
 
 if has('persistent_undo')
   set undofile
   set undolevels=1000
   set undoreload=10000
-  exec "set undodir=" . g:dotvim
+  exec "set undodir=" . g:dotvim_backups
 endif
 
 " Nicer scrolling
