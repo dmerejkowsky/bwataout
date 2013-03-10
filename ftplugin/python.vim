@@ -29,6 +29,9 @@ setlocal shiftwidth=4
 setlocal tabstop=4
 setlocal softtabstop=4
 
+" Don't use smartindent, it messes up the 3rd part indent
+" script
+set nosmartindent
 
 ""
 " Using custom python plugins in plugins/py.*.vim
