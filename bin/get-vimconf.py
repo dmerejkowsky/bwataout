@@ -145,14 +145,14 @@ def get_from_git(name, url):
         cmd = ["git", "reset", "--hard", "origin/master"]
         call(cmd, cwd=dest, stdout=subprocess.PIPE)
 
-def get_vim_script(name, contents):
+def get_vim_file(script_type, name, contents):
     """ Install a script given its contents
 
     """
     dest = posixpath.join(VIMCONF_DIR, name)
-    plugin_dir = posixpath.join(dest, "plugin")
-    mkdir_p(plugin_dir)
-    dest = posixpath.join(plugin_dir, name + ".vim")
+    dest = posixpath.join(dest, script_type)
+    mkdir_p(dest)
+    dest = posixpath.join(dest, name + ".vim")
     with open(dest, "w") as fp:
         fp.write(contents)
 
@@ -208,7 +208,7 @@ def get_vim_vba(name, contents):
         with open(full_filename, "w") as fp:
             fp.writelines(file_contents)
 
-def get_from_vimorg(name, url):
+def get_from_vimorg(script_type, name, url):
     """ Vim.org uses php to get download links with a
     Content-Disposition header
 
@@ -220,7 +220,7 @@ def get_from_vimorg(name, url):
     attached_file = content.split("=")[-1]
     extension = attached_file.split(".")[-1]
     if extension == "vim":
-        get_vim_script(name, data)
+        get_vim_file(script_type, name, data)
     elif extension == "zip":
         get_vim_zip(name, data)
     elif extension == "vba":
@@ -244,20 +244,23 @@ def backup_conf():
         os.rename(vimrc, backup)
         print vimrc, "backuped to", backup
 
-def get_plugins(cfg_path):
-    """ Install plugins, where plugins in a list
-    of (name, url)
+def get_scripts(cfg_path):
+    """ Install vim scripts from the config file
 
     """
     parser = ConfigParser.RawConfigParser()
     parser.read(cfg_path)
-    plugins = parser.items("plugins")
-    for (name, url) in plugins:
-        print "Adding plugin %s ..." % name
-        if is_git(url):
-            get_from_git(name, url)
-        elif is_vimorg(url):
-            get_from_vimorg(name, url)
+    for script_type in ["plugin", "indent", "color"]:
+        try:
+            scripts = parser.items(script_type)
+        except ConfigParser.NoSectionError:
+            continue
+        for (name, url) in scripts:
+            print "Adding %s: %s ..." % (script_type, name)
+            if is_git(url):
+                get_from_git(name, url)
+            elif is_vimorg(url):
+                get_from_vimorg(script_type, name, url)
 
 def build_plugins(cfg_path):
     """ Build the plugins that need to be built
@@ -265,7 +268,10 @@ def build_plugins(cfg_path):
     """
     parser = ConfigParser.RawConfigParser()
     parser.read(cfg_path)
-    to_build = parser.items("build")
+    try:
+        to_build = parser.items("build")
+    except ConfigParser.NoSectionError:
+        return
     for (name, command) in to_build:
         print "Building ", name, "..."
         plugin_path = posixpath.join(VIMCONF_DIR, name)
@@ -299,7 +305,7 @@ def install_vim_conf(vim_conf_url):
     with open(dest, "w") as fp:
       fp.write(to_write)
 
-def patch_plugins():
+def patch_scripts():
     """ Look for patches in patches/ directory,
     and apply them
 
@@ -364,9 +370,9 @@ def main():
     with open(dest, "w") as fp:
       fp.write(to_write)
     vimconf_cfg = posixpath.join(vimconf, "vimconf.cfg")
-    get_plugins(vimconf_cfg)
-    # some plugins need patching
-    patch_plugins()
+    get_scripts(vimconf_cfg)
+    # some scripts need patching
+    patch_scripts()
     # some plugins need additional build steps
     build_plugins(vimconf_cfg)
 
