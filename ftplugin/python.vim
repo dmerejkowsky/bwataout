@@ -52,3 +52,11 @@ function! SetPythonPath()
 endfunction
 
 command! -nargs=0 SetPythonPath :call SetPythonPath()
+
+function! Pylint()
+  setlocal makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p
+  setlocal errorformat=%f:%l:\ %m
+  :make!
+endfunction
+
+command! -nargs=0 Pylint :call Pylint()
