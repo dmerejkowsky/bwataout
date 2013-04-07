@@ -26,7 +26,7 @@ VIMRC_TEMPLATE = """\
 " Auto-generated code. Do not edit
 
 source {pathogen_autoload}
-call pathogen#infect("{vimconf_dir}")
+call pathogen#infect("{vimconf_dir}/{{}}")
 source {vimrc}
 source {vimrclocal} \
 """
