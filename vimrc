@@ -221,6 +221,7 @@ abbreviate swith switch
 abbreviate wich which
 abbreviate lauch launch
 abbreviate MSCV MSVC
+abbreviate worktee worktree
 
 " I prefer , for mapleader rather than \
 let mapleader=","
