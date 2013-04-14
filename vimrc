@@ -216,12 +216,6 @@ augroup END
 " }}}
 " {{{ Mapping and abbreviations
 
-" I always make mistakes in these words
-abbreviate swith switch
-abbreviate wich which
-abbreviate lauch launch
-abbreviate MSCV MSVC
-abbreviate worktee worktree
 
 " I prefer , for mapleader rather than \
 let mapleader=","
