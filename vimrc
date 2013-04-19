@@ -117,11 +117,10 @@ endif
 " {{{ Custom functions
 " Remove trailing whitespace
 function! CleanWhiteSpace()
-  let _s=@/
   let l = line(".")
   let c = col(".")
   :%s/\s\+$//e
-  let @/=_s
+  let last_searh_removed_from_history = histdel('s', -1)
   call cursor(l, c)
 endfunction()
 
