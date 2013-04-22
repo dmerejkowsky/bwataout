@@ -15,6 +15,8 @@ set virtualedit=block
 set autowriteall
 set shiftround
 set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
+set nrformats-=octal " don't go from 007 to 010
+set display+=lastline,uhex
 
 if has("X11")
   set clipboard=unnamedplus
