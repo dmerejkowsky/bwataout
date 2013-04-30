@@ -217,6 +217,9 @@ def get_from_vimorg(script_type, name, url):
     data = url_obj.read()
     url_obj.close()
     content = url_obj.headers.getheader("Content-Disposition")
+    if not content:
+      print "skipping", url
+      return
     attached_file = content.split("=")[-1]
     extension = attached_file.split(".")[-1]
     if extension == "vim":
