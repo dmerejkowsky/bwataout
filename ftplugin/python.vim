@@ -16,11 +16,6 @@ let &path=&path . "," . s:py_path
 abbreviate <buffer> sefl self
 abbreviate <buffer> slef self
 
-" To use quickfix with python programs:
-if executable("pyflakes")
-  setlocal makeprg=pyflakes\ %
-endif
-
 
 " Indent with 4 spaces
 setlocal expandtab
@@ -53,10 +48,9 @@ endfunction
 
 command! -nargs=0 SetPythonPath :call SetPythonPath()
 
-function! Pylint()
-  setlocal makeprg=pylint\ --reports=n\ --include-ids=y\ --output-format=parseable\ %:p
-  setlocal errorformat=%f:%l:\ %m
-  :make!
+function! UsePylint()
+  set makeprg=pylint\ --reports=n\ --include-ids=y\ --errors-only\ --output-format=parseable\ %:p
+  set errorformat=%f:%l:\ %m
 endfunction
 
-command! -nargs=0 Pylint :call Pylint()
+command! -nargs=0 UsePylint :call UsePylint()
