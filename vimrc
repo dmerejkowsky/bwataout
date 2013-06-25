@@ -191,12 +191,12 @@ let g:go_highlight_space_tab_error=0
 let g:go_highlight_trailing_whitespace_error=0
 
 " I find it annoying that fugitive does not define this
-function! GAdd()
+function! Gadd()
   w
   !git add %
 endfunction
 
-command! GAdd call GAdd()
+command! Gadd call Gadd()
 
 " }}}
 " {{{ Autocommands
