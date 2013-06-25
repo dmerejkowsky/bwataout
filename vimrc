@@ -198,6 +198,16 @@ endfunction
 
 command! Gadd call Gadd()
 
+" Quit Gdiff mode
+function! GdiffOff()
+  " Close all othen windows
+  only
+  diffoff
+endfunction
+
+command! GdiffOff call GdiffOff()
+
+
 " }}}
 " {{{ Autocommands
 " Remove trailing whitespaces when saving:
