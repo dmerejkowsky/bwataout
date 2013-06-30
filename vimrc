@@ -64,8 +64,10 @@ imap <Nul> <Space>
 " Always display statusline
 set laststatus=2
 
-" nice menu to navigate through possible completions
+"For completion:
+set wildmode=full
 set wildmenu
+set wildignore=*.pyc
 
 " smarter behavior of 'J' (join lines)
 set nojoinspaces
