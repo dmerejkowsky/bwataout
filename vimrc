@@ -250,6 +250,10 @@ inoremap jj <Esc>
 nnoremap ; :
 vnoremap ; :
 
+" it's easy to type :X by mistake, and the 'encrypt'
+" feature is useless anyway
+map :X :x
+
 " use begging-of-history inside command mode
 " with ctrl+n ctrl+p
 cnoremap <C-N> <Down>
