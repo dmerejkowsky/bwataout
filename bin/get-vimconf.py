@@ -193,7 +193,7 @@ def get_vim_vba(name, contents):
     to_write = dict()
     file_contents = ""
     while(line_no < len(lines)):
-        file_name = lines[line_no].strip()
+        file_name = lines[line_no].split()[0]
         size = int(lines[line_no+1])
         file_contents = lines[line_no+2:line_no+2+size]
         line_no  += size+2
@@ -222,13 +222,23 @@ def get_from_vimorg(script_type, name, url):
       return
     attached_file = content.split("=")[-1]
     extension = attached_file.split(".")[-1]
+    get(script_type, name, data, extension)
+
+def get_from_url(script_type, name, url):
+    url_obj = urllib.urlopen(url)
+    data = url_obj.read()
+    url_obj.close()
+    extension = url.split(".")[-1]
+    get(script_type, name, data, extension)
+
+def get(script_type, name, data, extension):
     if extension == "vim":
         get_vim_file(script_type, name, data)
     elif extension == "zip":
         get_vim_zip(name, data)
-    elif extension == "vba":
+    elif extension in ("vba", "vmb"):
         get_vim_vba(name, data)
-    elif attached_file.endswith(".tar.gz"):
+    elif extension == "gz":
         get_vim_tar_gz(name, data)
     else:
         print "Unknown extension: ", extension
@@ -264,6 +274,8 @@ def get_scripts(cfg_path):
                 get_from_git(name, url)
             elif is_vimorg(url):
                 get_from_vimorg(script_type, name, url)
+            else:
+                get_from_url(script_type, name, url)
 
 def build_plugins(cfg_path):
     """ Build the plugins that need to be built
