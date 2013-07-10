@@ -163,6 +163,8 @@ command! MkdirP call MkdirP()
 " }}}
 " {{{ Plugins customizations
 
+let NERDTreeHijackNetrw=1
+
 " Tell NerdCommenter to shut up:
 let g:NERDShutUp=1
 
