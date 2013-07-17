@@ -72,11 +72,11 @@ set wildignore=*.pyc
 " smarter behavior of 'J' (join lines)
 set nojoinspaces
 
-" highlight search
+" search settings
 set hlsearch
-
-" search as you type
 set incsearch
+set smartcase
+
 
 " Remove menu bar from GUI
 let did_install_default_menus = 1
