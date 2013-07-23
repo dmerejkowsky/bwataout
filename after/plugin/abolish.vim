@@ -1,6 +1,6 @@
-Abolish worktee worktree
+Abolish MSCV MSVC
+Abolish lauch launch
+Abolish shpinx sphinx
 Abolish swith switch
 Abolish wich which
-Abolish lauch launch
-Abolish MSCV MSVC
-Abolish shpinx sphinx
+Abolish worktee worktree
