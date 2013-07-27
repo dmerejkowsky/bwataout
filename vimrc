@@ -227,6 +227,16 @@ augroup spell
   autocmd filetype gitcommit  :setlocal spell spelllang=en
 augroup end
 
+" Change local working dir upon tab creation
+function! TabNewWithCwD(newpath)
+  :execute "tabnew " . a:newpath
+  let dirname = fnamemodify(a:newpath, "%:h:p")
+  :execute "lcd " . dirname
+endfunction
+
+command! -nargs=1 -complete=file TabNew :call TabNewWithCwD("<args>")
+
+
 " Special settings from vim files
 augroup filetype_vim
   autocmd!
