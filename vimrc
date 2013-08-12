@@ -230,8 +230,12 @@ augroup end
 " Change local working dir upon tab creation
 function! TabNewWithCwD(newpath)
   :execute "tabnew " . a:newpath
-  let dirname = fnamemodify(a:newpath, "%:h:p")
-  :execute "lcd " . dirname
+  if isdirectory(a:newpath)
+    :execute "lcd " . a:newpath
+  else
+    let dirname = fnamemodify(a:newpath, ":h")
+    :execute "lcd " . dirname
+  endif
 endfunction
 
 command! -nargs=1 -complete=file TabNew :call TabNewWithCwD("<args>")
