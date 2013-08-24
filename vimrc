@@ -1,5 +1,39 @@
-" Yannick LM .vimrc
+set nocompatible
 
+
+" {{{ NeoBundle
+
+if has('vim_starting')
+   set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+call neobundle#rc(expand('~/.vim/bundle/'))
+
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+NeoBundle 'bps/vim-textobj-python'
+NeoBundle 'ervandew/supertab.git'
+NeoBundle 'fs111/pydoc.vim'
+NeoBundle 'godlygeek/tabular'
+NeoBundle 'jnwhiteh/vim-golang.git'
+NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'rking/ag.vim'
+NeoBundle 'scrooloose/nerdcommenter.git'
+NeoBundle 'scrooloose/nerdtree.git'
+NeoBundle 'tpope/vim-abolish'
+NeoBundle 'tpope/vim-eunuch'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'vim-scripts/a.vim'
+NeoBundle 'vim-scripts/python.vim'
+NeoBundle 'vim-scripts/snippetsEmu'
+NeoBundle 'vim-scripts/YankRing.vim'
+NeoBundle 'wincent/Command-T'
+NeoBundle 'yannicklm/vimbuddy.vim'
+
+NeoBundle 'yannicklm/vimconf'
+
+NeoBundleCheck
+
+" }}}
 " {{{ Simple vim settings
 syntax on
 filetype plugin indent on
