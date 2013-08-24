@@ -10,6 +10,7 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+
 NeoBundle 'bps/vim-textobj-python'
 NeoBundle 'ervandew/supertab.git'
 NeoBundle 'fs111/pydoc.vim'
@@ -22,6 +23,7 @@ NeoBundle 'scrooloose/nerdtree.git'
 NeoBundle 'tpope/vim-abolish'
 NeoBundle 'tpope/vim-eunuch'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-surround'
 NeoBundle 'vim-scripts/a.vim'
 NeoBundle 'vim-scripts/python.vim'
 NeoBundle 'vim-scripts/snippetsEmu'
