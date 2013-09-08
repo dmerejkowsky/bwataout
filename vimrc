@@ -1,6 +1,5 @@
 set nocompatible
 
-
 " {{{ NeoBundle
 
 if has('vim_starting')
@@ -19,7 +18,16 @@ NeoBundle 'jnwhiteh/vim-golang.git'
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'scrooloose/nerdcommenter.git'
-NeoBundle 'scrooloose/nerdtree.git'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimproc', {
+      \ 'build' : {
+      \     'windows' : 'make -f make_mingw32.mak',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
+NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'tpope/vim-abolish'
 NeoBundle 'tpope/vim-eunuch'
 NeoBundle 'tpope/vim-fugitive'
@@ -28,7 +36,6 @@ NeoBundle 'vim-scripts/a.vim'
 NeoBundle 'vim-scripts/python.vim'
 NeoBundle 'vim-scripts/snippetsEmu'
 NeoBundle 'vim-scripts/YankRing.vim'
-NeoBundle 'wincent/Command-T'
 NeoBundle 'yannicklm/vimbuddy.vim'
 NeoBundle 'yannicklm/vim-send-cmd'
 
@@ -201,8 +208,6 @@ command! MkdirP call MkdirP()
 " }}}
 " {{{ Plugins customizations
 
-let NERDTreeHijackNetrw=1
-
 " Tell NerdCommenter to shut up:
 let g:NERDShutUp=1
 
@@ -249,6 +254,8 @@ endfunction
 
 command! GdiffOff call GdiffOff()
 
+let g:vimfiler_as_default_explorer=1
+let g:vimfiler_safe_mode_by_default=0
 
 " }}}
 " {{{ Autocommands
@@ -349,5 +356,9 @@ vmap <C-Down> xp`[V`]
 
 " Call chmod +x on a file when necessary:
 nmap <leader>! :call FixSheBang(@%) <CR>
+
+nnoremap <leader>t :Unite -start-insert file_rec/async<cr>
+nnoremap <leader>b :Unite -start-insert buffer<cr>
+nnoremap <leader>r :Unite -start-insert file_mru<cr>
 
 " }}}
