@@ -17,7 +17,6 @@ NeoBundle 'godlygeek/tabular'
 NeoBundle 'jnwhiteh/vim-golang.git'
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'rking/ag.vim'
-NeoBundle 'scrooloose/nerdcommenter.git'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimproc', {
       \ 'build' : {
@@ -28,6 +27,7 @@ NeoBundle 'Shougo/vimproc', {
       \    },
       \ }
 NeoBundle 'Shougo/vimfiler.vim'
+NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'tpope/vim-abolish'
 NeoBundle 'tpope/vim-eunuch'
 NeoBundle 'tpope/vim-fugitive'
@@ -207,9 +207,6 @@ command! MkdirP call MkdirP()
 
 " }}}
 " {{{ Plugins customizations
-
-" Tell NerdCommenter to shut up:
-let g:NERDShutUp=1
 
 " Tell snippy to use <C-Space> (tab conflicts with
 " supetab)
