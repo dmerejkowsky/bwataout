@@ -35,7 +35,6 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'vim-scripts/a.vim'
 NeoBundle 'vim-scripts/python.vim'
 NeoBundle 'vim-scripts/snippetsEmu'
-NeoBundle 'vim-scripts/YankRing.vim'
 NeoBundle 'yannicklm/vimbuddy.vim'
 NeoBundle 'yannicklm/vim-send-cmd'
 
