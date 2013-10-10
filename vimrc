@@ -323,9 +323,6 @@ cnoremap %% <C-R>=expand('%h').'/'<cr>
 " but only change the path for the current window
 map <leader>cd :lcd %:h<CR>
 
-" edit the alternate file
-nmap <leader><leader> <C-^>
-
 " Open files located in the same dir in with the current file is edited
 map <leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
 map <leader>es :sp <C-R>=expand("%:p:h") . "/" <CR>
