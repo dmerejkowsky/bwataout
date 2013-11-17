@@ -241,10 +241,6 @@ endfunction
 
 command! GdiffOff call GdiffOff()
 
-let g:vimfiler_as_default_explorer=1
-let g:vimfiler_safe_mode_by_default=0
-let g:unite_split_rule="below"
-
 " }}}
 " {{{ Autocommands
 " Remove trailing whitespaces when saving:
@@ -341,11 +337,6 @@ vmap <C-Down> xp`[V`]
 
 " Call chmod +x on a file when necessary:
 nmap <leader>! :call FixSheBang(@%) <CR>
-
-nnoremap <leader>t :Unite -start-insert file_rec/async<cr>
-nnoremap <leader>b :Unite -start-insert buffer<cr>
-nnoremap <leader>r :Unite -start-insert file_mru<cr>
-nnoremap <leader>s :Unite outline<cr>
 
 " }}}
 
