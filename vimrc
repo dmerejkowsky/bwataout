@@ -17,16 +17,6 @@ NeoBundle 'godlygeek/tabular'
 NeoBundle 'jnwhiteh/vim-golang.git'
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'rking/ag.vim'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimproc', {
-      \ 'build' : {
-      \     'windows' : 'make -f make_mingw32.mak',
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
-      \    },
-      \ }
-NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'tpope/vim-abolish'
 NeoBundle 'tpope/vim-eunuch'
@@ -36,9 +26,8 @@ NeoBundle 'vim-scripts/a.vim'
 NeoBundle 'vim-scripts/python.vim'
 NeoBundle 'vim-scripts/snippetsEmu'
 NeoBundle 'yannicklm/vimbuddy.vim'
-NeoBundle 'yannicklm/vim-send-cmd'
-
 NeoBundle 'yannicklm/vimconf'
+NeoBundle 'yannicklm/vim-gnote'
 
 NeoBundleCheck
 
@@ -353,5 +342,8 @@ nmap <leader>! :call FixSheBang(@%) <CR>
 nnoremap <leader>t :Unite -start-insert file_rec/async<cr>
 nnoremap <leader>b :Unite -start-insert buffer<cr>
 nnoremap <leader>r :Unite -start-insert file_mru<cr>
+nnoremap <leader>s :Unite outline<cr>
 
 " }}}
+
+
