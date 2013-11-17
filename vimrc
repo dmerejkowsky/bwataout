@@ -136,7 +136,6 @@ function! SetCursorPosition()
 endfunction
 " Always load those useful plugins:
 runtime! macros/matchit.vim
-runtime! plugin/imaps.vim
 runtime! ftplugin/man.vim
 
 " These are overloaded in the various ftplugin/ scripts
@@ -163,7 +162,7 @@ function! CleanWhiteSpace()
   let l = line(".")
   let c = col(".")
   :%s/\s\+$//e
-  let last_searh_removed_from_history = histdel('s', -1)
+  let last_search_removed_from_history = histdel('s', -1)
   call cursor(l, c)
 endfunction()
 
@@ -234,7 +233,7 @@ command! Gadd call Gadd()
 
 " Quit Gdiff mode
 function! GdiffOff()
-  " Close all othen windows
+  " Close all other windows
   only
   diffoff
 endfunction
