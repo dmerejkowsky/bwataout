@@ -57,6 +57,9 @@ def main():
     clone_neobundle()
     create_vimrc_files()
     run_vim_once()
+    # neobundle does not seem to be able to do that
+    # without vimproc, and I don't want to build vimproc
+    build_command_t()
 
 
 def clone_neobundle():
@@ -88,6 +91,11 @@ def create_vimrc_files():
 
 def run_vim_once():
     subprocess.call(["vim", "-c", ":x"])
+
+def build_command_t():
+    command_t_path = os.path.join(VIM_BUNDLE, "Command-T", "ruby", "command-t")
+    subprocess.call(["ruby", "extconf.rb"], cwd=command_t_path)
+    subprocess.call(["make"], cwd=command_t_path)
 
 if __name__ == "__main__":
     main()
