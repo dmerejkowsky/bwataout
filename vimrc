@@ -30,6 +30,7 @@ NeoBundle 'vim-scripts/snippetsEmu'
 NeoBundle 'wincent/Command-T'
 NeoBundle 'yannicklm/vimbuddy.vim'
 NeoBundle 'yannicklm/vimconf'
+NeoBundle 'yannicklm/vim-send-cmd'
 NeoBundle 'yannicklm/vim-gnote'
 
 NeoBundleCheck
