@@ -289,6 +289,9 @@ nmap <leader>ss :SessionSave<CR>
 " typing :make is much too long anyway
 nnoremap <leader>m :make<cr>
 
+" ctrl-^
+nnoremap <leader><leader> <c-^>
+
 " Simpler way to go to normal mode from insert mode
 inoremap jj <Esc>
 
