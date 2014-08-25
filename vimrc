@@ -13,6 +13,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'bps/vim-textobj-python'
 NeoBundle 'ervandew/supertab.git'
 NeoBundle 'fs111/pydoc.vim'
+NeoBundle 'gavinbeatty/dragvisuals.vim'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'jnwhiteh/vim-golang.git'
 NeoBundle 'kana/vim-textobj-user'
@@ -334,16 +335,18 @@ nnoremap K :Man <cword> <CR>
 " Spell check
 cmap spc setlocal spell spelllang=
 
-" Bubble single lines
-nmap <C-Up> ddkP
-nmap <C-Down> ddp
-
-" Bubble multiple lines
-vmap <C-Up> xkP`[V`]
-vmap <C-Down> xp`[V`]
-
 " Call chmod +x on a file when necessary:
 nmap <leader>! :call FixSheBang(@%) <CR>
+
+" Dragging visual blocks
+vmap  <expr>  <LEFT>   DVB_Drag('left')
+vmap  <expr>  <RIGHT>  DVB_Drag('right')
+vmap  <expr>  <DOWN>   DVB_Drag('down')
+vmap  <expr>  <UP>     DVB_Drag('up')
+vmap  <expr>  D        DVB_Duplicate()
+
+" don't try to remove whitespace, :w will do it
+let g:DVB_TrimWS=0
 
 " }}}
 
