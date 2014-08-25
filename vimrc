@@ -27,11 +27,11 @@ NeoBundle 'troydm/easytree.vim'
 NeoBundle 'vim-scripts/a.vim'
 NeoBundle 'vim-scripts/python.vim'
 NeoBundle 'vim-scripts/snippetsEmu'
-NeoBundle 'wincent/Command-T'
 NeoBundle 'yannicklm/vimbuddy.vim'
 NeoBundle 'yannicklm/vimconf'
 NeoBundle 'yannicklm/vim-send-cmd'
 NeoBundle 'yannicklm/vim-gnote'
+NeoBundle 'kien/ctrlp.vim', { 'rev' : '1.79' }
 
 call neobundle#end()
 
@@ -283,6 +283,8 @@ augroup END
 
 " I prefer , for mapleader rather than \
 let mapleader=","
+
+nmap <leader>t :CtrlP<CR>
 
 nmap <silent> <leader>/ :set invhlsearch<CR>
 nmap <leader>sl :SessionList<CR>
