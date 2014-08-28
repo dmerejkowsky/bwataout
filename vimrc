@@ -286,6 +286,7 @@ let mapleader=","
 
 nmap <leader>t :CtrlP<CR>
 nmap <leader>p :CtrlPMRUFiles<CR>
+nmap <leader>b :CtrlPBuffer<CR>
 
 nmap <silent> <leader>/ :set invhlsearch<CR>
 nmap <leader>sl :SessionList<CR>
