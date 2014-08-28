@@ -111,7 +111,7 @@ set wildignore=*.pyc
 set nojoinspaces
 
 " search settings
-set hlsearch
+set nohlsearch
 set incsearch
 set smartcase
 
