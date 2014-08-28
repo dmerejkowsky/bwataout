@@ -46,8 +46,6 @@ set encoding=utf-8
 set showcmd
 set showmode
 set ruler
-set relativenumber
-set number
 set backspace=2
 set virtualedit=block
 set autowriteall
