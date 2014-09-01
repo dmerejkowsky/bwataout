@@ -83,7 +83,7 @@ set scrolloff=2
 
 " This is nice if you have something
 " that reset the title of you term at
-" each command, othersize it's annoying ...
+" each command, otherwize it's annoying ...
 set title
 
 " Allow completion on filenames right after a '='.
@@ -350,5 +350,3 @@ vmap  <expr>  D        DVB_Duplicate()
 let g:DVB_TrimWS=0
 
 " }}}
-
-
