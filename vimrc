@@ -335,9 +335,6 @@ nnoremap K :Man <cword> <CR>
 " Spell check
 cmap spc setlocal spell spelllang=
 
-" Call chmod +x on a file when necessary:
-nmap <leader>! :call FixSheBang(@%) <CR>
-
 " Dragging visual blocks
 vmap  <expr>  <LEFT>   DVB_Drag('left')
 vmap  <expr>  <RIGHT>  DVB_Drag('right')
