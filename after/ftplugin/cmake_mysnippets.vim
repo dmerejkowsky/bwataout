@@ -5,4 +5,4 @@ endif
 Snippet if if(<{cond}>)<CR><{}><CR><BS>else()<CR><{}><CR><BS>endif()<CR><{}>
 
 Snippet mess( message(STATUS "<{}>")
-Snippet mv(   message(STATUS "<{var}>: ${<{var}>}")<CR><{}>
+Snippet mv(   message(STATUS "<{var}>: ${<{var}>}")
