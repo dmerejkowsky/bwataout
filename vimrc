@@ -282,7 +282,7 @@ augroup END
 
 
 " I prefer , for mapleader rather than \
-let mapleader=" "
+let mapleader=","
 
 nmap <leader>t :CtrlP<CR>
 nmap <leader>p :CtrlPMRUFiles<CR>
