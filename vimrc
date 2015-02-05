@@ -295,7 +295,7 @@ nmap <leader>ss :SessionSave<CR>
 " typing :make is much too long anyway
 nnoremap <leader>m :make<cr>
 
-nnoremap <silent> <CR> :up<CR><CR>
+nnoremap <silent> <CR> :up<CR>
 
 " ctrl-^
 nnoremap <leader><leader> <c-^>
