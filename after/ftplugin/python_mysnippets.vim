@@ -15,3 +15,4 @@ Snippet _str  def __str__(self):<CR><TAB><{}>
 Snippet pdb import pdb; pdb.set_trace()
 Snippet ipdb from IPython.core.debugger import Tracer; debug_here=Tracer()<cr>debug_here()
 
+Snippet pylint # pylint:disable-msg=E<{}>
