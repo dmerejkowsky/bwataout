@@ -33,6 +33,7 @@ NeoBundle 'yannicklm/vimconf'
 NeoBundle 'yannicklm/vim-send-cmd'
 NeoBundle 'yannicklm/vim-gnote'
 NeoBundle 'kien/ctrlp.vim', { 'rev' : '1.79' }
+NeoBundle 'benekastah/neomake'
 
 call neobundle#end()
 
@@ -292,7 +293,7 @@ nmap <leader>sl :SessionList<CR>
 nmap <leader>ss :SessionSave<CR>
 
 " typing :make is much too long anyway
-nnoremap <leader>m :make<cr>
+nnoremap <leader>m :Neomake!<cr>
 
 nnoremap <silent> <CR> :up<CR>
 
