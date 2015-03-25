@@ -293,7 +293,7 @@ nmap <leader>sl :SessionList<CR>
 nmap <leader>ss :SessionSave<CR>
 
 " typing :make is much too long anyway
-nnoremap <leader>m :Neomake!<cr>
+nnoremap <leader>m :make!<cr>
 
 nnoremap <silent> <CR> :up<CR>
 
