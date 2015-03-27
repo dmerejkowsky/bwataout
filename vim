@@ -13,6 +13,7 @@ def remote_nvim(filespecs):
     if not len(filespecs) == 1:
         sys.exit("Expecting exactly one argument")
     file = filespecs[0]
+    file = os.path.abspath(file)
     nvim = neovim.attach("socket", path=SOCKET_PATH)
     nvim.command(":e %s" % file)
 
