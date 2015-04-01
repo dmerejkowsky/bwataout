@@ -347,4 +347,6 @@ vmap  <expr>  D        DVB_Duplicate()
 " don't try to remove whitespace, :w will do it
 let g:DVB_TrimWS=0
 
+" Escape from terminal mode by pressing escape
+tnoremap <Esc> <C-\><C-n>
 " }}}
