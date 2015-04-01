@@ -296,8 +296,6 @@ nmap <leader>ss :SessionSave<CR>
 nnoremap <leader>m :make!<cr>
 nnoremap <leader>M :Neomake!<cr>
 
-nnoremap <silent> <CR> :up<CR>
-
 " ctrl-^
 nnoremap <leader><leader> <c-^>
 
