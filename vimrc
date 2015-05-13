@@ -348,5 +348,7 @@ vmap  <expr>  D        DVB_Duplicate()
 let g:DVB_TrimWS=0
 
 " Escape from terminal mode by pressing escape
-tnoremap <Esc> <C-\><C-n>
+if has("nvim")
+  tnoremap <Esc> <C-\><C-n>
+endif
 " }}}
