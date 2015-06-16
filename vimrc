@@ -38,7 +38,6 @@ NeoBundle 'rust-lang/rust.vim'
 
 call neobundle#end()
 
-"
 " Simple vim settings {{{ 1
 syntax on
 filetype plugin indent on
@@ -149,7 +148,6 @@ set smarttab
 set smartindent
 set tabstop=4
 
-"
 " Colors {{{1
 let os=substitute(system('uname'), '\n', '', '')
 " has('mac') only works on macvim ...
