@@ -1,6 +1,6 @@
 set nocompatible
 
-" {{{ NeoBundle
+" NeoBundle {{{1
 
 if has('vim_starting')
    set runtimepath+=~/.vim/bundle/neobundle.vim/
@@ -37,8 +37,8 @@ NeoBundle 'benekastah/neomake'
 
 call neobundle#end()
 
-" }}}
-" {{{ Simple vim settings
+"
+" Simple vim settings {{{ 1
 syntax on
 filetype plugin indent on
 set nocompatible
@@ -148,8 +148,8 @@ set smarttab
 set smartindent
 set tabstop=4
 
-" }}}
-" {{{ Colors
+"
+" Colors {{{1
 let os=substitute(system('uname'), '\n', '', '')
 " has('mac') only works on macvim ...
 if os == 'Darwin' || os == 'Mac'
@@ -158,8 +158,8 @@ else
   se background=dark
 endif
 " Note that GUI stuff is handled in .gvimrc anyway
-" }}}
-" {{{ Custom functions
+
+" Custom functions {{{1
 " Remove trailing whitespace
 function! CleanWhiteSpace()
   let l = line(".")
@@ -197,8 +197,7 @@ endfunction
 
 command! MkdirP call MkdirP()
 
-" }}}
-" {{{ Plugins customizations
+" Plugins customizations {{{1
 
 " Tell snippy to use <C-Space> (tab conflicts with
 " supetab)
@@ -243,8 +242,7 @@ endfunction
 
 command! GdiffOff call GdiffOff()
 
-" }}}
-" {{{ Autocommands
+" Autocommands {{{1
 " Remove trailing whitespaces when saving:
 autocmd bufwritepre * :CleanWhiteSpace
 au BufWritePost * call MakeScriptExecuteable()
@@ -277,8 +275,8 @@ augroup filetype_vim
   autocmd filetype vim setlocal foldmethod=marker
   autocmd bufwritepost *.vim :source %
 augroup END
-" }}}
-" {{{ Mapping and abbreviations
+
+" Mapping and abbreviations {{{1
 
 
 " I prefer , for mapleader rather than \
@@ -351,4 +349,3 @@ let g:DVB_TrimWS=0
 if has("nvim")
   tnoremap <Esc> <C-\><C-n>
 endif
-" }}}
