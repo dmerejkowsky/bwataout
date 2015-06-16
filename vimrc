@@ -34,6 +34,7 @@ NeoBundle 'yannicklm/vim-send-cmd'
 NeoBundle 'yannicklm/vim-gnote'
 NeoBundle 'kien/ctrlp.vim', { 'rev' : '1.79' }
 NeoBundle 'benekastah/neomake'
+NeoBundle 'rust-lang/rust.vim'
 
 call neobundle#end()
 
