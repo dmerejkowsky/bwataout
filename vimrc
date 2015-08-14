@@ -282,6 +282,9 @@ augroup END
 " I prefer , for mapleader rather than \
 let mapleader=","
 
+inoremap <ESC> <ESC>:wq<CR>
+nnoremap <ESC> <ESC>:wq<CR>
+
 nmap <leader>t :CtrlP<CR>
 nmap <leader>p :CtrlPMRUFiles<CR>
 nmap <leader>b :CtrlPBuffer<CR>
