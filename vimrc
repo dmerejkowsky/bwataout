@@ -39,7 +39,7 @@ NeoBundle 'dleonard0/pony-vim-syntax'
 
 call neobundle#end()
 
-" Simple vim settings {{{ 1
+" Simple vim settings {{{1
 syntax on
 filetype plugin indent on
 set nocompatible
