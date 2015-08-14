@@ -284,6 +284,7 @@ let mapleader=","
 
 inoremap <ESC> <ESC>:wq<CR>
 nnoremap <ESC> <ESC>:wq<CR>
+vnoremap <ESC> <ESC>:wq<CR>
 
 nmap <leader>t :CtrlP<CR>
 nmap <leader>p :CtrlPMRUFiles<CR>
