@@ -8,7 +8,6 @@ import subprocess
 import neovim
 
 SOCKET_PATH="/tmp/neovim"
-NVIM_PATH="/usr/local/bin/nvim"
 
 def remote_nvim(filespecs):
     if not len(filespecs) == 1:
@@ -23,7 +22,10 @@ def main_nvim(filespecs):
     env = os.environ.copy()
     env["NVIM_LISTEN_ADDRESS"] = SOCKET_PATH
     parsed = parse_filespecs(filespecs)
-    cmd = [NVIM_PATH]
+    nvim_path = "/usr/local/bin/nvim"
+    if not os.path.exists(nvim_path):
+        nvim_path = "/usr/bin/nvim"
+    cmd = [nvim_path]
     cmd.extend(parsed)
     rc = subprocess.call(cmd, env=env)
     sys.exit(rc)
