@@ -113,7 +113,6 @@ set nohlsearch
 set incsearch
 set smartcase
 
-
 " Remove menu bar from GUI
 let did_install_default_menus = 1
 
@@ -185,7 +184,6 @@ function! MakeScriptExecuteable()
   endif
 endfunction
 
-
 " Used to create missing directories before writing a
 " buffer
 function! MkdirP()
@@ -204,12 +202,6 @@ else
   " for some reason when in a term, c-space
   " is interpreted as c-@
   let g:snippetsEmu_key = "<C-@>"
-endif
-
-" Prevent YankRing.vim from polluting $HOME:
-let g:yankring_history_dir = expand('$HOME') . '/.vim'
-if ! isdirectory(g:yankring_history_dir)
-  call mkdir(g:yankring_history_dir, "p")
 endif
 
 " Status line (requires VimBuddy plugin to be present)
