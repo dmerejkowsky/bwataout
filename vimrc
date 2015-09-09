@@ -1,5 +1,3 @@
-set nocompatible
-
 " NeoBundle {{{1
 
 if has('vim_starting')
@@ -42,7 +40,6 @@ call neobundle#end()
 " Simple vim settings {{{1
 syntax on
 filetype plugin indent on
-set nocompatible
 set history=10000
 set mouse=a
 set encoding=utf-8
