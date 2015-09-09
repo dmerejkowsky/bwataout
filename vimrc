@@ -8,24 +8,22 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 
-NeoBundle 'bps/vim-textobj-python'
-NeoBundle 'ervandew/supertab.git'
-NeoBundle 'fs111/pydoc.vim'
-NeoBundle 'gavinbeatty/dragvisuals.vim'
-NeoBundle 'godlygeek/tabular'
-NeoBundle 'jnwhiteh/vim-golang.git'
-NeoBundle 'kana/vim-textobj-user'
-NeoBundle 'rking/ag.vim'
-NeoBundle 'scrooloose/nerdcommenter.git'
-NeoBundle 'scrooloose/nerdtree.git'
-NeoBundle 'tomtom/tcomment_vim'
-NeoBundle 'tpope/vim-abolish'
-NeoBundle 'tpope/vim-eunuch'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'vim-scripts/a.vim'
-NeoBundle 'vim-scripts/python.vim'
-NeoBundle 'vim-scripts/snippetsEmu'
+NeoBundle 'bps/vim-textobj-python', { 'rev' : '83c97d9aaae74a7c35b092bae59ef5339723dd9b'}
+NeoBundle 'ervandew/supertab.git', { 'rev' : '2.1' }
+NeoBundle 'fs111/pydoc.vim', { 'rev' : '2.0' }
+NeoBundle 'gavinbeatty/dragvisuals.vim', { 'rev' : 'b6e6d418faf3ec8c40e49c099f82481c820ab098'}
+NeoBundle 'godlygeek/tabular', { 'rev' : '60f25648814f0695eeb6c1040d97adca93c4e0bb' }
+NeoBundle 'kana/vim-textobj-user',  { 'rev' : '0.7.1' }
+NeoBundle 'rking/ag.vim', { 'rev' : 'f755abfb1c4e4e3f59f6cfa25ce16edb5af9e516' }
+NeoBundle 'scrooloose/nerdcommenter.git', { 'rev' : '2.3.0' }
+NeoBundle 'scrooloose/nerdtree.git', { 'rev' : '4.2.0' }
+NeoBundle 'tpope/vim-abolish', { 'rev' : 'v1.1' }
+NeoBundle 'tpope/vim-eunuch', { 'rev' : 'v1.1' }
+NeoBundle 'tpope/vim-fugitive', { 'rev' : 'v2.2' }
+NeoBundle 'tpope/vim-surround', { 'rev' : 'v2.1' }
+NeoBundle 'vim-scripts/a.vim', { 'rev' : '2.18' }
+NeoBundle 'vim-scripts/python.vim', { 'rev' : '1.11'}
+NeoBundle 'vim-scripts/snippetsEmu', { 'rev' : '1.2.3'}
 NeoBundle 'yannicklm/vimbuddy.vim'
 NeoBundle 'yannicklm/vimconf'
 NeoBundle 'yannicklm/vim-send-cmd'
