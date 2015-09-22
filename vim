@@ -18,7 +18,7 @@ def remote_nvim(filespecs):
     nvim.command(":e %s" % file)
 
 
-def main_nvim(filespecs):
+def main_nvim(filespecs, diff=False):
     env = os.environ.copy()
     env["NVIM_LISTEN_ADDRESS"] = SOCKET_PATH
     parsed = parse_filespecs(filespecs)
@@ -26,6 +26,8 @@ def main_nvim(filespecs):
     if not os.path.exists(nvim_path):
         nvim_path = "/usr/bin/nvim"
     cmd = [nvim_path]
+    if diff:
+        cmd.append("-d")
     cmd.extend(parsed)
     rc = subprocess.call(cmd, env=env)
     sys.exit(rc)
@@ -46,8 +48,11 @@ def parse_filespecs(filespecs):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--remote", action="store_true")
+    parser.add_argument("-d", "--diff", action="store_true")
     parser.add_argument("filespecs", nargs="*")
     args = parser.parse_args()
+    if args.remote and args.diff:
+        sys.exit("Can not use --remote with --diff")
     remote = args.remote
     filespecs = args.filespecs
     if not filespecs:
@@ -55,7 +60,7 @@ def main():
     if args.remote:
         remote_nvim(filespecs)
     else:
-        main_nvim(filespecs)
+        main_nvim(filespecs, diff=args.diff)
 
 if __name__ == "__main__":
     main()
