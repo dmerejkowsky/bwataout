@@ -165,7 +165,7 @@ endfunction()
 function! RemoveBlankLinesAtTheEndOfFile()
   let l = line(".")
   let c = col(".")
-  :%s#\($\n\s*\)\+\%$##
+  :%s#\($\n\s*\)\+\%$##e
   let last_search_removed_from_history = histdel('s', -1)
   call cursor(l, c)
 endfunction()
