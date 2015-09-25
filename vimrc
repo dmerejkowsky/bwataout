@@ -162,7 +162,16 @@ function! CleanWhiteSpace()
   call cursor(l, c)
 endfunction()
 
+function! RemoveBlankLinesAtTheEndOfFile()
+  let l = line(".")
+  let c = col(".")
+  :%s#\($\n\s*\)\+\%$##
+  let last_search_removed_from_history = histdel('s', -1)
+  call cursor(l, c)
+endfunction()
+
 command! -nargs=0 CleanWhiteSpace :call CleanWhiteSpace()
+command! -nargs=0 RemoveBlankLinesAtTheEndOfFile :call RemoveBlankLinesAtTheEndOfFile()
 
 
 " Convert DOS line endings to UNIX line endings
@@ -231,6 +240,7 @@ command! GdiffOff call GdiffOff()
 " Autocommands {{{1
 " Remove trailing whitespaces when saving:
 autocmd bufwritepre * :CleanWhiteSpace
+autocmd bufwritepre * :RemoveBlankLinesAtTheEndOfFile
 au BufWritePost * call MakeScriptExecuteable()
 
 " Spell checking
