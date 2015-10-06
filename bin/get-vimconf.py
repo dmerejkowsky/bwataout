@@ -56,8 +56,6 @@ def main():
     """
     clone_neobundle()
     create_vimrc_files()
-    run_vim_once()
-
 
 def clone_neobundle():
     mkdir_p(VIM_BUNDLE)
@@ -85,9 +83,6 @@ def create_vimrc_files():
     vimrc_dest = os.path.expanduser("~/.vimrc")
     with open(vimrc_dest, "w") as fp:
         fp.write(to_write)
-
-def run_vim_once():
-    subprocess.call(["vim", "-c", ":x"])
 
 
 if __name__ == "__main__":
