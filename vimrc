@@ -1,7 +1,7 @@
 " NeoBundle {{{1
 
 if has('vim_starting')
-   set runtimepath+=~/.vim/bundle/neobundle.vim/
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 call neobundle#begin(expand('~/.vim/bundle/'))
 
@@ -124,12 +124,12 @@ map Q gq
 " Jump to last cursor position unless it's invalid or in an event handler
 autocmd BufReadPost * call SetCursorPosition()
 function! SetCursorPosition()
-    if &filetype !~ 'git'
-        if line("'\"") > 0 && line("'\"") <= line("$")
-            exe "normal! g`\""
-            normal! zz
-        endif
-    end
+  if &filetype !~ 'git'
+    if line("'\"") > 0 && line("'\"") <= line("$")
+      exe "normal! g`\""
+      normal! zz
+    endif
+  endif
 endfunction
 " Always load those useful plugins:
 runtime! macros/matchit.vim
