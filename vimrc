@@ -278,10 +278,6 @@ augroup END
 " I prefer , for mapleader rather than \
 let mapleader=","
 
-inoremap <ESC> <Nop>
-nnoremap <ESC> <Nop>
-vnoremap <ESC> <Nop>
-
 nmap <leader>t :CtrlP<CR>
 nmap <leader>p :CtrlPMRUFiles<CR>
 nmap <leader>b :CtrlPBuffer<CR>
