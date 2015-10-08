@@ -32,6 +32,7 @@ NeoBundle 'kien/ctrlp.vim', { 'rev' : '1.79' }
 NeoBundle 'benekastah/neomake'
 NeoBundle 'rust-lang/rust.vim'
 NeoBundle 'dleonard0/pony-vim-syntax'
+NeoBundle 'peterhoeg/vim-qml'
 
 call neobundle#end()
 
