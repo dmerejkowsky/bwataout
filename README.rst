@@ -8,6 +8,8 @@ Usage::
 
 This command will:
 
-  * Install neobundle (https://github.com/Shougo/neobundle.vim)
-  * Install this vimrc
-  * Run neobundle to install the plugins and build them
+* Install neobundle (https://github.com/Shougo/neobundle.vim)
+* Install this vimrc
+
+Afterwards, you should run vim once and call
+``:NeoBundleCheck``
