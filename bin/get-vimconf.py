@@ -3,6 +3,8 @@
 # A simple script to get a vim configuration
 # from a git repository
 
+from __future__ import print_function
+
 import os
 import sys
 import posixpath
@@ -48,7 +50,7 @@ def backup_conf():
     if os.path.exists(vimrc):
         backup = get_backup_name(vimrc)
         os.rename(vimrc, backup)
-        print vimrc, "backuped to", backup
+        print(vimrc, "backuped to", backup)
 
 def main():
     """ Main entry point
