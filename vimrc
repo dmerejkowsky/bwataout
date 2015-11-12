@@ -22,7 +22,6 @@ NeoBundle 'tpope/vim-eunuch', { 'rev' : 'v1.1' }
 NeoBundle 'tpope/vim-fugitive', { 'rev' : 'v2.2' }
 NeoBundle 'tpope/vim-surround', { 'rev' : 'v2.1' }
 NeoBundle 'vim-scripts/a.vim', { 'rev' : '2.18' }
-NeoBundle 'vim-scripts/python.vim', { 'rev' : '1.11'}
 NeoBundle 'vim-scripts/snippetsEmu', { 'rev' : '1.2.3'}
 NeoBundle 'yannicklm/vimbuddy.vim'
 NeoBundle 'yannicklm/vimconf'
