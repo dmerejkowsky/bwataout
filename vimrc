@@ -32,6 +32,7 @@ NeoBundle 'benekastah/neomake'
 NeoBundle 'rust-lang/rust.vim'
 NeoBundle 'dleonard0/pony-vim-syntax'
 NeoBundle 'peterhoeg/vim-qml'
+NeoBundle 'tfnico/vim-gradle'
 
 call neobundle#end()
 
