@@ -34,6 +34,7 @@ NeoBundle 'dleonard0/pony-vim-syntax'
 NeoBundle 'peterhoeg/vim-qml'
 NeoBundle 'tfnico/vim-gradle'
 NeoBundle 'tpope/vim-sleuth', { 'rev' : '1.1' }
+NeoBundle 'tpope/vim-repeat', { 'rev' : 'v1.1' }
 
 call neobundle#end()
 
