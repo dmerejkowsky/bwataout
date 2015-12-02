@@ -37,7 +37,9 @@ syntax on
 filetype plugin indent on
 set history=10000
 set mouse=a
-set encoding=utf-8
+if has("vim_starting")
+  set encoding=utf-8
+endif
 set showcmd
 set showmode
 set ruler
