@@ -1,42 +1,36 @@
-" NeoBundle {{{1
+" Vim Plug {{{1
 
-if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
-call neobundle#begin(expand('~/.vim/bundle/'))
+call plug#begin(expand('~/.local/share/nvim/bundle'))
 
-NeoBundleFetch 'Shougo/neobundle.vim'
+Plug 'benekastah/neomake'
+Plug 'bps/vim-textobj-python', { 'commit' : '83c97d9aaae74a7c35b092bae59ef5339723dd9b'}
+Plug 'dleonard0/pony-vim-syntax'
+Plug 'ervandew/supertab', { 'tag' : '2.1' }
+Plug 'fs111/pydoc.vim', { 'tag' : '2.0' }
+Plug 'gavinbeatty/dragvisuals.vim', { 'commit' : 'b6e6d418faf3ec8c40e49c099f82481c820ab098'}
+Plug 'godlygeek/tabular', { 'commit' : '60f25648814f0695eeb6c1040d97adca93c4e0bb' }
+Plug 'kana/vim-textobj-user',  { 'tag' : '0.7.1' }
+Plug 'kien/ctrlp.vim', { 'tag' : '1.79' }
+Plug 'peterhoeg/vim-qml'
+Plug 'rking/ag.vim', { 'commit' : 'f755abfb1c4e4e3f59f6cfa25ce16edb5af9e516' }
+Plug 'rust-lang/rust.vim'
+Plug 'scrooloose/nerdcommenter', { 'tag' : '2.3.0' }
+Plug 'scrooloose/nerdtree', { 'tag' : '4.2.0' }
+Plug 'tfnico/vim-gradle'
+Plug 'tpope/vim-abolish', { 'tag' : 'v1.1' }
+Plug 'tpope/vim-eunuch', { 'tag' : 'v1.1' }
+Plug 'tpope/vim-fugitive', { 'tag' : 'v2.2' }
+Plug 'tpope/vim-repeat', { 'rev' : 'v1.1' }
+Plug 'tpope/vim-sleuth', { 'rev' : '1.1' }
+Plug 'tpope/vim-surround', { 'tag' : 'v2.1' }
+Plug 'vim-scripts/a.vim', { 'tag' : '2.18' }
+Plug 'vim-scripts/snippetsEmu', { 'tag' : '1.2.3'}
+Plug 'yannicklm/vim-gnote'
+Plug 'yannicklm/vim-send-cmd'
+Plug 'yannicklm/vimbuddy.vim'
+Plug 'yannicklm/vimconf'
 
-
-NeoBundle 'bps/vim-textobj-python', { 'rev' : '83c97d9aaae74a7c35b092bae59ef5339723dd9b'}
-NeoBundle 'ervandew/supertab.git', { 'rev' : '2.1' }
-NeoBundle 'fs111/pydoc.vim', { 'rev' : '2.0' }
-NeoBundle 'gavinbeatty/dragvisuals.vim', { 'rev' : 'b6e6d418faf3ec8c40e49c099f82481c820ab098'}
-NeoBundle 'godlygeek/tabular', { 'rev' : '60f25648814f0695eeb6c1040d97adca93c4e0bb' }
-NeoBundle 'kana/vim-textobj-user',  { 'rev' : '0.7.1' }
-NeoBundle 'rking/ag.vim', { 'rev' : 'f755abfb1c4e4e3f59f6cfa25ce16edb5af9e516' }
-NeoBundle 'scrooloose/nerdcommenter.git', { 'rev' : '2.3.0' }
-NeoBundle 'scrooloose/nerdtree.git', { 'rev' : '4.2.0' }
-NeoBundle 'tpope/vim-abolish', { 'rev' : 'v1.1' }
-NeoBundle 'tpope/vim-eunuch', { 'rev' : 'v1.1' }
-NeoBundle 'tpope/vim-fugitive', { 'rev' : 'v2.2' }
-NeoBundle 'tpope/vim-surround', { 'rev' : 'v2.1' }
-NeoBundle 'vim-scripts/a.vim', { 'rev' : '2.18' }
-NeoBundle 'vim-scripts/snippetsEmu', { 'rev' : '1.2.3'}
-NeoBundle 'yannicklm/vimbuddy.vim'
-NeoBundle 'yannicklm/vimconf'
-NeoBundle 'yannicklm/vim-send-cmd'
-NeoBundle 'yannicklm/vim-gnote'
-NeoBundle 'kien/ctrlp.vim', { 'rev' : '1.79' }
-NeoBundle 'benekastah/neomake'
-NeoBundle 'rust-lang/rust.vim'
-NeoBundle 'dleonard0/pony-vim-syntax'
-NeoBundle 'peterhoeg/vim-qml'
-NeoBundle 'tfnico/vim-gradle'
-NeoBundle 'tpope/vim-sleuth', { 'rev' : '1.1' }
-NeoBundle 'tpope/vim-repeat', { 'rev' : 'v1.1' }
-
-call neobundle#end()
+call plug#end()
 
 " Simple vim settings {{{1
 syntax on
