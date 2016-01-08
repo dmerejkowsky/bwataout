@@ -99,7 +99,8 @@ imap <Nul> <Space>
 set laststatus=2
 
 "For completion:
-set wildmode=longest:full
+set wildmode=list:longest,full
+
 set wildmenu
 set wildignore=*.pyc
 
