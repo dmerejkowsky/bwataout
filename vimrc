@@ -2,6 +2,10 @@
 
 call plug#begin(expand('~/.local/share/nvim/bundle'))
 
+" Add this repo to the list:
+Plug  expand('<sfile>:h')
+
+" Other plugins from github
 Plug 'benekastah/neomake'
 Plug 'bkad/CamelCaseMotion', { 'commit' : '3ae9bf93cce28ddc1f2776999ad516e153769ea4'}
 Plug 'bps/vim-textobj-python', { 'commit' : '83c97d9aaae74a7c35b092bae59ef5339723dd9b'}
@@ -29,7 +33,6 @@ Plug 'vim-scripts/snippetsEmu', { 'tag' : '1.2.3'}
 Plug 'yannicklm/vim-gnote'
 Plug 'yannicklm/vim-send-cmd'
 Plug 'yannicklm/vimbuddy.vim'
-Plug 'yannicklm/vimconf'
 
 call plug#end()
 
