@@ -1,6 +1,8 @@
 Yannick LM vim configuration
 ==============================
 
+Requirements:  ``python2`` or ``python3,`` and the ``requests`` library
+
 
 Usage::
 
@@ -8,8 +10,5 @@ Usage::
 
 This command will:
 
-* Install neobundle (https://github.com/Shougo/neobundle.vim)
-* Install this vimrc
-
-Afterwards, you should run vim once and call
-``:NeoBundleCheck``
+* Install ``vim-plug`` (https://github.com/junegunn/vim-plug)
+* Install this ``vimrc``
