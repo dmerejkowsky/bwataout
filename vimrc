@@ -3,6 +3,7 @@
 call plug#begin(expand('~/.local/share/nvim/bundle'))
 
 Plug 'benekastah/neomake'
+Plug 'bkad/CamelCaseMotion', { 'commit' : '3ae9bf93cce28ddc1f2776999ad516e153769ea4'}
 Plug 'bps/vim-textobj-python', { 'commit' : '83c97d9aaae74a7c35b092bae59ef5339723dd9b'}
 Plug 'dleonard0/pony-vim-syntax'
 Plug 'ervandew/supertab', { 'tag' : '2.1' }
@@ -228,6 +229,13 @@ function! GdiffOff()
 endfunction
 
 command! GdiffOff call GdiffOff()
+
+map <silent> w <Plug>CamelCaseMotion_w
+map <silent> b <Plug>CamelCaseMotion_b
+map <silent> e <Plug>CamelCaseMotion_e
+
+omap <silent> iw <Plug>CamelCaseMotion_iw
+xmap <silent> iw <Plug>CamelCaseMotion_iw
 
 " Autocommands {{{1
 " Remove trailing whitespaces when saving:
