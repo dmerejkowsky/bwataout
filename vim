@@ -17,7 +17,6 @@ def remote_nvim(filespecs):
     nvim = neovim.attach("socket", path=SOCKET_PATH)
     nvim.command(":e %s" % file)
 
-
 def main_nvim(filespecs, diff=False):
     env = os.environ.copy()
     env["NVIM_LISTEN_ADDRESS"] = SOCKET_PATH
@@ -37,7 +36,7 @@ def parse_filespecs(filespecs):
         filespec = filespecs[0]
         if ":" in filespec:
             splitted = filespec.split(":")
-            line  = splitted[1]
+            line = splitted[1]
             filename = splitted[0]
             return ["+%s" % line, filename]
         else:
