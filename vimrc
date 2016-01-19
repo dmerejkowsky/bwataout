@@ -59,7 +59,7 @@ endif
 
 " Backups with persistent undos
 set backup
-let g:dotvim_backups=expand('$HOME') . '/.vim/backups'
+let g:dotvim_backups=expand('$HOME') . '/.local/share/nvim/backups'
 if ! isdirectory(g:dotvim_backups)
   call mkdir(g:dotvim_backups, "p")
 endif
