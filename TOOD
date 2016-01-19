@@ -1,1 +1,5 @@
-* https://github.com/romainl/idiomatic-vimrc
+* Rewrite vimrc with good guidelines:
+  https://github.com/romainl/idiomatic-vimrc
+
+* Test vim-dichromatic:
+  https://github.com/romainl/vim-dichromatic
