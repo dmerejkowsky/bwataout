@@ -2,15 +2,17 @@
 
 # A simple script to get a vim configuration
 # from a git repository
+# Note that this only works for a fresh install
 
 from __future__ import print_function
 
+import argparse
 import os
 import sys
 import posixpath
 
 import subprocess
-import requests
+import urllib
 
 VIMRC_TEMPLATE = """\
 " Auto-generated code. Do not edit
@@ -30,31 +32,18 @@ def mkdir_p(dest_dir):
         return
     os.makedirs(dest_dir)
 
-def get_backup_name(filename):
-  id = 0
-  while True:
-    backup = "%s.%d" % (filename, id)
-    id += 1
-    if not os.path.exists(backup):
-      return backup
-
-def backup_conf():
-    """ Backup previous nvim configuration """
-    if os.path.exists(INIT_VIM):
-        backup = get_backup_name(INIT_VIM)
-        os.rename(INIT_VIM, backup)
-        print(INIT_VIM, "backuped to", backup)
 
 def fetch_plug_vim(dest):
-    data = requests.get(VIMPLUG_URL)
-    with open(dest, "w") as fp:
-        fp.write(data.text)
+    if os.path.exists(dest):
+        print("Plug.vim already installed, skipping")
+        return
+    print("Fetching vimplug ...")
+    urllib.urlretrieve(VIMPLUG_URL, dest)
 
 def create_vimrc_files():
-    backup_conf()
-
     vimrclocal = os.path.join(NVIM_CONF_DIR, "vimrc.local")
     if not os.path.exists(vimrclocal):
+        print("creating", vimrclocal)
         with open(vimrclocal, "w") as fp:
             fp.write('" Put your local settings here\n"')
 
@@ -65,20 +54,69 @@ def create_vimrc_files():
                                      vimrclocal=vimrclocal)
 
     vimrc_dest = os.path.expanduser(INIT_VIM)
+    if os.path.exists(vimrc_dest):
+        print(INIT_VIM, "already exists, skpping")
+        return
     with open(vimrc_dest, "w") as fp:
+        print("creating", vimrclocal)
         fp.write(to_write)
+
+def enable_vim():
+    """ Enable vim usage, by creating symlinks to the neovim
+    locations
+
+    """
+    vimrc = os.path.expanduser("~/.vimrc")
+    if not os.path.exists(vimrc):
+        print(vimrc, "->", INIT_VIM)
+        os.symlink(INIT_VIM, vimrc)
+
+    autoload = os.path.expanduser("~/.vim/autoload")
+    mkdir_p(autoload)
+    src = os.path.join(autoload, "plug.vim")
+    dest = os.path.expanduser("~/.config/nvim/autoload/plug.vim")
+    if not os.path.exists(src):
+        print(src, "->", dest)
+        os.symlink(dest, src)
+    return "vim"
+
+def enable_nvim():
+    """ Enable nvim usage, by creating a wrapper
+    in ~/.local/bin
+
+    """
+    this_dir = os.path.dirname(__file__)
+    top_dir = os.path.join(this_dir, "..")
+    top_dir = os.path.abspath(top_dir)
+    src = os.path.expanduser("~/.local/bin/vim")
+    dest = os.path.join(top_dir, "vim")
+    if not os.path.exists(src):
+        print(src, "->", dest)
+        os.symlink(dest, src)
+    return "nvim"
 
 def main():
     """ Main entry point
 
     """
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--enable-vim", action="store_true",
+                        help="Enable vim usage. Useful when neovim is not "
+                             "available")
+    args = parser.parse_args()
     nvim_conf_dir = os.path.dirname(INIT_VIM)
     autoload = os.path.join(nvim_conf_dir, "autoload")
     mkdir_p(autoload)
     vim_plug = os.path.join(autoload, "plug.vim")
     fetch_plug_vim(vim_plug)
-    backup_conf()
     create_vimrc_files()
+    if args.enable_vim:
+        vim_exec = enable_vim()
+    else:
+        vim_exec = enable_nvim()
+    # Run vim once with :PlugUpdate to perform frist installation
+    cmd = [vim_exec, "-c", ":PlugUpdate"]
+    subprocess.call(cmd)
 
 if __name__ == "__main__":
     main()
