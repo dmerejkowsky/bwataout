@@ -45,7 +45,7 @@ def create_vimrc_files():
     if not os.path.exists(vimrclocal):
         print("creating", vimrclocal)
         with open(vimrclocal, "w") as fp:
-            fp.write('" Put your local settings here\n"')
+            fp.write('" Put your local settings here\n')
 
     this_dir = os.path.dirname(__file__)
     vimrc_src = os.path.join(this_dir, "..", "vimrc")
