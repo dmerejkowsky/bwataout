@@ -13,6 +13,8 @@ fi
 # Options {{{
 setopt prompt_subst             # Need this so the prompt will work.
 
+setopt correct
+
 setopt equals
 setopt magic_equal_subst
 
