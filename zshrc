@@ -101,8 +101,11 @@ add-zsh-hook precmd title_precmd
 add-zsh-hook preexec title_preexec
 
 # }}}
-# Autoload {{{
+# Misc {{{
 autoload run-help
+
+bindkey '^[[A' history-beginning-search-backward
+bindkey '^[[B' history-beginning-search-forward
 # }}}
 # Prompt {{{
 autoload -U promptinit
