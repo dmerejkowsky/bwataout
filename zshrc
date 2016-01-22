@@ -133,3 +133,19 @@ export PATH="$HOME/.local/bin:$PATH"
 limit maxproc 1042 2>/dev/null
 # vim: set foldmethod=marker:
 # }}}
+# Functions {{{
+
+# cd /path/to/file -> cd /path/to
+function smart_cd {
+  if [[ -z "$1" ]]; then
+    cd "$HOME"
+  elif [[ -f "$1" ]]; then
+    cd $(dirname "$1")
+  else
+    cd "$1"
+  fi
+}
+
+alias cd=smart_cd
+
+# }}}
