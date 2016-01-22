@@ -1,0 +1,49 @@
+# Note : user and e-mail go into gitconfig.local
+
+[color]
+	ui = auto
+
+[push]
+	default = tracking
+
+[alias]
+	logp = log --patch-with-stat
+	logs = log -M --stat --summary
+	mend = commit --amend
+	co = checkout
+	st = status
+	ck = cherry-pick
+	fo = fetch origin
+	go = reset --hard
+	gou = reset --hard @{u}
+	ci = commit
+	lg = log --color --graph --pretty=format:'%Cgreen%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	logu = log @{u}
+
+[merge]
+	tool = kdiff3
+
+[gui]
+	spellingdictionary = none
+
+[guitool "pull-rebase"]
+	cmd = git pull --rebase
+
+[guitool "clean"]
+	cmd = git clean -fd
+	confirm = yes
+
+[guitool "reset"]
+	cmd = git reset --hard
+	confirm = yes
+
+[pull]
+	rebase = true
+
+[rebase]
+	stat = yes
+
+[rerere]
+	enabled = true
+
+# vim: set filetype=gitconfig:
