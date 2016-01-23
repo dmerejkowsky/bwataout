@@ -11,9 +11,11 @@ def mkdir_p(path):
         os.makedirs(path)
 
 def create_symlink_if_missing(src, dest):
-    if os.path.exists(dest):
-        print("Skipping", dest)
+    if os.path.exists(src):
+        print("Skipping", src)
         return
+    dirname = os.path.dirname(src)
+    mkdir_p(dirname)
     print(src, "->", dest)
     os.symlink(dest, src)
 
