@@ -51,7 +51,6 @@ path = {0}/gitconfig.local
     zshrc = os.path.expanduser("~/.zshrc")
     write_file_if_missing(zshrc, """\
 # Auto-generated. Do not edit
-# Customization go into {0}/zshrc.local
 source {0}/zshrc
 if [ -f {0}/zshrc.local ] ; then
   source {0}/zshrc.local
