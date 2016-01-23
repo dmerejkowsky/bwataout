@@ -61,6 +61,8 @@ setopt pushd_silent	      # don't tell me about automatic pushd
 setopt pushd_to_home	      # use $HOME when no arguments specified
 setopt pushd_ignoredups	      # ignore duplicates
 setopt noautocd               # dont change to dirs without cd
+alias -- +='pushd +0'
+alias -- -='pushd -1'
 # }}}
 
 # }}}
