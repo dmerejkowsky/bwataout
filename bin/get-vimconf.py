@@ -115,7 +115,7 @@ def main():
     else:
         vim_exec = enable_nvim()
     # Run vim once with :PlugUpdate to perform frist installation
-    cmd = [vim_exec, "-c", ":PlugUpdate"]
+    cmd = [vim_exec, "-c", ":PlugInstall"]
     subprocess.call(cmd)
 
 if __name__ == "__main__":
