@@ -106,6 +106,9 @@ add-zsh-hook preexec title_preexec
 # Misc {{{
 autoload run-help
 
+# Use emacs-mode
+bindkey -e
+
 bindkey '^[[A' history-beginning-search-backward
 bindkey '^[[B' history-beginning-search-forward
 # }}}
