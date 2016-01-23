@@ -53,8 +53,20 @@ path = {0}/gitconfig.local
 # Auto-generated. Do not edit
 # Customization go into {0}/zshrc.local
 source {0}/zshrc
-[[ -f {0}/zshrc.local ]] && source {0}/zshrc.local
+if [ -f {0}/zshrc.local ] ; then
+  source {0}/zshrc.local
+fi
 """.format(THIS_DIR))
+
+    # conky
+    src = os.path.expanduser("~/.config/conky/conky.conf")
+    dest = os.path.join(THIS_DIR, "conky.conf")
+    create_symlink_if_missing(src, dest)
+
+    # screen
+    src = os.path.expanduser("~/.screenrc")
+    dest = os.path.join(THIS_DIR, "screenrc")
+    create_symlink_if_missing(src, dest)
 
 
 if __name__ == "__main__":
