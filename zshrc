@@ -130,7 +130,7 @@ bindkey '^[[B' history-beginning-search-forward
 autoload -U promptinit
 promptinit
 
-this_dir=$(readlink -f $(dirname $0))
+this_dir=$(dirname $0)
 source "${this_dir}/contrib/prompt_ctaf"
 # }}}
 
