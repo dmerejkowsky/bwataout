@@ -3,6 +3,7 @@
 from __future__ import print_function
 
 import os
+import sys
 
 THIS_DIR = os.path.abspath(os.path.dirname(__file__))
 
@@ -60,7 +61,8 @@ fi
     # conky
     src = os.path.expanduser("~/.config/conky/conky.conf")
     dest = os.path.join(THIS_DIR, "conky.conf")
-    create_symlink_if_missing(src, dest)
+    if sys.platform.startswith("linux"):
+        create_symlink_if_missing(src, dest)
 
     # screen
     src = os.path.expanduser("~/.screenrc")
