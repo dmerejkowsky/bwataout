@@ -137,6 +137,7 @@ bindkey '^[[B' history-beginning-search-forward
 autoload -U promptinit
 promptinit
 
+# Taken from https://github.com/cgestes/ctafconf
 this_dir=$(dirname $0)
 source "${this_dir}/contrib/prompt_ctaf"
 # }}}
