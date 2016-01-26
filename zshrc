@@ -178,6 +178,12 @@ function smart_cd {
 
 alias cd=smart_cd
 
+# go to a path relative to the git top dir
+function gitcd {
+  topdir=$(git rev-parse --show-toplevel)
+  cd "${topdir}"/$
+}
+
 # extract various archives given their names
 function xt() {
  if [ -f "$1" ]; then
