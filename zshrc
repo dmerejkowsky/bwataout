@@ -210,6 +210,10 @@ function xt() {
   fi
 }
 
+# Open all the conflicting files in $EDITOR
+function resolve() {
+  git diff --name-only --diff-filter=U | xargs $EDITOR
+}
 # }}}
 
 # vim: set foldmethod=marker:
