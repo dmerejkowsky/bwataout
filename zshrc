@@ -71,6 +71,8 @@ alias -- -='pushd -1'
 
 alias psgrep='ps aux | grep -v grep | grep'
 
+alias cux='chmod +x'
+
 
 # Better safe than sorry
 alias mv="mv -i"
