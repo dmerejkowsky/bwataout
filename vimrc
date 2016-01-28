@@ -18,6 +18,7 @@ Plug 'kana/vim-textobj-user',  { 'tag' : '0.7.1' }
 Plug 'kien/ctrlp.vim', { 'tag' : '1.79' }
 Plug 'peterhoeg/vim-qml'
 Plug 'rking/ag.vim', { 'commit' : 'f755abfb1c4e4e3f59f6cfa25ce16edb5af9e516' }
+Plug 'romainl/vim-dichromatic', { 'branch' : 'wip' }
 Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/nerdcommenter', { 'tag' : '2.3.0' }
 Plug 'scrooloose/nerdtree', { 'tag' : '4.2.0' }
