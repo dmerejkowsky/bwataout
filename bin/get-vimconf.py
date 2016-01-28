@@ -12,7 +12,11 @@ import sys
 import posixpath
 
 import subprocess
-import urllib
+
+if sys.version_info.major == 2:
+    from urllib import urlretrieve
+else:
+    from urllib.request import urlretrieve
 
 VIMRC_TEMPLATE = """\
 " Auto-generated code. Do not edit
@@ -38,7 +42,7 @@ def fetch_plug_vim(dest):
         print("Plug.vim already installed, skipping")
         return
     print("Fetching vimplug ...")
-    urllib.urlretrieve(VIMPLUG_URL, dest)
+    urlretrieve(VIMPLUG_URL, dest)
 
 def create_vimrc_files():
     vimrclocal = os.path.join(NVIM_CONF_DIR, "vimrc.local")
