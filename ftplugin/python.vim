@@ -8,7 +8,7 @@ let s:py_version = strpart(s:py_version, 7) " Remove 'Python '
 let s:py_version = strpart(s:py_version, 0, 3) " Keep only the major version
 
 let s:py_path="/usr/lib/python" . s:py_version .
-    \ "," . "/usr/lib/python" . s:py_version . "/site-packages"
+  \ "," . "/usr/lib/python" . s:py_version . "/site-packages"
 
 let &path=&path . "," . s:py_path
 
