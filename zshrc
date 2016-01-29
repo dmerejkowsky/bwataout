@@ -186,6 +186,13 @@ function gitcd {
   cd "${topdir}"/$
 }
 
+# remove all breakpoints from Python code
+function rm-breakpoints {
+  for file in $(git grep -l debug_here); do
+    sed -i '/debug_here/d' $file
+  done
+}
+
 # extract various archives given their names
 function xt() {
  if [ -f "$1" ]; then
