@@ -54,3 +54,5 @@ function! UsePylint()
 endfunction
 
 command! -nargs=0 UsePylint :call UsePylint()
+
+nnoremap <leader>d :bufdo :g/debug_here/d <bar> update<cr>
