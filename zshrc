@@ -187,6 +187,16 @@ function gitcd {
   cd "${topdir}"/$
 }
 
+# create an archive with a sensible name
+function gitar {
+  toplevel=$(git rev-parse --show-toplevel)
+  desc=$(git describe --always --tags)
+  name="$(basename ${toplevel})-${desc}"
+  output="${name}.tar.gz"
+  git archive --prefix "${name}/" --output "${name}.tar.gz"  HEAD
+  echo "archive generated in: ${output}"
+}
+
 # remove all breakpoints from Python code
 function rm-breakpoints {
   for file in $(git grep -l debug_here); do
