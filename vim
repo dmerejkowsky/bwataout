@@ -5,7 +5,11 @@ import os
 import sys
 import subprocess
 
-import neovim
+HAS_NEOVIM = True
+try:
+    import neovim
+except ImportError:
+    HAS_NEOVIM = False
 
 SOCKET_PATH="/tmp/neovim"
 
@@ -57,6 +61,8 @@ def main():
     if not filespecs:
         filespecs = list()
     if args.remote:
+        if not HAS_NEOVIM:
+            sys.exit("Please insntall neovim Python package befor using --remote")
         remote_nvim(filespecs)
     else:
         main_nvim(filespecs, diff=args.diff)
