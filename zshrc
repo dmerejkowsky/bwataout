@@ -210,6 +210,7 @@ function xt() {
        case "$1" in
       *.7z)        7z x "$1"         ;;
       *.Z)         uncompress "$1"   ;;
+      *.aar)       jar xf "$1"       ;;
       *.bz2)       bunzip2 "$1"      ;;
       *.gz)        gunzip "$1"       ;;
       *.jar)       jar xf "$1"       ;;
