@@ -212,7 +212,6 @@ function xt() {
       *.Z)         uncompress "$1"   ;;
       *.aar)       jar xf "$1"       ;;
       *.bz2)       bunzip2 "$1"      ;;
-      *.gz)        gunzip "$1"       ;;
       *.jar)       jar xf "$1"       ;;
       *.rar)       unrar "$1"        ;;
       *.rar)       unrar x "$1"      ;;
@@ -224,6 +223,8 @@ function xt() {
       *.tgz)       tar xvzf "$1"     ;;
       *.xz)        tar xvJf "$1"     ;;
       *.zip)       unzip "$1"        ;;
+      # Must be after tar.gz
+      *.gz)        gunzip "$1"       ;;
       *)           echo "'$1' cannot be extracted via extract" ;;
     esac
   else
