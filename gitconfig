@@ -7,8 +7,7 @@
 	default = tracking
 
 [alias]
-	logp = log --patch-with-stat
-	logs = log -M --stat --summary
+	logp = log --find-renames --patch-with-stat
 	mend = commit --amend
 	co = checkout
 	st = status
