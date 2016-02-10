@@ -69,6 +69,11 @@ fi
     dest = os.path.join(THIS_DIR, "screenrc")
     create_symlink_if_missing(src, dest)
 
+    # i3
+    src = os.path.expanduser("~/.config/i3/config")
+    dest = os.path.join(THIS_DIR, "i3")
+    create_symlink_if_missing(src, dest)
+
 
 if __name__ == "__main__":
     main()
