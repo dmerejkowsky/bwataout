@@ -1,11 +1,5 @@
 # Note : user and e-mail go into gitconfig.local
 
-[color]
-	ui = auto
-
-[push]
-	default = tracking
-
 [alias]
 	logp = log --find-renames --patch-with-stat
 	mend = commit --amend
@@ -19,8 +13,8 @@
 	lg = log --color --graph --pretty=format:'%Cgreen%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	logu = log @{u}
 
-[merge]
-	tool = kdiff3
+[color]
+	ui = auto
 
 [gui]
 	spellingdictionary = none
@@ -36,8 +30,14 @@
 	cmd = git reset --hard
 	confirm = yes
 
+[merge]
+	tool = kdiff3
+
 [pull]
 	rebase = true
+
+[push]
+	default = tracking
 
 [rebase]
 	stat = yes
