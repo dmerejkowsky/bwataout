@@ -121,7 +121,6 @@ fpath=("$HOME/.local/share/zsh/functions" $fpath)
 
 # Prevent fork bomb
 limit maxproc 1042 2>/dev/null
-# vim: set foldmethod=marker:
 # }}}
 
 # Functions {{{
