@@ -108,9 +108,6 @@ export HISTSIZE=50000
 export HISTFILE=~/.zshhistory
 export SAVEHIST=10000
 export BLOCK_SIZE=human-readable
-# display how long a command took if it took longer
-# than 5 seconds
-export REPORTTIME=5
 # depth of the directory history
 DIRSTACKSIZE=30
 
