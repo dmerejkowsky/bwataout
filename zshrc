@@ -133,7 +133,6 @@ bindkey '^[[A' history-beginning-search-backward
 bindkey '^[[B' history-beginning-search-forward
 # }}}
 
-
 # Global settings {{{
 export HISTSIZE=50000
 export HISTFILE=~/.zshhistory
@@ -230,7 +229,7 @@ function resolve() {
   (gitcd && git diff --name-only --diff-filter=U | xargs $EDITOR)
 }
 # }}}
-#
+
 # Prompt {{{
 autoload -U promptinit
 promptinit
