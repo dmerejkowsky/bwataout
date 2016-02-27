@@ -5,6 +5,11 @@ from __future__ import print_function
 import os
 import sys
 
+if sys.version_info.major == 2:
+    from urllib import urlretrieve
+else:
+    from urllib.request import urlretrieve
+
 THIS_DIR = os.path.abspath(os.path.dirname(__file__))
 
 def mkdir_p(path):
@@ -29,6 +34,22 @@ def write_file_if_missing(path, contents):
     mkdir_p(dirname)
     with open(path, "w") as fp:
         fp.write(contents)
+
+def zsh_install_pure_prompt():
+    """ Install zsh pure prompt from my own fork """
+    # All we have to do is copy to files from the repo
+    # to ~/.local/share/zsh/functions/ with the correct name
+    zsh_functions_dir = os.path.expanduser("~/.local/share/zsh/functions/")
+    mkdir_p(zsh_functions_dir)
+    base_url = "https://raw.githubusercontent.com/dmerejkowsky/zsh-pure-prompt"
+    base_url += "/master"
+    todo = [("pure.zsh", "prompt_pure_setup"),
+            ("async.zsh", "async")]
+    for (src, dest) in todo:
+        url = os.path.join(base_url, src)
+        full_dest = os.path.join(zsh_functions_dir, dest)
+        print("Retrieving", full_dest)
+        urlretrieve(url, full_dest)
 
 def main():
     mkdir_p(os.path.expanduser("~/.local/bin"))
@@ -57,6 +78,8 @@ if [ -f {0}/zshrc.local ] ; then
   source {0}/zshrc.local
 fi
 """.format(THIS_DIR))
+
+    zsh_install_pure_prompt()
 
     # conky
     src = os.path.expanduser("~/.config/conky/conky.conf")

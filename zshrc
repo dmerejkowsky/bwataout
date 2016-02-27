@@ -10,8 +10,6 @@ if [[ $- != *i* ]] || [ a$HOST = agate-ssh ]; then
 fi
 
 # Options {{{
-setopt prompt_subst             # Need this so the prompt will work.
-
 setopt correct
 
 setopt equals
@@ -135,14 +133,6 @@ bindkey '^[[A' history-beginning-search-backward
 bindkey '^[[B' history-beginning-search-forward
 # }}}
 
-# Prompt {{{
-autoload -U promptinit
-promptinit
-
-# Taken from https://github.com/cgestes/ctafconf
-this_dir=$(dirname $0)
-source "${this_dir}/contrib/prompt_ctaf"
-# }}}
 
 # Global settings {{{
 export HISTSIZE=50000
@@ -159,6 +149,9 @@ export VISUAL="vim"
 export EDITOR="vim"
 
 export PATH="$HOME/.local/bin:$PATH"
+
+# required for pure-prompt
+fpath=("$HOME/.local/share/zsh/functions" $fpath)
 
 # Prevent fork bomb
 limit maxproc 1042 2>/dev/null
@@ -236,6 +229,13 @@ function xt() {
 function resolve() {
   (gitcd && git diff --name-only --diff-filter=U | xargs $EDITOR)
 }
+# }}}
+#
+# Prompt {{{
+autoload -U promptinit
+promptinit
+
+prompt pure
 # }}}
 
 # vim: set foldmethod=marker:
