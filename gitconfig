@@ -33,6 +33,9 @@
 [merge]
 	tool = kdiff3
 
+[mergetool]
+	keepbackup = false
+
 [pull]
 	rebase = true
 
