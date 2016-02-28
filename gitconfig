@@ -1,17 +1,17 @@
 # Note : user and e-mail go into gitconfig.local
 
 [alias]
-	logp = log --find-renames --patch-with-stat
-	mend = commit --amend
-	co = checkout
-	st = status
+	ci = commit
 	ck = cherry-pick
+	co = checkout
 	fo = fetch origin
 	go = reset --hard
 	gou = reset --hard @{u}
-	ci = commit
 	lg = log --color --graph --pretty=format:'%Cgreen%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	logp = log --find-renames --patch-with-stat
 	logu = log @{u}
+	mend = commit --amend
+	st = status
 
 [color]
 	ui = auto
