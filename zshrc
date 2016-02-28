@@ -142,7 +142,10 @@ alias cd=smart_cd
 # go to a path relative to the git top dir
 function gitcd {
   topdir=$(git rev-parse --show-toplevel)
-  cd "${topdir}"/$
+  if [[ $? -ne 0 ]]; then
+    return 1
+  fi
+  cd "${topdir}/${1}"
 }
 
 # create an archive with a sensible name
