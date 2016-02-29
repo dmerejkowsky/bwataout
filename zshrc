@@ -203,6 +203,9 @@ function resolve() {
 autoload -U promptinit
 promptinit
 
+# It's not slow, it's just I don't mind having
+# non-clean repos with untracked files
+export PURE_GIT_UNTRACKED_DIRTY=0
 prompt pure
 # }}}
 
