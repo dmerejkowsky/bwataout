@@ -228,8 +228,6 @@ command! Gadd call Gadd()
 
 " Quit Gdiff mode
 function! GdiffOff()
-  " Close all other windows
-  only
   diffoff
 endfunction
 
