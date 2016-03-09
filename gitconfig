@@ -11,7 +11,9 @@
 	logp = log --find-renames --patch-with-stat
 	logu = log @{u}
 	mend = commit --amend
-	st = status
+	# Keep it short without all the beginner's help, but still show branch
+	# and don't use color
+	st = status --short --branch --porcelain
 
 [color]
 	ui = auto
