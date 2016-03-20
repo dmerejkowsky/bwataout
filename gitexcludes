@@ -3,6 +3,7 @@
 
 # QtCreator
 CMakeLists.txt.user
+*.autosave
 
 # Python
 __pycache__
