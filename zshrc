@@ -116,7 +116,8 @@ DIRSTACKSIZE=30
 export VISUAL="vim"
 export EDITOR="vim"
 
-export PATH="$HOME/.local/bin:$PATH"
+this_dir=$(dirname $0)
+export PATH="${this_dir}/bin:$HOME/.local/bin:$PATH"
 
 # required for pure-prompt
 fpath=("$HOME/.local/share/zsh/functions" $fpath)
