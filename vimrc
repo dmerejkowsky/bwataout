@@ -275,7 +275,7 @@ augroup filetype_vim
 augroup END
 
 " Register more extension for the zip plugin
-au BufReadCmd *.apk,*.jar,*.whl call zip#Browse(expand("<amatch>"))
+au BufReadCmd *.apk,*.jar,*pkg,*.whl call zip#Browse(expand("<amatch>"))
 
 " Mapping and abbreviations {{{1
 
