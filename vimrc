@@ -295,6 +295,9 @@ nmap <leader>ss :SessionSave<CR>
 nnoremap <leader>m :make<cr>
 nnoremap <leader>M :w<cr>:Neomake!<cr>
 
+" select text that was just pasted
+nnoremap gp `[v`]
+
 " ctrl-^
 nnoremap <leader><leader> <c-^>
 
