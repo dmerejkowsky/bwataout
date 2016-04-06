@@ -78,6 +78,9 @@ alias rm="rm -i"
 alias cp="cp -i"
 
 alias vi="vim"
+
+# Open pdf files with ./path/to/pdf
+alias -s pdf=evince
 # }}}
 
 # Pretty ls {{{
