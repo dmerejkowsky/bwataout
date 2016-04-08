@@ -164,6 +164,11 @@ function gitar {
   echo "archive generated in: ${output}"
 }
 
+# Open all the conflicting files in $EDITOR
+function resolve() {
+  (gitcd && git diff --name-only --diff-filter=U | xargs $EDITOR)
+}
+
 # remove all breakpoints from Python code
 function rm-breakpoints {
   for file in $(git grep -l debug_here); do
@@ -215,11 +220,6 @@ function xt() {
   else
     echo "'$1' is not a valid file"
   fi
-}
-
-# Open all the conflicting files in $EDITOR
-function resolve() {
-  (gitcd && git diff --name-only --diff-filter=U | xargs $EDITOR)
 }
 # }}}
 
