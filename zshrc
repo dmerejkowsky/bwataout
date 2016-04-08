@@ -171,6 +171,11 @@ function rm-breakpoints {
   done
 }
 
+# remove all nvim swap files
+function rm-swap {
+  rm -fr "$HOME/.local/share/nvim/swap"
+}
+
 # extract various archives given their names
 function xt() {
  if [ -f "$1" ]; then
