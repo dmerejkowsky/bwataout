@@ -176,6 +176,19 @@ function rm-swap {
   rm -fr "$HOME/.local/share/nvim/swap"
 }
 
+# open the script you just run in $EDITOR
+function vibin {
+  # which is zsh is a builtin that works with aliases and functions,
+  # prefer /usr/bin/which
+  full_path=$(/usr/bin/which $1 2> /dev/null)
+  if [[ $? -eq 0 ]] ; then
+    $EDITOR ${full_path}
+  else
+    echo "$1 not found"
+    return 1
+  fi
+}
+
 # extract various archives given their names
 function xt() {
  if [ -f "$1" ]; then
