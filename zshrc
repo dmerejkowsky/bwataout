@@ -73,9 +73,9 @@ alias cux='chmod +x'
 
 
 # Better safe than sorry
-alias mv="mv -i"
+alias mv="mv -iv"
 alias rm="rm -i"
-alias cp="cp -i"
+alias cp="cp -iv"
 
 alias vi="vim"
 
