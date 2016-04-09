@@ -133,7 +133,7 @@ limit maxproc 1042 2>/dev/null
 
 # cd /path/to/file -> cd /path/to
 alias orig_cd=cd
-function smart_cd {
+function smart_cd() {
   if [[ -z "$1" ]]; then
     orig_cd "$HOME"
   elif [[ -f "$1" ]]; then
@@ -146,7 +146,7 @@ function smart_cd {
 alias cd=smart_cd
 
 # go to a path relative to the git top dir
-function gitcd {
+function gitcd() {
   topdir=$(git rev-parse --show-toplevel)
   if [[ $? -ne 0 ]]; then
     return 1
@@ -155,7 +155,7 @@ function gitcd {
 }
 
 # create an archive with a sensible name
-function gitar {
+function gitar() {
   toplevel=$(git rev-parse --show-toplevel)
   desc=$(git describe --always --tags)
   name="$(basename ${toplevel})-${desc}"
@@ -170,19 +170,19 @@ function resolve() {
 }
 
 # remove all breakpoints from Python code
-function rm-breakpoints {
+function rm-breakpoints() {
   for file in $(git grep -l debug_here); do
     sed -i '/debug_here/d' $file
   done
 }
 
 # remove all nvim swap files
-function rm-swap {
+function rm-swap() {
   rm -fr "$HOME/.local/share/nvim/swap"
 }
 
 # open the script you just run in $EDITOR
-function vibin {
+function vibin() {
   # which is zsh is a builtin that works with aliases and functions,
   # prefer /usr/bin/which
   full_path=$(/usr/bin/which $1 2> /dev/null)
