@@ -4,6 +4,7 @@
 	ci = commit
 	ck = cherry-pick
 	co = checkout
+	fp = fpush
 	fo = fetch origin
 	go = reset --hard
 	gou = reset --hard @{u}
