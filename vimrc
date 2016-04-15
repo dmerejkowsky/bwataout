@@ -251,6 +251,7 @@ augroup spell
   autocmd!
   autocmd filetype rst  :setlocal spell spelllang=en
   autocmd filetype tex  :setlocal spell spelllang=en
+  autocmd filetype markdown :setlocal spell spelllang=en
   autocmd filetype gitcommit  :setlocal spell spelllang=en
 augroup end
 
