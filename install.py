@@ -97,6 +97,16 @@ fi
     dest = os.path.join(THIS_DIR, "i3")
     create_symlink_if_missing(src, dest)
 
+    # tint2
+    src = os.path.expanduser("~/.config/tint2/tint2rc")
+    dest = os.path.join(THIS_DIR, "tint2rc")
+    create_symlink_if_missing(src, dest)
+
+    # openbox
+    src = os.path.expanduser("~/.config/openbox")
+    dest = os.path.join(THIS_DIR, "openbox")
+    create_symlink_if_missing(src, dest)
+
 
 if __name__ == "__main__":
     main()
