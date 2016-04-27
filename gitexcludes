@@ -5,6 +5,11 @@
 CMakeLists.txt.user
 *.autosave
 
+# From a bazaar repo
+*~*
+.bzr
+
+
 # Python
 __pycache__
 *.pyc
