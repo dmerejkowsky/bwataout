@@ -23,6 +23,9 @@ def checkout_and_track(branch, remote="origin"):
     remote_ref = "%s/%s" % (remote, branch)
     run_git("branch", "--set-upstream-to", remote_ref)
 
+def reset_to_upstearm():
+    run_git("reset", "--hard", "@{u}")
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("branch")
@@ -32,6 +35,7 @@ def main():
     branch = args.branch
     remote = args.remote
     checkout_and_track(branch, remote=remote)
+    reset_to_upstearm()
 
 if __name__ == "__main__":
     main()
