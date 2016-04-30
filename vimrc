@@ -241,6 +241,9 @@ map <silent> e <Plug>CamelCaseMotion_e
 omap <silent> iw <Plug>CamelCaseMotion_iw
 xmap <silent> iw <Plug>CamelCaseMotion_iw
 
+" Prevent NerdTree from interfering with TabNewEntered event
+let g:NERDTreeHijackNetrw=0
+
 " Autocommands {{{1
 " Remove trailing whitespaces when saving:
 autocmd bufwritepre * :CleanWhiteSpace
@@ -255,18 +258,20 @@ augroup spell
   autocmd filetype gitcommit  :setlocal spell spelllang=en
 augroup end
 
-" Change local working dir upon tab creation
-function! TabNewWithCwD(newpath)
-  :execute "tabnew " . a:newpath
-  if isdirectory(a:newpath)
-    :execute "lcd " . a:newpath
-  else
-    let dirname = fnamemodify(a:newpath, ":h")
-    :execute "lcd " . dirname
-  endif
-endfunction
+if ! has("nvim")
+  " Change local working dir upon tab creation
+  function! TabNewWithCwD(newpath)
+    :execute "tabnew " . a:newpath
+    if isdirectory(a:newpath)
+      :execute "lcd " . a:newpath
+    else
+      let dirname = fnamemodify(a:newpath, ":h")
+      :execute "lcd " . dirname
+    endif
+  endfunction
 
-command! -nargs=1 -complete=file TabNew :call TabNewWithCwD("<args>")
+  command! -nargs=1 -complete=file TabNew :call TabNewWithCwD("<args>")
+endif
 
 
 " Special settings from vim files
@@ -277,7 +282,21 @@ augroup filetype_vim
 augroup END
 
 " Register more extension for the zip plugin
-au BufReadCmd *.aar,*.apk,*.jar,*pkg,*.whl call zip#Browse(expand("<amatch>"))
+autocmd BufReadCmd *.aar,*.apk,*.jar,*pkg,*.whl call zip#Browse(expand("<amatch>"))
+
+" Neovim: call :tcd on tab creation
+if has("nvim")
+  function! OnTabEnter(path)
+    if isdirectory(a:path)
+      let dirname = a:path
+    else
+      let dirname = fnamemodify(a:path, ":h")
+    endif
+    execute "tcd ". dirname
+  endfunction()
+
+  autocmd TabNewEntered * call OnTabEnter(expand("<amatch>"))
+endif
 
 " Mapping and abbreviations {{{1
 
