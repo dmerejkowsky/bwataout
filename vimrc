@@ -10,6 +10,7 @@ Plug 'benekastah/neomake'
 Plug 'bkad/CamelCaseMotion', { 'commit' : '3ae9bf93cce28ddc1f2776999ad516e153769ea4'}
 Plug 'bps/vim-textobj-python', { 'commit' : '83c97d9aaae74a7c35b092bae59ef5339723dd9b'}
 Plug 'dleonard0/pony-vim-syntax'
+Plug 'dmerejkowsky/vim-fugitive'
 Plug 'ervandew/supertab', { 'tag' : '2.1' }
 Plug 'fs111/pydoc.vim', { 'tag' : '2.0' }
 Plug 'gavinbeatty/dragvisuals.vim', { 'commit' : 'b6e6d418faf3ec8c40e49c099f82481c820ab098'}
@@ -25,7 +26,6 @@ Plug 'scrooloose/nerdtree', { 'tag' : '4.2.0' }
 Plug 'tfnico/vim-gradle'
 Plug 'tpope/vim-abolish', { 'tag' : 'v1.1' }
 Plug 'tpope/vim-eunuch', { 'tag' : 'v1.1' }
-Plug 'tpope/vim-fugitive', { 'tag' : 'v2.2' }
 Plug 'tpope/vim-repeat', { 'rev' : 'v1.1' }
 Plug 'tpope/vim-sleuth', { 'rev' : '1.1' }
 Plug 'tpope/vim-surround', { 'tag' : 'v2.1' }
