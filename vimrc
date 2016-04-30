@@ -374,3 +374,9 @@ let g:DVB_TrimWS=0
 if has("nvim")
   tnoremap <Esc> <C-\><C-n>
 endif
+
+" Toggle NERDTree
+nnoremap <leader>r :NERDTreeToggle<CR> <bar> :only<cr>
+
+" There's too many commands starting with :tab, I always want :tabnew
+cmap tb tabnew<Space>
