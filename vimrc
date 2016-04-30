@@ -31,7 +31,7 @@ Plug 'tpope/vim-sleuth', { 'rev' : '1.1' }
 Plug 'tpope/vim-surround', { 'tag' : 'v2.1' }
 Plug 'vim-scripts/a.vim', { 'tag' : '2.18' }
 Plug 'vim-scripts/snippetsEmu', { 'tag' : '1.2.3'}
-Plug 'mutwinter/swap-parameters', { 'commit' : '1e68c6bdf399b05449781e0dd8342086c97380b7'}
+Plug 'mutewinter/swap-parameters', { 'commit' : '1e68c6bdf399b05449781e0dd8342086c97380b7'}
 Plug 'yannicklm/vim-gnote'
 Plug 'yannicklm/vim-send-cmd'
 Plug 'yannicklm/vimbuddy.vim'
