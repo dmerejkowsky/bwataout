@@ -150,6 +150,10 @@ set smartindent
 set tabstop=4
 
 " Colors {{{1
+if has("nvim")
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  colorscheme wonbat
+endif
 let os=substitute(system('uname'), '\n', '', '')
 " has('mac') only works on macvim ...
 if os == 'Darwin' || os == 'Mac'
