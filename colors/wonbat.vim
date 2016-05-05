@@ -21,9 +21,10 @@ if version >= 700
   hi PmenuSel 	guifg=#000000 guibg=#cae682
 endif
 
+
 " General colors
 hi Cursor 		guifg=NONE    guibg=#656565 gui=none
-hi Normal 		guifg=#f6f3e8 guibg=#242424 gui=none
+hi Normal 		ctermbg=none
 hi NonText 		guifg=#808080 guibg=#303030 gui=none
 hi LineNr 		guifg=#857b6f guibg=#000000 gui=none
 hi StatusLine 	guifg=#f6f3e8 guibg=#444444 gui=italic
@@ -47,6 +48,3 @@ hi Keyword		guifg=#8ac6f2 gui=none
 hi PreProc 		guifg=#e5786d gui=none
 hi Number		guifg=#e5786d gui=none
 hi Special		guifg=#e7f6da gui=none
-
-
-
