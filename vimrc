@@ -17,6 +17,7 @@ Plug 'gavinbeatty/dragvisuals.vim', { 'commit' : 'b6e6d418faf3ec8c40e49c099f8248
 Plug 'godlygeek/tabular', { 'commit' : '60f25648814f0695eeb6c1040d97adca93c4e0bb' }
 Plug 'kana/vim-textobj-user',  { 'tag' : '0.7.1' }
 Plug 'kien/ctrlp.vim', { 'tag' : '1.79' }
+Plug 'mbbill/undotree', { 'tag' : 'rel_4.3' }
 Plug 'peterhoeg/vim-qml'
 Plug 'rking/ag.vim', { 'commit' : 'f755abfb1c4e4e3f59f6cfa25ce16edb5af9e516' }
 Plug 'romainl/vim-dichromatic', { 'branch' : 'wip' }
