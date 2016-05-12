@@ -357,6 +357,9 @@ map <leader>es :sp <C-R>=expand("%:p:h") . "/" <CR>
 map <leader>ev :vsp <C-R>=expand("%:p:h") . "/" <CR>
 map <leader>et :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
+" Create the file under the cursor (when gf complains)
+map <leader>gf :e<cfile><CR>
+
 " Navigate through the buffer's list with alt+up, alt+down
 nnoremap <M-Down>  :bp<CR>
 nnoremap <M-Up>    :bn<CR>
