@@ -116,6 +116,7 @@ set nojoinspaces
 " search settings
 set nohlsearch
 set incsearch
+set ignorecase
 set smartcase
 
 " Remove menu bar from GUI
