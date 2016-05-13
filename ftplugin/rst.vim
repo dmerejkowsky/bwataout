@@ -9,6 +9,8 @@ noremap <buffer> <leader>h1 yyp^v$r=o<ESC>
 noremap <buffer> <leader>h2 yyp^v$r-o<ESC>
 noremap <buffer> <leader>h3 yyp^v$r+o<ESC>
 noremap <buffer> <leader>h4 yyp^v$r~o<ESC>
+noremap <buffer> <leader>h5 yyp^v$r^o<ESC>
+noremap <buffer> <leader>h5 yyp^v$r`o<ESC>
 
 " strong is with **
 noremap <buffer> <leader>s Bi**<ESC>Ea**<ESC>
