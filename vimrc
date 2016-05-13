@@ -11,6 +11,7 @@ Plug 'bkad/CamelCaseMotion', { 'commit' : '3ae9bf93cce28ddc1f2776999ad516e153769
 Plug 'bps/vim-textobj-python', { 'commit' : '83c97d9aaae74a7c35b092bae59ef5339723dd9b'}
 Plug 'dleonard0/pony-vim-syntax'
 Plug 'dmerejkowsky/vim-fugitive'
+Plug 'dmerejkowsky/vim-nerdtree'
 Plug 'ervandew/supertab', { 'tag' : '2.1' }
 Plug 'fs111/pydoc.vim', { 'tag' : '2.0' }
 Plug 'gavinbeatty/dragvisuals.vim', { 'commit' : 'b6e6d418faf3ec8c40e49c099f82481c820ab098'}
@@ -23,7 +24,6 @@ Plug 'rking/ag.vim', { 'commit' : 'f755abfb1c4e4e3f59f6cfa25ce16edb5af9e516' }
 Plug 'romainl/vim-dichromatic', { 'branch' : 'wip' }
 Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/nerdcommenter', { 'tag' : '2.3.0' }
-Plug 'scrooloose/nerdtree', { 'tag' : '4.2.0' }
 Plug 'tfnico/vim-gradle'
 Plug 'tpope/vim-abolish', { 'tag' : 'v1.1' }
 Plug 'tpope/vim-eunuch', { 'tag' : 'v1.1' }
@@ -296,6 +296,7 @@ if has("nvim")
   function! OnTabEnter(path)
     if isdirectory(a:path)
       let dirname = a:path
+      execute ":NERDTreeInPlace " . dirname
     else
       let dirname = fnamemodify(a:path, ":h")
     endif
