@@ -1,1 +1,1 @@
-set makeprg=jshon\ -F\ %\ >/dev/null
+setlocal makeprg=jshon\ -F\ %\ >/dev/null

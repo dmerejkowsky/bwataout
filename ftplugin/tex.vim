@@ -2,7 +2,7 @@
 "
 
 " Set textwidth:
-set textwidth=80
+setlocal textwidth=80
 
 " Disable autoindent:
-set noautoindent
+setlocal noautoindent

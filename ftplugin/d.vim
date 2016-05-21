@@ -1,3 +1,3 @@
-set suffixesadd=.d
-set path+=/usr/include/d/
-set includeexpr=substitute(v:fname,'\\.','/','g')
+setlocal suffixesadd=.d
+setlocal path+=/usr/include/d/
+setlocal includeexpr=substitute(v:fname,'\\.','/','g')

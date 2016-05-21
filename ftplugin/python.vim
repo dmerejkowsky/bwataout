@@ -1,6 +1,6 @@
 " Special definitions for python files
 
-set omnifunc=pythoncomplete#Complete
+setlocal omnifunc=pythoncomplete#Complete
 
 
 let s:py_version = system("python --version")
@@ -26,16 +26,16 @@ setlocal softtabstop=4
 
 " Don't use smartindent, it messes up the 3rd part indent
 " script
-set nosmartindent
+setlocal nosmartindent
 
 ""
 " Using custom python plugins in plugins/py.*.vim
 
 " Add an "import" line using work under cursor
-nmap <leader>I :call AddMissingImport('<C-R><C-W>') <CR>
+nmap <buffer> <leader>I :call AddMissingImport('<C-R><C-W>') <CR>
 
 " Run pytest
-nmap <leader>k :call vimpytest#run()<CR>
+nmap <buffer> <leader>k :call vimpytest#run()<CR>
 
 " Switch between test and production code
 command! -nargs=0 A :call vimpytest#alternate()
@@ -55,4 +55,4 @@ endfunction
 
 command! -nargs=0 UsePylint :call UsePylint()
 
-nnoremap <leader>d :bufdo :g/debug_here/d <bar> update<cr>
+nnoremap <buffer> <leader>d :bufdo :g/debug_here/d <bar> update<cr>
