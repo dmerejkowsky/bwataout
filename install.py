@@ -82,6 +82,7 @@ path = {1}/config.local
     # openbox
     src = os.path.expanduser("~/.config/openbox")
     dest = os.path.join(THIS_DIR, "openbox")
+    create_symlink_if_missing(src, dest)
 
     # screen
     src = os.path.expanduser("~/.screenrc")
@@ -109,7 +110,6 @@ if [ -f "${{HOME}}/.zshrc.local" ] ; then
 fi
 """.format(THIS_DIR))
     zsh_install_pure_prompt()
-    create_symlink_if_missing(src, dest)
 
 
 if __name__ == "__main__":
