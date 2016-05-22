@@ -2,7 +2,9 @@
 
 from __future__ import print_function
 
+import argparse
 import os
+import subprocess
 import sys
 
 if sys.version_info.major == 2:
@@ -35,6 +37,60 @@ def write_file_if_missing(path, contents):
     with open(path, "w") as fp:
         fp.write(contents)
 
+def vim_install(enable_vim=False):
+    nvim_conf_dir = os.path.expanduser("~/.config/nvim")
+    autoload = os.path.join(nvim_conf_dir, "autoload")
+    mkdir_p(autoload)
+
+    # Fetch vim plug
+    vim_plug = os.path.join(autoload, "plug.vim")
+    print("Retrieving", vim_plug)
+    urlretrieve("https://raw.githubusercontent.com/junegunn/vim-plug/0.7.2/plug.vim",
+                vim_plug)
+
+    # Create vimrc files
+    vimrc_local = os.path.join(nvim_conf_dir, "vimrc.local")
+    write_file_if_missing(vimrc_local, '" Put your local settings here\n')
+
+    vimrc_src = os.path.join(THIS_DIR, "vim", "vimrc")
+    vimrc_src = os.path.abspath(vimrc_src)
+    vimrc_template = """\
+" Auto-generated code. Do not edit\n"
+source {vimrc}\n"
+source {vimrc_local}\n"
+"""
+    to_write = vimrc_template.format(vimrc=vimrc_src,
+                                     vimrc_local=vimrc_local)
+    init_vim = os.path.join(nvim_conf_dir, "init.vim")
+    write_file_if_missing(init_vim, to_write)
+
+    # Create symlinks for vim usage
+    if enable_vim:
+
+        # ~/.vimrc -> ~/.config/nvim/init.vim
+        vimrc = os.path.expanduser("~/.vimrc")
+        create_symlink_if_missing(vimrc, init_vim)
+
+        # ~/.vim/autoload/plug.vim -> ~/.config/nvim/autoload/plug.vim
+        autoload = os.path.expanduser("~/.vim/autoload")
+        src = os.path.join(autoload, "plug.vim")
+        dest = vim_plug
+        create_symlink_if_missing(src, dest)
+
+    # Install the Python wrapper:
+    src = os.path.expanduser("~/.local/bin/vim_wrapper.py")
+    dest = os.path.join(THIS_DIR, "vim", "vim_wrapper.py")
+    create_symlink_if_missing(src, dest)
+
+    # Run vim once with :PlugInstall to perform first installation
+    if enable_vim:
+        vim_exec = "vim"
+    else:
+        vim_exec = "nvim"
+    cmd = [vim_exec, "-c", ":PlugInstall"]
+    subprocess.call(cmd)
+
+
 def zsh_install_pure_prompt():
     """ Install zsh pure prompt from my own fork """
     # All we have to do is copy to files from the repo
@@ -52,6 +108,13 @@ def zsh_install_pure_prompt():
         urlretrieve(url, full_dest)
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--enable-vim", action="store_true",
+                        help="Enable vim usage. Useful when neovim is not "
+                             "available")
+    parser.set_defaults(enable_vim=False)
+    args = parser.parse_args()
+
     mkdir_p(os.path.expanduser("~/.local/bin"))
     mkdir_p(os.path.expanduser("~/.config"))
 
@@ -98,6 +161,9 @@ path = {1}/config.local
     src = os.path.expanduser("~/.config/tint2/tint2rc")
     dest = os.path.join(THIS_DIR, "tint2rc")
     create_symlink_if_missing(src, dest)
+
+    # vim / neovim
+    vim_install(enable_vim=args.enable_vim)
 
     # zsh
     zshrc = os.path.expanduser("~/.zshrc")
