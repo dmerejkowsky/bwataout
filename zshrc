@@ -77,8 +77,6 @@ alias mv="mv -iv"
 alias rm="rm -i"
 alias cp="cp -iv"
 
-alias vi="vim"
-
 # Open pdf files with ./path/to/pdf
 alias -s pdf=evince
 # }}}
@@ -115,9 +113,6 @@ export SAVEHIST=10000
 export BLOCK_SIZE=human-readable
 # depth of the directory history
 DIRSTACKSIZE=30
-
-export VISUAL="vim"
-export EDITOR="vim"
 
 this_dir=$(dirname $0)
 export PATH="${this_dir}/bin:$HOME/.local/bin:$PATH"
@@ -233,4 +228,22 @@ export PURE_GIT_UNTRACKED_DIRTY=0
 prompt pure
 # }}}
 
+# {{{ neovim black magic
+
+# Need to use a 'true' executable here
+export VISUAL="vim_wrapper.py"
+export EDITOR="vim_wrapper.py"
+
+# Change working dir when vim exits
+function vim() {
+  vim_wrapper.py $*
+  cd $(cat /tmp/nvim-cwd)
+}
+
+# Sometimes 3 letters is too much
+alias vi=vim
+
+# }}}
+
+#
 # vim: set foldmethod=marker:
