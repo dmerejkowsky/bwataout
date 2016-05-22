@@ -124,9 +124,4 @@ bar {
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
-# wallpaper
-output * background "/home/dmerejkowsky/pics/abyss.png" fill
-
-# fix outputs positions
-output DVI-I-1 position 0 0
-output DP-1 position 1680 0
+include ~/.config/sway/config.local
