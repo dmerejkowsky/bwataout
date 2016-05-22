@@ -93,7 +93,7 @@ def enable_nvim():
     top_dir = os.path.join(this_dir, "..")
     top_dir = os.path.abspath(top_dir)
     src = os.path.expanduser("~/.local/bin/vim")
-    dest = os.path.join(top_dir, "vim")
+    dest = os.path.join(top_dir, "vim_wrapper.py")
     if not os.path.exists(src):
         print(src, "->", dest)
         os.symlink(dest, src)

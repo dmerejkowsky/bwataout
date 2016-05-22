@@ -307,6 +307,13 @@ if has("nvim")
   autocmd TabNewEntered * call OnTabEnter(expand("<amatch>"))
 endif
 
+" Write cwd when leaving
+function! WriteCWD()
+  call writefile([getcwd()], "/tmp/nvim-cwd")
+endfunction
+
+autocmd VimLeave * silent call WriteCWD()
+
 " Mapping and abbreviations {{{1
 
 
