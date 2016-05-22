@@ -1,0 +1,10 @@
+Abolish MSCV MSVC
+Abolish lauch launch
+Abolish pgk pkg
+Abolish relase release
+Abolish relese release
+Abolish shpinx sphinx
+Abolish swith switch
+Abolish wich which
+Abolish worktee worktree
+Abolish snaphost snapshot
