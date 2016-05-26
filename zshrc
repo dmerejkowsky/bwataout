@@ -245,5 +245,10 @@ alias vi=vim
 
 # }}}
 
+# {{{ z
+source ~/.local/share/zsh/z/z.sh
+
+# }}}
+
 #
 # vim: set foldmethod=marker:
