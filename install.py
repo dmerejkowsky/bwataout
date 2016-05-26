@@ -94,16 +94,16 @@ source {vimrc_local}\n"
 def zsh_install_pure_prompt():
     """ Install zsh pure prompt from my own fork """
     # All we have to do is copy to files from the repo
-    # to ~/.local/share/zsh/functions/ with the correct name
-    zsh_functions_dir = os.path.expanduser("~/.local/share/zsh/functions/")
-    mkdir_p(zsh_functions_dir)
+    # to ~/.local/share/zsh/pure-prompt/ with the correct name
+    zsh_prompt_dir = os.path.expanduser("~/.local/share/zsh/pure-prompt/")
+    mkdir_p(zsh_prompt_dir)
     base_url = "https://raw.githubusercontent.com/dmerejkowsky/zsh-pure-prompt"
     base_url += "/master"
     todo = [("pure.zsh", "prompt_pure_setup"),
             ("async.zsh", "async")]
     for (src, dest) in todo:
         url = os.path.join(base_url, src)
-        full_dest = os.path.join(zsh_functions_dir, dest)
+        full_dest = os.path.join(zsh_prompt_dir, dest)
         print("Retrieving", full_dest)
         urlretrieve(url, full_dest)
 

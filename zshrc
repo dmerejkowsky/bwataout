@@ -118,7 +118,7 @@ this_dir=$(dirname $0)
 export PATH="${this_dir}/bin:$HOME/.local/bin:$PATH"
 
 # required for pure-prompt
-fpath=("$HOME/.local/share/zsh/functions" $fpath)
+fpath=("$HOME/.local/share/zsh/pure-prompt" $fpath)
 
 # Prevent fork bomb
 limit maxproc 1042 2>/dev/null
