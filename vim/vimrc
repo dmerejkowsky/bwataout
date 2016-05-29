@@ -254,8 +254,11 @@ let g:NERDTreeHijackNetrw=0
 
 " Autocommands {{{1
 " Remove trailing whitespaces when saving:
-autocmd bufwritepre * :CleanWhiteSpace
-autocmd bufwritepre * :RemoveBlankLinesAtTheEndOfFile
+augroup whitespaceclean
+  autocmd!
+  autocmd BufWritePre * :CleanWhiteSpace
+  autocmd BufWritePre * :RemoveBlankLinesAtTheEndOfFile
+augroup end
 
 " Spell checking
 augroup spell
@@ -286,7 +289,7 @@ endif
 augroup filetype_vim
   autocmd!
   autocmd filetype vim setlocal foldmethod=marker
-  autocmd bufwritepost *.vim :source %
+  autocmd BufWritePre *.vim :source %
 augroup END
 
 " Register more extension for the zip plugin
