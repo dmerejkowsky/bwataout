@@ -179,6 +179,11 @@ path = {1}/config.local
     # vim / neovim
     vim_install(enable_vim=args.enable_vim)
 
+    # xinitrc
+    src = os.path.expanduser("~/.xinitrc")
+    dest = os.path.join(THIS_DIR, "xinitrc")
+    create_symlink_if_missing(src, dest)
+
     # zsh
     zshrc = os.path.expanduser("~/.zshrc")
     zshrc_local = zshrc + ".local"
