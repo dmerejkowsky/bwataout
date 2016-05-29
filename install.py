@@ -183,6 +183,10 @@ path = {1}/config.local
     src = os.path.expanduser("~/.xinitrc")
     dest = os.path.join(THIS_DIR, "xinitrc")
     create_symlink_if_missing(src, dest)
+    xinitrc_local = src + ".local"
+    write_file_if_missing(xinitrc_local, """\
+# Run your window manager from here
+""")
 
     # zsh
     zshrc = os.path.expanduser("~/.zshrc")
