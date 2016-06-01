@@ -150,6 +150,16 @@ excludesfile = {0}/gitexcludes
 path = {0}/gitconfig
 path = {1}/config.local
 """ .format(THIS_DIR, gitconfig_dir))
+    gitconfig_local = gitconfig + ".local"
+    write_file_if_missing(gitconfig_local, """\
+# Configure your user here
+[user]
+name =
+email =
+
+
+# vim: set filetype=gitconfig:
+""")
 
     # i3
     src = os.path.expanduser("~/.config/i3/config")
