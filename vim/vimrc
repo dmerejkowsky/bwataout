@@ -207,7 +207,12 @@ if has("gui_running")
 else
   " for some reason when in a term, c-space
   " is interpreted as c-@
-  let g:snippetsEmu_key = "<C-@>"
+  " but not on mac with default terminal
+  if os == 'Darwin' || os == 'Mac'
+    let g:snippetsEmu_key = "<C-Space>"
+  else
+    let g:snippetsEmu_key = "<C-@>"
+  endif
 endif
 
 " Status line (requires VimBuddy plugin to be present)
