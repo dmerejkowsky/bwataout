@@ -159,7 +159,6 @@ if os == 'Darwin' || os == 'Mac'
 else
   se background=dark
 endif
-" Note that GUI stuff is handled in .gvimrc anyway
 
 " Custom functions {{{1
 " Remove trailing whitespace
