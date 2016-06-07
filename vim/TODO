@@ -1,3 +1,5 @@
+* get rid of CamelCaseMotion, replace by judicious omap commands
+
 * Rewrite vimrc with good guidelines:
   https://github.com/romainl/idiomatic-vimrc
 
