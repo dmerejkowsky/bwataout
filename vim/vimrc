@@ -399,4 +399,4 @@ endif
 nnoremap <leader>r :NERDTreeToggle<CR> <bar> :only<cr>
 
 " There's too many commands starting with :tab, I always want :tabnew
-cmap tb tabnew<Space>
+cnoremap Tb tabnew<Space>
