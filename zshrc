@@ -51,6 +51,9 @@ setopt hist_ignore_all_dups     # don't add dupes to history
 setopt hist_verify              # when using ! cmds, confirm first
 setopt hist_no_store            # dont add 'history' command (fc -l) to the history
 setopt histignorespace          # hide from history lines starting with space
+
+bindkey "${key[Up]}" history-search-backward
+bindkey "${key[Down]}" history-search-forward
 # }}}
 
 # Directory history (use +/- to navigate) {{{
@@ -102,9 +105,6 @@ autoload run-help
 
 # Use emacs-mode
 bindkey -e
-
-bindkey '^[[A' history-beginning-search-backward
-bindkey '^[[B' history-beginning-search-forward
 # }}}
 
 # Global settings {{{
