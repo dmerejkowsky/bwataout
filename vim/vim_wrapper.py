@@ -112,7 +112,7 @@ def main():
         filespecs = list()
     if args.remote:
         if not HAS_NEOVIM_PYTHON:
-            sys.exit("Please insntall neovim Python package before using --remote")
+            sys.exit("Please install neovim Python package before using --remote")
         remote_nvim(filespecs)
     else:
         main_nvim(nvim_path, filespecs, diff=args.diff)
