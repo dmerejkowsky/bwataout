@@ -11,4 +11,4 @@ syndaemon -i 1 -d
 setxkbmap dvorak us-intl
 setxkbmap -option ctrl:nocaps
 
-source $HOME/.xinitrc.local
+. $HOME/.xinitrc.local
