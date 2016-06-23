@@ -166,6 +166,11 @@ email =
     dest = os.path.join(THIS_DIR, "i3")
     create_symlink_if_missing(src, dest)
 
+    # mpv
+    src = os.path.expanduser("~/.config/mpv/input.conf")
+    dest = os.path.join(THIS_DIR, "mpv/input.conf")
+    create_symlink_if_missing(src, dest)
+
     # openbox
     src = os.path.expanduser("~/.config/openbox")
     dest = os.path.join(THIS_DIR, "openbox")
