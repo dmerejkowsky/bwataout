@@ -14,7 +14,7 @@
 	mend = commit --amend
 	# Keep it short without all the beginner's help, but still show branch
 	# and don't use color
-	st = status --short --branch --porcelain
+	st = status --branch
 
 [color]
 	ui = auto
