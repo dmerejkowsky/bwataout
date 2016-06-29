@@ -24,10 +24,10 @@ bindsym $mod+Shift+C kill
 
 # start i3-dmenu-desktop
 bindsym $mod+r exec i3-dmenu-desktop
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+# lock the screen
+# (dm-tools works when using lightdm)
+bindsym $mod+x exec dm-tool lock
 
 # change focus
 bindsym $mod+h focus left
