@@ -238,7 +238,7 @@ export EDITOR="vim_wrapper.py"
 # Change working dir when vim exits
 function vim() {
   vim_wrapper.py $*
-  cd $(cat /tmp/nvim-cwd 2>/dev/null || echo .)
+  cd "$(cat /tmp/nvim-cwd 2>/dev/null || echo .)"
 }
 
 # Sometimes 3 letters is too much
