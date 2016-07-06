@@ -49,7 +49,7 @@ endfunction
 command! -nargs=0 SetPythonPath :call SetPythonPath()
 
 function! UsePylint()
-  set makeprg=pylint\ --reports=n\ --include-ids=y\ --errors-only\ --output-format=parseable\ %:p
+  set makeprg=pylint\ --reports=n\ --errors-only\ --output-format=parseable\ %:p
   set errorformat=%f:%l:\ %m
 endfunction
 
