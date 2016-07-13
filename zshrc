@@ -1,7 +1,7 @@
 ##
 # zsh config
 #
-# Taken from github.com/cgestes/ctafconf.git
+# Bits taken from github.com/cgestes/ctafconf.git
 
 
 # Shell is non-interactive.  Be done now
