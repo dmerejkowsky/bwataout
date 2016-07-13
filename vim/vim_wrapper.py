@@ -72,6 +72,8 @@ def parse_filespecs_for_remote(filespecs):
     """ Return a list of tuples
     (full_path, line_number, column_number)
 
+    >>> parse_filespecs_for_remote(["foo.cpp:42:3:"])
+    [("/path/to/foo.cpp", 42, 3)]
     >>> parse_filespecs_for_remote(["foo.cpp:42:3"])
     [("/path/to/foo.cpp", 42, 3)]
     >>> parse_filespecs_for_remote(["foo.cpp:42"])
