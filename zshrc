@@ -21,8 +21,6 @@ setopt no_nomatch               # but when pattern matching fails, simply use th
 
 setopt interactivecomments      # date # comment will work
 
-# }}}
-
 # Completion {{{
 autoload -U compinit
 compinit
@@ -53,13 +51,6 @@ setopt hist_ignore_all_dups     # don't add dupes to history
 setopt hist_verify              # when using ! cmds, confirm first
 setopt hist_no_store            # dont add 'history' command (fc -l) to the history
 setopt histignorespace          # hide from history lines starting with space
-
-autoload -U up-line-or-beginning-search
-zle -N up-line-or-beginning-search
-bindkey "${terminfo[kcuu1]}"  up-line-or-beginning-search
-autoload -U down-line-or-beginning-search
-zle -N down-line-or-beginning-search
-bindkey "${terminfo[kcud1]}" down-line-or-beginning-search
 # }}}
 
 # Directory history (use +/- to navigate) {{{
@@ -71,6 +62,8 @@ setopt pushd_ignoredups	      # ignore duplicates
 setopt noautocd               # dont change to dirs without cd
 alias -- +='pushd +0'
 alias -- -='pushd -1'
+# }}}
+
 # }}}
 
 # Aliases {{{
@@ -110,6 +103,8 @@ autoload run-help
 # Use emacs-mode
 bindkey -e
 
+bindkey '^[[A' history-beginning-search-backward
+bindkey '^[[B' history-beginning-search-forward
 # }}}
 
 # Global settings {{{
