@@ -11,6 +11,7 @@
 	lg = log --color --graph --pretty=format:'%Cgreen%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	logp = log --find-renames --patch-with-stat
 	logu = log @{u}
+	diffu = diff @{u}
 	mend = commit --amend
 	# Keep it short without all the beginner's help, but still show branch
 	# and don't use color
