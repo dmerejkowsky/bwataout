@@ -2,6 +2,7 @@
 
 setlocal suffixesadd=.rst
 setlocal linebreak
+setlocal textwidth=80
 
 " Special mapping for rst files
 "
