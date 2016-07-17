@@ -128,14 +128,13 @@ limit maxproc 1042 2>/dev/null
 # Functions {{{
 
 # cd /path/to/file -> cd /path/to
-alias orig_cd=cd
 function smart_cd() {
   if [[ -z "$1" ]]; then
-    orig_cd "$HOME"
+    \cd "$HOME"
   elif [[ -f "$1" ]]; then
-    orig_cd $(dirname "$1")
+    \cd $(dirname "$1")
   else
-    orig_cd "$1"
+    \cd "$1"
   fi
 }
 
