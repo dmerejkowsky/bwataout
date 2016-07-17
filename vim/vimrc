@@ -330,15 +330,12 @@ autocmd VimLeave * silent call WriteCWD()
 " I prefer , for mapleader rather than \
 let mapleader=","
 
-nmap <leader>t :CtrlP<CR>
-nmap <leader>p :CtrlPMRUFiles<CR>
-nmap <leader>b :CtrlPBuffer<CR>
+nnoremap <leader>t :CtrlP<CR>
+nnoremap <leader>p :CtrlPMRUFiles<CR>
+nnoremap <leader>b :CtrlPBuffer<CR>
 
-nmap <silent> <leader>/ :set invhlsearch<CR>
-nmap <leader>sl :SessionList<CR>
-nmap <leader>ss :SessionSave<CR>
 
-" typing :make is much too long anyway
+"nore typing :make is much too long anyway
 nnoremap <leader>m :make<cr>
 nnoremap <leader>M :w<cr>:Neomake!<cr>
 
@@ -358,7 +355,7 @@ vnoremap ; :
 
 " it's easy to type :X by mistake, and the 'encrypt'
 " feature is useless anyway
-map :X :x
+nnoremap :X :x
 
 " use begging-of-history inside command mode
 " with ctrl+n ctrl+p
@@ -368,16 +365,16 @@ cnoremap %% <C-R>=expand('%h').'/'<cr>
 
 " 'cd' towards the dir in which the current file is edited
 " but only change the path for the current window
-map <leader>cd :lcd %:h<CR>
+noremap <leader>cd :lcd %:h<CR>
 
 " Open files located in the same dir in with the current file is edited
-map <leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
-map <leader>es :sp <C-R>=expand("%:p:h") . "/" <CR>
-map <leader>ev :vsp <C-R>=expand("%:p:h") . "/" <CR>
-map <leader>et :tabe <C-R>=expand("%:p:h") . "/" <CR>
+nnoremap <leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
+nnoremap <leader>es :sp <C-R>=expand("%:p:h") . "/" <CR>
+nnoremap <leader>ev :vsp <C-R>=expand("%:p:h") . "/" <CR>
+nnoremap <leader>et :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
 " Create the file under the cursor (when gf complains)
-map <leader>gf :e<cfile><CR>
+nnoremap <leader>gf :e<cfile><CR>
 
 " Navigate through the buffer's list with alt+up, alt+down
 nnoremap <M-Down>  :bp<CR>
@@ -387,14 +384,14 @@ nnoremap <M-Up>    :bn<CR>
 nnoremap K :Man <cword> <CR>
 
 " Spell check
-cmap spc setlocal spell spelllang=
+cnoremap spc setlocal spell spelllang=
 
 " Dragging visual blocks
-vmap  <expr>  <LEFT>   DVB_Drag('left')
-vmap  <expr>  <RIGHT>  DVB_Drag('right')
-vmap  <expr>  <DOWN>   DVB_Drag('down')
-vmap  <expr>  <UP>     DVB_Drag('up')
-vmap  <expr>  D        DVB_Duplicate()
+vnoremap  <expr>  <LEFT>   DVB_Drag('left')
+vnoremap  <expr>  <RIGHT>  DVB_Drag('right')
+vnoremap  <expr>  <DOWN>   DVB_Drag('down')
+vnoremap  <expr>  <UP>     DVB_Drag('up')
+vnoremap  <expr>  D        DVB_Duplicate()
 
 " don't try to remove whitespace, :w will do it
 let g:DVB_TrimWS=0
