@@ -132,7 +132,7 @@ function smart_cd() {
   if [[ -z "$1" ]]; then
     \cd "$HOME"
   elif [[ -f "$1" ]]; then
-    \cd $(dirname "$1")
+    \cd "$(dirname "$1")"
   else
     \cd "$1"
   fi
