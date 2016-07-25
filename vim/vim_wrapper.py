@@ -12,6 +12,7 @@ except ImportError:
     HAS_NEOVIM_PYTHON = False
 
 SOCKET_PATH="/tmp/neovim"
+CWD_PATH="/tmp/nvim-cwd"
 
 def remote_nvim(filespecs):
     nvim = neovim.attach("socket", path=SOCKET_PATH)
@@ -21,6 +22,8 @@ def remote_nvim(filespecs):
         nvim.command(":e %s" % fullpath)
         nvim.feedkeys("%iG" % line)
         nvim.feedkeys("%i|" % column)
+    if os.path.exists(CWD_PATH):
+        os.remove(CWD_PATH)
 
 def find_nvim():
     """ Try to find nvim in $PATH.
