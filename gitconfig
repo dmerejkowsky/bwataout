@@ -21,7 +21,7 @@
 	ui = auto
 
 [gui]
-	spellingdictionary = none
+	spellingdictionary = en_US
 
 [guitool "pull-rebase"]
 	cmd = git pull --rebase
