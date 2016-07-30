@@ -20,6 +20,9 @@
 [color]
 	ui = auto
 
+[diff]
+	compactionHeuristic = true
+
 [gui]
 	spellingdictionary = en_US
 
