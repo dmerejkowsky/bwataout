@@ -231,8 +231,8 @@ prompt pure
 # {{{ neovim black magic
 
 # Need to use a 'true' executable here
-export VISUAL="vim_wrapper.py"
-export EDITOR="vim_wrapper.py"
+export VISUAL="nvim"
+export EDITOR="nvim"
 
 # Change working dir when vim exits
 function vim() {
