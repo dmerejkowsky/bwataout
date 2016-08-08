@@ -331,6 +331,9 @@ nnoremap <leader>M :w<cr>:Neomake!<cr>
 
 " select text that was just pasted
 nnoremap gp `[v`]
+" same, but go to the opposite end of what was just pasted
+nnoremap gP `]
+
 
 " ctrl-^
 nnoremap <leader><leader> <c-^>
