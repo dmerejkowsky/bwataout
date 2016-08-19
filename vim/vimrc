@@ -15,6 +15,7 @@ Plug 'ervandew/supertab', { 'tag' : '2.1' }
 Plug 'fs111/pydoc.vim', { 'tag' : '2.0' }
 Plug 'gavinbeatty/dragvisuals.vim', { 'commit' : 'b6e6d418faf3ec8c40e49c099f82481c820ab098'}
 Plug 'godlygeek/tabular', { 'commit' : '60f25648814f0695eeb6c1040d97adca93c4e0bb' }
+Plug 'idanarye/vim-smile', { 'tag' : '1.0.1' }
 Plug 'kana/vim-textobj-user',  { 'tag' : '0.7.1' }
 Plug 'kien/ctrlp.vim', { 'tag' : '1.79' }
 Plug 'mbbill/undotree', { 'tag' : 'rel_4.3' }
