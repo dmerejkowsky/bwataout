@@ -95,6 +95,8 @@ else
   alias ls="ls --classify --quoting-style=escape --color=auto"
 fi
 
+alias ll="ls -al"
+
 # }}}
 
 # Misc {{{
