@@ -255,18 +255,12 @@ command! GdiffOff call GdiffOff()
 let g:NERDTreeHijackNetrw=0
 
 " Autocommands {{{1
-" Clean whitespace when saving, unless HOSTILE_ENV
-" is set. (Useful when not everyone is used to clean
-" whitespace all the time)
-if $VIM_HOSTILE_ENV == ""
-  augroup whitespaceclean
-    autocmd!
-    autocmd BufWritePre * :CleanWhiteSpace
-    autocmd BufWritePre * :RemoveBlankLinesAtTheEndOfFile
-  augroup end
-else
-  set list
-endif
+" Remove trailing whitespaces when saving:
+augroup whitespaceclean
+  autocmd!
+  autocmd BufWritePre * :CleanWhiteSpace
+  autocmd BufWritePre * :RemoveBlankLinesAtTheEndOfFile
+augroup end
 
 " Spell checking
 augroup spell
