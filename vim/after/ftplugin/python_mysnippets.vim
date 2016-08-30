@@ -13,6 +13,5 @@ Snippet _init def __init__(self<{}>):<CR><TAB><{}>
 Snippet _str  def __str__(self):<CR><TAB><{}>
 
 Snippet pdb import pdb; pdb.set_trace()
-Snippet ipdb from IPython.core.debugger import Tracer; debug_here=Tracer()<cr>debug_here()
-
+Snippet ipdb from IPython.core.debugger import Pdb; Pdb().set_trace()
 Snippet pylint # pylint:disable-msg=E<{}>
