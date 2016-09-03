@@ -239,7 +239,9 @@ export EDITOR="nvim"
 # Change working dir when vim exits
 function vim() {
   vim_wrapper.py $*
-  cd "$(cat /tmp/nvim-cwd 2>/dev/null || echo .)"
+  if [[ $? -eq 0 ]]; then
+    cd "$(cat /tmp/nvim-cwd 2>/dev/null || echo .)"
+  fi
 }
 
 # Sometimes 3 letters is too much
