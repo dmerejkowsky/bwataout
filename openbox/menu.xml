@@ -34,6 +34,15 @@
 				</startupnotify>
 			</action>
 		</item>
+		<item label="Chromium">
+			<action name="Execute">
+				<command>chromium</command>
+				<startupnotify>
+					<enabled>yes</enabled>
+					<wmclass>Chromium</wmclass>
+				</startupnotify>
+			</action>
+		</item>
 		<item label="Run ...">
 			<action name="Execute">
 				<command>gmrun</command>
