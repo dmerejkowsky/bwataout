@@ -14,13 +14,15 @@
 	diffu = diff @{u}
 	diffo = diff origin/master
 	mend = commit --amend
-	# Keep it short without all the beginner's help, but still show branch
-	# and don't use color
+
+	r = rebase-n-commits
 	ra = rebase --abort
 	rc = rebase --continue
+	ri = rebase --interactive
 	ro = rebase -i origin/master
 	rs = rebase --skip
 	ru = rebase -i upstream/master
+
 	st = status --branch
 
 [color]

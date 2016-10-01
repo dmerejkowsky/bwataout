@@ -1,0 +1,11 @@
+#!/bin/bash -e
+
+function main() {
+  if [[ -z "$1" ]] ; then
+    echo "Usage git r <number of commits>"
+    return 1
+  fi
+  git rebase -i "HEAD~$1"
+}
+
+main $@
