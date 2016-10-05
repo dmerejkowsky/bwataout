@@ -46,9 +46,8 @@ setopt auto_remove_slash
 # History handling {{{
 setopt append_history           # append to history
 setopt inc_append_history       # append immediately
-setopt hist_expire_dups_first   # expire duplicates in history first
-setopt hist_ignore_all_dups     # don't add dupes to history
 setopt hist_verify              # when using ! cmds, confirm first
+setopt extended_history         # add timestamp in history
 setopt hist_no_store            # dont add 'history' command (fc -l) to the history
 setopt histignorespace          # hide from history lines starting with space
 # }}}
