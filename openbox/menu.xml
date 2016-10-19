@@ -34,12 +34,12 @@
 				</startupnotify>
 			</action>
 		</item>
-		<item label="Chromium">
+		<item label="Corebird">
 			<action name="Execute">
-				<command>chromium</command>
+				<command>corebird</command>
 				<startupnotify>
 					<enabled>yes</enabled>
-					<wmclass>Chromium</wmclass>
+					<wmclass>Corebird</wmclass>
 				</startupnotify>
 			</action>
 		</item>
