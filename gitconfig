@@ -9,6 +9,7 @@
 	go = reset --hard
 	gou = reset --hard @{u}
 	lg = log --color --graph --pretty=format:'%Cgreen%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	lgs = log --graph --pretty=format:'%Cgreen%h%Creset - %s %C(yellow)%d' --abbrev-commit
 	logp = log --find-renames --patch-with-stat
 	logu = log @{u}
 	diffu = diff @{u}
