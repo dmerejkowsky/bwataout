@@ -171,6 +171,10 @@ email =
     dest = os.path.join(THIS_DIR, "mpv/input.conf")
     create_symlink_if_missing(src, dest)
 
+    # allow to use `npm install -g` _without_ being root
+    src = os.path.expanduser("~/.npmrc")
+    write_file_if_missing(src, "prefix=%s\n" % os.path.expanduser("~/.local"))
+
     # openbox
     src = os.path.expanduser("~/.config/openbox")
     dest = os.path.join(THIS_DIR, "openbox")
