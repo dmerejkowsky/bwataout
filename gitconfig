@@ -2,7 +2,6 @@
 
 [alias]
 	ci = commit
-	ck = cherry-pick
 	co = checkout
 	fp = fpush
 	fo = fetch origin
@@ -15,6 +14,10 @@
 	diffu = diff @{u}
 	diffo = diff origin/master
 	mend = commit --amend
+
+	ck = cherry-pick
+	ca = cherry-pick --abort
+	cx = cherry-pick -x
 
 	r = rebase-n-commits
 	ra = rebase --abort
