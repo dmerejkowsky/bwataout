@@ -79,6 +79,8 @@ alias cp="cp -iv"
 
 # Open pdf files with ./path/to/pdf
 alias -s pdf=evince
+
+alias tv="vlc http://mafreebox.freebox.fr/freeboxtv/playlist.m3u"
 # }}}
 
 # Pretty ls {{{
