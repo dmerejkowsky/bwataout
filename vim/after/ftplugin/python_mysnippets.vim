@@ -14,4 +14,4 @@ Snippet _str  def __str__(self):<CR><TAB><{}>
 
 Snippet pdb import pdb; pdb.set_trace()
 Snippet ipdb import ipdb; ipdb.set_trace()
-Snippet pylint # pylint:disable-msg=E<{}>
+Snippet pylint # pylint: disable=<{}>
