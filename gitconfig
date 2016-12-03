@@ -22,6 +22,7 @@
 	r = rebase-n-commits
 	ra = rebase --abort
 	rc = rebase --continue
+	rcr = commit-and-rebase
 	ri = rebase --interactive
 	ro = rebase -i origin/master
 	rs = rebase --skip

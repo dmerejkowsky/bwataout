@@ -1,0 +1,8 @@
+#!/bin/bash -e
+
+function main() {
+  git commit -a -v --no-verify
+  git rebase -i "HEAD~10"
+}
+
+main $@
