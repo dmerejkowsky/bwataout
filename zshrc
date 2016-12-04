@@ -195,9 +195,9 @@ function rm-swap() {
   rm -fr "$HOME/.local/share/nvim/swap"
 }
 
-# open the script you just run in $EDITOR
+# open the script you just ran in $EDITOR
 function vibin() {
-  # which is zsh is a builtin that works with aliases and functions,
+  # which is a builtin that works with aliases and functions,
   # prefer /usr/bin/which
   full_path=$(/usr/bin/which $1 2> /dev/null)
   if [[ $? -eq 0 ]] ; then
