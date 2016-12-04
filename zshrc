@@ -162,6 +162,22 @@ function gitar() {
   echo "archive generated in: ${output}"
 }
 
+function latest() {
+  echo $(\ls -t | head -n1)
+}
+
+# Move the latest downloaded file
+function mvdl() {
+  last=$(\ls -t "${HOME}/Downloads" | head -n1)
+  mv "${HOME}/Downloads/${last}" $@
+}
+
+# Play latest file in current directory
+function mpl() {
+  mpv "$(latest)"
+}
+
+
 # Open all the conflicting files in $EDITOR
 function resolve() {
   (gitcd && git diff --name-only --diff-filter=U | xargs $EDITOR)
