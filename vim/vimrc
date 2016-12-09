@@ -12,6 +12,7 @@ Plug 'dleonard0/pony-vim-syntax'
 Plug 'dmerejkowsky/vim-fugitive'
 Plug 'dmerejkowsky/vim-nerdtree'
 Plug 'ervandew/supertab', { 'tag' : '2.1' }
+Plug 'fatih/vim-go', { 'tag' : 'v1.10' }
 Plug 'fs111/pydoc.vim', { 'tag' : '2.0' }
 Plug 'gavinbeatty/dragvisuals.vim', { 'commit' : 'b6e6d418faf3ec8c40e49c099f82481c820ab098'}
 Plug 'godlygeek/tabular', { 'commit' : '60f25648814f0695eeb6c1040d97adca93c4e0bb' }
