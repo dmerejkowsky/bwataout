@@ -248,9 +248,6 @@ endfunction
 
 command! GdiffOff call GdiffOff()
 
-" Prevent NerdTree from interfering with TabNewEntered event
-let g:NERDTreeHijackNetrw=0
-
 " Autocommands {{{1
 " Remove trailing whitespaces when saving:
 augroup whitespaceclean
@@ -268,20 +265,29 @@ augroup spell
   autocmd filetype gitcommit  :setlocal spell spelllang=en
 augroup end
 
-if ! has("nvim")
-  " Change local working dir upon tab creation
-  function! TabNewWithCwD(newpath)
-    :execute "tabnew " . a:newpath
-    if isdirectory(a:newpath)
-      :execute "lcd " . a:newpath
+" Change local working dir upon tab creation
+function! TabNewWithCwD(newpath)
+  :execute "tabnew " . a:newpath
+  if isdirectory(a:newpath)
+    if has("nvim")
+      :execute "tcd " . a:newpath
     else
-      let dirname = fnamemodify(a:newpath, ":h")
+      :execute "lcd " . a:newpath
+    endif
+  else
+    let dirname = fnamemodify(a:newpath, ":h")
+    if has("nvim")
+      :execute "tcd " . dirname
+    else
       :execute "lcd " . dirname
     endif
-  endfunction
+  endif
+endfunction
 
-  command! -nargs=1 -complete=file TabNew :call TabNewWithCwD("<args>")
-endif
+command! -nargs=1 -complete=file TabNew :call TabNewWithCwD("<args>")
+
+" There's too many commands starting with :tab, I always want :TabNew
+cnoremap Tb TabNew <Space>
 
 
 " Special settings from vim files
@@ -294,20 +300,6 @@ augroup END
 " Register more extension for the zip plugin
 autocmd BufReadCmd *.aar,*.apk,*.jar,*pkg,*.whl call zip#Browse(expand("<amatch>"))
 
-" Neovim: call :tcd on tab creation
-if has("nvim")
-  function! OnTabEnter(path)
-    if isdirectory(a:path)
-      let dirname = a:path
-      execute ":NERDTreeInPlace " . dirname
-    else
-      let dirname = fnamemodify(a:path, ":h")
-    endif
-    execute "tcd ". dirname
-  endfunction()
-
-  autocmd TabNewEntered * call OnTabEnter(expand("<amatch>"))
-endif
 
 " Write cwd when leaving
 function! WriteCWD()
@@ -398,6 +390,3 @@ endif
 
 " Toggle NERDTree
 nnoremap <leader>r :NERDTreeToggle<CR> <bar> :only<cr>
-
-" There's too many commands starting with :tab, I always want :tabnew
-cnoremap Tb tabnew<Space>
