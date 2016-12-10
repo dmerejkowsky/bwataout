@@ -32,6 +32,7 @@ Plug 'tpope/vim-repeat', { 'rev' : 'v1.1' }
 Plug 'tpope/vim-sleuth', { 'rev' : '1.1' }
 Plug 'tpope/vim-surround', { 'tag' : 'v2.1' }
 Plug 'vim-scripts/a.vim', { 'tag' : '2.18' }
+Plug 'vim-scripts/indentpython.vim', { 'tag' : '0.3' }
 Plug 'vim-scripts/snippetsEmu', { 'tag' : '1.2.3'}
 if has("python")
   Plug 'mutewinter/swap-parameters', { 'commit' : '1e68c6bdf399b05449781e0dd8342086c97380b7'}
