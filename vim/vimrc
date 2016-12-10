@@ -19,7 +19,6 @@ Plug 'godlygeek/tabular', { 'commit' : '60f25648814f0695eeb6c1040d97adca93c4e0bb
 Plug 'idanarye/vim-smile', { 'tag' : '1.0.1' }
 Plug 'kana/vim-textobj-user',  { 'tag' : '0.7.1' }
 Plug 'kien/ctrlp.vim', { 'tag' : '1.79' }
-Plug 'kopischke/vim-stay', { 'tag' : 'v1.3.1' }
 Plug 'mbbill/undotree', { 'tag' : 'rel_4.3' }
 Plug 'peterhoeg/vim-qml'
 Plug 'rking/ag.vim', { 'commit' : 'f755abfb1c4e4e3f59f6cfa25ce16edb5af9e516' }
@@ -133,6 +132,16 @@ noremap Y y$
 set gdefault
 map Q gq
 
+" Jump to last cursor position unless it's invalid or in an event handler
+autocmd BufReadPost * call SetCursorPosition()
+function! SetCursorPosition()
+  if &filetype !~ 'git'
+    if line("'\"") > 0 && line("'\"") <= line("$")
+      exe "normal! g`\""
+      normal! zz
+    endif
+  endif
+endfunction
 " Always load those useful plugins:
 runtime! macros/matchit.vim
 if ! has("nvim")
