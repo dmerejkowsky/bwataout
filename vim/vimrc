@@ -205,6 +205,9 @@ command! MkdirP call MkdirP()
 
 " Plugins customizations {{{1
 
+" VimCompletesMe has this backwards
+let g:vcm_direction = 'p'
+
 " Tell snippy to use <C-Space> (tab conflicts with VimCompletesMe)
 if has("gui_running")
   let g:snippetsEmu_key = "<C-Space>"
