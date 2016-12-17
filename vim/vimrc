@@ -267,30 +267,6 @@ augroup spell
   autocmd filetype gitcommit  :setlocal spell spelllang=en
 augroup end
 
-" Change local working dir upon tab creation
-function! TabNewWithCwD(newpath)
-  :execute "tabnew " . a:newpath
-  if isdirectory(a:newpath)
-    if has("nvim")
-      :execute "tcd " . a:newpath
-    else
-      :execute "lcd " . a:newpath
-    endif
-  else
-    let dirname = fnamemodify(a:newpath, ":h")
-    if has("nvim")
-      :execute "tcd " . dirname
-    else
-      :execute "lcd " . dirname
-    endif
-  endif
-endfunction
-
-command! -nargs=1 -complete=file TabNew :call TabNewWithCwD("<args>")
-
-" There's too many commands starting with :tab, I always want :TabNew
-cnoremap Tb TabNew <Space>
-
 
 " Special settings from vim files
 augroup filetype_vim
@@ -309,6 +285,7 @@ function! WriteCWD()
 endfunction
 
 autocmd VimLeave * silent call WriteCWD()
+
 
 " Mapping and abbreviations {{{1
 
@@ -390,5 +367,58 @@ if has("nvim")
   tnoremap <Esc> <C-\><C-n>
 endif
 
-" Toggle NERDTree
-nnoremap <leader>r :NERDTreeToggle<CR> <bar> :only<cr>
+" CWD and tab stuff {{{1
+let g:NERDTreeHijackNetrw = 0
+let g:NERDTreeQuitOnOpen = 1
+
+if has("nvim")
+  function! OnTabEnter(newpath)
+    if isdirectory(a:newpath)
+      " If it's a directory,set working dir
+      " and open NERDTree right away
+      :execute "tcd " . a:newpath
+      :call nerdtree#checkForBrowse(a:newpath)
+    else
+      " else, just set working directory
+      let dirname = fnamemodify(a:newpath, ":h")
+      :execute "tcd " . dirname
+    endif
+  endfunction
+
+  autocmd TabNewEntered * call OnTabEnter(expand("<amatch>"))
+endif
+
+function! ToggleNerdTreeInPlace(path)
+  if bufname("%") =~ "NERD_tree_"
+    :normal `N
+  else
+    " create a mark so that we can go back later
+    :normal mN
+    :execute "NERDTree " . a:path
+  endif
+endfunction
+
+" TabNewWithCWD: just call :tabnew on neovim,
+" but use :lcd on vim where TabNewEntered event does
+" not exist
+function! TabNewWithCWD(newpath)
+  :execute "tabnew " . a:newpath
+  if ! has("nvim")
+    if isdirectory(a:newpath)
+      :execute "lcd " . a:newpath
+      NerdTreeInPlace(a:newpath)
+    else
+      let dirname = fnamemodify(a:newpath, ":h")
+      :execute "lcd " . dirname
+    endif
+  endif
+endfunction
+
+" Shortcut with :Tb:
+command! -nargs=1 -complete=file TabNew :call TabNewWithCWD("<args>")
+cnoremap Tb TabNew <Space>
+
+
+nnoremap <leader>r :call ToggleNerdTreeInPlace(getcwd())<cr>
+
+" }}}
