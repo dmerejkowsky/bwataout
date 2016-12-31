@@ -144,7 +144,7 @@ function smart_cd() {
 alias cd=smart_cd
 
 # go to a path relative to the git top dir
-function gitcd() {
+function gcd() {
   topdir=$(git rev-parse --show-toplevel)
   if [[ $? -ne 0 ]]; then
     return 1
