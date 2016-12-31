@@ -206,13 +206,7 @@ command! MkdirP call MkdirP()
 " Plugins customizations {{{1
 
 " Tell snippy to use <C-Space> (tab conflicts with Supertab)
-if has("gui_running")
-  let g:snippetsEmu_key = "<C-Space>"
-else
-  " for some reason when in a term, c-space
-  " is interpreted as c-@
-  let g:snippetsEmu_key = "<C-@>"
-endif
+let g:snippetsEmu_key = "<C-Space>"
 
 
 let g:ctrlp_working_path_mode = ""
