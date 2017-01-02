@@ -208,6 +208,8 @@ command! MkdirP call MkdirP()
 " Tell snippy to use <C-Space> (tab conflicts with Supertab)
 let g:snippetsEmu_key = "<C-Space>"
 
+let g:go_fmt_command = "goimports"
+
 
 let g:ctrlp_working_path_mode = ""
 
