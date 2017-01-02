@@ -1,0 +1,26 @@
+#!/bin/bash -e
+
+# Inspired by guyzmo's blog post[1]
+# Assume you have:
+#  * Several remotes (origin, github, ...)
+#  * A remote named 'all' containing the URLs for each configured remote
+# (This will be the case if you use git-repo[2])
+#
+#  [1] http://i.got.nothing.to/code/on/git:_how_to_setup_one_remote_with_multiple_url/
+#  [2] https://github.com/guyzmo/git-repo
+
+function main() {
+  if [[  $# -lt 1 ]] ; then
+    echo "Missing push arguments"
+    return 1
+  fi
+
+  git push all $*
+
+  # We want to fetch everything *but* the 'all' remote ...
+  for remote in $(git remote | grep -v -E '^all$') ; do
+    git fetch $remote
+  done
+}
+
+main $@
