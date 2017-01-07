@@ -11,7 +11,7 @@ function main() {
   fi
   git add $1
   # technically it could be a creation
-  git commit -m "update $1"
+  git commit -m "Update $1"
   git push
 }
 
