@@ -1,26 +1,24 @@
-#!/bin/bash -e
+#!/bin/env python3
 
-# Inspired by guyzmo's blog post[1]
-# Assume you have:
-#  * Several remotes (origin, github, ...)
-#  * A remote named 'all' containing the URLs for each configured remote
-# (This will be the case if you use git-repo[2])
-#
-#  [1] http://i.got.nothing.to/code/on/git:_how_to_setup_one_remote_with_multiple_url/
-#  [2] https://github.com/guyzmo/git-repo
+import subprocess
+import sys
 
-function main() {
-  if [[  $# -lt 1 ]] ; then
-    echo "Missing push arguments"
-    return 1
-  fi
+def main():
+    if len(sys.argv) == 1:
+        cmd = ["git", "push", "all", "master"]
+    else:
+        cmd = ["git", "push", "all"] + sys.argv[1:]
 
-  git push all $*
+    subprocess.check_call(cmd)
 
-  # We want to fetch everything *but* the 'all' remote ...
-  for remote in $(git remote | grep -v -E '^all$') ; do
-    git fetch $remote
-  done
-}
+    out = subprocess.check_output(["git", "remote"]).decode("utf-8")
+    remotes = [line.strip() for line in out.splitlines()]
+    remotes.remove("all")
 
-main $@
+    for remote in remotes:
+        cmd = ["git", "fetch", remote]
+        subprocess.check_call(cmd)
+
+
+if __name__ == "__main__":
+    main()
