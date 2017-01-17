@@ -1,6 +1,0 @@
-vim
----
-
-* get rid of CamelCaseMotion, replace by judicious omap commands
-* make :E call NERDTreeInPlace with "." when no arguments, or
-  with the path if relevant
