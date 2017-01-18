@@ -147,3 +147,6 @@ bar {
 # scratch pad
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
+
+# move up and down:
+bindsym $mod+u focus output down
