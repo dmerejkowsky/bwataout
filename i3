@@ -28,6 +28,8 @@ bindsym $mod+r exec i3-dmenu-desktop
 # lock the screen
 # (dm-tools works when using lightdm)
 bindsym $mod+x exec dm-tool lock
+# Copy password to clipboard
+bindsym $mod+p exec passmenu
 
 # change focus
 bindsym $mod+h focus left
