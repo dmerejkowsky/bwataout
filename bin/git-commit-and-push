@@ -1,0 +1,14 @@
+#!/usr/bin/python3
+
+import sys
+import subprocess
+
+def main():
+    message = sys.argv[1]
+    subprocess.check_call(["git", "commit", "--all",
+                           "--message", message])
+    subprocess.check_call(["git", "push"])
+
+
+if __name__ == "__main__":
+    main()

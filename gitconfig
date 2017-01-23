@@ -2,6 +2,7 @@
 
 [alias]
 	ci = commit
+	cp = commit-and-push
 	co = checkout
 	fp = fpush
 	fo = fetch origin
