@@ -17,6 +17,7 @@
 	mend = commit --amend
 
 	pa = push-all-and-fetch
+	prune-merged = !git branch --merged | grep dm/ | grep -v "\\*" | xargs -n1 git branch -d
 
 	ck = cherry-pick
 	ca = cherry-pick --abort
