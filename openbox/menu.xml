@@ -70,5 +70,10 @@
 				<prompt>no</prompt>
 			</action>
 		</item>
+		<item label="Suspend">
+			<action name="Execute">
+				<command>sudo systemctl suspend</command>
+			</action>
+		</item>
 	</menu>
 </openbox_menu>
