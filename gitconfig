@@ -4,6 +4,8 @@
 	ci = commit
 	cp = commit-and-push
 	co = checkout
+	fix = commit --fixup
+	sq = commit --squash
 	fp = fpush
 	fo = fetch origin
 	go = reset --hard
@@ -68,6 +70,7 @@
 
 [rebase]
 	stat = yes
+	autosquash = yes
 
 [rerere]
 	enabled = true
