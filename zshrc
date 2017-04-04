@@ -179,6 +179,10 @@ function mpl() {
   mpv "$(latest)"
 }
 
+# Edit the latest file
+function vil() {
+  vi "$(latest)"
+}
 
 # Open all the conflicting files in $EDITOR
 function resolve() {
