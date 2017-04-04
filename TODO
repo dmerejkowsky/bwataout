@@ -1,0 +1,1 @@
+patch vim-text-object so that `daf` selects the function _and_ its blank surroundings
