@@ -272,8 +272,25 @@ alias vi=vim
 
 # }}}
 
-# {{{ z
-source ~/.local/share/zsh/z/z.sh
+# {{{ fzf
+
+if [[ -d ~/.fzf ]] ; then
+  export PATH=$PATH:$HOME/.fzf/bin
+  source ~/.fzf/shell/key-bindings.zsh
+fi
+
+# re-implement autojump, but backed by fzf:
+#
+function register_cwd() {
+  cwd-history add $(pwd)
+}
+typeset -gaU chpwd_functions
+chpwd_functions+=register_cwd
+
+# notes:
+# * register-cwd is a Python script in bin/
+# * we use `register-cwd remove` in our fork of fzf's zsh
+#   bindings
 
 # }}}
 

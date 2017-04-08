@@ -127,6 +127,22 @@ def zsh_install_z():
         # it's convenient to have it to copy/paste the SHA1 ...
         subprocess.check_call(cmd, stderr=subprocess.PIPE)
 
+
+def install_fzf():
+    dest = os.path.expanduser("~/.fzf")
+    if os.path.exists(dest):
+        print("Skipping", dest)
+        return
+    print("Cloning fzf")
+    cmd = ["git", "clone", "--quiet",
+           "https://github.com/dmerejkowsky/fzf.git",
+           dest]
+    subprocess.check_call(cmd)
+    install_path = os.path.join(dest, "install")
+    cmd = ["bash", install_path, "--bin"]
+    subprocess.check_call(cmd)
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--enable-vim", action="store_true",
@@ -171,6 +187,9 @@ email =
     src = os.path.expanduser("~/.config/i3/config")
     dest = os.path.join(THIS_DIR, "i3")
     create_symlink_if_missing(src, dest)
+
+    # fzf
+    install_fzf()
 
     # mpv
     src = os.path.expanduser("~/.config/mpv/input.conf")
