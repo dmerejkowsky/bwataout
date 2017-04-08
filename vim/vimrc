@@ -196,6 +196,16 @@ endfunction()
 command! -nargs=0 CleanWhiteSpace :call CleanWhiteSpace()
 command! -nargs=0 RemoveBlankLinesAtTheEndOfFile :call RemoveBlankLinesAtTheEndOfFile()
 
+function ListWorkingDirs()
+  call fzf#run({
+        \ 'source': "cwd-history list",
+        \ 'sink': "cd"
+        \})
+endfunction
+
+command! -nargs=0 ListWorkingDirs :call ListWorkingDirs()
+nnoremap <leader>l :ListWorkingDirs<CR>
+
 
 " Convert DOS line endings to UNIX line endings
 
