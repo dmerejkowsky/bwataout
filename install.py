@@ -7,16 +7,19 @@ import os
 import subprocess
 import sys
 
+
 if sys.version_info.major == 2:
     from urllib import urlretrieve
 else:
     from urllib.request import urlretrieve
+
 
 THIS_DIR = os.path.abspath(os.path.dirname(__file__))
 
 def mkdir_p(path):
     if not os.path.exists(path):
         os.makedirs(path)
+
 
 def create_symlink_if_missing(src, dest):
     if os.path.exists(src):
@@ -27,6 +30,7 @@ def create_symlink_if_missing(src, dest):
     print(src, "->", dest)
     os.symlink(dest, src)
 
+
 def write_file_if_missing(path, contents):
     if os.path.exists(path):
         print("Skipping", path)
@@ -36,6 +40,7 @@ def write_file_if_missing(path, contents):
     mkdir_p(dirname)
     with open(path, "w") as fp:
         fp.write(contents)
+
 
 def vim_install(enable_vim=False):
     nvim_conf_dir = os.path.expanduser("~/.config/nvim")
@@ -106,6 +111,7 @@ def zsh_install_pure_prompt():
         full_dest = os.path.join(zsh_prompt_dir, dest)
         print("Retrieving", full_dest)
         urlretrieve(url, full_dest)
+
 
 def zsh_install_z():
     dest = os.path.expanduser("~/.local/share/zsh/z")
