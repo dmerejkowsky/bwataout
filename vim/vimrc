@@ -5,6 +5,9 @@ call plug#begin(expand('~/.local/share/nvim/bundle'))
 " Add this repo to the list:
 Plug  expand('<sfile>:h')
 
+" And fzf:
+set rtp+=~/.fzf
+
 " Other plugins from github
 Plug 'benekastah/neomake'
 Plug 'blueyed/vim-diminactive', { 'commit' : 'fce5469baa086ae4b72622dc1f81eda26df36e95'}
