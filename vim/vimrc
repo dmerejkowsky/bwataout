@@ -213,7 +213,6 @@ command! MkdirP call MkdirP()
 " Tell snippy to use <C-Space> (tab conflicts with Supertab)
 let g:snippetsEmu_key = "<C-Space>"
 
-let g:go_fmt_command = "goimports"
 
 
 let g:ctrlp_working_path_mode = ""
@@ -228,6 +227,8 @@ let g:go_highlight_extra_types=0
 let g:go_highlight_space_tab_error=0
 let g:go_highlight_trailing_whitespace_error=0
 
+" goimports is just a nicer `go fmt` ...
+let g:go_fmt_command = "goimports"
 " I find it annoying that fugitive does not define this
 function! Gadd()
   w
