@@ -72,6 +72,8 @@ else
   set clipboard=unnamed
 endif
 
+let mapleader=","
+
 " Backups with persistent undos
 set backup
 let g:dotvim_backups=expand('$HOME') . '/.local/share/nvim/backups'
@@ -285,9 +287,6 @@ autocmd VimLeave * silent call WriteCWD()
 
 " Mapping and abbreviations {{{1
 
-
-" I prefer , for mapleader rather than \
-let mapleader=","
 
 nnoremap <leader>t :GFiles<CR>
 nnoremap <leader>p :History<CR>
