@@ -289,7 +289,7 @@ autocmd VimLeave * silent call WriteCWD()
 " I prefer , for mapleader rather than \
 let mapleader=","
 
-nnoremap <leader>t :Files<CR>
+nnoremap <leader>t :GFiles<CR>
 nnoremap <leader>p :History<CR>
 nnoremap <leader>b :Buffers<CR>
 
