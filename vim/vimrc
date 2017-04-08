@@ -229,13 +229,6 @@ let g:go_highlight_trailing_whitespace_error=0
 
 " goimports is just a nicer `go fmt` ...
 let g:go_fmt_command = "goimports"
-" I find it annoying that fugitive does not define this
-function! Gadd()
-  w
-  !git add %
-endfunction
-
-command! Gadd call Gadd()
 
 " Use the lazy git-fpush command
 function! Gfpush()
