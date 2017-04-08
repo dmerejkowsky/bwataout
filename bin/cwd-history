@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
-import os
 import argparse
+import os
+import subprocess
 
 
 def get_db_path():
@@ -40,18 +41,35 @@ def remove_from_db(path):
         write_db(paths)
 
 
+def list_db():
+    paths = read_db()
+    print("\n".join(paths))
+
+
+def edit_db():
+    paths = read_db()
+    db_path = get_db_path()
+    cmd = ["vim", db_path]
+    subprocess.call(cmd)
+
+
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("action", choices=["add", "remove"])
-    parser.add_argument("path")
+    parser.add_argument("action", choices=["add", "remove", "list", "edit"])
+    parser.add_argument("path", nargs="?")
 
     args = parser.parse_args()
     path = args.path
+    action = args.action
 
-    if args.action == "add":
+    if action == "add":
         add_to_db(path)
-    else:
+    elif action == "remove":
         remove_from_db(path)
+    elif action == "list":
+        list_db()
+    elif action == "edit":
+        edit_db()
 
 
 if __name__ == "__main__":
