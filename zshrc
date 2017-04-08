@@ -287,6 +287,11 @@ function register_cwd() {
 typeset -gaU chpwd_functions
 chpwd_functions+=register_cwd
 
+# add re-add a z() function, just in case
+function z() {
+  cd $(cwd-history list | grep $1 | fzf --tac)
+}
+
 # notes:
 # * register-cwd is a Python script in bin/
 # * we use `register-cwd remove` in our fork of fzf's zsh
