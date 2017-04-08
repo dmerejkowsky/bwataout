@@ -282,7 +282,7 @@ fi
 # re-implement autojump, but backed by fzf:
 #
 function register_cwd() {
-  cwd-history add $(pwd)
+  cwd-history add "$(pwd)"
 }
 typeset -gaU chpwd_functions
 chpwd_functions+=register_cwd
