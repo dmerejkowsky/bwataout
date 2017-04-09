@@ -135,7 +135,7 @@ def install_fzf():
         return
     print("Cloning fzf")
     cmd = ["git", "clone", "--quiet",
-           "git@github.com/dmerejkowsky:fzf.git",
+           "git@github.com:dmerejkowsky/fzf.git",
            dest]
     subprocess.check_call(cmd)
     install_path = os.path.join(dest, "install")
