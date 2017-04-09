@@ -113,21 +113,6 @@ def zsh_install_pure_prompt():
         urlretrieve(url, full_dest)
 
 
-def zsh_install_z():
-    dest = os.path.expanduser("~/.local/share/zsh/z")
-    if not os.path.exists(dest):
-        cmd = ["git", "clone", "--quiet",
-               "--branch", "v1.9",
-               "--depth", "1",
-               "https://github.com/rupa/z",
-               dest]
-        # Sadly, need to suppress the stderr to hide the
-        # 'detached HEAD' warning
-        # We could use git-config tu suppress the advice, but
-        # it's convenient to have it to copy/paste the SHA1 ...
-        subprocess.check_call(cmd, stderr=subprocess.PIPE)
-
-
 def install_fzf():
     dest = os.path.expanduser("~/.fzf")
     if os.path.exists(dest):
@@ -243,7 +228,6 @@ if [ -f "${{HOME}}/.zshrc.local" ] ; then
 fi
 """.format(THIS_DIR))
     zsh_install_pure_prompt()
-    zsh_install_z()
 
 
 if __name__ == "__main__":
