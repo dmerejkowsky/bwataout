@@ -280,7 +280,10 @@ if [[ -d ~/.fzf ]] ; then
 fi
 
 # re-implement autojump, but backed by fzf:
-#
+# notes:
+# * register-cwd is a Python script in bin/
+# * we use `register-cwd remove` in our fork of fzf's zsh
+#   bindings
 function register_cwd() {
   cwd-history add "$(pwd)"
 }
@@ -292,10 +295,17 @@ function z() {
   cd $(cwd-history list | grep $1 | fzf --tac)
 }
 
-# notes:
-# * register-cwd is a Python script in bin/
-# * we use `register-cwd remove` in our fork of fzf's zsh
-#   bindings
+# bind CTRL-N and CTRL-P to navigate in history
+# Note have CTRL-N is 'previous', and CTRL-P is
+# 'next', that's because in dvorak (and on mac),
+# CTRL-N is much easier to type :)
+autoload -U up-line-or-beginnig-search
+autoload -U down-line-or-beginnig-search
+zle -N up-line-or-beginnig-search
+zle -N down-line-or-beginnig-search
+bindkey '^N' up-line-or-history
+bindkey '^P' down-line-or-history
+
 
 # }}}
 
