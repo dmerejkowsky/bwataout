@@ -170,10 +170,9 @@ if os == 'Darwin' || os == 'Mac'
   set background=light
 else
   se background=dark
+  " To work with vim-diminish, active window will be the transparent one:
+  hi ColorColumn ctermbg=0
 endif
-
-" To work with vim-diminish, active window will be the transparent one:
-hi ColorColumn ctermbg=0
 
 " Custom functions {{{1
 " Remove trailing whitespace
