@@ -49,8 +49,8 @@ def list_db():
 def edit_db():
     paths = read_db()
     db_path = get_db_path()
-    cmd = ["vim", db_path]
-    subprocess.call(cmd)
+    editor = os.environ.get("EDITOR") or "vim"
+    subprocess.call([editor, db_path])
 
 
 def main():
