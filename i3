@@ -152,3 +152,8 @@ bindsym $mod+minus scratchpad show
 
 # move up and down:
 bindsym $mod+u focus output down
+
+# sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
