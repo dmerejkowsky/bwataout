@@ -292,7 +292,11 @@ chpwd_functions+=register_cwd
 
 # add re-add a z() function, just in case
 function z() {
-  cd "$(cwd-history list | grep --ignore-case $1 | fzf --tac)"
+  ret="$(cwd-history list | grep --ignore-case $1 | fzf --tac)"
+  builtin cd "${ret}"
+  if [[ $? -ne 0 ]]; then
+    cwd-history remove "${ret}"
+  fi
 }
 
 # bind CTRL-N and CTRL-P to navigate in history
