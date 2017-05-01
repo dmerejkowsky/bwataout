@@ -53,7 +53,8 @@ def list_db():
 def edit_db():
     paths = read_db()
     db_path = get_db_path()
-    subprocess.call(["sqlite3", db_path])
+    editor = os.environ.get("EDITOR") or "vim"
+    subprocess.call([editor, db_path])
 
 
 def main():
