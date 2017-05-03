@@ -27,6 +27,7 @@ def write_db(entries):
     with open(db_path, "w") as fp:
         json.dump(entries, fp, indent=2)
 
+
 def add_to_db(path):
     entries = read_db()
     if path in entries:
@@ -43,6 +44,18 @@ def remove_from_db(path):
         write_db(entries)
 
 
+def clean_db():
+    cleaned = 0
+    entries = read_db()
+    for path in list(entries.keys()):
+        if not os.path.exists(path):
+            cleaned += 1
+            del entries[path]
+    if cleaned:
+        print("Cleaned", cleaned, "entries")
+        write_db(entries)
+
+
 def list_db():
     entries = read_db()
     sorted_entries = sorted(entries.items(),
@@ -51,7 +64,6 @@ def list_db():
 
 
 def edit_db():
-    paths = read_db()
     db_path = get_db_path()
     editor = os.environ.get("EDITOR") or "vim"
     subprocess.call([editor, db_path])
@@ -59,7 +71,8 @@ def edit_db():
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("action", choices=["add", "remove", "list", "edit"])
+    parser.add_argument("action",
+                        choices=["add", "clean", "edit", "list", "remove"])
     parser.add_argument("path", nargs="?")
 
     args = parser.parse_args()
@@ -68,13 +81,14 @@ def main():
 
     if action == "add":
         add_to_db(path)
-    elif action == "remove":
-        remove_from_db(path)
-    elif action == "list":
-        list_db()
+    elif action == "clean":
+        clean_db()
     elif action == "edit":
         edit_db()
-
+    elif action == "list":
+        list_db()
+    elif action == "remove":
+        remove_from_db(path)
 
 if __name__ == "__main__":
     main()
