@@ -54,6 +54,8 @@ def clean_db():
     if cleaned:
         print("Cleaned", cleaned, "entries")
         write_db(entries)
+    else:
+        print("Nothing to do")
 
 
 def list_db():
