@@ -29,6 +29,7 @@ def write_db(entries):
 
 
 def add_to_db(path):
+    path = os.path.realpath(path)
     entries = read_db()
     if path in entries:
         entries[path] += 1
