@@ -195,7 +195,7 @@ endfunction()
 command! -nargs=0 CleanWhiteSpace :call CleanWhiteSpace()
 command! -nargs=0 RemoveBlankLinesAtTheEndOfFile :call RemoveBlankLinesAtTheEndOfFile()
 
-function ListWorkingDirs()
+function! ListWorkingDirs()
   call fzf#run({
         \ 'source': "cwd-history list",
         \ 'sink': "cd"
