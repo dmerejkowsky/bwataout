@@ -126,8 +126,6 @@ set nojoinspaces
 " search settings
 set nohlsearch
 set incsearch
-set ignorecase
-set smartcase
 
 " Remove menu bar from GUI
 let did_install_default_menus = 1
@@ -157,6 +155,7 @@ if ! has("nvim")
 endif
 
 " These are overloaded in the various ftplugin/ scripts
+set number
 set shiftwidth=2
 set expandtab
 set smarttab
