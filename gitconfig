@@ -37,6 +37,7 @@
 
 	st = status --branch
 
+	hub = repo hub
 [color]
 	ui = auto
 
