@@ -294,10 +294,7 @@ chpwd_functions+=register_cwd
 # add re-add a z() function, just in case
 function z() {
   cwd_list=$(cwd-history list)
-  if [[ -n $1 ]]; then
-    cwd_list=$(echo $cwd_list | grep --ignore-case $1)
-  fi
-  ret="$(echo $cwd_list| fzf --tac)"
+  ret="$(echo $cwd_list| fzf --tac --query=${1})"
   builtin cd "${ret}"
   if [[ $? -ne 0 ]]; then
     cwd-history remove "${ret}"
