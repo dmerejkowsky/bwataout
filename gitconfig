@@ -7,6 +7,7 @@
 	fix = commit --fixup
 	sq = commit --squash
 	fp = fpush
+	fu = fetch upstream
 	fo = fetch origin
 	go = reset --hard
 	gou = reset --hard @{u}
