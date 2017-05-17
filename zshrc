@@ -276,6 +276,7 @@ alias vi=vim
 
 if [[ -d ~/.fzf ]] ; then
   export PATH=$PATH:$HOME/.fzf/bin
+  source ~/.fzf/shell/completion.zsh
   source ~/.fzf/shell/key-bindings.zsh
 fi
 
