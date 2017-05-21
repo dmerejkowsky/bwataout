@@ -387,7 +387,7 @@ if has("nvim")
 endif
 
 " CWD and tab stuff {{{1
-let g:NERDTreeHijackNetrw = 0
+let g:NERDTreeHijackNetrw = 1
 let g:NERDTreeQuitOnOpen = 1
 
 if has("nvim")
