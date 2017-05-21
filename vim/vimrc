@@ -392,6 +392,7 @@ endif
 " CWD and tab stuff {{{1
 let g:NERDTreeHijackNetrw = 1
 let g:NERDTreeQuitOnOpen = 1
+let g:NERDTreeChDirMode = 2
 
 function! ToggleNerdTreeInPlace(path)
   if bufname("%") =~ "NERD_tree_"
