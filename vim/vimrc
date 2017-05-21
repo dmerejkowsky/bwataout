@@ -155,7 +155,6 @@ if ! has("nvim")
 endif
 
 " These are overloaded in the various ftplugin/ scripts
-set number
 set shiftwidth=2
 set expandtab
 set smarttab
@@ -295,7 +294,7 @@ autocmd VimLeave * silent call WriteCWD()
 
 " Mapping and abbreviations {{{1
 
-
+nnoremap <leader>n :windo :set number!<CR>
 nnoremap <leader>t :GFiles<CR>
 nnoremap <leader>p :History<CR>
 nnoremap <leader>b :Buffers<CR>
