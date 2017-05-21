@@ -340,7 +340,17 @@ cnoremap %% <C-R>=expand('%h').'/'<cr>
 
 " 'cd' towards the dir in which the current file is edited
 " but only change the path for the current window
-noremap <leader>cd :lcd %:h<CR>
+function! CdInCurrentBuf()
+  let current_buf_name = bufname("%")
+  if current_buf_name =~ "NERD_tree_"
+    let l:path = b:NERDTreeRoot.path.str()
+    :execute "tcd" . l:path
+  else
+    :lcd %:h
+  endif
+
+endfunction()
+noremap <leader>cd :call CdInCurrentBuf()<CR>
 
 " Open files located in the same dir in with the current file is edited
 nnoremap <leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
@@ -428,6 +438,7 @@ command! -nargs=1 -complete=file TabNew :call TabNewWithCWD("<args>")
 cnoremap Tb TabNew <Space>
 
 
-nnoremap <leader>r :call ToggleNerdTreeInPlace(getcwd())<cr>
+nnoremap <leader>R :call ToggleNerdTreeInPlace(getcwd())<cr>
+nnoremap <leader>r :NERDTree<space>
 
 " }}}
