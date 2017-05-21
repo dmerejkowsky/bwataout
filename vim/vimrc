@@ -148,6 +148,7 @@ function! SetCursorPosition()
     endif
   endif
 endfunction
+
 " Always load those useful plugins:
 runtime! macros/matchit.vim
 if ! has("nvim")
@@ -295,7 +296,9 @@ autocmd VimLeave * silent call WriteCWD()
 " Mapping and abbreviations {{{1
 
 nnoremap <leader>n :windo :set number!<CR>
+nnoremap <leader>tb :tabnew<space>
 nnoremap <leader>t :GFiles<CR>
+nnoremap <leader>T :Files<CR>
 nnoremap <leader>p :History<CR>
 nnoremap <leader>b :Buffers<CR>
 
@@ -346,7 +349,7 @@ function! CdInCurrentBuf()
     let l:path = b:NERDTreeRoot.path.str()
     :execute "tcd" . l:path
   else
-    :lcd %:h
+    :tcd %:h
   endif
 
 endfunction()
@@ -390,23 +393,6 @@ endif
 let g:NERDTreeHijackNetrw = 1
 let g:NERDTreeQuitOnOpen = 1
 
-if has("nvim")
-  function! OnTabEnter(newpath)
-    if isdirectory(a:newpath)
-      " If it's a directory,set working dir
-      " and open NERDTree right away
-      :execute "tcd " . a:newpath
-      :call nerdtree#checkForBrowse(a:newpath)
-    else
-      " else, just set working directory
-      let dirname = fnamemodify(a:newpath, ":h")
-      :execute "tcd " . dirname
-    endif
-  endfunction
-
-  autocmd TabNewEntered * call OnTabEnter(expand("<amatch>"))
-endif
-
 function! ToggleNerdTreeInPlace(path)
   if bufname("%") =~ "NERD_tree_"
     :normal `N
@@ -416,27 +402,6 @@ function! ToggleNerdTreeInPlace(path)
     :execute "NERDTree " . a:path
   endif
 endfunction
-
-" TabNewWithCWD: just call :tabnew on neovim,
-" but use :lcd on vim where TabNewEntered event does
-" not exist
-function! TabNewWithCWD(newpath)
-  :execute "tabnew " . a:newpath
-  if ! has("nvim")
-    if isdirectory(a:newpath)
-      :execute "lcd " . a:newpath
-      NerdTreeInPlace(a:newpath)
-    else
-      let dirname = fnamemodify(a:newpath, ":h")
-      :execute "lcd " . dirname
-    endif
-  endif
-endfunction
-
-" Shortcut with :Tb:
-command! -nargs=1 -complete=file TabNew :call TabNewWithCWD("<args>")
-cnoremap Tb TabNew <Space>
-
 
 nnoremap <leader>R :call ToggleNerdTreeInPlace(getcwd())<cr>
 nnoremap <leader>r :NERDTree<space>
