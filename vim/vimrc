@@ -1,4 +1,4 @@
-" Vim Plug {{{1
+let os=substitute(system('uname'), '\n', '', '')
 
 call plug#begin(expand('~/.local/share/nvim/bundle'))
 
@@ -10,7 +10,9 @@ set rtp+=~/.fzf
 
 " Other plugins from github
 Plug 'benekastah/neomake'
-Plug 'blueyed/vim-diminactive', { 'commit' : 'fce5469baa086ae4b72622dc1f81eda26df36e95'}
+if os != 'Darwin'
+  Plug 'blueyed/vim-diminactive', { 'commit' : 'fce5469baa086ae4b72622dc1f81eda26df36e95'}
+endif
 Plug 'bps/vim-textobj-python', { 'commit' : '83c97d9aaae74a7c35b092bae59ef5339723dd9b'}
 Plug 'dleonard0/pony-vim-syntax'
 Plug 'dmerejkowsky/fzf.vim'
@@ -163,13 +165,17 @@ set smartindent
 set tabstop=4
 
 " Colors {{{1
-let os=substitute(system('uname'), '\n', '', '')
+" On linux I use a term with transparency, so:
+"   * I want a dark background
+"   * I want the non-active window to have a black background)
+"     (the active window will be the one transparent, which is nice)
+" On mac, I prefer keeping the 'black on white' setting, and I have
+" no use for vim-diminactive
 " has('mac') only works on macvim ...
-if os == 'Darwin' || os == 'Mac'
+if os == 'Darwin'
   set background=light
 else
   se background=dark
-  " To work with vim-diminish, active window will be the transparent one:
   hi ColorColumn ctermbg=0
 endif
 
