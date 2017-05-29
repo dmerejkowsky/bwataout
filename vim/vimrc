@@ -235,15 +235,7 @@ command! MkdirP call MkdirP()
 " Plugins customizations {{{1
 
 " Tell snippy to use <C-Space> (tab conflicts with Supertab)
-" Unfortunately the key is named differently on macOS, Ubuntu and
-" ArchLinux ...
-if ! onArchLinux && os != "Darwin"
-  let g:snippetsEmu_key = "<C-@>"
-else
-  let g:snippetsEmu_key = "<C-Space>"
-endif
-
-
+let g:snippetsEmu_key = "<C-Space>"
 
 " Status line (requires VimBuddy plugin to be present)
 set statusline=%{VimBuddy()}\ [%n]\ %<%f\ %{fugitive#statusline()}%h%m%r%=%-14.(%l,%c%V%)\ %P\ %a
