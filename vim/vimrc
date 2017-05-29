@@ -108,6 +108,8 @@ set title
 " Allow completion on filenames right after a '='.
 " Uber-useful when editing bash scripts
 set isfname-==
+" Also allow file names to contain spaces
+set isfname+=32
 
 " Disable ex
 nnoremap Q gq
