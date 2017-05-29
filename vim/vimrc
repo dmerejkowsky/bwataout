@@ -1,4 +1,9 @@
 let os=substitute(system('uname'), '\n', '', '')
+let onArchLinux=0
+let kernelVersion=system("uname --kernel-version")
+if kernelVersion =~ "ARCH"
+  onArchLinux=1
+endif
 
 call plug#begin(expand('~/.local/share/nvim/bundle'))
 
@@ -230,7 +235,13 @@ command! MkdirP call MkdirP()
 " Plugins customizations {{{1
 
 " Tell snippy to use <C-Space> (tab conflicts with Supertab)
-let g:snippetsEmu_key = "<C-Space>"
+" Unfortunately the key is named differently on macOS, Ubuntu and
+" ArchLinux ...
+if ! onArchLinux
+  let g:snippetsEmu_key = "<C-@>"
+else
+  let g:snippetsEmu_key = "<C-Space>"
+endif
 
 
 
