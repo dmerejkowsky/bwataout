@@ -237,7 +237,7 @@ command! MkdirP call MkdirP()
 " Tell snippy to use <C-Space> (tab conflicts with Supertab)
 " Unfortunately the key is named differently on macOS, Ubuntu and
 " ArchLinux ...
-if ! onArchLinux
+if ! onArchLinux && os != "Darwin"
   let g:snippetsEmu_key = "<C-@>"
 else
   let g:snippetsEmu_key = "<C-Space>"
