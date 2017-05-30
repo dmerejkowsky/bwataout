@@ -44,14 +44,17 @@ def remove_from_db(path):
 
 def clean_db():
     cleaned = 0
-    entries = read_db()
-    for path in list(entries.keys()):
-        if not os.path.exists(path):
+    paths = read_db()
+    paths_to_keep = list()
+    for path in paths:
+        if os.path.exists(path):
+            paths_to_keep.append(path)
+        else:
             cleaned += 1
-            del entries[path]
+
     if cleaned:
         print("Cleaned", cleaned, "entries")
-        write_db(entries)
+        write_db(paths_to_keep)
     else:
         print("Nothing to do")
 
