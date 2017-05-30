@@ -1,69 +1,67 @@
 #!/usr/bin/env python3
 
 import argparse
-import operator
 import os
 import subprocess
-import json
 
 
 def get_db_path():
     zsh_share_path = os.path.expanduser("~/.local/share/zsh")
     os.makedirs(zsh_share_path, exist_ok=True)
-    db_path = os.path.join(zsh_share_path, "cwd.json")
+    db_path = os.path.join(zsh_share_path, "cwd_history")
     return db_path
 
 
 def read_db():
     db_path = get_db_path()
-    data = dict()
     if os.path.exists(db_path):
         with open(db_path, "r") as fp:
-            data = json.load(fp)
-    return data
+            return [x.strip() for x in fp.readlines()]
+    else:
+        return list()
 
-def write_db(entries):
+
+def write_db(paths):
     db_path = get_db_path()
     with open(db_path, "w") as fp:
-        json.dump(entries, fp, indent=2)
+        fp.writelines(sorted(x + "\n" for x in paths))
+
 
 
 def add_to_db(path):
-    path = os.path.realpath(path)
-    entries = read_db()
-    if path in entries:
-        entries[path] += 1
-    else:
-        entries[path] = 1
-    write_db(entries)
+    paths = read_db()
+    if path not in paths:
+        paths.append(path)
+        write_db(paths)
 
 
 def remove_from_db(path):
-    entries = read_db()
-    if path in entries:
-        del entries[path]
-        write_db(entries)
+    paths = read_db()
+    if path in paths:
+        paths.remove(path)
+        write_db(paths)
 
 
 def clean_db():
     cleaned = 0
-    entries = read_db()
-    for path in list(entries.keys()):
-        if not os.path.exists(path):
+    paths = read_db()
+    paths_to_keep = list()
+    for path in paths:
+        if os.path.exists(path):
+            paths_to_keep.append(path)
+        else:
             cleaned += 1
-            del entries[path]
+
     if cleaned:
         print("Cleaned", cleaned, "entries")
-        write_db(entries)
+        write_db(paths_to_keep)
     else:
         print("Nothing to do")
 
 
 def list_db():
-    entries = read_db()
-    sorted_entries = sorted(entries.items(),
-                            key=operator.itemgetter(1))
-    print("\n".join(x[0] for x in sorted_entries))
+    paths = read_db()
+    print("\n".join(paths))
 
 
 def edit_db():
