@@ -24,15 +24,17 @@ def read_db():
 def write_db(paths):
     db_path = get_db_path()
     with open(db_path, "w") as fp:
-        fp.writelines(sorted(x + "\n" for x in paths))
+        fp.writelines(x + "\n" for x in paths)
 
 
 
 def add_to_db(path):
+    # Make sure the latest past is always at the *end* of the list:
     paths = read_db()
-    if path not in paths:
-        paths.append(path)
-        write_db(paths)
+    if path in paths:
+        paths.remove(path)
+    paths.append(path)
+    write_db(paths)
 
 
 def remove_from_db(path):
