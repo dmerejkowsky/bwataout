@@ -82,7 +82,7 @@ alias -s pdf=evince
 
 alias gg="git gui &!"
 
-alias tv="vlc http://mafreebox.freebox.fr/freeboxtv/playlist.m3u"
+alias tv="vlc http://mafreebox.freebox.fr/freeboxtv/playlist.m3u &!"
 # }}}
 
 # Pretty ls {{{
