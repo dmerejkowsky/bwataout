@@ -1,6 +1,8 @@
 # Vim
 *.swp
 
+.vscode/
+
 # QtCreator
 CMakeLists.txt.user
 *.autosave
