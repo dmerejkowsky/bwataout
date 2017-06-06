@@ -14,7 +14,6 @@ Plug  expand('<sfile>:h')
 set rtp+=~/.fzf
 
 " Other plugins from github
-Plug 'benekastah/neomake'
 if os != 'Darwin'
   Plug 'blueyed/vim-diminactive', { 'commit' : 'fce5469baa086ae4b72622dc1f81eda26df36e95'}
 endif
@@ -46,6 +45,7 @@ Plug 'tpope/vim-surround', { 'tag' : 'v2.1' }
 Plug 'vim-scripts/a.vim', { 'tag' : '2.18' }
 Plug 'vim-scripts/indentpython.vim', { 'tag' : '0.3' }
 Plug 'vim-scripts/snippetsEmu', { 'tag' : '1.2.3'}
+Plug 'w0rp/ale', { 'tag' : 'v1.3.0' }
 if has("python")
   Plug 'mutewinter/swap-parameters', { 'commit' : '1e68c6bdf399b05449781e0dd8342086c97380b7'}
 endif
@@ -235,6 +235,14 @@ endfunction
 command! MkdirP call MkdirP()
 
 " Plugins customizations {{{1
+
+" Tell ALE to:
+" * only run on file save
+" * use the quickfix only
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
 
 " Tell snippy to use <C-Space> (tab conflicts with Supertab)
 let g:snippetsEmu_key = "<C-Space>"
