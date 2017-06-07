@@ -7,5 +7,10 @@
     {
         "key": "ctrl+shift+t",
         "command": "workbench.action.showCommands"
+    },
+    {
+        "key": "ctrl+m",
+        "command": "workbench.action.tasks.runTask",
+        "args": "lint"
     }
 ]
