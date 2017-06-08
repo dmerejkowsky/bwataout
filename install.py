@@ -180,7 +180,11 @@ email =
     src = os.path.expanduser("~/.config/mpv/input.conf")
     dest = os.path.join(THIS_DIR, "mpv/input.conf")
     create_symlink_if_missing(src, dest)
+    src = os.path.expanduser("~/.config/mpv/mpv.conf")
+    dest = os.path.join(THIS_DIR, "mpv/mpv.conf")
+    create_symlink_if_missing(src, dest)
 
+    # npm
     # allow to use `npm install -g` _without_ being root
     src = os.path.expanduser("~/.npmrc")
     write_file_if_missing(src, "prefix=%s\n" % os.path.expanduser("~/.local"))
