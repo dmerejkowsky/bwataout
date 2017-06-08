@@ -158,9 +158,6 @@ endfunction
 
 " Always load those useful plugins:
 runtime! macros/matchit.vim
-if ! has("nvim")
-  runtime! ftplugin/man.vim
-endif
 
 " These are overloaded in the various ftplugin/ scripts
 set shiftwidth=2
@@ -362,7 +359,7 @@ cnoremap <C-P> <Up>
 cnoremap %% <C-R>=expand('%h').'/'<cr>
 
 " 'cd' towards the dir in which the current file is edited
-" but only change the path for the current window
+" but only change the path for the current tab
 function! CdInCurrentBuf()
   let current_buf_name = bufname("%")
   if current_buf_name =~ "NERD_tree_"
@@ -405,9 +402,7 @@ vnoremap  <expr>  D        DVB_Duplicate()
 let g:DVB_TrimWS=0
 
 " Escape from terminal mode by pressing escape
-if has("nvim")
-  tnoremap <Esc> <C-\><C-n>
-endif
+tnoremap <Esc> <C-\><C-n>
 
 " CWD and tab stuff {{{1
 let g:NERDTreeHijackNetrw = 1
