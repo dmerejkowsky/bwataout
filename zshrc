@@ -280,11 +280,8 @@ if [[ -d ~/.fzf ]] ; then
   source ~/.fzf/shell/key-bindings.zsh
 fi
 
-# re-implement autojump, but backed by fzf:
-# notes:
-# * register-cwd is a Python script in bin/
-# * we use `register-cwd remove` in our fork of fzf's zsh
-#   bindings
+# re-implement 'z', but backed by fzf
+# and the registerscwd script in bin/
 function register_cwd() {
   cwd-history add "$(pwd)"
 }
