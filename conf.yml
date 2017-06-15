@@ -64,7 +64,7 @@ tint2:
 
 neovim:
   - fetch:
-    - https://raw.githubusercontent.com/junegunn/vim-plug/0.7.2/plug.vim
+    - https://raw.githubusercontent.com/junegunn/vim-plug/0.9.1/plug.vim
     - ~/.config/nvim/autoload/plug.vim
   - write:
     - ~/.config/nvim/init.local.vim
