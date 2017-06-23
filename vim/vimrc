@@ -80,6 +80,7 @@ endif
 
 let mapleader=","
 
+set noswapfile
 " Backups with persistent undos
 set backup
 let g:dotvim_backups=expand('$HOME') . '/.local/share/nvim/backups'
