@@ -91,9 +91,22 @@ xinitrc:
       # Run your window manager from here
 
 zsh:
+  - write:
+    - ~/.zshrc
+    - |
+      # Auto-generated. Do not edit
+      source "{this_dir}/zshrc"
+      source "{home}/.zshrc.local"
+
+  - write:
+    - ~/.zshrc.local
+    - |
+      # Put your local settings here
+
   - fetch:
     - https://raw.githubusercontent.com/dmerejkowsky/zsh-pure-prompt/master/pure.zsh
     - ~/.local/share/zsh/pure-prompt/prompt_pure_setup
+
   - fetch:
     - https://raw.githubusercontent.com/dmerejkowsky/zsh-pure-prompt/master/async.zsh
     - ~/.local/share/zsh/pure-prompt/async
