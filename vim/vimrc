@@ -205,7 +205,8 @@ command! -nargs=0 RemoveBlankLinesAtTheEndOfFile :call RemoveBlankLinesAtTheEndO
 function! ListWorkingDirs()
   call fzf#run({
         \ 'source': "cwd-history list",
-        \ 'sink': "tcd"
+        \ 'sink': "tcd",
+        \ 'options': "--exact"
         \})
 endfunction
 

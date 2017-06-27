@@ -289,10 +289,11 @@ typeset -gaU chpwd_functions
 chpwd_functions+=register_cwd
 
 export FZF_DEFAULT_OPTS="--tac --no-sort"
+export FZF_CTRL_R_OPTS="--exact"
 
 function z() {
   cwd_list=$(cwd-history list)
-  ret="$(echo $cwd_list| fzf --exact --tac --no-sort  --query=${1})"
+  ret="$(echo $cwd_list| fzf --exact --query=${1})"
   builtin cd "${ret}"
   if [[ $? -ne 0 ]]; then
     cwd-history remove "${ret}"
