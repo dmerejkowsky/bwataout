@@ -288,6 +288,8 @@ function register_cwd() {
 typeset -gaU chpwd_functions
 chpwd_functions+=register_cwd
 
+export FZF_DEFAULT_OPTS="--tac --no-sort"
+
 function z() {
   cwd_list=$(cwd-history list)
   ret="$(echo $cwd_list| fzf --exact --tac --no-sort  --query=${1})"
