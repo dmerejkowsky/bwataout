@@ -1,0 +1,5 @@
+colorama
+unidecode
+ruamel.yaml
+path.py
+neovim
