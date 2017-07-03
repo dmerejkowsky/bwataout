@@ -21,6 +21,16 @@ git:
       [include]
       path = {this_dir}/gitconfig
       path = {home}/.config/git/config.local
+  - write:
+    - ~/.config/git/config.local
+    - |
+      # Configure your user here
+      [user]
+      name =
+      email =
+
+      # vim: set filetype=gitconfig:
+
 
 i3:
   - symlink:
