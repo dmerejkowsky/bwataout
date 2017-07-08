@@ -31,7 +31,6 @@ git:
 
       # vim: set filetype=gitconfig:
 
-
 i3:
   - symlink:
     - i3
@@ -50,7 +49,7 @@ npm:
     - ~/.npmrc
     - |
       # Allow using npm install -g without being root
-      prefix = ~/.local/npm
+      prefix = ~/.local/share/node/
 
 openbox:
   - symlink:
