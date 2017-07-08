@@ -11,8 +11,9 @@ try:
 except ImportError:
     HAS_NEOVIM_PYTHON = False
 
-SOCKET_PATH="/tmp/neovim"
-CWD_PATH="/tmp/nvim-cwd"
+SOCKET_PATH = "/tmp/neovim"
+CWD_PATH = "/tmp/nvim-cwd"
+
 
 def remote_nvim(filespecs):
     nvim = neovim.attach("socket", path=SOCKET_PATH)
@@ -25,6 +26,7 @@ def remote_nvim(filespecs):
     if os.path.exists(CWD_PATH):
         os.remove(CWD_PATH)
 
+
 def find_nvim():
     """ Try to find nvim in $PATH.
     Return None if not found
@@ -36,6 +38,7 @@ def find_nvim():
         if os.path.exists(full_path):
             return full_path
 
+
 def main_nvim(nvim_path, filespecs, diff=False):
     env = os.environ.copy()
     env["NVIM_LISTEN_ADDRESS"] = SOCKET_PATH
@@ -46,6 +49,7 @@ def main_nvim(nvim_path, filespecs, diff=False):
     cmd.extend(parsed)
     rc = subprocess.call(cmd, env=env)
     sys.exit(rc)
+
 
 def parse_filespecs_for_cmdline(filespecs):
     """ Return a list of command line arguments
@@ -70,6 +74,7 @@ def parse_filespecs_for_cmdline(filespecs):
             return [filespec]
     else:
         return filespecs
+
 
 def parse_filespecs_for_remote(filespecs):
     """ Return a list of tuples
@@ -98,6 +103,7 @@ def parse_filespecs_for_remote(filespecs):
         res.append(parts)
     return res
 
+
 def main():
     # TODO: parse filespecs (foo.c:42) here too:
     nvim_path = find_nvim()
@@ -117,10 +123,12 @@ def main():
         filespecs = list()
     if args.remote:
         if not HAS_NEOVIM_PYTHON:
-            sys.exit("Please install neovim Python package before using --remote")
+            sys.exit("Please install neovim Python package "
+                     "before using --remote")
         remote_nvim(filespecs)
     else:
         main_nvim(nvim_path, filespecs, diff=args.diff)
+
 
 if __name__ == "__main__":
     main()
