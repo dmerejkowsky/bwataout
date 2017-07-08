@@ -23,7 +23,6 @@ class Executor:
         ui.info_2("Cloning", url, "->", dest.relpath(self.home))
         subprocess.check_call(["git", "clone", url, dest])
 
-
     def do_fetch(self, url, dest):
         dest = path.Path(dest).expanduser()
         dest.parent.makedirs_p()
@@ -38,7 +37,7 @@ class Executor:
         if src.exists():
             ui.info_2("Skipping", src.relpath(self.home))
             return
-        ui.info_2("Creating", src)
+        ui.info_2("Creating", src.relpath(self.home))
         src.parent.makedirs_p()
         contents = contents.format(this_dir=self.this_dir, home=self.home)
         src.write_text(contents)
