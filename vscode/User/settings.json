@@ -1,9 +1,0 @@
-// Place your settings in this file to overwrite the default settings
-{
-    "vim.enableNeovim": true,
-    "vim.neovimPath": "/usr/local/bin/nvim",
-    "vim.disableAnnoyingNeovimMessage": true,
-    "files.trimTrailingWhitespace": true,
-    "workbench.colorTheme": "Abyss",
-    "editor.formatOnSave": true
-}
