@@ -1,5 +1,4 @@
 " Configuration file for tex
-"
 
 " Set textwidth:
 setlocal textwidth=80
