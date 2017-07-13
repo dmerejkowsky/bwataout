@@ -66,6 +66,11 @@ sway:
     - sway
     - ~/.config/sway/config
 
+terminal:
+  - symlink:
+    - xfce4-terminalrc
+    - ~/.config/xfce4/terminal/terminalrc
+
 tint2:
   - symlink:
     - tint2rc
