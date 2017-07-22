@@ -38,8 +38,6 @@
 	st = status --branch
 
 	hub = repo hub
-[color]
-	ui = auto
 
 [diff]
 	compactionHeuristic = true
@@ -61,14 +59,12 @@
 [merge]
 	tool = kdiff3
 
+
 [mergetool]
 	keepbackup = false
 
 [pull]
 	rebase = true
-
-[push]
-	default = tracking
 
 [rebase]
 	stat = yes
