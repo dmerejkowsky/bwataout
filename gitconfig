@@ -50,11 +50,11 @@
 
 [guitool "clean"]
 	cmd = git clean -fd
-	confirm = yes
+	confirm = true
 
 [guitool "reset"]
 	cmd = git reset --hard
-	confirm = yes
+	confirm = true
 
 [merge]
 	tool = kdiff3
@@ -67,8 +67,8 @@
 	rebase = true
 
 [rebase]
-	stat = yes
-	autosquash = yes
+	stat = true
+	autosquash = true
 
 [rerere]
 	enabled = true
