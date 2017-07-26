@@ -299,8 +299,6 @@ chpwd_functions+=register_cwd
 
 export FZF_DEFAULT_OPTS="--tac --no-sort"
 export FZF_CTRL_R_OPTS="--exact"
-# Faster than find, _and_ honor *ignore files
-export FZF_CTRL_T_COMMAND="ag -g '.*'"
 
 function z() {
   cwd_list=$(cwd-history list)
