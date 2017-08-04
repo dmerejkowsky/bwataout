@@ -1,9 +1,4 @@
 let os=substitute(system('uname'), '\n', '', '')
-let onArchLinux=0
-let kernelVersion=system("uname --kernel-version")
-if kernelVersion =~ "ARCH"
-  onArchLinux=1
-endif
 
 call plug#begin(expand('~/.local/share/nvim/bundle'))
 
