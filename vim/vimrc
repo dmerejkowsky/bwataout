@@ -1,49 +1,47 @@
 let os=substitute(system('uname'), '\n', '', '')
 
-call plug#begin(expand('~/.local/share/nvim/bundle'))
+packadd minpac
 
-" Add this repo to the list:
-Plug  expand('<sfile>:h')
+set runtimepath+=~/.fzf
+" Add this repo too to runtimepath (so meta!)
+execute 'set runtimepath+=' . expand('<sfile>:h')
+" snippetsEmu needs 'after' in runtimepath too
+execute 'set runtimepath+=' . expand('<sfile>:h') . '/after'
 
-" And fzf:
-set rtp+=~/.fzf
+call minpac#init()
+call minpac#add('k-takata/minpac', {'type': 'opt', 'branch': 'v1.0'})
+call minpac#add('bps/vim-textobj-python', { 'branch' : '83c97d9aaae74a7c35b092bae59ef5339723dd9b'})
+call minpac#add('dart-lang/dart-vim-plugin')
+call minpac#add('dleonard0/pony-vim-syntax')
+call minpac#add('dmerejkowsky/fzf.vim')
+call minpac#add('dmerejkowsky/vim-nerdtree')
+call minpac#add('dmerejkowsky/vim-ale')
+call minpac#add('ervandew/supertab', { 'branch' : '2.1' })
+call minpac#add('fatih/vim-go', { 'branch' : 'v1.10' })
+call minpac#add('fs111/pydoc.vim', { 'branch' : '2.0' })
+call minpac#add('gavinbeatty/dragvisuals.vim', { 'branch' : 'b6e6d418faf3ec8c40e49c099f82481c820ab098'})
+call minpac#add('godlygeek/tabular', { 'branch' : '60f25648814f0695eeb6c1040d97adca93c4e0bb' })
+call minpac#add('idanarye/vim-smile', { 'branch' : '1.0.1' })
+call minpac#add('kana/vim-textobj-user',  { 'branch' : '0.7.1' })
+call minpac#add('mbbill/undotree', { 'branch' : 'rel_4.3' })
+call minpac#add('peterhoeg/vim-qml')
+call minpac#add('rking/ag.vim', { 'branch' : 'f755abfb1c4e4e3f59f6cfa25ce16edb5af9e516' })
+call minpac#add('romainl/vim-dichromatic', { 'branch' : 'wip' })
+call minpac#add('romainl/vim-qf', { 'branch' : '0.1.0' })
+call minpac#add('rust-lang/rust.vim')
+call minpac#add('scrooloose/nerdcommenter', { 'branch' : '2.3.0' })
+call minpac#add('tfnico/vim-gradle')
+call minpac#add('tpope/vim-abolish', { 'branch' : 'v1.1' })
+call minpac#add('tpope/vim-eunuch', { 'branch' : 'v1.1' })
+call minpac#add('tpope/vim-fugitive', { 'branch' : 'v2.2' })
+call minpac#add('tpope/vim-repeat', { 'branch' : 'v1.1' })
+call minpac#add('tpope/vim-sleuth', { 'branch' : '1.1' })
+call minpac#add('tpope/vim-surround', { 'branch' : 'v2.1' })
+call minpac#add('vim-scripts/a.vim', { 'branch' : '2.18' })
+call minpac#add('vim-scripts/indentpython.vim', { 'branch' : '0.3' })
+call minpac#add('vim-scripts/snippetsEmu', { 'branch' : '1.2.3'})
+call minpac#add('yannicklm/vimbuddy.vim')
 
-Plug 'bps/vim-textobj-python', { 'commit' : '83c97d9aaae74a7c35b092bae59ef5339723dd9b'}
-Plug 'dart-lang/dart-vim-plugin'
-Plug 'dleonard0/pony-vim-syntax'
-Plug 'dmerejkowsky/fzf.vim'
-Plug 'dmerejkowsky/vim-nerdtree'
-Plug 'dmerejkowsky/vim-ale'
-Plug 'ervandew/supertab', { 'tag' : '2.1' }
-Plug 'fatih/vim-go', { 'tag' : 'v1.10' }
-Plug 'fs111/pydoc.vim', { 'tag' : '2.0' }
-Plug 'gavinbeatty/dragvisuals.vim', { 'commit' : 'b6e6d418faf3ec8c40e49c099f82481c820ab098'}
-Plug 'godlygeek/tabular', { 'commit' : '60f25648814f0695eeb6c1040d97adca93c4e0bb' }
-Plug 'idanarye/vim-smile', { 'tag' : '1.0.1' }
-Plug 'kana/vim-textobj-user',  { 'tag' : '0.7.1' }
-Plug 'mbbill/undotree', { 'tag' : 'rel_4.3' }
-Plug 'peterhoeg/vim-qml'
-Plug 'rking/ag.vim', { 'commit' : 'f755abfb1c4e4e3f59f6cfa25ce16edb5af9e516' }
-Plug 'romainl/vim-dichromatic', { 'branch' : 'wip' }
-Plug 'romainl/vim-qf', { 'branch' : '0.1.0' }
-Plug 'rust-lang/rust.vim'
-Plug 'scrooloose/nerdcommenter', { 'tag' : '2.3.0' }
-Plug 'tfnico/vim-gradle'
-Plug 'tpope/vim-abolish', { 'tag' : 'v1.1' }
-Plug 'tpope/vim-eunuch', { 'tag' : 'v1.1' }
-Plug 'tpope/vim-fugitive', { 'tag' : 'v2.2' }
-Plug 'tpope/vim-repeat', { 'rev' : 'v1.1' }
-Plug 'tpope/vim-sleuth', { 'rev' : '1.1' }
-Plug 'tpope/vim-surround', { 'tag' : 'v2.1' }
-Plug 'vim-scripts/a.vim', { 'tag' : '2.18' }
-Plug 'vim-scripts/indentpython.vim', { 'tag' : '0.3' }
-Plug 'vim-scripts/snippetsEmu', { 'tag' : '1.2.3'}
-if has("python")
-  Plug 'mutewinter/swap-parameters', { 'commit' : '1e68c6bdf399b05449781e0dd8342086c97380b7'}
-endif
-Plug 'yannicklm/vimbuddy.vim'
-
-call plug#end()
 
 " Simple vim settings {{{1
 syntax on
