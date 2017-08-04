@@ -42,6 +42,9 @@
 [diff]
 	compactionHeuristic = true
 
+[fetch]
+	prune = true
+
 [gui]
 	spellingdictionary = en_US
 
