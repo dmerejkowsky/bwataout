@@ -192,6 +192,13 @@ function! ListWorkingDirs()
         \})
 endfunction
 
+function! Try(name)
+  call minpac#add(a:name)
+  call minpac#update()
+endfunction
+
+command! -nargs=1 Try :call Try(<f-args>)
+
 command! -nargs=0 ListWorkingDirs :call ListWorkingDirs()
 nnoremap <leader>l :ListWorkingDirs<CR>
 
