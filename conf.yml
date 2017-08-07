@@ -84,9 +84,6 @@ tint2:
     - ~/.config/tint2/tint2rc
 
 neovim:
-  - fetch:
-    - https://raw.githubusercontent.com/junegunn/vim-plug/0.9.1/plug.vim
-    - ~/.config/nvim/autoload/plug.vim
   - write:
     - ~/.config/nvim/init.local.vim
     - '" Put your local settings here\n'
@@ -96,11 +93,15 @@ neovim:
       " Auto-generated code. Do not edit"
       source {this_dir}/vim/vimrc
       source ~/.config/nvim/init.local.vim
+  - clone:
+    - git@github.com:k-takata/minpac.git
+    - ~/.local/share/nvim/site/pack/minpac/opt/minpac
+    - v1.0
   - symlink:
     - vim/vim_wrapper.py
     - ~/.local/bin/vim_wrapper.py
   - exec:
-    - [nvim, -c, ':PlugInstall']
+    - [nvim, -c, ':packad minpac | :call minpac#update() | :q!']
 
 xinitrc:
   - symlink:

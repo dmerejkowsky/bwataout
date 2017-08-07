@@ -14,14 +14,14 @@ class Executor:
         self.this_dir = path.Path(".").abspath()
         self.home = path.Path("~").expanduser()
 
-    def do_clone(self, url, dest):
+    def do_clone(self, url, dest, branch="master"):
         dest = path.Path(dest).expanduser()
         dest.parent.makedirs_p()
         if dest.exists():
             ui.info_2("Skipping", dest.relpath(self.home))
             return
         ui.info_2("Cloning", url, "->", dest.relpath(self.home))
-        subprocess.check_call(["git", "clone", url, dest])
+        subprocess.check_call(["git", "clone", url, dest, "--branch", branch])
 
     def do_fetch(self, url, dest):
         dest = path.Path(dest).expanduser()
