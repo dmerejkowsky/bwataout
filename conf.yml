@@ -86,11 +86,11 @@ tint2:
 neovim:
   - write:
     - ~/.config/nvim/init.local.vim
-    - '" Put your local settings here\n'
+    - '" Put your local settings here'
   - write:
     - ~/.config/nvim/init.vim
     - |
-      " Auto-generated code. Do not edit"
+      '" Auto-generated code. Do not edit'
       source {this_dir}/vim/vimrc
       source ~/.config/nvim/init.local.vim
   - clone:
