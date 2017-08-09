@@ -14,30 +14,37 @@ class Executor:
         self.this_dir = path.Path(".").abspath()
         self.home = path.Path("~").expanduser()
 
+    def pretty_path(self, p):
+        relpath = p.relpath(self.home)
+        return "~/" + relpath
+
     def do_clone(self, url, dest, branch="master"):
         dest = path.Path(dest).expanduser()
+        pretty_dest = self.pretty_path(dest)
         dest.parent.makedirs_p()
         if dest.exists():
-            ui.info_2("Skipping", dest.relpath(self.home))
+            ui.info_2("Skipping", pretty_dest)
             return
-        ui.info_2("Cloning", url, "->", dest.relpath(self.home))
+        ui.info_2("Cloning", url, "->", pretty_dest)
         subprocess.check_call(["git", "clone", url, dest, "--branch", branch])
 
     def do_fetch(self, url, dest):
         dest = path.Path(dest).expanduser()
         dest.parent.makedirs_p()
+        pretty_dest = self.pretty_path(dest)
         if dest.exists():
-            ui.info_2("Skipping", dest.relpath(self.home))
+            ui.info_2("Skipping", pretty_dest)
             return
-        ui.info_2("Fetching", url, "->", dest.relpath(self.home))
+        ui.info_2("Fetching", url, "->", pretty_dest)
         urlretrieve(url, dest)
 
     def do_write(self, src, contents):
         src = path.Path(src).expanduser()
+        pretty_src = self.pretty_path(src)
         if src.exists():
-            ui.info_2("Skipping", src.relpath(self.home))
+            ui.info_2("Skipping", pretty_src)
             return
-        ui.info_2("Creating", src.relpath(self.home))
+        ui.info_2("Creating", pretty_src)
         src.parent.makedirs_p()
         contents = contents.format(this_dir=self.this_dir, home=self.home)
         if not contents.endswith("\n"):
@@ -47,11 +54,12 @@ class Executor:
     def do_symlink(self, src, dest):
         src = self.this_dir.joinpath(src)
         dest = path.Path(dest).expanduser()
+        pretty_dest = self.pretty_path(dest)
         dest.parent.makedirs_p()
         if dest.exists():
-            ui.info_2("Skipping", dest.relpath(self.home))
+            ui.info_2("Skipping", pretty_dest)
             return
-        ui.info_2("Symlink", dest.relpath(self.home))
+        ui.info_2("Symlink", pretty_dest)
         src.symlink(dest)
 
     def do_exec(self, args):
