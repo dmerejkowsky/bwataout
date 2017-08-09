@@ -40,6 +40,8 @@ class Executor:
         ui.info_2("Creating", src.relpath(self.home))
         src.parent.makedirs_p()
         contents = contents.format(this_dir=self.this_dir, home=self.home)
+        if not contents.endswith("\n"):
+            contents += "\n"
         src.write_text(contents)
 
     def do_symlink(self, src, dest):
