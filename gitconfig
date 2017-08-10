@@ -22,6 +22,7 @@
 	pa = push-all-and-fetch
 	prune-merged = !git branch --merged | grep dm/ | grep -v "\\*" | xargs -n1 git branch -d
 
+	outgoing = log @{u}..HEAD
 	ck = cherry-pick
 	ca = cherry-pick --abort
 	cx = cherry-pick -x
