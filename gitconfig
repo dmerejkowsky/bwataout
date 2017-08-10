@@ -23,8 +23,10 @@
 	prune-merged = !git branch --merged | grep dm/ | grep -v "\\*" | xargs -n1 git branch -d
 
 	outgoing = log @{u}..HEAD
+
 	ck = cherry-pick
 	ca = cherry-pick --abort
+	cc = cherry-pick --continue
 	cx = cherry-pick -x
 
 	r = rebase-n-commits
