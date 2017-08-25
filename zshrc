@@ -171,9 +171,21 @@ function gitar() {
   echo "archive generated in: ${output}"
 }
 
+# Display most recent file in the current directory
 function latest() {
-  echo $(\ls -t | head -n1)
+  echo $(ls --quoting-style=shell -t | head -n1)
 }
+
+# Insert latest file in the current prompt
+latest-file-widget () {
+  LBUFFER="${LBUFFER} $(latest)"
+  local ret=$?
+  zle redisplay
+  return $ret
+}
+
+zle -N latest-file-widget
+bindkey '^[l' latest-file-widget
 
 # Move the latest downloaded file
 function mvdl() {
@@ -181,15 +193,6 @@ function mvdl() {
   mv "${HOME}/Downloads/${last}" $@
 }
 
-# Play latest file in current directory
-function mpl() {
-  mpv "$(latest)"
-}
-
-# Edit the latest file
-function vil() {
-  vi "$(latest)"
-}
 
 # Open all the conflicting files in $EDITOR
 function resolve() {
