@@ -103,6 +103,8 @@ else
   alias ls="ls --classify --quoting-style=escape --color=auto"
 fi
 
+type exa >/dev/null && alias ls=exa
+
 alias ll="ls -al"
 
 # }}}
