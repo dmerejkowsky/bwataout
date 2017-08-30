@@ -175,7 +175,7 @@ function gitar() {
 
 # Display most recent file in the current directory
 function latest() {
-  echo $(ls --quoting-style=shell -t | head -n1)
+  echo $(\ls --quoting-style=shell -t | head -n1)
 }
 
 # Insert latest file in the current prompt
