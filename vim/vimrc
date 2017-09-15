@@ -229,8 +229,10 @@ let g:ale_lint_on_enter = 0
 let g:ale_set_loclist = 1
 let g:ale_set_quickfix = 0
 let g:ale_echo_cursor = 1
+" vim-ale flow eats all my inotify slots :/
 let g:ale_linters = {
   \ 'python': ['pycodestyle'],
+  \ 'javascript': ['eslint'],
   \ }
 let g:ale_set_highlights = 0
 
