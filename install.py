@@ -59,6 +59,9 @@ class Executor:
         if dest.exists():
             ui.info_2("Skipping", pretty_dest)
             return
+        if dest.islink():
+            # we know it's a broken symlink
+            dest.remove()
         ui.info_2("Symlink", pretty_dest)
         src.symlink(dest)
 
