@@ -7,8 +7,8 @@ function main() {
     echo "Missing commit message"
     return 1
   fi
-  git commit --all --message "$1"
-  git push
+  git commit --all --message "$1" || true
+  git push $2
 }
 
 main "$@"
