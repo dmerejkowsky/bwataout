@@ -326,38 +326,5 @@ bindkey '^P' down-line-or-history
 
 # }}}
 
-# {{{ python
-
-blue="\033[34;1m"
-reset="\033[0m"
-bold="\033[1m"
-VENVS_PATH=$HOME/.venvs
-
-function _venv-activate() {
-  local name=$1
-  echo "${blue}::${reset} Activating virtualenv for ${bold}${name}${reset}"
-  venv_path="${VENVS_PATH}/${name}"
-  source "${venv_path}/bin/activate"
-}
-
-function _venv-auto-activate() {
-  local name=$(basename $(pwd))
-  local venv_path="${HOME}/.venvs/${name}"
-  if [[ -d "${venv_path}" ]] ; then
-    _venv-activate "${name}"
-  fi
-}
-chpwd_functions+=_venv-auto-activate
-
-function venv-create() {
-  local name=$(basename $(pwd))
-  echo "${blue}:: ${reset} Creating virtualenv for ${bold}${name}${reset}"
-  local venv_path="${HOME}/.venvs/${name}"
-  virtualenv ${venv_path}
-  _venv-activate "${name}"
-}
-
-# }}}
-
 #
 # vim: set foldmethod=marker:
