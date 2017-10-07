@@ -326,5 +326,16 @@ bindkey '^P' down-line-or-history
 
 # }}}
 
-#
+# {{{ python
+do_autovenv() {
+  $(autovenv bash)
+}
+
+chpwd_functions+=do_autovenv
+
+# In case we are spawning a new shell directly in a Python
+# project
+do_autovenv
+# }}}
+
 # vim: set foldmethod=marker:
