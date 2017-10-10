@@ -1,4 +1,3 @@
-autovenv
 colorama
 unidecode
 ruamel.yaml
