@@ -123,7 +123,7 @@ set wildignore=*.pyc
 set nojoinspaces
 
 " search settings
-set nohlsearch
+set hlsearch
 set incsearch
 
 " Remove menu bar from GUI
