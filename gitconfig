@@ -45,6 +45,7 @@
 
 [diff]
 	compactionHeuristic = true
+	colorMoved = true
 
 [fetch]
 	prune = true
