@@ -23,7 +23,7 @@ bindsym $mod+Return exec konsole
 bindsym $mod+Shift+C kill
 
 # start i3-dmenu-desktop
-bindsym $mod+r exec i3-dmenu-desktop
+bindsym $mod+r exec j4-dmenu-desktop
 
 # lock the screen
 # (dm-tools works when using lightdm)
