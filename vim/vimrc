@@ -15,8 +15,9 @@ call minpac#add('dart-lang/dart-vim-plugin')
 call minpac#add('dbmrq/vim-ditto')
 call minpac#add('dleonard0/pony-vim-syntax')
 call minpac#add('dmerejkowsky/fzf.vim')
-call minpac#add('dmerejkowsky/vim-nerdtree')
+call minpac#add('dmerejkowsky/vimbuddy.vim')
 call minpac#add('dmerejkowsky/vim-ale')
+call minpac#add('dmerejkowsky/vim-nerdtree')
 call minpac#add('ervandew/supertab', { 'branch' : '2.1' })
 call minpac#add('fatih/vim-go', { 'branch' : 'v1.10' })
 call minpac#add('fs111/pydoc.vim', { 'branch' : '2.0' })
@@ -42,7 +43,6 @@ call minpac#add('tpope/vim-surround', { 'branch' : 'v2.1' })
 call minpac#add('vim-scripts/a.vim', { 'branch' : '2.18' })
 call minpac#add('vim-scripts/indentpython.vim', { 'branch' : '0.3' })
 call minpac#add('vim-scripts/snippetsEmu', { 'branch' : '1.2.3'})
-call minpac#add('yannicklm/vimbuddy.vim')
 
 
 " Simple vim settings {{{1
