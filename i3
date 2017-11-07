@@ -26,10 +26,9 @@ bindsym $mod+Shift+C kill
 bindsym $mod+r exec j4-dmenu-desktop
 
 # lock the screen
-# (dm-tools works when using lightdm)
-bindsym $mod+x exec dm-tool lock
+bindsym $mod+Shift+x exec i3lock
 # Copy password to clipboard
-bindsym $mod+p exec passmenu
+bindsym $mod+p exec ~/.local/bin/passmenu
 
 # change focus
 bindsym $mod+h focus left
