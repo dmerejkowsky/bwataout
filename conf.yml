@@ -37,13 +37,13 @@ i3:
     - ~/.config/i3/config
 
 konsole:
-  - symlink:
+  - copy:
     - konsole/konsolerc
     - ~/.config/konsolerc
-  - symlink:
+  - copy:
     - konsole/WhiteOnBlack.colorscheme
     - ~/.local/share/konsole/WhiteOnBlack.colorscheme
-  - symlink:
+  - copy:
     - konsole/Work.profile
     - ~/.local/share/konsole/Work.profile
 
