@@ -11,6 +11,7 @@ execute 'set runtimepath+=' . expand('<sfile>:h') . '/after'
 call minpac#init()
 call minpac#add('k-takata/minpac', {'type': 'opt', 'branch': 'v1.0'})
 call minpac#add('bps/vim-textobj-python')
+call minpac#add('cespare/vim-toml')
 call minpac#add('dart-lang/dart-vim-plugin')
 call minpac#add('dbmrq/vim-ditto')
 call minpac#add('dleonard0/pony-vim-syntax')
