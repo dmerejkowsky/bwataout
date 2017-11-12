@@ -32,6 +32,17 @@ class Executor:
         ui.info_2("Cloning", url, "->", pretty_dest)
         subprocess.check_call(["git", "clone", url, dest, "--branch", branch])
 
+    def do_copy(self, src, dest):
+        dest = path.Path(dest).expanduser()
+        pretty_dest = self.pretty_path(dest)
+        dest.parent.makedirs_p()
+        if dest.exists() and not self.force:
+            ui.info_2("Skipping", pretty_dest)
+            return
+        src = path.Path(src).expanduser()
+        ui.info_2("Copy", src, "->", self.pretty_path(src))
+        src.copy(dest)
+
     def do_fetch(self, url, dest):
         dest = path.Path(dest).expanduser()
         dest.parent.makedirs_p()
