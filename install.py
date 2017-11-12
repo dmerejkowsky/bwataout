@@ -9,10 +9,11 @@ import ui
 
 
 class Executor:
-    def __init__(self):
+    def __init__(self, force=False):
         self.conf = ruamel.yaml.safe_load(path.Path("conf.yml").text())
         self.this_dir = path.Path(".").abspath()
         self.home = path.Path("~").expanduser()
+        self.force = force
 
     def pretty_path(self, p):
         relpath = p.relpath(self.home)
@@ -23,8 +24,11 @@ class Executor:
         pretty_dest = self.pretty_path(dest)
         dest.parent.makedirs_p()
         if dest.exists():
-            ui.info_2("Skipping", pretty_dest)
-            return
+            if self.force:
+                dest.rmtree()
+            else:
+                ui.info_2("Skipping", pretty_dest)
+                return
         ui.info_2("Cloning", url, "->", pretty_dest)
         subprocess.check_call(["git", "clone", url, dest, "--branch", branch])
 
@@ -32,7 +36,7 @@ class Executor:
         dest = path.Path(dest).expanduser()
         dest.parent.makedirs_p()
         pretty_dest = self.pretty_path(dest)
-        if dest.exists():
+        if dest.exists() and not self.force:
             ui.info_2("Skipping", pretty_dest)
             return
         ui.info_2("Fetching", url, "->", pretty_dest)
@@ -41,7 +45,7 @@ class Executor:
     def do_write(self, src, contents):
         src = path.Path(src).expanduser()
         pretty_src = self.pretty_path(src)
-        if src.exists():
+        if src.exists() and not self.force:
             ui.info_2("Skipping", pretty_src)
             return
         ui.info_2("Creating", pretty_src)
@@ -56,11 +60,13 @@ class Executor:
         dest = path.Path(dest).expanduser()
         pretty_dest = self.pretty_path(dest)
         dest.parent.makedirs_p()
-        if dest.exists():
+        if dest.exists() and not self.force:
             ui.info_2("Skipping", pretty_dest)
             return
         if dest.islink():
-            # we know it's a broken symlink
+            # if self.force is True, we want to re-create the symlink
+            # else, we know it's a broken symlink
+            # in any case: remove it
             dest.remove()
         ui.info_2("Symlink", pretty_dest)
         src.symlink(dest)
@@ -88,16 +94,18 @@ class Executor:
             self.install(program)
 
 
-def install(programs=None):
-    executor = Executor()
+def install(programs=None, force=False):
+    executor = Executor(force=force)
     executor.execute(programs=programs)
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("programs", nargs="*")
+    parser.add_argument("--force", action="store_true",
+                        help="Overwite existing files")
     args = parser.parse_args()
-    install(programs=args.programs)
+    install(programs=args.programs, force=args.force)
 
 
 if __name__ == "__main__":
