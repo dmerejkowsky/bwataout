@@ -36,6 +36,17 @@ i3:
     - i3
     - ~/.config/i3/config
 
+konsole:
+  - symlink:
+    - konsole/konsolerc
+    - ~/.config/konsolerc
+  - symlink:
+    - konsole/WhiteOnBlack.colorscheme
+    - ~/.local/share/konsole/WhiteOnBlack.colorscheme
+  - symlink:
+    - konsole/Work.profile
+    - ~/.local/share/konsole/Work.profile
+
 mpv:
   - symlink:
     - mpv/input.conf

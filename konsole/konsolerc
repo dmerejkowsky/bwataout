@@ -1,0 +1,22 @@
+[Desktop Entry]
+DefaultProfile=Work.profile
+
+[Favorite Profiles]
+Favorites=Work.profile
+
+[KonsoleWindow]
+ShowMenuBarByDefault=false
+
+[MainWindow]
+Height 1080=1023
+MenuBar=Disabled
+State=AAAA/wAAAAD9AAAAAAAAA6YAAAL5AAAABAAAAAQAAAAIAAAACPwAAAAA
+ToolBarsMovable=Disabled
+Width 1920=1916
+
+[Notification Messages]
+CloseAllTabs=true
+
+[TabBar]
+TabBarPosition=Top
+TabBarVisibility=ShowTabBarWhenNeeded
