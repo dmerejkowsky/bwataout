@@ -269,8 +269,7 @@ command! GdiffOff call GdiffOff()
 " there's already an Ag coming from fzf, but I want
 " a quickfix instead.
 " ag.vim is dead, so I use ack.vim and these mappings:
-let g:ackprg='ag --vimgrep'
-cnoremap Ag Ack!
+let g:ackprg='rg --vimgrep'
 
 " Autocommands {{{1
 " Remove trailing whitespaces when saving:
