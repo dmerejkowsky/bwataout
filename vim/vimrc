@@ -128,6 +128,8 @@ set nojoinspaces
 set hlsearch
 set incsearch
 
+set inccommand=split
+
 " Remove menu bar from GUI
 let did_install_default_menus = 1
 
