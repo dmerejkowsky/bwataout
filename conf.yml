@@ -33,8 +33,11 @@ git:
 
 i3:
   - symlink:
-    - i3
+    - i3/config
     - ~/.config/i3/config
+  - symlink:
+    - i3/status
+    - ~/.config/i3status/config
 
 konsole:
   - copy:

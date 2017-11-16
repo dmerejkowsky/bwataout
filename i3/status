@@ -1,0 +1,34 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+general {
+        colors = true
+        interval = 5
+}
+
+order += "disk /"
+order += "disk /mnt/sdb1"
+order += "ethernet _first_"
+order += "load"
+order += "tztime local"
+
+ethernet _first_ {
+        format_up = "E: %ip"
+        format_down = "E: down"
+}
+
+tztime local {
+        format = "%Y-%m-%d %H:%M:%S"
+}
+
+load {
+        format = "Load: %1min"
+}
+
+disk "/" {
+        format = "SDD: %percentage_used used"
+}
+
+disk "/mnt/sdb1" {
+        format = "HDD: %percentage_used used"
+}
