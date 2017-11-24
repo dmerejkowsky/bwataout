@@ -255,6 +255,11 @@ let g:go_highlight_trailing_whitespace_error=0
 " goimports is just a nicer `go fmt` ...
 let g:go_fmt_command = "goimports"
 
+if os == 'Linux'
+  let g:netrw_browsex_viewer= "xdg-open"
+else
+endif
+
 " Use the lazy git-fpush command
 function! Gfpush()
   w
