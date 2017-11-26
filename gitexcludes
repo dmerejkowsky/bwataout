@@ -1,3 +1,6 @@
+README.html
+on-nvim-refresh.py
+
 # Vim
 *.swp
 
@@ -11,7 +14,6 @@ CMakeLists.txt.user
 *~*
 .bzr
 
-README.html
 
 # Python
 __pycache__
@@ -20,4 +22,6 @@ __pycache__
 .cache
 *.egg-info
 
+# Javascript
+geckodriver.log
 yarn-error.log
