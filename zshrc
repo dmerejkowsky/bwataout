@@ -117,6 +117,10 @@ bindkey -e
 
 bindkey '^[[A' history-beginning-search-backward
 bindkey '^[[B' history-beginning-search-forward
+
+if [[ -f /usr/share/doc/pkgfile/command-not-found.zsh ]]; then
+  source /usr/share/doc/pkgfile/command-not-found.zsh
+fi
 # }}}
 
 # Global settings {{{
