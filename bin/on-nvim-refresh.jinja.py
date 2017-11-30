@@ -12,6 +12,7 @@ def main():
     vim = neovim.attach("socket", path="/tmp/neovim")
     vim.subscribe("refresh")
     vim.command('nnoremap ,m :w<cr>:call rpcnotify(0, "refresh")<cr>')
+    print("Ready to roll")
     {% if browser %}
     url = "{{ url }}"
     {% if browser == "chrome" %}
