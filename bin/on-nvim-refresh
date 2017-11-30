@@ -31,7 +31,7 @@ def sanitize_url(url):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--browser", choices=["chromium", "firefox"])
+    parser.add_argument("--browser", choices=["chrome", "firefox"])
     parser.add_argument("--cmd")
     parser.add_argument("--url")
     args = parser.parse_args()
