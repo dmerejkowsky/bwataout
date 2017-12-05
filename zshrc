@@ -275,16 +275,10 @@ prompt pure
 export VISUAL="nvim"
 export EDITOR="nvim"
 
-# Change working dir when vim exits
-function vim() {
-  vim_wrapper.py $*
-  if [[ $? -eq 0 ]]; then
-    cd "$(cat /tmp/nvim-cwd 2>/dev/null || echo .)"
-  fi
-}
-
 # Sometimes 3 letters is too much
 alias vi=vim
+# neovim rocks!
+alias vim=nvim
 
 # }}}
 
