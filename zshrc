@@ -118,8 +118,21 @@ bindkey -e
 bindkey '^[[A' history-beginning-search-backward
 bindkey '^[[B' history-beginning-search-forward
 
-if [[ -f /usr/share/doc/pkgfile/command-not-found.zsh ]]; then
-  source /usr/share/doc/pkgfile/command-not-found.zsh
+type pkgfile > /dev/null
+if [[ $? -eq 0 ]]; then
+command_not_found_handler() {
+  local pkgs cmd="$1"
+
+  pkgs=(${(f)"$(pkgfile -b -v -- "$cmd" 2>/dev/null)"})
+  if [[ -n "$pkgs" ]]; then
+    printf '%s may be found in the following packages:\n' "$cmd"
+    printf '  %s\n' $pkgs[@]
+    return 127
+  fi
+
+  printf 'zsh: command not found: %s\n' "$cmd" 1>&2
+  return 127
+}
 fi
 # }}}
 
