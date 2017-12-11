@@ -26,7 +26,7 @@ load {
 }
 
 disk "/" {
-        format = "SDD: %percentage_used used"
+        format = "SSD: %percentage_used used"
 }
 
 disk "/mnt/sdb1" {
