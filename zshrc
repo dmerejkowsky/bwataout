@@ -278,7 +278,7 @@ export EDITOR="nvim"
 # Sometimes 3 letters is too much
 alias vi=vim
 # neovim rocks!
-alias vim=nvim
+alias vim=vim_wrapper.py
 
 # }}}
 
