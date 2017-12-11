@@ -1,1 +1,1 @@
-setlocal nonumber
+:inoremap # X#
