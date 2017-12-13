@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 
+import subprocess
+import sys
+
 {% if browser %}
 from selenium import webdriver
 {% endif %}
-import subprocess
-
 import neovim
 
 
@@ -27,13 +28,18 @@ def main():
             vim.next_message()
             {% if cmd %}
             print("{{ cmd }}")
-            subprocess.run("{{ cmd }}", shell=True, check=True)
+            process = subprocess.run("{{ cmd }}", shell=True)
+            if process.returncode != 0:
+                print("Process failed")
             {% endif %}
             {% if browser %}
             driver.refresh()
             {% endif %}
-        except Exception as e:
-            print(e)
+        except neovim.api.NvimError:
+            sys.exit(e)
+        except OSError as e:
+            if e.args[0] == "EOF":
+                sys.exit("Neovim connection lost")
 
 
 if __name__ == "__main__":
