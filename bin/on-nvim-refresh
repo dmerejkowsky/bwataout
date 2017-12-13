@@ -1,25 +1,11 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 import argparse
 import subprocess
 import sys
 
-import jinja2
 import path
-
-
-def generate_script(cmd=None, browser=None, url=None):
-    this_dir = path.Path(__file__).parent.abspath()
-    template_path = path.Path(this_dir.joinpath("on-nvim-refresh.jinja.py"))
-    env = jinja2.Environment(trim_blocks=True, lstrip_blocks=True, keep_trailing_newline=True)
-    template = env.from_string(template_path.text())
-    out_path = path.Path("on-nvim-refresh.py")
-    out_path.write_text(template.render(locals()))
-
-
-def run_script():
-    out_path = path.Path("on-nvim-refresh.py")
-    subprocess.run([sys.executable, out_path])
+import neovim
 
 
 def sanitize_url(url):
@@ -29,19 +15,50 @@ def sanitize_url(url):
     return url
 
 
+def loop(*, url, cmd, browser=None):
+    vim = neovim.attach("socket", path="/tmp/neovim")
+    vim.subscribe("refresh")
+    vim.command('nnoremap ,m :w<cr>:call rpcnotify(0, "refresh")<cr>')
+    print("Ready to roll")
+    driver = None
+    if url:
+        from selenium import webdriver
+        if browser == "chrome":
+            driver = webdriver.Chrome()
+        else:
+            driver = webdriver.Firefox()
+        driver.get(url)
+    while True:
+        try:
+            vim.next_message()
+            if cmd:
+                print(cmd)
+                process = subprocess.run(cmd, shell=True)
+                if process.returncode != 0:
+                    print("Process failed")
+            if driver:
+                driver.refresh()
+        except neovim.api.NvimError:
+            sys.exit(e)
+        except OSError as e:
+            if e.args[0] == "EOF":
+                sys.exit("Neovim connection lost")
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--browser", choices=["chrome", "firefox"])
     parser.add_argument("--cmd")
     parser.add_argument("--url")
     args = parser.parse_args()
+    cmd = args.cmd
     url = args.url
-    if args.browser and not url:
+    browser = args.browser
+    if browser and not url:
         sys.exit("--browser used but no url set")
     if url:
         url = sanitize_url(url)
-    generate_script(cmd=args.cmd, browser=args.browser, url=url)
-    run_script()
+    loop(url=url, cmd=cmd, browser=browser)
 
 
 if __name__ == "__main__":
