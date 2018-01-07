@@ -25,7 +25,7 @@ def sanitize_url(url):
 def loop(*, url, cmd, browser=None):
     vim = neovim.attach("socket", path="/tmp/neovim")
     vim.subscribe("refresh")
-    vim.command('nnoremap ,m :w<cr>:call rpcnotify(0, "refresh")<cr>')
+    vim.command('nnoremap ,m :wa<cr>:call rpcnotify(0, "refresh")<cr>')
     print("Ready to roll")
     driver = None
     if url:
