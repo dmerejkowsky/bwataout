@@ -127,6 +127,8 @@ set nojoinspaces
 " search settings
 set hlsearch
 set incsearch
+set smartcase
+set ignorecase
 
 set inccommand=split
 
