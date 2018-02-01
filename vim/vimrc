@@ -165,7 +165,12 @@ set smartindent
 set tabstop=4
 
 " Colors {{{1
-colorscheme jellybeans
+if os == "Darwin"
+  set background=light
+  colorscheme default
+else
+  colorscheme jellybeans
+endif
 
 " Custom functions {{{1
 " Remove trailing whitespace
