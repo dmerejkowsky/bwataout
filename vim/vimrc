@@ -261,6 +261,13 @@ let g:go_highlight_trailing_whitespace_error=0
 " goimports is just a nicer `go fmt` ...
 let g:go_fmt_command = "goimports"
 
+" Tell the python plugin loaded by vim-polyglot to not
+" highlight space errors.
+" Most of the times they are trailing white spaces, and
+" both the CleanWhiteSpace function and the pycodestyle linter
+" will take care of those.
+let g:python_highlight_space_errors=0
+
 if os == 'Linux'
   let g:netrw_browsex_viewer= "xdg-open"
 else
