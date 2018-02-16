@@ -10,7 +10,7 @@ def main():
         py_compile.compile(filepath, doraise=True)
     except py_compile.PyCompileError as py_compile_error:
         e = py_compile_error.args[2]
-        print("{e.filename}:{e.lineno}: {e.msg}".format(e=e))
+        print("{e.filename}:{e.lineno}:{e.offset}: {e.msg}".format(e=e))
         sys.exit(1)
 
 
