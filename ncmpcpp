@@ -1,0 +1,4 @@
+mpd_music_dir = <>
+autocenter_mode = yes
+external_editor = nvim
+use_console_editor = yes

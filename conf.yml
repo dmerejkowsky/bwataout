@@ -60,10 +60,9 @@ mpv:
 
 ncmpcpp:
   - write:
+  - copy:
+    - ncmpcpp
     - ~/.config/ncmpcpp/config
-    - |
-      mpd_music_dir =
-      autocenter_mode  = yes
 
 npm:
   - write:
