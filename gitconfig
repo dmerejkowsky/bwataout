@@ -24,6 +24,7 @@
 	prune-merged = !git branch --merged | grep dm/ | grep -v "\\*" | xargs -n1 git branch -d
 
 	outgoing = log --oneline @{u}..HEAD
+	whatsnew = log --oneline HEAD..@{u}
 
 	ck = cherry-pick
 	ca = cherry-pick --abort
