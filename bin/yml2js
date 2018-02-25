@@ -1,0 +1,18 @@
+#!/usr/bin/env python3
+
+
+import json
+import sys
+import ruamel.yaml
+
+
+def main():
+    input_file = sys.argv[1]
+    with open(input_file) as stream:
+        data = ruamel.yaml.safe_load(stream.read())
+    as_json = json.dumps(data, indent=2)
+    print(as_json)
+
+
+if __name__ == "__main__":
+    main()
