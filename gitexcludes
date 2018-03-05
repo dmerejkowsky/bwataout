@@ -19,6 +19,7 @@ __pycache__
 *.pyc
 # pytest-cache plugin
 .cache
+.pytest_cache
 *.egg-info
 
 # Javascript
