@@ -28,6 +28,8 @@ def write_db(paths):
 
 
 def add_to_db(path):
+    # Resolve symlinks so that paths are not added twice:
+    path = os.path.realpath(path)
     # Make sure the latest past is always at the *end* of the list:
     paths = read_db()
     if path in paths:
