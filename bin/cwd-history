@@ -27,7 +27,6 @@ def write_db(paths):
         fp.writelines(x + "\n" for x in paths)
 
 
-
 def add_to_db(path):
     # Make sure the latest past is always at the *end* of the list:
     paths = read_db()
@@ -92,6 +91,7 @@ def main():
         list_db()
     elif action == "remove":
         remove_from_db(path)
+
 
 if __name__ == "__main__":
     main()
