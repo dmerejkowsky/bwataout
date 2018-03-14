@@ -39,17 +39,6 @@ i3:
     - i3/status
     - ~/.config/i3status/config
 
-konsole:
-  - copy:
-    - konsole/konsolerc
-    - ~/.config/konsolerc
-  - copy:
-    - konsole/WhiteOnBlack.colorscheme
-    - ~/.local/share/konsole/WhiteOnBlack.colorscheme
-  - copy:
-    - konsole/Work.profile
-    - ~/.local/share/konsole/Work.profile
-
 mpv:
   - symlink:
     - mpv/input.conf
