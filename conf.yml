@@ -48,7 +48,6 @@ mpv:
     - ~/.config/mpv/mpv.conf
 
 ncmpcpp:
-  - write:
   - copy:
     - ncmpcpp
     - ~/.config/ncmpcpp/config
