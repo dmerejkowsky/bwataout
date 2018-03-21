@@ -38,6 +38,9 @@ i3:
   - symlink:
     - i3/status
     - ~/.config/i3status/config
+  - symlink:
+    - bin/passmenu
+    - ~/.local/bin/passmenu
 
 mpv:
   - symlink:
