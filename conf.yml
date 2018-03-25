@@ -87,6 +87,11 @@ tint2:
     - tint2rc
     - ~/.config/tint2/tint2rc
 
+tmux:
+  - symlink:
+    - tmux.conf
+    - ~/.tmux.conf
+
 neovim:
   - write:
     - ~/.config/nvim/init.local.vim
