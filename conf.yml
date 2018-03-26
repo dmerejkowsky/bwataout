@@ -10,6 +10,11 @@ fzf:
  - exec:
    - [bash, "{home}/.fzf/install", --bin]
 
+gdb:
+  - symlink:
+    - gdbinit
+    - ~/.gdbinit
+
 git:
   - write:
     - ~/.config/git/config
