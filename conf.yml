@@ -72,6 +72,12 @@ openbox:
     - openbox
     - ~/.config/openbox
 
+
+ruby:
+  - symlink:
+    - gemrc
+    - ~/.gemrc
+
 screen:
   - symlink:
     - screenrc
