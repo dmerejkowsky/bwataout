@@ -333,10 +333,6 @@ function z() {
 # Note have CTRL-N is 'previous', and CTRL-P is
 # 'next', that's because in dvorak (and on mac),
 # CTRL-N is much easier to type :)
-autoload -U up-line-or-beginnig-search
-autoload -U down-line-or-beginnig-search
-zle -N up-line-or-beginnig-search
-zle -N down-line-or-beginnig-search
 bindkey '^N' up-line-or-history
 bindkey '^P' down-line-or-history
 
