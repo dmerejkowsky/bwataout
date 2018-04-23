@@ -7,7 +7,6 @@ general {
 }
 
 order += "disk /"
-order += "disk /mnt/sdb1"
 order += "ethernet _first_"
 order += "load"
 order += "tztime local"
@@ -26,9 +25,5 @@ load {
 }
 
 disk "/" {
-        format = "SSD: %percentage_used used"
-}
-
-disk "/mnt/sdb1" {
         format = "HDD: %percentage_used used"
 }
