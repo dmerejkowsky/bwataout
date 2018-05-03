@@ -2,21 +2,21 @@
 
 You can find here the configuration for most of the tools I use.
 
+# How to use this repo
 
-Usage
------
+I put the code here on github because it's convenient when I want to share a snippet of config with someone else.
 
-* Run `./bootstrap.sh` to install Python dependencies
-* Run `python3 install.py`
+However, I strongly advise you to
+* **not to use this repo directly** on your own machine or otherwise
+* **not fork it directly**
 
-Notes
------
+Instead please prefer *reading* the code.
 
-The ``install.py`` is meant to be run only once, on a newly created account.
-It does not try to be clever and only write files if they don't already exist,
-so it's safe.
+For instance:
 
-It also tries to keep things in XDG directories (``~/.config``, ``~/.local``)
-and so on.
+* I've written a "installation framework" for those file that I found clever and interesting (the `conf.yml` and the `install.py` files) [^1] . Feel free to study how it works and use the same kind of techniques in your own projects.
+* For the config files themselves, the best you can do is to  take each piece of configuration, try to understand what they do, and only then apply use them in your own configuration files when required.
 
-It uses tricks so that updating the config files work by just pulling this repo.
+Cheers!
+
+[^1]: I may be a tad biased considering the fact I wrote it myself.
