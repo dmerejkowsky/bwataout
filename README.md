@@ -16,6 +16,6 @@ For instance:
 
 
 * I've written a "installation framework" for those file that I found clever and interesting (the `conf.yml` and the `install.py` files) (<small>I may be a tad biased considering the fact I wrote it myself</small>) . Feel free to study how it works and use the same kind of techniques in your own projects.
-* For the config files themselves, the best you can do is to  take each piece of configuration, try to understand what they do, and only then apply use them in your own configuration files when required.
+* For the config files themselves, the best you can do is to  take each piece of configuration, try to understand what they do, and only then apply them in your own configuration files when required.
 
 Cheers!
