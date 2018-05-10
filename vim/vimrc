@@ -11,6 +11,7 @@ execute 'set runtimepath+=' . expand('<sfile>:h') . '/after'
 call minpac#init()
 call minpac#add('k-takata/minpac', {'type': 'opt', 'branch': 'v1.0'})
 call minpac#add('altercation/vim-colors-solarized')
+call minpac#add('AndrewRadev/sideways.vim', { 'branch': 'v0.3.0' })
 call minpac#add('andrewstuart/vim-kubernetes')
 call minpac#add('bps/vim-textobj-python')
 call minpac#add('dbmrq/vim-ditto')
@@ -277,6 +278,10 @@ if os == 'Linux'
   let g:netrw_browsex_viewer= "xdg-open"
 else
 endif
+
+" Sideways
+nnoremap <c-h> :SidewaysLeft<cr>
+nnoremap <c-l> :SidewaysRight<cr>
 
 " Use the lazy git-fpush command
 function! Gfpush()
