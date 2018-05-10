@@ -71,7 +71,7 @@ else
   set clipboard=unnamed
 endif
 
-let mapleader=","
+let mapleader="\\"
 
 set noswapfile
 " Backups with persistent undos
