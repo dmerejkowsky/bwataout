@@ -43,6 +43,7 @@ call minpac#add('tpope/vim-sleuth', { 'branch' : 'v1.1' })
 call minpac#add('tpope/vim-surround', { 'branch' : 'v2.1' })
 call minpac#add('vim-scripts/a.vim', { 'branch' : '2.18' })
 call minpac#add('vim-scripts/snippetsEmu', { 'branch' : '1.2.3'})
+call minpac#add('wellle/targets.vim', { 'branch' : 'v0.4.6'})
 
 
 " Simple vim settings {{{1
