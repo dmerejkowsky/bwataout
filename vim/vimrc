@@ -33,6 +33,7 @@ call minpac#add('peterhoeg/vim-qml')
 call minpac#add('mileszs/ack.vim', { 'branch' : '1.0.9' })
 call minpac#add('romainl/vim-cool')
 call minpac#add('romainl/vim-qf', { 'branch' : '0.1.0' })
+call minpac#add('rust-lang/rust.vim')
 call minpac#add('scrooloose/nerdcommenter', { 'branch' : '2.3.0' })
 call minpac#add('sheerun/vim-polyglot')
 call minpac#add('tfnico/vim-gradle')
@@ -273,6 +274,8 @@ let g:go_fmt_command = "goimports"
 " both the CleanWhiteSpace function and the pycodestyle linter
 " will take care of those.
 let g:python_highlight_space_errors=0
+
+let g:rustfmt_autosave=1
 
 if os == 'Linux'
   let g:netrw_browsex_viewer= "xdg-open"
