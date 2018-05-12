@@ -132,6 +132,11 @@ xinitrc:
     - |
       # Run your window manager from here
 
+youtube-dl:
+  - symlink:
+    - youtube-dl
+    - ~/.config/youtube-dl/config
+
 zsh:
   - write:
     - ~/.zshrc
