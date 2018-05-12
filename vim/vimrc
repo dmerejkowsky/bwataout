@@ -275,6 +275,8 @@ let g:go_fmt_command = "goimports"
 let g:python_highlight_space_errors=0
 
 let g:rustfmt_autosave=1
+" to not conflict with vim-ale
+let g:rustfmt_fail_silently = 1
 
 if os == 'Linux'
   let g:netrw_browsex_viewer= "xdg-open"
