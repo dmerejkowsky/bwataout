@@ -357,6 +357,7 @@ nnoremap <leader>b :Buffers<CR>
 
 nnoremap <localleader>p :lprevious<CR>
 nnoremap <localleader>n :lnext<CR>
+nnoremap <localleader>r :lrewind<CR>
 
 " Some magic from romainl
 for char in [ '-', '_', '.', '/']
