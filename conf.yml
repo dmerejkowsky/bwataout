@@ -111,8 +111,8 @@ neovim:
     - ~/.config/nvim/init.vim
     - |
       '" Auto-generated code. Do not edit'
-      source {this_dir}/vim/vimrc
       source ~/.config/nvim/init.local.vim
+      source {this_dir}/vim/vimrc
   - clone:
     - git@github.com:k-takata/minpac.git
     - ~/.local/share/nvim/site/pack/minpac/opt/minpac
