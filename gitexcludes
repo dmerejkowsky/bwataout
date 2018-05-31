@@ -4,6 +4,7 @@ README.html
 
 # Vim
 *.swp
+.lvimrc
 
 .vscode/
 
