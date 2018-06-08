@@ -13,6 +13,7 @@ call minpac#add('k-takata/minpac', {'type': 'opt', 'branch': 'v1.0'})
 call minpac#add('altercation/vim-colors-solarized')
 call minpac#add('AndrewRadev/sideways.vim', { 'branch': 'v0.3.0' })
 call minpac#add('andrewstuart/vim-kubernetes')
+call minpac#add('autozimu/LanguageClient-neovim', { 'branch': 'next' })
 call minpac#add('bps/vim-textobj-python')
 call minpac#add('dbmrq/vim-ditto')
 call minpac#add('dleonard0/pony-vim-syntax')
@@ -278,6 +279,10 @@ let g:python_highlight_space_errors=0
 let g:rustfmt_autosave=1
 " to not conflict with vim-ale
 let g:rustfmt_fail_silently = 1
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ }
 
 if os == 'Linux'
   let g:netrw_browsex_viewer= "xdg-open"
