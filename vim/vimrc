@@ -248,8 +248,20 @@ let g:ale_linters = {
   \ 'java': [],
   \ 'javascript': ['eslint'],
   \ }
+let g:ale_python_mypy_options = '--strict --ignore-missing-imports'
+
+function! DisableMypy()
+  let g:ale_linters['python'] = ['pychecksyntax', 'pycodestyle', 'pyflakes']
+endfunction
+command! DisableMypy :call DisableMypy()
 let g:ale_set_highlights = 0
 
+function! EnableMypy()
+  let g:ale_linters['python'] = ['pychecksyntax', 'pycodestyle', 'pyflakes', 'mypy']
+endfunction
+command! EnableMypy :call EnableMypy()
+
+let g:ale_set_highlights = 0
 
 let g:ale_rust_cargo_use_check = 1
 
