@@ -1,0 +1,36 @@
+#!/usr/bin/env python3
+
+import sys
+
+
+def process_file(name):
+    errors = list()
+    with open(name, "rb") as stream:
+        for i, line in enumerate(stream.readlines(), start=1):
+            try:
+                line.decode('ascii')
+            except UnicodeDecodeError:
+                errors.append((i, line))
+
+    if not errors:
+        return True
+    for i, line in errors:
+        print("%s:%i" % (name, i), line)
+    return False
+
+
+def main():
+    all_ok = True
+    files = sys.argv[1:]
+    if not files:
+        sys.exit("Usage: isascii FILE ...")
+    for file in sys.argv[1:]:
+        ok = process_file(file)
+        if not ok:
+            all_ok = False
+    if not all_ok:
+        sys.exit(1)
+
+
+if __name__ == "__main__":
+    main()
