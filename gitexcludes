@@ -33,3 +33,6 @@ __pycache__
 # Javascript
 geckodriver.log
 yarn-error.log
+
+# Go
+debug.test
