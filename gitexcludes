@@ -17,6 +17,9 @@ CMakeLists.txt.user
 .bzr
 
 
+# Go
+debug.test
+
 # Python
 __pycache__
 *.pyc
