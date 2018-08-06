@@ -33,6 +33,9 @@ __pycache__
 # Rust
 .*.rustfmt
 
+# Java
+hs_*.log
+
 # Javascript
 geckodriver.log
 yarn-error.log
