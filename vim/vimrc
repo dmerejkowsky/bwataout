@@ -234,47 +234,27 @@ command! MkdirP call MkdirP()
 " Tell ALE to:
 " * only run on file save
 " * use the quickfix only
-let g:ale_lint_on_text_changed = 'never'
+let g:ale_echo_cursor = 1
+let g:ale_fix_on_save = 1
 let g:ale_lint_on_enter = 0
+let g:ale_lint_on_text_changed = 'never'
+" just use the gutter, do not highlight
+let g:ale_set_highlights = 0
+" use loclist, not quickfix
 let g:ale_set_loclist = 1
 let g:ale_set_quickfix = 0
-let g:ale_echo_cursor = 1
-" vim-ale flow eats all my inotify slots :/
+
+" Initialize g:ale_inters. After this
+" editing the dict from the command mode is easy.
 let g:ale_linters = {
   \ 'c': [],
   \ 'cpp': [],
   \ 'python': [''],
   \ 'java': [],
-  \ 'javascript': ['eslint'],
+  \ 'javascript': [''],
   \ }
 
-let g:ale_fix_on_save = 1
-
 let g:ale_python_mypy_options = '--strict --ignore-missing-imports'
-
-function! DisableMypy()
-  let g:ale_linters['python'] = ['pychecksyntax', 'pycodestyle', 'pyflakes']
-endfunction
-command! DisableMypy :call DisableMypy()
-let g:ale_set_highlights = 0
-
-function! EnableMypy()
-  let g:ale_linters['python'] = ['pychecksyntax', 'pycodestyle', 'pyflakes', 'mypy']
-endfunction
-command! EnableMypy :call EnableMypy()
-
-let g:ale_set_highlights = 0
-function! EnableBlack()
-  let g:ale_fixers = { 'python': ['black'] }
-endfunction
-command! EnableBlack :call EnableBlack()
-
-function! DisableBlack()
-  let g:ale_fixers = {}
-  let g:ale_set_highlights = 0
-endfunction
-command! DisableBlack :call DisableBlack()
-
 
 let g:ale_rust_cargo_use_check = 1
 
