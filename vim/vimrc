@@ -374,6 +374,9 @@ endfunction
 
 autocmd VimLeave * silent call WriteCWD()
 
+" Go into insertion mode everytime a term is created
+autocmd TermOpen term://* startinsert
+
 
 " Mapping and abbreviations {{{1
 
