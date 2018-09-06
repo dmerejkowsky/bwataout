@@ -123,6 +123,11 @@ neovim:
   - exec:
     - [nvim, -c, ':packad minpac | :call minpac#update() | :q!']
 
+
+ritoz:
+ - exec:
+   - [cargo, install, --path, ritoz, --force]
+
 xinitrc:
   - symlink:
     - xinitrc
