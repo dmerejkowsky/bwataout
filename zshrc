@@ -358,7 +358,7 @@ activate() {
 
 alias a=activate
 alias d=deactivate
-+alias da="deactivate;activate"
+alias da="deactivate;activate"
 
 #
 # vim: set foldmethod=marker:
