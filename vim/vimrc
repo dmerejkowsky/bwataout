@@ -47,6 +47,7 @@ call minpac#add('vim-scripts/a.vim', { 'branch' : '2.18' })
 call minpac#add('vim-scripts/snippetsEmu', { 'branch' : '1.2.3'})
 call minpac#add('wellle/targets.vim', { 'branch' : 'v0.4.6'})
 
+inoremap <ESC> <nop>
 
 " Simple vim settings {{{1
 syntax on
