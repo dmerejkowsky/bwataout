@@ -1,3 +1,4 @@
+extern crate dirs;
 use std::env;
 use std::fs;
 use std::path::{Path, PathBuf};
@@ -112,7 +113,7 @@ impl Storage {
 }
 
 fn get_db_path() -> PathBuf {
-    let home = std::env::home_dir();
+    let home = dirs::home_dir();
     let home = home.expect("Could no get home directory");
     home.join(".local/share/zsh/cwd_history")
 }
