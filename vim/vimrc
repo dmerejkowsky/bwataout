@@ -329,12 +329,13 @@ augroup whitespaceclean
   autocmd BufWritePre * :RemoveBlankLinesAtTheEndOfFile
 augroup end
 
-" Spell checking
+" For 'text' files, enable spell checking,
+" and disable syntax highlight.
 augroup spell
   autocmd!
-  autocmd filetype rst  :setlocal spell spelllang=en
   autocmd filetype tex  :setlocal spell spelllang=en
-  autocmd filetype markdown :setlocal spell spelllang=en
+  autocmd filetype rst  :setlocal spell spelllang=en | syntax clear
+  autocmd filetype markdown :setlocal spell spelllang=en | syntax clear
   autocmd filetype gitcommit  :setlocal spell spelllang=en
 augroup end
 
