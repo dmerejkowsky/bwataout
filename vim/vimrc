@@ -269,6 +269,8 @@ let g:snippetsEmu_key = "<C-Space>"
 " Status line (requires VimBuddy plugin to be present)
 set statusline=%{VimBuddy()}\ [%n]\ %<%f\ %{fugitive#statusline()}%h%m%r%=%-14.(%l,%c%V%)\ %P\ %a
 
+let g:polyglot_disabled = ['rust']
+
 " Fix go syntax file:
 let g:go_highlight_array_whitespace_error=0
 let g:go_highlight_chan_whitespace_error=0
