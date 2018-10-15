@@ -255,6 +255,7 @@ let g:ale_linters = {
 
 let g:ale_fixers = {
   \ 'javascript': ['eslint'],
+  \ 'rust': ['rustfmt'],
   \ }
 
 let g:ale_python_mypy_options = '--strict --ignore-missing-imports'
