@@ -23,12 +23,12 @@ bindsym $mod+Return exec /usr/bin/konsole
 bindsym $mod+Shift+C kill
 
 # start i3-dmenu-desktop
-bindsym $mod+r exec j4-dmenu-desktop
+bindsym $mod+p exec j4-dmenu-desktop
 
 # lock the screen
 bindsym $mod+Shift+x exec i3lock
 # Copy password to clipboard
-bindsym $mod+p exec ~/.local/bin/passmenu
+bindsym $mod+r exec ~/.local/bin/passmenu
 
 # change focus
 bindsym $mod+h focus left
