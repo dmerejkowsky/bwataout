@@ -341,11 +341,17 @@ bindkey '^P' down-line-or-history
 
 
 activate() {
-    activate_file=$(pipenv --venv)/bin/activate 2>/dev/null
+    activate_file=$(dmenv show:venv_path)/bin/activate 2>/dev/null
     if [[ ! -e "${activate_file}" ]]; then
-      activate_file=$(poetry debug:info | awk '/Path:/ {print $3}')/bin/activate
+      activate_file=$(pipenv --venv 2>/dev/null)/bin/activate
+      if [[ ! -e "${activate_file}" ]]; then
+        activate_file=$(poetry debug:info 2>/dev/null | awk '/Path:/ {print $3}')/bin/activate
+      fi
     fi
-    if [[ -e "$activate_file" ]]; then
+    if [[ ! -e "${activate_file}" ]]; then
+      echo "no venv manager found"
+      return 1
+    else
       source $activate_file
     fi
 }
