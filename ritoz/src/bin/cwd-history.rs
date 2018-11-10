@@ -175,7 +175,7 @@ fn remove(storage: &mut Storage, target: &str) -> Result<(), RitozError> {
 fn main() {
     let args: Vec<_> = env::args().collect();
     if args.len() < 2 {
-        println!("Usage: cwd-history [add|list]");
+        println!("Usage: cwd-history [add|clean|edit|list|remove]");
         process::exit(1);
     }
 
