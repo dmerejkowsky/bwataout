@@ -8,3 +8,4 @@ Abolish swith switch
 Abolish wich which
 Abolish worktee worktree
 Abolish snaphost snapshot
+Abolish improt import
