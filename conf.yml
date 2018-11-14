@@ -47,6 +47,12 @@ i3:
     - bin/passmenu
     - ~/.local/bin/passmenu
 
+
+kitty:
+  - symlink:
+    - kitty.conf
+    - ~/.config/kitty/kitty.conf
+
 mpv:
   - symlink:
     - mpv/input.conf
