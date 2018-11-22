@@ -96,7 +96,7 @@ set scrolloff=2
 
 " This is nice if you have something
 " that reset the title of you term at
-" each command, otherwize it's annoying ...
+" each command, otherwise it's annoying ...
 set title
 
 " Allow completion on filenames right after a '='.
@@ -112,7 +112,7 @@ set visualbell t_vb=
 " Disable useless ctrl+space behavior:
 imap <Nul> <Space>
 
-" Always display statusline
+" Always display status line
 set laststatus=2
 
 "For completion:
@@ -364,11 +364,11 @@ endfunction
 
 autocmd VimLeave * silent call WriteCWD()
 
-" Go into insertion mode everytime a term is created
+" Go into insertion mode every time a term is created
 autocmd TermOpen term://* startinsert
 
 
-" Mapping and abbreviations {{{1
+" Mapping and abbreviations {{{ 1
 
 nnoremap <leader>n :windo :set number!<CR>
 nnoremap <leader>tb :tabnew<space>
@@ -391,7 +391,6 @@ for char in [ '-', '_', '.', '/']
   execute 'onoremap a' . char . ' :normal va' . char . '<CR>'
 endfor
 
-"nore typing :make is much too long anyway
 nnoremap <leader>m :make<cr>
 nnoremap <leader>M :w<cr>:Neomake!<cr>
 
@@ -475,8 +474,5 @@ function! ToggleNerdTreeInPlace(path)
     :execute "NERDTree " . a:path
   endif
 endfunction
-
-nnoremap <leader>R :call ToggleNerdTreeInPlace(getcwd())<cr>
-nnoremap <leader>r :NERDTree<space>
 
 " }}}
