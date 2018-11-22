@@ -304,6 +304,11 @@ if os == 'Linux'
 else
 endif
 
+" NERDTree settings
+let g:NERDTreeHijackNetrw = 1
+let g:NERDTreeQuitOnOpen = 1
+let g:NERDTreeChDirMode = 2
+
 " Sideways
 nnoremap <c-h> :SidewaysLeft<cr>
 nnoremap <c-l> :SidewaysRight<cr>
@@ -459,20 +464,3 @@ let g:DVB_TrimWS=0
 
 " Escape from terminal mode by pressing escape
 tnoremap <Esc> <C-\><C-n>
-
-" CWD and tab stuff {{{1
-let g:NERDTreeHijackNetrw = 1
-let g:NERDTreeQuitOnOpen = 1
-let g:NERDTreeChDirMode = 2
-
-function! ToggleNerdTreeInPlace(path)
-  if bufname("%") =~ "NERD_tree_"
-    :normal `N
-  else
-    " create a mark so that we can go back later
-    :normal mN
-    :execute "NERDTree " . a:path
-  endif
-endfunction
-
-" }}}
