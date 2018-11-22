@@ -169,6 +169,9 @@ if os == "Darwin"
   set background=light
   colorscheme default
 else
+  let g:jellybeans_overrides = {
+    \ 'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
+    \}
   colorscheme jellybeans
 endif
 
