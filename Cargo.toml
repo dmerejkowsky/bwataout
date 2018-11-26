@@ -7,11 +7,11 @@ publish = false
 
 [[bin]]
 name = "cwd-history"
-path = "rust/cwd-history.rs"
+path = "bin/cwd-history.rs"
 
 [[bin]]
 name = "uniq-hist-sort"
-path = "rust/uniq-hist-sort.rs"
+path = "bin/uniq-hist-sort.rs"
 
 
 [dependencies]
