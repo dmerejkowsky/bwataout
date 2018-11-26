@@ -130,9 +130,9 @@ neovim:
     - [nvim, -c, ':packad minpac | :call minpac#update() | :q!']
 
 
-ritoz:
+rust-binaries:
  - exec:
-   - [cargo, install, --path, ritoz, --force]
+   - [cargo, install, --path, ., --force]
 
 xinitrc:
   - symlink:

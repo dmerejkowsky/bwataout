@@ -1,0 +1,21 @@
+[package]
+name = "dmerej-dotfiles"
+version = "0.1.0"
+authors = ["Dimitri Merejkowsky <d.merej@gmail.com>"]
+#include = ["rust/**/*"]
+publish = false
+
+[[bin]]
+name = "cwd-history"
+path = "rust/cwd-history.rs"
+
+[[bin]]
+name = "uniq-hist-sort"
+path = "rust/uniq-hist-sort.rs"
+
+
+[dependencies]
+dirs = "1.0.3"
+
+[dev-dependencies]
+tempdir = "0.3"
