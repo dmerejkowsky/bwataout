@@ -2,7 +2,7 @@ import argparse
 import subprocess
 from urllib.request import urlretrieve
 
-import path
+from path import Path
 import ruamel.yaml
 
 import ui
@@ -10,9 +10,9 @@ import ui
 
 class Executor:
     def __init__(self, force=False):
-        self.conf = ruamel.yaml.safe_load(path.Path("conf.yml").text())
-        self.this_dir = path.Path(".").abspath()
-        self.home = path.Path("~").expanduser()
+        self.conf = ruamel.yaml.safe_load(Path("configs.yml").text())
+        self.this_dir = Path.getcwd()
+        self.home = Path("~").expanduser()
         self.force = force
 
     def pretty_path(self, p):
@@ -20,7 +20,7 @@ class Executor:
         return "~/" + relpath
 
     def do_clone(self, url, dest, branch="master"):
-        dest = path.Path(dest).expanduser()
+        dest = Path(dest).expanduser()
         pretty_dest = self.pretty_path(dest)
         dest.parent.makedirs_p()
         if dest.exists():
@@ -33,18 +33,18 @@ class Executor:
         subprocess.check_call(["git", "clone", url, dest, "--branch", branch])
 
     def do_copy(self, src, dest):
-        dest = path.Path(dest).expanduser()
+        dest = Path(dest).expanduser()
         pretty_dest = self.pretty_path(dest)
         dest.parent.makedirs_p()
         if dest.exists() and not self.force:
             ui.info_2("Skipping", pretty_dest)
             return
-        src = path.Path(src).expanduser()
+        src = self.this_dir / "configs/" / src
         ui.info_2("Copy", src, "->", self.pretty_path(src))
         src.copy(dest)
 
     def do_fetch(self, url, dest):
-        dest = path.Path(dest).expanduser()
+        dest = Path(dest).expanduser()
         dest.parent.makedirs_p()
         pretty_dest = self.pretty_path(dest)
         if dest.exists() and not self.force:
@@ -54,7 +54,7 @@ class Executor:
         urlretrieve(url, dest)
 
     def do_write(self, src, contents):
-        src = path.Path(src).expanduser()
+        src = Path(src).expanduser()
         pretty_src = self.pretty_path(src)
         if src.exists() and not self.force:
             ui.info_2("Skipping", pretty_src)
@@ -67,8 +67,8 @@ class Executor:
         src.write_text(contents)
 
     def do_symlink(self, src, dest):
-        src = self.this_dir.joinpath(src)
-        dest = path.Path(dest).expanduser()
+        src = self.this_dir / "configs" / src
+        dest = Path(dest).expanduser()
         pretty_dest = self.pretty_path(dest)
         dest.parent.makedirs_p()
         if dest.exists() and not self.force:
