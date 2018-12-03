@@ -14,4 +14,4 @@ Snippet fig \begin{figure}[htb]<CR>\centering<CR>\includegraphics[height=.7\text
 Snippet col \begin{columns}[t]<CR>\column{.5\textwidth}<CR>\column{.5\textwidth}<CR>\end{columns}
 Snippet warn \begin{alertblock}{Warning}<CR><{}><CR>\end{alertblock}
 Snippet note \begin{alertblock}{Note}<CR><{}><CR>\end{alertblock}
-Snippet pycode \begin{minted}{python}<CR><{}><CR>\end{minted}
+Snippet code \begin{lstlisting}<CR><{}><CR>\end{lstlisting}
