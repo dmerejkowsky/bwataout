@@ -218,12 +218,6 @@ function resolve() {
   (gitcd && git diff --name-only --diff-filter=U | xargs $EDITOR)
 }
 
-# remove all breakpoints from Python code
-function rm-breakpoints() {
-  for file in $(git grep -l debug_here); do
-    sed -i '/debug_here/d' $file
-  done
-}
 
 # remove all nvim swap files
 function rm-swap() {
@@ -338,7 +332,7 @@ bindkey '^P' down-line-or-history
 
 
 # }}}
-
+# {{{ python
 
 activate() {
     activate_file=$(dmenv show:venv_path)/bin/activate 2>/dev/null
