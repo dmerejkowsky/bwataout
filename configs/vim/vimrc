@@ -252,9 +252,10 @@ let g:ale_set_quickfix = 0
 let g:ale_linters = {
   \ 'c': [],
   \ 'cpp': [],
-  \ 'python': [''],
+  \ 'python': [],
   \ 'java': [],
   \ 'javascript': ['eslint'],
+  \ 'tex': [],
   \ }
 
 let g:ale_fixers = {
