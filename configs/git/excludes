@@ -29,6 +29,7 @@ __pycache__
 *.egg-info
 .python-version
 .mypy_cache
+.venv/
 
 # Rust
 .*.rustfmt
