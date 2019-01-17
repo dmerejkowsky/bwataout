@@ -8,11 +8,8 @@ import sys
 import path
 import neovim
 
-
-def print_line():
-    term_size = shutil.get_terminal_size()
-    print("-" * term_size.columns)
-    print()
+def clear_screen():
+    subprocess.run(["clear"])
 
 
 def sanitize_url(url):
@@ -38,6 +35,7 @@ def loop(*, url, cmd, browser=None):
     while True:
         try:
             vim.next_message()
+            clear_screen()
             if cmd:
                 print(cmd)
                 process = subprocess.run(cmd, shell=True)
@@ -45,7 +43,6 @@ def loop(*, url, cmd, browser=None):
                     print("Process failed")
             if driver:
                 driver.refresh()
-            print_line()
         except neovim.api.NvimError:
             sys.exit(e)
         except OSError as e:
