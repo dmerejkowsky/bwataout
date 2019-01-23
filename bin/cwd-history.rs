@@ -85,17 +85,19 @@ impl Storage {
         Ok(())
     }
 
-    pub fn clean(&mut self) -> Result<u32, RitozError> {
+    pub fn clean(&mut self) -> Result<(u32, u32), RitozError> {
         let mut res = 0;
+        let mut total = 0;
         let entries = &mut self.read_db()?;
         for entry in entries {
+            total += 1;
             let path = Path::new(entry);
             if !path.exists() {
                 res += 1;
                 &mut self.remove(entry);
             }
         }
-        Ok(res)
+        Ok((res, total))
     }
 
     fn read_db(&self) -> Result<Vec<String>, RitozError> {
@@ -135,9 +137,9 @@ fn add(storage: &mut Storage, target: &str) -> Result<(), RitozError> {
 }
 
 fn clean(storage: &mut Storage) -> Result<(), RitozError> {
-    let cleaned = storage.clean()?;
+    let (cleaned, total) = storage.clean()?;
     if cleaned > 0 {
-        println!("Cleaned {} entries", cleaned);
+        println!("Cleaned {} entries over {}", cleaned, total);
     } else {
         println!("Already clean");
     }
