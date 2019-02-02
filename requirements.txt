@@ -1,6 +1,6 @@
+cli-ui
 colorama
 unidecode
 ruamel.yaml
 path.py
-python-cli-ui
 neovim

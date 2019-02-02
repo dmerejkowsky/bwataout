@@ -5,7 +5,7 @@ from urllib.request import urlretrieve
 from path import Path
 import ruamel.yaml
 
-import ui
+import cli_ui as ui
 
 
 class Executor:
