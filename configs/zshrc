@@ -279,8 +279,8 @@ prompt pure
 # {{{ neovim black magic
 
 # Need to use a 'true' executable here
-export VISUAL="nvim"
-export EDITOR="nvim"
+export VISUAL="kak"
+export EDITOR="kak"
 
 # Change working dir when vim exits
 function vim() {
