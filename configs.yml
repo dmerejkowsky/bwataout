@@ -47,11 +47,6 @@ i3:
     - bin/passmenu
     - ~/.local/bin/passmenu
 
-kakoune:
-  - symlink:
-    - kakrc
-    - ~/.config/kak/kakrc
-
 kitty:
   - symlink:
     - kitty.conf
