@@ -276,22 +276,19 @@ export PURE_GIT_UNTRACKED_DIRTY=0
 prompt pure
 # }}}
 
-# {{{ neovim black magic
+# {{{ kakoune
 
 # Need to use a 'true' executable here
 export VISUAL="kak"
 export EDITOR="kak"
 
-# Change working dir when vim exits
-function vim() {
-  vim_wrapper.py $*
-  if [[ $? -eq 0 ]]; then
-    cd "$(cat /tmp/nvim-cwd 2>/dev/null || echo .)"
-  fi
+# Try a new session. If it fails,
+# connect.
+# Note: the session is always called 'main'
+# for now
+function k {
+  kak -s main $@ || kak -c main $@
 }
-
-# Sometimes 3 letters is too much
-alias vi=vim
 
 # }}}
 
