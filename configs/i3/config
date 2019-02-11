@@ -17,7 +17,7 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec /usr/bin/xfce4-terminal
+bindsym $mod+Return exec /usr/bin/sakura
 
 # kill focused window
 bindsym $mod+Shift+C kill
