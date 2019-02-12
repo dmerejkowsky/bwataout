@@ -49,6 +49,14 @@ impl Storage {
         self.entries
     }
 
+    pub fn clean(&mut self) {
+        let before = self.entries.len();
+        self.entries.retain(|x| std::path::Path::new(x).exists());
+        let after = self.entries.len();
+        write_db(&self.db_path, &self.entries);
+        println!("Cleaned {} entries over {}", before - after, before);
+    }
+
     pub fn add(&mut self, entry: &str) {
         insert_in_order_and_dedup(&mut self.entries, entry);
         write_db(&self.db_path, &self.entries)
@@ -95,5 +103,14 @@ mod tests {
 
         let storage2 = Storage::new("dummy", &temp_path);
         assert_eq!(storage2.list(), vec!["foo", "bar"]);
+    }
+
+    #[test]
+    fn test_storage_cleanup() {
+        let temp_path = TempDir::new("test-dm-tools").unwrap().path().to_path_buf();
+        let mut storage = Storage::new("dummy", &temp_path);
+        storage.add("no-such.txt");
+        storage.clean();
+        assert!(storage.list().is_empty());
     }
 }

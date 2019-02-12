@@ -22,6 +22,10 @@ impl App {
         self.storage.add(entry)
     }
 
+    pub fn clean(&mut self) {
+        self.storage.clean()
+    }
+
     pub fn edit(&self) {
         let editor = std::env::var("EDITOR").expect("EDITOR not set");
         let status = std::process::Command::new(editor)

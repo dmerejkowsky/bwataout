@@ -19,6 +19,9 @@ pub enum SubCommand {
     #[structopt(name = "add", about = "add a new entry")]
     Add {entry: String},
 
+    #[structopt(name = "clean", about = "clean up entries")]
+    Clean {},
+
     #[structopt(name = "edit", about = "edit database")]
     Edit {},
 

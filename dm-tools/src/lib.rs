@@ -24,6 +24,7 @@ pub fn run_cmd(cmd_type: CmdType, cmd: SubCommand) {
     let mut app = crate::app::App::new(name);
     match cmd {
         SubCommand::Add{ entry } => app.add(&entry),
+        SubCommand::Clean{} => app.clean(),
         SubCommand::Edit {} => app.edit(),
         SubCommand::List{ kakoune } => {
             if kakoune {
