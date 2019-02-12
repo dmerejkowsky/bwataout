@@ -282,14 +282,6 @@ prompt pure
 export VISUAL="kak"
 export EDITOR="kak"
 
-# Try a new session. If it fails,
-# connect.
-# Note: the session is always called 'main'
-# for now
-function k {
-  kak -s main $@ || kak -c main $@
-}
-
 # }}}
 
 # {{{ fzf
