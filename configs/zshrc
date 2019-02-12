@@ -278,9 +278,22 @@ prompt pure
 
 # {{{ kakoune
 
-# Need to use a 'true' executable here
 export VISUAL="kak"
 export EDITOR="kak"
+
+function kak-start {
+  echo "starting new 'main' session"
+  kak -s main -d
+}
+
+# Connect to 'main' session, sets
+# the project_working_dir option so that
+# we can change it globally later
+# (see kakrc for details
+function k {
+  kak -c main -e "set-option global project_working_dir $(pwd)" $@
+}
+
 
 # }}}
 
