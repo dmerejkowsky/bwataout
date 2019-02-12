@@ -313,6 +313,12 @@ function register_cwd() {
 typeset -gaU chpwd_functions
 chpwd_functions+=register_cwd
 
+function register_cmd() {
+  cmd-history add $1
+}
+typeset -gaU preexec_functions
+preexec_functions+=register_cmd
+
 export FZF_DEFAULT_OPTS="--tac --no-sort"
 export FZF_CTRL_R_OPTS="--exact"
 
