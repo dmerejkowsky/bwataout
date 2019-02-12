@@ -1,0 +1,54 @@
+#!/usr/bin/env python3
+
+import argparse
+import os
+import sys
+
+MRU_CACHE_PATH = "/home/dmerej/mru.txt"
+
+
+def read_db():
+    with open(MRU_CACHE_PATH) as file:
+       	lines = file.readlines()
+    return [x.strip() for x in lines]
+
+
+def write_db(entries):
+    with open(MRU_CACHE_PATH, "w") as file:
+       	file.writelines([x + "\n" for x in entries])
+
+
+def add_to_db(new_entry):
+    previous = read_db()
+    new = [x for x in previous if x != new_entry]
+    new.append(new_entry)
+    write_db(new)
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    subparsers = parser.add_subparsers(title="subcommands", dest="command")
+
+    add_parser = subparsers.add_parser("add")
+    add_parser.add_argument("filename")
+
+    list_parser = subparsers.add_parser("list")
+    list_parser.add_argument("--kakoune", action="store_true")
+
+    args = parser.parse_args()
+
+    if args.command == "add":
+        filename = args.filename
+        add_to_db(filename)
+    elif args.command == "list":
+        entries = read_db()
+        if args.kakoune:
+            print("menu ", end="")
+            for entry in entries:
+                print(f'{entry} "edit -existing {entry}"', end=" ")
+        else:
+            print("\n".join(entries))
+               
+
+if __name__  ==  "__main__":
+    main()
