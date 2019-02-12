@@ -2,8 +2,8 @@
 name = "dmerej-dotfiles"
 version = "0.1.0"
 authors = ["Dimitri Merejkowsky <d.merej@gmail.com>"]
-#include = ["rust/**/*"]
 publish = false
+edition = "2018"
 
 [[bin]]
 name = "cwd-history"
