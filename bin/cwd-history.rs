@@ -162,10 +162,17 @@ fn edit(storage: &Storage) -> Result<(), RitozError> {
     Ok(())
 }
 
-fn list(storage: &Storage) -> Result<(), RitozError> {
+fn list(storage: &Storage, kakoune: bool) -> Result<(), RitozError> {
     let entries = storage.list()?;
-    for entry in entries {
-        println!("{}", entry);
+    if kakoune {
+        print!("{}", "menu ");
+        for entry in entries.iter().rev().take(10) {
+            print!("{entry} \"change-directory {entry}\" ", entry = entry)
+        }
+    } else {
+        for entry in entries {
+            println!("{}", entry);
+        }
     }
     Ok(())
 }
@@ -191,6 +198,11 @@ fn main() {
         target = args[2].clone();
     }
 
+    let mut kakoune = false;
+    if args.contains(&"--kakoune".to_string()) {
+        kakoune = true;
+    }
+
     let db_path = get_db_path();
     let storage = Storage::new(db_path);
     if storage.is_err() {
@@ -203,7 +215,7 @@ fn main() {
         "add" => add(&mut storage, &target),
         "clean" => clean(&mut storage),
         "edit" => edit(&storage),
-        "list" => list(&storage),
+        "list" => list(&storage, kakoune),
         "remove" => remove(&mut storage, &target),
         a @ _ => Err(RitozError::new(&format!("Unknown action: {}", a))),
     };
