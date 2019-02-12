@@ -41,7 +41,7 @@ impl App {
     pub fn for_kakoune(self, command: &str) {
         print!("{}", "menu ");
         for entry in self.storage.list().iter().rev().take(10) {
-            print!("{entry} \"{cmd} {entry}\" ", cmd = command, entry = entry)
+            print!("\"{entry}\" \"{cmd} '{entry}'\" ", cmd = command, entry = entry)
         }
     }
 }
