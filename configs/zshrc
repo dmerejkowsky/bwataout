@@ -145,7 +145,7 @@ export BLOCK_SIZE=human-readable
 DIRSTACKSIZE=30
 
 this_dir=$(dirname $0)
-export PATH="${this_dir}/../bin:$HOME/.local/bin:$PATH"
+export PATH="${this_dir}/../dm-tools/bin:$HOME/.local/bin:$PATH"
 # See ~/.npmrc
 export PATH="${HOME}/.local/share/node/bin:$PATH"
 

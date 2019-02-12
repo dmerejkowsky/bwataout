@@ -129,9 +129,9 @@ neovim:
     - [nvim, -c, ':packad minpac | :call minpac#update() | :q!']
 
 
-rust-binaries:
+dm-tools:
  - exec:
-   - [cargo, install, --path, ., --force]
+   - [cargo, install, --path, "dm-tools/", --force]
 
 xinitrc:
   - symlink:

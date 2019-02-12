@@ -1,0 +1,11 @@
+[package]
+authors = ["Dimitri Merejkowsky <dimitri.merejkowsky@tanker.io>"]
+edition = "2018"
+name = "dm-tools"
+version = "0.1.0"
+[dependencies]
+app_dirs = "1.2.1"
+structopt = "*"
+
+[dev-dependencies]
+tempdir = "0.3.7"
