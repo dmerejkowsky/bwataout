@@ -55,3 +55,4 @@ expandtabs |  .editorconfig
 :wqa       |  :waq
 gj, gk     |  N/A, by design
 <c-y>      |  N/A, doable with a mapping?
+gq         |  ?
