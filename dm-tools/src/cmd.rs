@@ -19,6 +19,9 @@ pub enum SubCommand {
     #[structopt(name = "add", about = "add a new entry")]
     Add {entry: String},
 
+    #[structopt(name = "clean", about = "clean entriess")]
+    Clean {},
+
     #[structopt(name = "edit", about = "edit database")]
     Edit {},
 
@@ -28,4 +31,3 @@ pub enum SubCommand {
         kakoune: bool,
     }
 }
-

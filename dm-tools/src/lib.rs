@@ -1,35 +1,28 @@
-mod app;
+mod list_helpers;
+mod storage_manager;
 mod storage;
+mod commands;
+mod working_dirs;
+mod mru_files;
 pub mod cmd;
 
 use crate::cmd::SubCommand;
 
-pub enum CmdType {
-    CwdHistory,
-    CommandsHistory,
-    MruFiles,
-}
+pub use storage_manager::StorageManager;
+pub use storage_manager::StorageType;
 
-pub fn run_cmd(cmd_type: CmdType, cmd: SubCommand) {
-    let name = match cmd_type {
-        CmdType::CwdHistory => "cwd-history",
-        CmdType::MruFiles => "mru-files",
-        CmdType::CommandsHistory => "commands-history",
-    };
-    let command = match cmd_type {
-        CmdType::CwdHistory => "change-directory",
-        CmdType::MruFiles => "edit -existing",
-        CmdType::CommandsHistory => "",
-    };
-    let mut app = crate::app::App::new(name);
+
+pub fn run_cache_manager(storage_type: StorageType, cmd: SubCommand) {
+    let mut storage_manager = StorageManager::new(storage_type);
     match cmd {
-        SubCommand::Add{ entry } => app.add(&entry),
-        SubCommand::Edit {} => app.edit(),
+        SubCommand::Add{ entry } => storage_manager.add(&entry),
+        SubCommand::Edit {} => storage_manager.edit(),
+        SubCommand::Clean {} => storage_manager.clean(),
         SubCommand::List{ kakoune } => {
             if kakoune {
-                app.for_kakoune(command)
+                storage_manager.for_kakoune()
             } else {
-                app.print_self()
+                storage_manager.print_self()
             }
         },
     }
