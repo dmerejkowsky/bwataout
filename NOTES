@@ -15,6 +15,7 @@
     (Maybe write a LSP server that knows how to spellcheck?)
   * Automatically enable English speller for markdown, git commit files
   * Do something with cmd-history ?
+* Put just the buffer name in the terminal title (hint: not that easy)
 
 
 
@@ -39,12 +40,12 @@ _d         |   <a-d>
 J          |   <a-j>
 >>, <<     |   >, <
 gu, gU     |   ~, `
-:retab     |   @, a-@
+:retab     |   @, <a-@>
 c-v$A      |   <d-s>A
 vip        |   <a-i>p
 }          |   ]p
 cc         |   gi <a-l>
-vit        |   <a-f>> <a-;> T<     # berk
+vit        |   <a-f>> <a-;> T<     # berk -> mapping?
 <c-v>j     |   C
 <c-v>k     |   <a-C>
 expandtabs |  .editorconfig
@@ -52,3 +53,5 @@ expandtabs |  .editorconfig
 :previous  |  :bp
 :rewind    |  N/A
 :wqa       |  :waq
+gj, gk     |  N/A, by design
+<c-y>      |  N/A, doable with a mapping?
