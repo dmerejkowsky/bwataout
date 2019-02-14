@@ -1,0 +1,54 @@
+# TODO/ideas
+
+## dm-tools
+
+* Don't add .git/COMMIT_EDITMSG in mru-files
+* Use traits for the various caches
+
+
+## Kakoune
+
+* Better spell checking:
+  * Spell check in realtime
+  * Easy addition of word under cursor to
+    personnal dict
+    (Maybe write a LSP server that knows how to spellcheck?)
+  * Automatically enable English speller for markdown, git commit files
+  * Do something with cmd-history ?
+
+
+
+# Kakoune/Vim cheat sheet
+
+
+vim         kakoune
+-----------|---------
+ma         |   "aZ
+`a         |   "az
+wqa        |   waq    # :/
+dd         |   xd
+$          |   a-l
+^          |   a-h
+w,b,e      |   w,b,e (move) / W,B,E (extend)
+W,B,E      |   <a-w>, <a-b>, <a-e>
+x          |   d
+r          |   c
+R          |   c (ditto)
+Vjjj       |   xXXX
+_d         |   <a-d>
+J          |   <a-j>
+>>, <<     |   >, <
+gu, gU     |   ~, `
+:retab     |   @, a-@
+c-v$A      |   <d-s>A
+vip        |   <a-i>p
+}          |   ]p
+cc         |   gi <a-l>
+vit        |   <a-f>> <a-;> T<     # berk
+<c-v>j     |   C
+<c-v>k     |   <a-C>
+expandtabs |  .editorconfig
+:next      |  :bn
+:previous  |  :bp
+:rewind    |  N/A
+:wqa       |  :waq
