@@ -72,7 +72,7 @@ map global user p '<a-!>xsel --output --clipboard<ret>' -docstring 'yank from sy
 
 ## Persistent file and working dirs history
 # (forgive me, mawwww, but persisting state is cool sometimes)
-hook global BufOpenFile .* %{ %sh{ mru-files add  "${kak_hook_param}" } }
+hook global BufOpenFile .* %{ nop %sh{ mru-files add  "${kak_hook_param}" } }
 map global user o ':evaluate-commands %sh{ mru-files list --kakoune }<ret>' -docstring 'open old files'
 
 
