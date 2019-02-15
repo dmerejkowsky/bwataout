@@ -74,6 +74,7 @@ map global user p '<a-!>xsel --output --clipboard<ret>' -docstring 'yank from sy
 # (forgive me, mawwww, but persisting state is cool sometimes)
 hook global BufOpenFile .* %{ %sh{ mru-files add  "${kak_hook_param}" } }
 map global user o ':evaluate-commands %sh{ mru-files list --kakoune }<ret>' -docstring 'open old files'
+map global user r ':evaluate-commands %sh{ cmd-history list --kakoune }><ret>' -docstring 're-run zsh command'
 
 
 ## Whitespace cleaning
