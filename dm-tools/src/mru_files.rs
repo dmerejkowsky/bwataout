@@ -13,6 +13,10 @@ impl MruFiles{
     }
 }
 
+const BLACK_LISTED_NAMES: [&str; 1] = [
+  ".git/COMMIT_EDITMSG",
+];
+
 impl EntriesCollection for MruFiles{
     fn name(&self) -> String { "mru-files".to_string() }
 
@@ -21,6 +25,11 @@ impl EntriesCollection for MruFiles{
     fn kakoune_cmd(&self, entry: &str) -> String { format!("edit -existing '{}'", entry) }
 
     fn add(&mut self, entry: &str) {
+        for name in &BLACK_LISTED_NAMES {
+            if entry.ends_with(name) {
+                return
+            }
+        }
         self.entries = insert_last_and_dedup(&self.entries, entry);
     }
 
