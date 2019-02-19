@@ -56,6 +56,8 @@ map global user m ':make<ret>' -docstring 'run make'
 map global user f ':find ' -docstring 'run find'
 map global user g ':grep ' -docstring 'run grep'
 map global user b ':set-option buffer filetype ' -docstring 'set filetype for the current buffer'
+set-option global autowrap_column 80
+map global normal = '|fmt -w $kak_opt_autowrap_column<ret>'
 
 # Yeah, I know waq is the default alias, but come on, can't you make
 # an exception and keep the vim stuff working ?
