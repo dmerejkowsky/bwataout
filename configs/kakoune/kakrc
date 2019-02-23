@@ -39,7 +39,6 @@ declare-option str project_working_dir %sh{ pwd }
 map global user c ':enter-user-mode cd<ret>' -docstring 'enter cd user mode'
 map global cd c ':change-directory %val{opt_project_working_dir}<ret>' -docstring 'reset working directory'
 map global cd o ':evaluate-commands %sh{ cwd-history list --kakoune }<ret>' -docstring 'open old working directory'
-alias global pwd print-working-directory
 
 
 ## Spell check
@@ -62,6 +61,8 @@ map global normal = '|fmt -w $kak_opt_autowrap_column<ret>'
 # Yeah, I know waq is the default alias, but come on, can't you make
 # an exception and keep the vim stuff working ?
 alias global wqa write-all-quit
+alias global pwd print-working-directory
+define-command -docstring "force quit with non-zero exit code" cq 'quit! 2'
 
 
 ## Copy/pasting
