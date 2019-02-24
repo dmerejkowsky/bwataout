@@ -1,3 +1,4 @@
+
 ## My kakoune config
 # * depends on mru-files and cwd-history from dmerejkowsky/dotfiles
 # * use at your own risk
@@ -10,6 +11,7 @@ set-option global startup_info_version 20190120
 ## LSP
 eval %sh{kak-lsp --kakoune -s $kak_session}
 lsp-enable
+set-option global lsp_server_configuration pyls.plugins.jedi_completion.include_params=false
 map global user l ':enter-user-mode lsp<ret>' -docstring 'enter lsp user mode'
 
 
