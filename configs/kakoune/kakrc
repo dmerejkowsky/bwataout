@@ -13,7 +13,7 @@ eval %sh{kak-lsp --kakoune -s $kak_session}
 lsp-enable
 set-option global lsp_server_configuration pyls.plugins.jedi_completion.include_params=false
 map global user l ':enter-user-mode lsp<ret>' -docstring 'enter lsp user mode'
-
+hook global BufWritePre .* lsp-formatting
 
 ## UI options
 colorscheme desertex
