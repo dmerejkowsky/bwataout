@@ -1,5 +1,5 @@
 ## My kakoune config
-# * depends on binaries from dmerejkowsky/dotfiles
+# * depends on binaries from this repo (../../dm-tools)
 # * use at your own risk
 
 ## Hide release notes from latest version
