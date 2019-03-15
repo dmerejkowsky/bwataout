@@ -17,7 +17,13 @@ map global lsp n ':lsp-find-error --include-warnings<ret>' -docstring 'find next
 hook global BufWritePre .* lsp-formatting
 
 ## UI options
-colorscheme desertex
+eval %sh{
+    if [[ $(uname) -eq "Darwin" ]]; then
+     echo "colorscheme default"
+   else
+     echo "colorscheme desertex"
+  fi
+}
 add-highlighter global/ wrap -word
 set-option global ui_options 'ncurses_assistant=cat'
 
