@@ -70,10 +70,33 @@ define-command -docstring "force quit with non-zero exit code" cq 'quit! 2'
 
 ## Copy/pasting
 hook global NormalKey y %{ nop %sh{
-  printf %s "$kak_main_reg_dquote" | xsel --input --clipboard
+  os=$(uname)
+  if [[ $os -eq "darwin" ]]; then
+    printf %s "$kak_main_reg_dquote" | pbcopy
+  else
+    printf %s "$kak_main_reg_dquote" | xsel --input --clipboard
+  fi
 }}
-map global user P '!xsel --output --clipboard<ret>' -docstring 'yank from system clipboard after selection'
-map global user p '<a-!>xsel --output --clipboard<ret>' -docstring 'yank from system clipboard before selection'
+
+define-command -hidden yank-from-system -params 1 %sh{
+  os=$(uname)
+  if [[ $os -eq "darwin" ]]; then
+    if [[ $1  -eq "-before" ]]; then
+      printf "execute-keys !pbpaste<ret>"
+    else
+      printf "execute-keys <a-!>pbpaste<ret>"
+    fi
+  else
+    if [[ $1  -eq "-before" ]]; then
+      printf "execute-keys !xsel --output --clipbard<ret>"
+    else
+      printf "execute-keys <a-!>xsel --output --clipboard<ret>"
+    fi
+ fi
+}
+
+map global user P ':yank-from-system -after<ret>'  -docstring 'yank from system clipboard after selection'
+map global user p ':yank-from-system -before<ret>' -docstring 'yank from system clipboard before selection'
 
 
 ## Persistent file and working dirs history
