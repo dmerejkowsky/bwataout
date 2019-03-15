@@ -18,7 +18,7 @@ hook global BufWritePre .* lsp-formatting
 
 ## UI options
 eval %sh{
-    if [[ $(uname) -eq "Darwin" ]]; then
+    if [ "$(uname)" = "Darwin" ]; then
      echo "colorscheme default"
    else
      echo "colorscheme desertex"
@@ -86,17 +86,17 @@ hook global NormalKey y %{ nop %sh{
 
 define-command -hidden yank-from-system -params 1 %sh{
   os=$(uname)
-  if [[ $os -eq "darwin" ]]; then
-    if [[ $1  -eq "-before" ]]; then
+  if [ "$os" = "darwin" ]; then
+    if [ "$1" = "-before" ]; then
       printf "execute-keys !pbpaste<ret>"
     else
       printf "execute-keys <a-!>pbpaste<ret>"
     fi
   else
-    if [[ $1  -eq "-before" ]]; then
+    if [ "$1" = "-before" ]; then
       printf "execute-keys !xsel --output --clipbard<ret>"
     else
-      printf "execute-keys <a-!>xsel --output --clipboard<ret>"
+      echo "execute-keys '<a-!>xsel --output --clipboard<ret>'"
     fi
  fi
 }
