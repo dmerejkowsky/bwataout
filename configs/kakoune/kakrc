@@ -1,12 +1,10 @@
-
 ## My kakoune config
-# * depends on mru-files and cwd-history from dmerejkowsky/dotfiles
+# * depends on binaries from dmerejkowsky/dotfiles
 # * use at your own risk
 
 ## Hide release notes from latest version
 # Bump the number when you've read them!
 set-option global startup_info_version 20190120
-
 
 ## LSP
 eval %sh{kak-lsp --kakoune -s $kak_session}
@@ -84,25 +82,8 @@ hook global NormalKey y %{ nop %sh{
   fi
 }}
 
-define-command -hidden yank-from-system -params 1 %sh{
-  os=$(uname)
-  if [ "$os" = "darwin" ]; then
-    if [ "$1" = "-before" ]; then
-      printf "execute-keys !pbpaste<ret>"
-    else
-      printf "execute-keys <a-!>pbpaste<ret>"
-    fi
-  else
-    if [ "$1" = "-before" ]; then
-      printf "execute-keys !xsel --output --clipbard<ret>"
-    else
-      echo "execute-keys '<a-!>xsel --output --clipboard<ret>'"
-    fi
- fi
-}
-
-map global user P ':yank-from-system -after<ret>'  -docstring 'yank from system clipboard after selection'
-map global user p ':yank-from-system -before<ret>' -docstring 'yank from system clipboard before selection'
+map global user P '!system-clipboard-paste<ret>'  -docstring 'yank from system clipboard after selection'
+map global user p '<a-!>system-clipboard-paste<ret>' -docstring 'yank from system clipboard before selection'
 
 
 ## Persistent file and working dirs history
