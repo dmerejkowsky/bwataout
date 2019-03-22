@@ -22,7 +22,7 @@ impl EntriesCollection for WorkingDirs {
     }
 
     fn kakoune_cmd(&self, entry: &str) -> String {
-        format!("change-working-directory '{}'", entry)
+        format!("change-directory '{}'", entry)
     }
 
     fn add(&mut self, entry: &str) {
