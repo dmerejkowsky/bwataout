@@ -12,7 +12,29 @@ lsp-enable
 set-option global lsp_server_configuration pyls.plugins.jedi_completion.include_params=false
 map global user l ':enter-user-mode lsp<ret>' -docstring 'enter lsp user mode'
 map global lsp n ':lsp-find-error --include-warnings<ret>' -docstring 'find next warning or error'
-hook global BufWritePre .* lsp-formatting
+
+
+## Formatting
+
+# Go: use goimports
+
+hook global BufWritePre .*\.go "go-format -use-goimports"
+# Python: use lsp-format (that way it
+# only runs when pyls-black is installed in the
+# activated venv)
+hook global BufWritePre .*\.py lsp-formatting
+
+hook global WinSetOption filetype=rust %{
+  set window formatcmd 'rustfmt'
+}
+hook global WinSetOption filetype=javascript %{
+  set window formatcmd 'yarn eslint --fix'
+}
+
+# On save:
+hook global BufWritePre .*\.(py) lsp-formatting
+hook global BufWritePre .*\.(rust|js) format
+
 
 ## UI options
 eval %sh{
