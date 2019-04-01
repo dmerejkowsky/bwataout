@@ -17,11 +17,10 @@ map global lsp n ':lsp-find-error --include-warnings<ret>' -docstring 'find next
 ## Formatting
 
 # Go: use goimports
-
 hook global BufWritePre .*\.go "go-format -use-goimports"
-# Python: use lsp-format (that way it
-# only runs when pyls-black is installed in the
-# activated venv)
+
+# Python: use lsp-format (that way it only runs when pyls-black is installed
+# in the activated virtual environment)
 hook global BufWritePre .*\.py lsp-formatting
 
 hook global WinSetOption filetype=rust %{
@@ -32,7 +31,6 @@ hook global WinSetOption filetype=javascript %{
 }
 
 # On save:
-hook global BufWritePre .*\.(py) lsp-formatting
 hook global BufWritePre .*\.(rust|js) format
 
 
