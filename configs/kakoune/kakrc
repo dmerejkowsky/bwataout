@@ -31,7 +31,7 @@ hook global WinSetOption filetype=javascript %{
 }
 
 # On save:
-hook global BufWritePre .*\.(rust|js) format
+hook global BufWritePre .*\.(rs|js) format
 
 
 ## UI options
