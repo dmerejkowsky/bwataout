@@ -76,6 +76,12 @@ map global spell r '<esc>:spell-replace<ret>' -docstring 'suggest a list of repl
 map global spell f '<esc>:spell fr<ret>' -docstring 'run spell check in French'
 map global spell e '<esc>:spell en<ret>' -docstring 'run spell check in English'
 
+## Custom commands
+define-command -docstring "show line numbers" show-line-numbers \
+  "add-highlighter buffer/ number-lines"
+define-command -docstring "hide line numbers" hide-line-numbers \
+  "remove-highlighter buffer/number-lines"
+
 
 ## Custom mappings
 map global user m ':make<ret>' -docstring 'run make'
