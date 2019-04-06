@@ -77,9 +77,9 @@ map global spell f '<esc>:spell fr<ret>' -docstring 'run spell check in French'
 map global spell e '<esc>:spell en<ret>' -docstring 'run spell check in English'
 
 ## Custom commands
-define-command -docstring "show line numbers" show-line-numbers \
+define-command show-line-numbers -docstring "show line numbers" \
   "add-highlighter buffer/ number-lines"
-define-command -docstring "hide line numbers" hide-line-numbers \
+define-command hide-line-numbers  -docstring "hide line numbers" \
   "remove-highlighter buffer/number-lines"
 
 
@@ -95,7 +95,7 @@ map global normal = '|fmt -w $kak_opt_autowrap_column<ret>'
 # an exception and keep the vim stuff working ?
 alias global wqa write-all-quit
 alias global pwd print-working-directory
-define-command -docstring "force quit with non-zero exit code" cq 'quit! 2'
+define-command cq 'quit! 2' -docstring "force quit with non-zero exit code"
 
 
 ## Copy/pasting
