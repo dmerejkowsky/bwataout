@@ -13,6 +13,8 @@ set-option global lsp_server_configuration pyls.plugins.jedi_completion.include_
 map global user l ':enter-user-mode lsp<ret>' -docstring 'enter lsp user mode'
 map global lsp n ':lsp-find-error --include-warnings<ret>' -docstring 'find next warning or error'
 
+## EditorConfig
+hook global BufCreate .* %{editorconfig-load}
 
 ## Formatting
 
