@@ -100,8 +100,7 @@ define-command -docstring "force quit with non-zero exit code" cq 'quit! 2'
 
 ## Copy/pasting
 hook global NormalKey y %{ nop %sh{
-  os=$(uname)
-  if [[ $os -eq "darwin" ]]; then
+  if [ "$(uname)" = "Darwin" ]; then
     printf %s "$kak_main_reg_dquote" | pbcopy
   else
     printf %s "$kak_main_reg_dquote" | xsel --input --clipboard
