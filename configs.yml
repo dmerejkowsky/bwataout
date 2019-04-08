@@ -3,6 +3,12 @@ conky:
     - conky.conf
     - ~/.config/conky/conky.conf
 
+editorconfig:
+  - symlink:
+    - editorconfig
+    - ~/.editorconfig
+
+
 fzf:
  - clone:
    - git@github.com:dmerejkowsky/fzf.git
