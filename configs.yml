@@ -40,8 +40,6 @@ git:
       name =
       email =
 
-      # vim: set filetype=gitconfig:
-
 i3:
   - symlink:
     - i3/config
@@ -53,17 +51,11 @@ i3:
     - bin/passmenu
     - ~/.local/bin/passmenu
 
-
 kakoune:
   - symlink:
     - kakoune/kakrc
     - ~/.config/kak/kakrc
 
-
-kitty:
-  - symlink:
-    - kitty.conf
-    - ~/.config/kitty/kitty.conf
 
 mpv:
   - symlink:
@@ -85,12 +77,6 @@ npm:
       # Allow using npm install -g without being root
       prefix = ~/.local/share/node/
 
-openbox:
-  - symlink:
-    - openbox
-    - ~/.config/openbox
-
-
 ruby:
   - symlink:
     - gemrc
@@ -106,45 +92,10 @@ sway:
     - sway
     - ~/.config/sway/config
 
-terminal:
-  - symlink:
-    - xfce4-terminalrc
-    - ~/.config/xfce4/terminal/terminalrc
-
-tint2:
-  - symlink:
-    - tint2rc
-    - ~/.config/tint2/tint2rc
-
 tmux:
   - symlink:
     - tmux.conf
     - ~/.tmux.conf
-
-neovim:
-  - write:
-    - ~/.config/nvim/init.local.vim
-    - '" Put your local settings here'
-  - write:
-    - ~/.config/nvim/init.vim
-    - |
-      '" Auto-generated code. Do not edit'
-      source ~/.config/nvim/init.local.vim
-      source {this_dir}/configs/vim/vimrc
-  - clone:
-    - git@github.com:k-takata/minpac.git
-    - ~/.local/share/nvim/site/pack/minpac/opt/minpac
-    - v1.0
-  - symlink:
-    - vim/vim_wrapper.py
-    - ~/.local/bin/vim_wrapper.py
-  - exec:
-    - [nvim, -c, ':packad minpac | :call minpac#update() | :q!']
-
-
-dm-tools:
- - exec:
-   - [cargo, install, --path, "dm-tools/", --force]
 
 xinitrc:
   - symlink:

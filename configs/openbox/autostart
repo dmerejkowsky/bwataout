@@ -1,5 +1,0 @@
-feh  --bg-scale ~/.wallpapers/nausicaa.jpeg
-conky &
-tint2 &
-pasystray &
-sleep 5 && sonata --hidden &
