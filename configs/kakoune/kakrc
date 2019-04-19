@@ -75,10 +75,12 @@ map global cd o ':evaluate-commands %sh{ cwd-history list --kakoune }<ret>' -doc
 ## Spell check
 declare-user-mode spell
 map global user s ':enter-user-mode spell<ret>' -docstring 'enter spell user mode'
+
+map global spell c '<esc>:spell-clear ret>' -docstring 'clear spelling highlighters'
+map global spell e '<esc>:spell en<ret>' -docstring 'run spell check in English'
+map global spell f '<esc>:spell fr<ret>' -docstring 'run spell check in French'
 map global spell n '<esc>:spell-next<ret>' -docstring 'go to next spell error'
 map global spell r '<esc>:spell-replace<ret>' -docstring 'suggest a list of replacements'
-map global spell f '<esc>:spell fr<ret>' -docstring 'run spell check in French'
-map global spell e '<esc>:spell en<ret>' -docstring 'run spell check in English'
 
 ## Custom commands
 define-command show-line-numbers -docstring "show line numbers" \
