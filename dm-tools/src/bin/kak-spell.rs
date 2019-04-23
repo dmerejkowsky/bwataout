@@ -27,6 +27,15 @@ enum SubCommand {
         #[structopt(help = "selection")]
         selection: String,
     },
+
+    #[structopt(
+        name = "remove",
+        about = "Remove word under selection to personal dict"
+    )]
+    Remove {
+        #[structopt(help = "selection")]
+        selection: String,
+    },
 }
 
 fn check(dict: enchant::Dict, filename: &str, timestamp: usize) {
@@ -67,6 +76,7 @@ fn main() {
             filename,
         } => check(dict, filename, *timestamp),
         SubCommand::Add { selection } => dict.add(selection),
+        SubCommand::Remove { selection } => dict.remove(selection),
     };
 }
 
