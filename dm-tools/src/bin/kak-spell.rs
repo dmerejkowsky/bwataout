@@ -3,28 +3,36 @@ use structopt::StructOpt;
 
 #[derive(StructOpt)]
 #[structopt(name = "rspell", about = "Spell checker backend for Kakoune")]
-pub struct Opts {
-    #[structopt(long = "kakoune", help = "produce output readable by kakoune")]
-    pub kakoune: bool,
-
-    #[structopt(long = "timestamp", help = "buffer timestamp")]
-    pub timestamp: u32,
-
+struct Opts {
     #[structopt(long = "lang", help = "language to use")]
-    pub lang: String,
+    lang: String,
 
-    #[structopt(help = "buffer name")]
-    pub bufname: String,
+    #[structopt(subcommand)]
+    sub_cmd: SubCommand,
 }
 
-fn main() {
-    let opts = Opts::from_args();
-    let mut broker = enchant::Broker::new();
-    let dict = broker.request_dict(&opts.lang).unwrap();
+#[derive(StructOpt)]
+enum SubCommand {
+    #[structopt(name = "check", about = "Spell check the current buffer")]
+    Check {
+        #[structopt(long = "timestamp", help = "buffer timestamp")]
+        timestamp: usize,
 
-    let timestamp = &opts.timestamp;
+        #[structopt(help = "buffer name")]
+        filename: String,
+    },
+
+    #[structopt(name = "add", about = "Add word under selection to personal dict")]
+    Add {
+        #[structopt(help = "selection")]
+        selection: String,
+    },
+}
+
+fn check(dict: enchant::Dict, filename: &str, timestamp: usize) {
     let contents =
-        std::fs::read_to_string(&opts.bufname).expect(&format!("could not open {}", &opts.bufname));
+        std::fs::read_to_string(filename).expect(&format!("could not open {}", filename));
+    let mut spell_regions = String::new();
     for (lineno, line) in contents.lines().enumerate() {
         let tokens = tokenize(line);
         for token in tokens {
@@ -32,18 +40,34 @@ fn main() {
             if !checked {
                 let Token { start, end, .. } = token;
                 let region = format!(
-                    "{lineno}.{start},{lineno}.{end}",
+                    "{lineno}.{start},{lineno}.{end}|white,red ",
                     lineno = lineno + 1,
                     start = start + 1,
                     end = end,
                 );
-                println!(
-                    "set-option buffer spell_regions {} {}|white,red",
-                    timestamp, region
-                );
+                spell_regions.push_str(&region);
             }
         }
     }
+    println!(
+        "set-option buffer spell_regions {} {}",
+        timestamp, spell_regions,
+    );
+}
+
+fn main() {
+    let opts = Opts::from_args();
+    let mut broker = enchant::Broker::new();
+    let lang = &opts.lang;
+    let dict = broker.request_dict(lang).unwrap();
+
+    match &opts.sub_cmd {
+        SubCommand::Check {
+            timestamp,
+            filename,
+        } => check(dict, filename, *timestamp),
+        SubCommand::Add { selection } => dict.add(selection),
+    };
 }
 
 #[derive(Debug)]
