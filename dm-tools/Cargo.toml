@@ -5,9 +5,10 @@ name = "dm-tools"
 version = "0.1.0"
 [dependencies]
 app_dirs = "1.2.1"
-structopt = "*"
+structopt = "0.2.15"
 clipboard = "0.5.0"
 enchant = "0.1.0"
+regex = "1.1.6"
 
 [dev-dependencies]
 tempdir = "0.3.7"
