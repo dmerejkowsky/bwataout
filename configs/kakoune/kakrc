@@ -87,6 +87,8 @@ define-command show-line-numbers -docstring "show line numbers" \
   "add-highlighter buffer/ number-lines"
 define-command hide-line-numbers  -docstring "hide line numbers" \
   "remove-highlighter buffer/number-lines"
+define-command disable-markdown-highlighters  -docstring "disable markdown highlighters" \
+  "remove-highlighter shared/markdown"
 
 
 ## Custom mappings
