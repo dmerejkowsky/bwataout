@@ -88,6 +88,10 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias ....="cd ../../../.."
+
+
+# just because
+alias kakdir=vidir
 # }}}
 
 # Pretty ls {{{
