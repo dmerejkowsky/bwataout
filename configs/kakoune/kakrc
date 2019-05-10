@@ -8,7 +8,7 @@ set-option global startup_info_version 20190120
 
 ## LSP
 eval %sh{kak-lsp --kakoune -s $kak_session}
-lsp-enable
+# Note: call lsp-enable-window when ready
 set-option global lsp_server_configuration pyls.plugins.jedi_completion.include_params=false
 map global user l ':enter-user-mode lsp<ret>' -docstring 'enter lsp user mode'
 map global lsp n ':lsp-find-error --include-warnings<ret>' -docstring 'find next warning or error'
