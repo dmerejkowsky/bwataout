@@ -37,6 +37,9 @@ hook global WinSetOption filetype=javascript %{
 # On save:
 hook global BufWritePre .*\.(rs|js) format
 
+define-command lint-on-save "hook buffer BufWritePre .* lint"
+define-command format-on-save "hook buffer BufWritePre .* format"
+
 
 ## UI options
 eval %sh{
