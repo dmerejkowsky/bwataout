@@ -17,6 +17,7 @@ map global lsp n ':lsp-find-error --include-warnings<ret>' -docstring 'find next
 # .editorconfig file should exist somewhere
 # `editorconfig` binary should exist
 hook global BufCreate .* %{editorconfig-load}
+set-option global tabstop 4
 
 ## Formatting
 
