@@ -18,6 +18,8 @@ map global lsp n ':lsp-find-error --include-warnings<ret>' -docstring 'find next
 # `editorconfig` binary should exist
 hook global BufCreate .* "try %{editorconfig-load} "
 set-option global tabstop 4
+hook global BufCreate .* "expandtab"
+hook global BufCreate Makefile "noexpandtab"
 
 ## kak-tree
 declare-user-mode tree
