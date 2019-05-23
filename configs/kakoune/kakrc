@@ -2,6 +2,9 @@
 # * depends on binaries from this repo (../../dm-tools)
 # * use at your own risk
 
+source "%val{config}/plugins/plug.kak/rc/plug.kak"
+
+
 ## Hide release notes from latest version
 # Bump the number when you've read them!
 set-option global startup_info_version 20190120
@@ -18,8 +21,12 @@ map global lsp n ':lsp-find-error --include-warnings<ret>' -docstring 'find next
 # `editorconfig` binary should exist
 hook global BufCreate .* "try %{editorconfig-load} "
 set-option global tabstop 4
-hook global BufCreate .* "expandtab"
-hook global BufCreate Makefile "noexpandtab"
+
+plug "andreyorst/smarttab.kak" %{
+  hook global BufCreate .* "expandtab"
+  hook global BufCreate Makefile "noexpandtab"
+}
+
 
 ## kak-tree
 declare-user-mode tree
@@ -78,9 +85,12 @@ set-option global grepcmd 'rg --no-heading --line-number --column --sort path'
 
 ## Working dir stuff
 declare-option str project_working_dir %sh{ pwd }
-map global user c ':enter-user-mode cd<ret>' -docstring 'enter cd user mode'
-map global cd c ':change-directory %val{opt_project_working_dir}<ret>' -docstring 'reset working directory'
-map global cd o ':evaluate-commands %sh{ cwd-history list --kakoune }<ret>' -docstring 'open old working directory'
+plug 'delapouite/kakoune-cd' %{
+    map global user c ':enter-user-mode cd<ret>' -docstring 'enter cd user mode'
+    map global cd c ':change-directory %val{opt_project_working_dir}<ret>' -docstring 'reset working directory'
+    map global cd o ':evaluate-commands %sh{ cwd-history list --kakoune }<ret>' -docstring 'open old working directory'
+    alias global pwd print-working-directory
+}
 
 
 ## Spell check
@@ -100,6 +110,7 @@ define-command hide-line-numbers  -docstring "hide line numbers" \
   "remove-highlighter buffer/number-lines"
 define-command disable-markdown-highlighters  -docstring "disable markdown highlighters" \
   "remove-highlighter shared/markdown"
+hook global BufOpenFile .*  show-line-numbers
 
 
 ## Custom mappings
@@ -113,7 +124,6 @@ map global normal = '|fmt -w $kak_opt_autowrap_column<ret>'
 # Yeah, I know waq is the default alias, but come on, can't you make
 # an exception and keep the vim stuff working ?
 alias global wqa write-all-quit
-alias global pwd print-working-directory
 define-command cq 'quit! 2' -docstring "force quit with non-zero exit code"
 
 
