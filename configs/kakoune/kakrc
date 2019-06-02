@@ -33,6 +33,11 @@ declare-user-mode tree
 map global user t ' :enter-user-mode tree<ret>' -docstring 'enter treesitter mode'
 map global tree p ': tree-select-parent-node<ret>' -docstring 'select parent node'
 
+## linter
+declare-user-mode linting
+map global user n ' :enter-user-mode linting<ret>' -docstring 'enter linting mode'
+map global linting n ': lint-next-error<ret>' -docstring 'go to next lint error'
+
 ## Formatting
 
 # Go: use goimports
