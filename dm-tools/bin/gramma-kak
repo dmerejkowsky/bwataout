@@ -9,7 +9,7 @@ import sys
 from path import Path
 
 
-IGNORE = [
+IGNORED_RULES = [
  "apostrophe_typographique",
  "typo_guillemets_typographiques_doubles_ouvrants",
  "typo_guillemets_typographiques_doubles_fermants",
@@ -18,7 +18,7 @@ IGNORE = [
  "esp_début_ligne",
 ]
 
-
+ADDED_WORDS = []
 
 def run_grammalecte(file_path):
     process = subprocess.run(
@@ -40,18 +40,23 @@ class Diagnostic:
     def from_grammar_error(cls,grammalecte_error, index):
         column = grammalecte_error['nStart'] + 1
         rule_id = grammalecte_error['sRuleId']
+        if rule_id in IGNORED_RULES:
+            return
         line = index + 1
         return cls(rule_id, line, column)
 
     @classmethod
     def from_spelling_error(cls,grammalecte_error, index):
-        details = f"spelling_error: {grammalecte_error['sValue']}"
+        value = grammalecte_error['sValue']
+        if value in ADDED_WORDS:
+            return None
+        details = f"spelling_error: {value}"
         column = grammalecte_error['nStart'] + 1
         line = index + 1
         return cls(details, line, column)
 
     def __str__(self):
-        return f"{self.line}:{self.column} error: {self.details}"
+        return f"{self.line}:{self.column}: error: {self.details}"
 
 
 
@@ -62,7 +67,8 @@ def handle_line(index, line):
         for error in errors:
             func = f"from_{kind}_error"
             diagnostic = getattr(Diagnostic, func)(error, index)
-            yield diagnostic
+            if diagnostic:
+                yield diagnostic
 
 
 def find_opening_block(lines, index):
@@ -101,10 +107,12 @@ def main():
     parser.add_argument("file_path", type=Path)
     args = parser.parse_args()
     file_path = args.file_path
+    this_path = Path(__file__).parent
+    personal_dict_path = this_path.parent.abspath() / "share/spell/fr.add"
+    global ADDED_WORDS
+    ADDED_WORDS = personal_dict_path.lines(retain=False)
     diagnostics = process(file_path)
     for diagnostic in diagnostics:
-        if diagnostic.details in IGNORE:
-            continue
         print(f"{file_path}:{diagnostic}")
 
 
