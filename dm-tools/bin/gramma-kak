@@ -1,5 +1,9 @@
 #!/bin/env python
 
+# TODO: ignore `stuff` (need refactoring)
+# Ignore hugo {{< >}}
+# Ignore frontmatter
+
 import argparse
 import os
 import json
@@ -7,6 +11,7 @@ import subprocess
 import sys
 
 from path import Path
+
 
 
 IGNORED_RULES = [
