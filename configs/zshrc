@@ -53,6 +53,7 @@ setopt histignorespace          # hide from history lines starting with space
 # }}}
 
 # Directory history (use +/- to navigate) {{{
+setopt autocd
 setopt autopushd	      # automatically append dirs to the push/pop list
 setopt pushd_minus	      # exchange meaning of + and - for pushd
 setopt pushd_silent	      # don't tell me about automatic pushd
