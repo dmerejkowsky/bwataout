@@ -269,6 +269,12 @@ function xt() {
     echo "'$1' is not a valid file"
   fi
 }
+
+
+function whereal() {
+  where "$1" | xargs -I{} ls -l {}
+}
+
 # }}}
 
 # Prompt {{{
