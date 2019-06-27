@@ -55,7 +55,9 @@ kakoune:
   - symlink:
     - kakoune/kakrc
     - ~/.config/kak/kakrc
-
+  - clone:
+    - https://github.com/andreyorst/plug.kak.git
+    - ~/.config/kak/plugins/plug.kak
 
 mpv:
   - symlink:
