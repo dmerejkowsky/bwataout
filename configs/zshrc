@@ -371,5 +371,8 @@ alias a=activate
 alias d=deactivate
 alias da="deactivate;activate"
 
+export DMENV_VENV_OUTSIDE_PROJECT=1
+export DMENV_SCRIPTS_PATH=/home/dmerej/.local/bin
+
 #
 # vim: set foldmethod=marker:
