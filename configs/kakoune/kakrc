@@ -3,6 +3,7 @@
 # * use at your own risk
 
 source "%val{config}/plugins/plug.kak/rc/plug.kak"
+source "%val{config}/local.kak"
 
 
 ## Hide release notes from latest version
