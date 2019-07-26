@@ -9,7 +9,7 @@ pub struct CwdHistory {
 
 #[derive(StructOpt, Debug)]
 #[structopt(name = "mru-files", about = "Manage list of edited files")]
-pub struct FilesHistory{
+pub struct FilesHistory {
     #[structopt(subcommand)]
     pub sub_cmd: SubCommand,
 }
@@ -17,7 +17,7 @@ pub struct FilesHistory{
 #[derive(StructOpt, Debug)]
 pub enum SubCommand {
     #[structopt(name = "add", about = "add a new entry")]
-    Add {entry: String},
+    Add { entry: String },
 
     #[structopt(name = "clean", about = "clean entriess")]
     Clean {},
@@ -27,7 +27,10 @@ pub enum SubCommand {
 
     #[structopt(name = "list", about = "list entries")]
     List {
-        #[structopt(long = "--kakoune", help="use output suitable for kakoune integration")]
+        #[structopt(
+            long = "--kakoune",
+            help = "use output suitable for kakoune integration"
+        )]
         kakoune: bool,
-    }
+    },
 }

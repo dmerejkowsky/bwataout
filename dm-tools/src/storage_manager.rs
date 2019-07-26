@@ -1,8 +1,8 @@
-use crate::storage::Storage;
-use crate::storage::EntriesCollection;
-use crate::working_dirs::WorkingDirs;
 use crate::commands::Commands;
 use crate::mru_files::MruFiles;
+use crate::storage::EntriesCollection;
+use crate::storage::Storage;
+use crate::working_dirs::WorkingDirs;
 
 use app_dirs::{AppDataType, AppInfo};
 
@@ -17,22 +17,19 @@ pub enum StorageType {
     MruFiles,
 }
 
-
-
 pub struct StorageManager {
-    storage: Storage
+    storage: Storage,
 }
 
 impl StorageManager {
     pub fn new(storage_type: StorageType) -> StorageManager {
         let app_dir = app_dirs::app_dir(AppDataType::UserData, &APP_INFO, "")
             .expect("could not create app dir");
-        let entries: Box<EntriesCollection> =
-            match storage_type {
-                StorageType::CwdHistory => Box::new(WorkingDirs::new()),
-                StorageType::CommandsHistory => Box::new(Commands::new()),
-                StorageType::MruFiles => Box::new(MruFiles::new()),
-            };
+        let entries: Box<EntriesCollection> = match storage_type {
+            StorageType::CwdHistory => Box::new(WorkingDirs::new()),
+            StorageType::CommandsHistory => Box::new(Commands::new()),
+            StorageType::MruFiles => Box::new(MruFiles::new()),
+        };
         let storage = Storage::new(entries, &app_dir);
         StorageManager { storage }
     }

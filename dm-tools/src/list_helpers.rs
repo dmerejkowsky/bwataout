@@ -12,7 +12,7 @@ pub fn insert_last_and_dedup(list: &Vec<String>, elem: &str) -> Vec<String> {
 pub fn remove_non_existing(list: &Vec<String>) -> Vec<String> {
     let mut res = vec![];
     for x in list {
-        let path =  std::path::Path::new(x);
+        let path = std::path::Path::new(x);
         if path.exists() {
             res.push(x.to_string())
         }
