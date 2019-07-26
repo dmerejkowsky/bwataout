@@ -1,5 +1,5 @@
 fn read_db(path: &std::path::PathBuf) -> Vec<String> {
-    if ! path.exists() {
+    if !path.exists() {
         return vec![];
     }
     let contents = std::fs::read_to_string(path).expect("Could not read db");
@@ -22,15 +22,16 @@ pub trait EntriesCollection {
     fn list(&self) -> &Vec<String>;
 }
 
-
 pub struct Storage {
     db_path: std::path::PathBuf,
     entries_collection: Box<EntriesCollection>,
 }
 
-
 impl Storage {
-    pub fn new(mut entries_collection: Box<EntriesCollection>, path: &std::path::PathBuf) -> Storage {
+    pub fn new(
+        mut entries_collection: Box<EntriesCollection>,
+        path: &std::path::PathBuf,
+    ) -> Storage {
         let db_path = path.join(entries_collection.name());
         let entries = read_db(&db_path);
         for entry in entries {
