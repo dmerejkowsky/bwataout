@@ -2,10 +2,6 @@ README.html
 
 .env
 
-# Vim
-*.swp
-.lvimrc
-
 .vscode/
 
 # QtCreator
