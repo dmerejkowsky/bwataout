@@ -23,8 +23,8 @@ impl EntriesCollection for Commands {
     fn add(&mut self, entry: &str) {
         self.entries = insert_last_and_dedup(&self.entries, entry);
     }
-    fn add_all(&mut self, entries: &Vec<String>) {
-        self.entries = entries.to_vec();
+    fn add_all(&mut self, entries: Vec<String>) {
+        self.entries = entries;
     }
 
     fn list(&self) -> &Vec<String> {
