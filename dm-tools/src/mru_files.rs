@@ -35,6 +35,10 @@ impl EntriesCollection for MruFiles {
         self.entries = insert_last_and_dedup(&self.entries, entry);
     }
 
+    fn add_all(&mut self, entries: &Vec<String>) {
+        self.entries = entries.to_vec();
+    }
+
     fn clean(&mut self) {
         self.entries = remove_non_existing(&self.entries);
     }

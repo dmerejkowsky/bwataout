@@ -25,6 +25,10 @@ impl EntriesCollection for WorkingDirs {
         format!("change-directory '{}'", entry)
     }
 
+    fn add_all(&mut self, entries: &Vec<String>) {
+        self.entries = entries.to_vec();
+    }
+
     fn add(&mut self, entry: &str) {
         let path = Path::new(entry);
         if !path.exists() {

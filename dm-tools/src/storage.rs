@@ -17,6 +17,7 @@ fn write_db(path: &std::path::PathBuf, entries: &Vec<String>) {
 pub trait EntriesCollection {
     fn name(&self) -> String;
     fn add(&mut self, entry: &str);
+    fn add_all(&mut self, entries: &Vec<String>);
     fn clean(&mut self);
     fn kakoune_cmd(&self, entry: &str) -> String;
     fn list(&self) -> &Vec<String>;
@@ -34,9 +35,7 @@ impl Storage {
     ) -> Storage {
         let db_path = path.join(entries_collection.name());
         let entries = read_db(&db_path);
-        for entry in entries {
-            entries_collection.add(&entry);
-        }
+        entries_collection.add_all(&entries);
         Storage {
             db_path,
             entries_collection,
