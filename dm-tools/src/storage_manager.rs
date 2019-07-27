@@ -62,7 +62,7 @@ impl StorageManager {
     }
 
     pub fn for_kakoune(self) {
-        print!("{}", "menu ");
+        print!("menu ");
         for entry in self.storage.list().iter().rev().take(10) {
             let cmd = self.storage.kakoune_cmd(&entry);
             print!("\"{entry}\" \"{cmd}\" ", cmd = cmd, entry = entry)

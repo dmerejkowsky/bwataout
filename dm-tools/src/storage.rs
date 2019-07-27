@@ -6,7 +6,7 @@ fn read_db(path: &std::path::PathBuf) -> Vec<String> {
     contents.lines().map(|x| x.to_string()).collect()
 }
 
-fn write_db(path: &std::path::PathBuf, entries: &Vec<String>) {
+fn write_db(path: &std::path::PathBuf, entries: &[String]) {
     let parent_path = path.parent().unwrap();
     if !parent_path.exists() {
         std::fs::create_dir_all(parent_path).expect("could not create db parent path");
@@ -51,12 +51,12 @@ impl Storage {
     }
 
     pub fn add(&mut self, entry: &str) {
-        &mut self.entries_collection.add(&entry);
+        self.entries_collection.add(&entry);
         write_db(&self.db_path, &self.list())
     }
 
     pub fn clean(&mut self) {
-        &mut self.entries_collection.clean();
+        self.entries_collection.clean();
         write_db(&self.db_path, &self.list())
     }
 

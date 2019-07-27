@@ -1,4 +1,4 @@
-pub fn insert_last_and_dedup(list: &Vec<String>, elem: &str) -> Vec<String> {
+pub fn insert_last_and_dedup(list: &[String], elem: &str) -> Vec<String> {
     let mut res = vec![];
     for x in list {
         if x != elem {
@@ -9,7 +9,7 @@ pub fn insert_last_and_dedup(list: &Vec<String>, elem: &str) -> Vec<String> {
     res
 }
 
-pub fn remove_non_existing(list: &Vec<String>) -> Vec<String> {
+pub fn remove_non_existing(list: &[String]) -> Vec<String> {
     let mut res = vec![];
     for x in list {
         let path = std::path::Path::new(x);
