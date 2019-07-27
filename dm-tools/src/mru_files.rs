@@ -11,7 +11,16 @@ impl MruFiles {
     }
 }
 
-const BLACK_LISTED_NAMES: [&str; 1] = [".git/COMMIT_EDITMSG"];
+const BLACK_LISTED_NAMES: [&str; 2] = [".git/COMMIT_EDITMSG", "git-rebase-todo"];
+
+fn is_blacklisted(entry: &str) -> bool {
+    for name in &BLACK_LISTED_NAMES {
+        if entry.ends_with(name) {
+            return true;
+        }
+    }
+    false
+}
 
 impl EntriesCollection for MruFiles {
     fn name(&self) -> String {
@@ -27,10 +36,8 @@ impl EntriesCollection for MruFiles {
     }
 
     fn add(&mut self, entry: &str) {
-        for name in &BLACK_LISTED_NAMES {
-            if entry.ends_with(name) {
-                return;
-            }
+        if is_blacklisted(entry) {
+            return;
         }
         self.entries = insert_last_and_dedup(&self.entries, entry);
     }
@@ -41,5 +48,6 @@ impl EntriesCollection for MruFiles {
 
     fn clean(&mut self) {
         self.entries = remove_non_existing(&self.entries);
+        self.entries.retain(|x| !is_blacklisted(x));
     }
 }
