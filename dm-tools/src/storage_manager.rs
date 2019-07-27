@@ -14,7 +14,7 @@ const APP_INFO: AppInfo = AppInfo {
 pub enum StorageType {
     CwdHistory,
     CommandsHistory,
-    MruFiles,
+    FilesHistory,
 }
 
 pub struct StorageManager {
@@ -28,7 +28,7 @@ impl StorageManager {
         let entries: Box<EntriesCollection> = match storage_type {
             StorageType::CwdHistory => Box::new(WorkingDirs::new()),
             StorageType::CommandsHistory => Box::new(Commands::new()),
-            StorageType::MruFiles => Box::new(MruFiles::new()),
+            StorageType::FilesHistory => Box::new(MruFiles::new()),
         };
         let storage = Storage::new(entries, &app_dir);
         StorageManager { storage }

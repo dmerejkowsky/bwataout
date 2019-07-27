@@ -11,7 +11,7 @@ use crate::cmd::SubCommand;
 pub use storage_manager::StorageManager;
 pub use storage_manager::StorageType;
 
-pub fn run_cache_manager(storage_type: StorageType, cmd: SubCommand) {
+pub fn run_storage_manager(storage_type: StorageType, cmd: SubCommand) {
     let mut storage_manager = StorageManager::new(storage_type);
     match cmd {
         SubCommand::Add { entry } => storage_manager.add(&entry),
