@@ -177,4 +177,4 @@ define-command -docstring "trigger a run from on-kak-refresh" ipc-run %{
      echo "echo -debug done"
    }
 }
-map global user i ':ipc-run<ret>'
+map global user i ':write-all<ret> :ipc-run<ret>'
