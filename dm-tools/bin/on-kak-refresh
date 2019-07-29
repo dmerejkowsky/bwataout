@@ -27,7 +27,7 @@ def loop(*, url, cmd, browser=None):
 
     signal.signal(signal.SIGUSR1, on_signal)
 
-    print("pid", os.getpid())
+    print("ipc pid", os.getpid())
 
     driver = None
     if url:
@@ -46,6 +46,7 @@ def loop(*, url, cmd, browser=None):
             process = subprocess.run(cmd, shell=True)
             if process.returncode != 0:
                 print("Process failed")
+            print("ipc pid", os.getpid())
         if driver:
             driver.refresh()
 
