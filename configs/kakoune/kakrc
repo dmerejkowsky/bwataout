@@ -6,7 +6,7 @@ source "%val{config}/plugins/plug.kak/rc/plug.kak"
 source "%val{config}/local.kak"
 
 ## Completion
-set global ignored_files "(.*\.egg-info)|(__pycache__)|(\.mypy_cache)"
+set global ignored_files "(.*\.egg-info)|(__pycache__)|(\.mypy_cache)|(build/)"
 
 ## Hide release notes from latest version
 # Bump the number when you've read them!
