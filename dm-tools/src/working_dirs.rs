@@ -48,6 +48,10 @@ impl EntriesCollection for WorkingDirs {
         self.entries = insert_last_and_dedup(&self.entries, entry);
     }
 
+    fn remove(&mut self, entry: &str) {
+        self.entries.retain(|x| x != entry);
+    }
+
     fn clean(&mut self) {
         self.entries = remove_non_existing(&self.entries);
     }

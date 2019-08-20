@@ -34,4 +34,8 @@ impl EntriesCollection for Commands {
     fn clean(&mut self) {
         // no-op
     }
+
+    fn remove(&mut self, entry: &str) {
+        self.entries.retain(|x| x != entry);
+    }
 }

@@ -38,6 +38,10 @@ impl StorageManager {
         self.storage.add(entry)
     }
 
+    pub fn remove(&mut self, entry: &str) {
+        self.storage.remove(entry)
+    }
+
     pub fn clean(&mut self) {
         let before = &self.storage.list().len();
         self.storage.clean();

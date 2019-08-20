@@ -17,6 +17,7 @@ pub fn run_storage_manager(storage_type: StorageType, cmd: SubCommand) {
         SubCommand::Add { entry } => storage_manager.add(&entry),
         SubCommand::Edit {} => storage_manager.edit(),
         SubCommand::Clean {} => storage_manager.clean(),
+        SubCommand::Remove { entry } => storage_manager.remove(&entry),
         SubCommand::List { kakoune } => {
             if kakoune {
                 storage_manager.for_kakoune()

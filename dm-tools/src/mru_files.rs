@@ -46,6 +46,10 @@ impl EntriesCollection for MruFiles {
         self.entries = entries;
     }
 
+    fn remove(&mut self, entry: &str) {
+        self.entries.retain(|x| x != entry);
+    }
+
     fn clean(&mut self) {
         self.entries = remove_non_existing(&self.entries);
         self.entries.retain(|x| !is_blacklisted(x));

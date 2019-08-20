@@ -21,6 +21,7 @@ pub trait EntriesCollection {
     fn clean(&mut self);
     fn kakoune_cmd(&self, entry: &str) -> String;
     fn list(&self) -> &Vec<String>;
+    fn remove(&mut self, entry: &str);
 }
 
 pub struct Storage {
@@ -52,6 +53,11 @@ impl Storage {
 
     pub fn add(&mut self, entry: &str) {
         self.entries_collection.add(&entry);
+        write_db(&self.db_path, &self.list())
+    }
+
+    pub fn remove(&mut self, entry: &str) {
+        self.entries_collection.remove(&entry);
         write_db(&self.db_path, &self.list())
     }
 
