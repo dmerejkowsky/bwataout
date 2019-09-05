@@ -113,8 +113,7 @@ def install(programs=None, force=False):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("programs", nargs="*")
-    parser.add_argument("--force", action="store_true",
-                        help="Overwite existing files")
+    parser.add_argument("--force", action="store_true", help="Overwite existing files")
     args = parser.parse_args()
     install(programs=args.programs, force=args.force)
 
