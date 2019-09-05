@@ -126,10 +126,10 @@ zsh:
     - |
       # Put your local settings here
 
-  - fetch:
-    - https://raw.githubusercontent.com/dmerejkowsky/zsh-pure-prompt/master/pure.zsh
-    - ~/.local/share/zsh/pure-prompt/prompt_pure_setup
+  - download:
+      url: https://raw.githubusercontent.com/dmerejkowsky/zsh-pure-prompt/master/pure.zsh
+      dest: ~/.local/share/zsh/pure-prompt/prompt_pure_setup
 
-  - fetch:
-    - https://raw.githubusercontent.com/dmerejkowsky/zsh-pure-prompt/master/async.zsh
-    - ~/.local/share/zsh/pure-prompt/async
+  - download:
+      url: https://raw.githubusercontent.com/dmerejkowsky/zsh-pure-prompt/master/async.zsh
+      dest: ~/.local/share/zsh/pure-prompt/async

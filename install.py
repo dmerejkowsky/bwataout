@@ -43,15 +43,17 @@ class Executor:
         ui.info_2("Copy", src, "->", self.pretty_path(src))
         src.copy(dest)
 
-    def do_fetch(self, url, dest):
+    def do_download(self, *, url, dest, executable=False):
         dest = Path(dest).expanduser()
         dest.parent.makedirs_p()
         pretty_dest = self.pretty_path(dest)
         if dest.exists() and not self.force:
             ui.info_2("Skipping", pretty_dest)
-            return
-        ui.info_2("Fetching", url, "->", pretty_dest)
-        urlretrieve(url, dest)
+        else:
+            ui.info_2("Fetching", url, "->", pretty_dest)
+            urlretrieve(url, dest)
+        if executable:
+            dest.chmod(0o755)
 
     def do_write(self, src, contents):
         src = Path(src).expanduser()
