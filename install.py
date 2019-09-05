@@ -93,9 +93,12 @@ class Executor:
         todo = self.conf[program]
         for action in todo:
             name = list(action.keys())[0]
-            args = action[name]
+            params = action[name]
             func = getattr(self, "do_%s" % name)
-            func(*args)
+            if isinstance(params, dict):
+                func(**params)
+            else:
+                func(*params)
         ui.info()
 
     def execute(self, programs=None):
