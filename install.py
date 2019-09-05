@@ -8,7 +8,7 @@ import ruamel.yaml
 import cli_ui as ui
 
 
-class Executor:
+class Installer:
     def __init__(self, force=False):
         self.conf = ruamel.yaml.safe_load(Path("configs.yml").text())
         self.this_dir = Path.getcwd()
@@ -84,12 +84,12 @@ class Executor:
         ui.info_2("Symlink", pretty_dest)
         src.symlink(dest)
 
-    def do_exec(self, args):
+    def do_run(self, args):
         ui.info_2("Running", "`%s`" % " ".join(args))
         fixed_args = [x.format(home=self.home) for x in args]
         subprocess.check_call(fixed_args)
 
-    def install(self, program):
+    def install_program(self, program):
         ui.info(ui.green, program)
         ui.info("-" * len(program))
         todo = self.conf[program]
@@ -103,16 +103,11 @@ class Executor:
                 func(*params)
         ui.info()
 
-    def execute(self, programs=None):
+    def install(self, programs=None):
         if not programs:
             programs = sorted(self.conf.keys())
         for program in programs:
-            self.install(program)
-
-
-def install(programs=None, force=False):
-    executor = Executor(force=force)
-    executor.execute(programs=programs)
+            self.install_program(program)
 
 
 def main():
@@ -120,7 +115,11 @@ def main():
     parser.add_argument("programs", nargs="*")
     parser.add_argument("--force", action="store_true", help="Overwite existing files")
     args = parser.parse_args()
-    install(programs=args.programs, force=args.force)
+
+    force = args.force
+    programs = args.programs
+    installer = Installer(force=force)
+    installer.install(programs=programs)
 
 
 if __name__ == "__main__":

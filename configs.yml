@@ -13,7 +13,7 @@ fzf:
  - clone:
    - git@github.com:dmerejkowsky/fzf.git
    - ~/.fzf
- - exec:
+ - run:
    - [bash, "{home}/.fzf/install", --bin]
 
 gdb:
