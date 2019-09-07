@@ -81,5 +81,3 @@
 
 [rerere]
 	enabled = true
-
-# vim: set filetype=gitconfig:
