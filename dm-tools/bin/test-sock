@@ -5,7 +5,8 @@ import sys
 
 try:
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.connect((sys.argv[1], int(sys.argv[2])))
+    _, host, port = sys.argv
+    s.connect((host, int(port)))
     print("OK")
     s.close()
 except Exception as e:
