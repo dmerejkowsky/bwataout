@@ -224,11 +224,6 @@ function resolve() {
 }
 
 
-# remove all nvim swap files
-function rm-swap() {
-  rm -fr "$HOME/.local/share/nvim/swap"
-}
-
 # open the script you just ran in $EDITOR
 function kakbin() {
   # which is a builtin that works with aliases and functions,
