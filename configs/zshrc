@@ -230,7 +230,7 @@ function rm-swap() {
 }
 
 # open the script you just ran in $EDITOR
-function vibin() {
+function kakbin() {
   # which is a builtin that works with aliases and functions,
   # prefer /usr/bin/which
   full_path=$(/usr/bin/which $1 2> /dev/null)
