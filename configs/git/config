@@ -1,4 +1,4 @@
-# Note : user and e-mail go into gitconfig.local
+# Note : user and e-mail go into ~/.config/git/config.local
 
 [alias]
 	ci = commit
