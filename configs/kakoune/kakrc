@@ -3,7 +3,6 @@
 # * use at your own risk
 
 source "%val{config}/plugins/plug.kak/rc/plug.kak"
-source "%val{config}/local.kak"
 
 ## Completion
 set global ignored_files "(.*\.egg-info)|(__pycache__)|(\.mypy_cache)|(build/)"
@@ -177,3 +176,5 @@ define-command -docstring "trigger a run from on-kak-refresh" ipc-run %{
    }
 }
 map global user i ':write-all<ret> :ipc-run<ret>'
+
+source "%val{config}/local.kak"
