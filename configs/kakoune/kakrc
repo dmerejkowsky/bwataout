@@ -52,10 +52,26 @@ hook global WinSetOption filetype=rust %{
 }
 hook global BufWritePre .*\.rs format
 
-# On save:
+# Other languages: add hoc, sadly
+declare-option str format_project_cmd
+define-command format-project %{
+  evaluate-commands %sh{
+    echo "echo -debug format project cmd: ${kak_opt_format_project_cmd}"
+    if [ -n "${kak_opt_format_project_cmd}" ]; then
+      echo "write-all -sync"
+      echo "evaluate-commands %sh{
+        ${kak_opt_format_project_cmd} > /dev/null
+      }"
+      echo "edit!"
+    else
+      printf '%s\n' "echo -markup '{Error}format_project_cmd option not specified'"
+    fi
+  }
+}
 
 define-command lint-on-save "hook buffer BufWritePre .* lint"
 define-command format-on-save "hook buffer BufWritePre .* format"
+define-command format-project-on-save "hook global BufWritePre .* format-project"
 
 
 ## UI options
