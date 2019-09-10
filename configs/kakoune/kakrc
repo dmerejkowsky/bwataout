@@ -76,11 +76,11 @@ define-command format-project-on-save "hook global BufWritePre .* format-project
 
 ## UI options
 eval %sh{
-    if [ "$(uname)" = "Darwin" ]; then
-     echo "colorscheme default"
-   else
-     echo "colorscheme desertex"
-  fi
+if [ "$(uname)" = "Darwin" ]; then
+  echo "colorscheme default"
+else
+  echo "colorscheme desertex"
+fi
 }
 add-highlighter global/ wrap -word
 set-option global ui_options 'ncurses_assistant=cat'
@@ -104,10 +104,10 @@ set-option global grepcmd 'rg --no-heading --line-number --column --sort path'
 ## Working dir stuff
 declare-option str project_working_dir %sh{ pwd }
 plug 'delapouite/kakoune-cd' %{
-    map global user c ':enter-user-mode cd<ret>' -docstring 'enter cd user mode'
-    map global cd c ':change-directory %val{opt_project_working_dir}<ret>' -docstring 'reset working directory'
-    map global cd o ':evaluate-commands %sh{ cwd-history list --kakoune }<ret>' -docstring 'open old working directory'
-    alias global pwd print-working-directory
+  map global user c ':enter-user-mode cd<ret>' -docstring 'enter cd user mode'
+  map global cd c ':change-directory %val{opt_project_working_dir}<ret>' -docstring 'reset working directory'
+  map global cd o ':evaluate-commands %sh{ cwd-history list --kakoune }<ret>' -docstring 'open old working directory'
+  alias global pwd print-working-directory
 }
 
 
@@ -166,7 +166,7 @@ map global user o ':evaluate-commands %sh{ mru-files list --kakoune }<ret>' -doc
 ## Whitespace cleaning
 # * Clean trailing whitespace
 define-command cleanup-whitespace %{
-    try %{ execute-keys -draft \% s \h+$ <ret> d }
+  try %{ execute-keys -draft \% s \h+$ <ret> d }
 }
 hook global BufWritePre .* cleanup-whitespace
 
