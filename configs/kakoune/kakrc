@@ -29,6 +29,7 @@ plug "andreyorst/smarttab.kak" %{
   hook global BufCreate Makefile "noexpandtab"
 }
 
+plug "KJ_Duncan/kakoune-kotlin.kak" domain "bitbucket.org"
 
 ## kak-tree
 declare-user-mode tree
