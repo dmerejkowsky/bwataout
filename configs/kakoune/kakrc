@@ -46,19 +46,13 @@ map global linting n ': lint-next-error<ret>' -docstring 'go to next lint error'
 # Go: use goimports
 hook global BufWritePre .*\.go "go-format -use-goimports"
 
-# Python: use lsp-format (that way it only runs when pyls-black is installed
-# in the activated virtual environment)
-hook global BufWritePre .*\.py lsp-formatting
-
+# Rust: use rustfmt
 hook global WinSetOption filetype=rust %{
   set window formatcmd 'rustfmt'
 }
-hook global WinSetOption filetype=javascript %{
-  set window formatcmd 'yarn eslint --fix'
-}
+hook global BufWritePre .*\.rs format
 
 # On save:
-hook global BufWritePre .*\.(rs|js) format
 
 define-command lint-on-save "hook buffer BufWritePre .* lint"
 define-command format-on-save "hook buffer BufWritePre .* format"
