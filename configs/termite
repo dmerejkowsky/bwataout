@@ -1,5 +1,5 @@
 [options]
-font = Monospace 10
+font = Monospace 11
 scrollback_lines = 10000
 browser = xdg-open
 
