@@ -25,7 +25,7 @@ impl StorageManager {
     pub fn new(storage_type: StorageType) -> StorageManager {
         let app_dir = app_dirs::app_dir(AppDataType::UserData, &APP_INFO, "")
             .expect("could not create app dir");
-        let entries: Box<EntriesCollection> = match storage_type {
+        let entries: Box<dyn EntriesCollection> = match storage_type {
             StorageType::CwdHistory => Box::new(WorkingDirs::new()),
             StorageType::CommandsHistory => Box::new(Commands::new()),
             StorageType::FilesHistory => Box::new(MruFiles::new()),

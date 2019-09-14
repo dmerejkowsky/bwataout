@@ -26,12 +26,12 @@ pub trait EntriesCollection {
 
 pub struct Storage {
     db_path: std::path::PathBuf,
-    entries_collection: Box<EntriesCollection>,
+    entries_collection: Box<dyn EntriesCollection>,
 }
 
 impl Storage {
     pub fn new(
-        mut entries_collection: Box<EntriesCollection>,
+        mut entries_collection: Box<dyn EntriesCollection>,
         path: &std::path::PathBuf,
     ) -> Storage {
         let db_path = path.join(entries_collection.name());
