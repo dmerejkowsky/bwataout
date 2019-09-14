@@ -8,9 +8,15 @@ browser = xdg-open
 highlight = #2f2f2f
 
 color0 = #3f3f3f
-color1 = #eb7373  # red
+
+# red:
+color1 = #eb7373
+
 color2 = #60b48a
-color3 = #dfaf8f  # blue
+
+# blue:
+color3 = #dfaf8f
+
 color4 = #6d6df2
 color5 = #dc8cc3
 color6 = #8cd0d3
