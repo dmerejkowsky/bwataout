@@ -182,13 +182,8 @@ hook global InsertChar j %{ try %{
 
 ## IPC
 
-declare-option int kak_refresh_pid 0
 define-command -docstring "trigger a run from on-kak-refresh" ipc-run %{
-  evaluate-commands %sh{
-    if [ "${kak_opt_kak_refresh_pid}" != 0 ]; then
-      kill -USR1 $kak_opt_kak_refresh_pid
-    fi
-  }
+  nop %sh{ echo "run" >> /tmp/kak-refresh }
 }
 map global user i ':write-all<ret> :ipc-run<ret>'
 
