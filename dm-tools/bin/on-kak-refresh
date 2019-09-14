@@ -32,7 +32,9 @@ def loop(*, url, cmd, browser=None):
             driver = webdriver.Chrome()
         else:
             driver = webdriver.Firefox()
-        driver.get(url)
+        # Make sure the 'url' exists
+        subprocess.run(cmd, shell=True, check=True)
+        driver.get(sanitize_url(url))
 
     stream = open(FIFO_PATH)
     while True:
@@ -63,9 +65,6 @@ def main():
     browser = args.browser
     if browser and not url:
         sys.exit("--browser used but no url set")
-    if url:
-        url = sanitize_url(url)
-
     if os.path.exists(FIFO_PATH):
         os.remove(FIFO_PATH)
     os.mkfifo(FIFO_PATH)
