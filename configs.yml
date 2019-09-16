@@ -95,7 +95,7 @@ sway:
     - ~/.config/sway/config
 
 termite:
-  - symlink:
+  - copy:
     - termite
     - ~/.config/termite/config
 
