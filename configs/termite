@@ -5,7 +5,7 @@ browser = xdg-open
 
 
 [colors]
-highlight = #2f2f2f
+highlight = #00000
 
 color0 = #3f3f3f
 
