@@ -14,6 +14,7 @@ setopt correct
 
 setopt equals
 setopt magic_equal_subst
+setopt autocd
 
 setopt numericglobsort
 setopt extendedglob             # weird & wacky pattern matching - yay zsh!
