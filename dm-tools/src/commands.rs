@@ -21,8 +21,12 @@ impl EntriesCollection for Commands {
     }
 
     fn add(&mut self, entry: &str) {
+        if entry.starts_with(" ") {
+            return;
+        }
         self.entries = insert_last_and_dedup(&self.entries, entry);
     }
+
     fn add_all(&mut self, entries: Vec<String>) {
         self.entries = entries;
     }
