@@ -52,6 +52,8 @@ def loop(*, url, cmd, browser=None):
                 print("Process failed")
             if driver:
                 driver.refresh()
+            term_size = shutil.get_terminal_size()
+            print("-" * term_size.columns)
 
 
 def main():
