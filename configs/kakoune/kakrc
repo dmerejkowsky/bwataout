@@ -138,7 +138,12 @@ hook global BufOpenFile .*  show-line-numbers
 ## Custom mappings
 map global user m ':write-all<ret> :make<ret>' -docstring 'run make'
 map global user f ':find ' -docstring 'run find'
-map global user g ':grep ' -docstring 'run grep'
+
+declare-user-mode grep
+map global user g ':enter-user-mode grep<ret>' -docstring 'enter grep mode'
+map global grep g ':grep ' -docstring 'run grep'
+map global grep n ': grep-next-match<ret>' -docstring 'run grep-next-match'
+
 map global user b ':set-option buffer filetype ' -docstring 'set filetype for the current buffer'
 set-option global autowrap_column 80
 map global normal = '|fmt -w $kak_opt_autowrap_column<ret>'
