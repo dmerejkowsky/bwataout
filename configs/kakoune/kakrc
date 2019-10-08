@@ -190,6 +190,6 @@ hook global InsertChar j %{ try %{
 define-command -docstring "trigger a run from on-kak-refresh" ipc-run %{
   nop %sh{ echo "run" >> /tmp/kak-refresh }
 }
-map global user i ':write-all<ret> :ipc-run<ret>'
+map global user i ':write-all<ret> :ipc-run<ret>' -docstring "call ipc-run"
 
 source "%val{config}/local.kak"
