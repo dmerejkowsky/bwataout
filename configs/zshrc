@@ -237,7 +237,7 @@ kakbin() {
 # extract various archives given their names
 xt() {
  if [ -f "$1" ]; then
-       case "$1" in
+    case "$1" in
       *.7z)        7z x "$1"         ;;
       *.Z)         uncompress "$1"   ;;
       *.aar)       jar xf "$1"       ;;
