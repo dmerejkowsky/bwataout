@@ -9,7 +9,7 @@ if [[ $- != *i* ]] || [ a$HOST = agate-ssh ]; then
     return
 fi
 
-# Options {{{
+# Options
 setopt correct
 
 setopt equals
@@ -22,11 +22,11 @@ setopt no_nomatch               # but when pattern matching fails, simply use th
 
 setopt interactivecomments      # date # comment will work
 
-# Completion {{{
+# Completion
 autoload -U compinit
 compinit
 
-# Filename suffixes to ignore during completion
+## Filename suffixes to ignore during completion
 fignore=(.o .pyc __pycache__)
 setopt list_ambiguous           # complete as much of a completion until it gets ambiguous.
 setopt norecexact               # recognise exact match even if there are ambiguous matches
@@ -34,7 +34,7 @@ setopt complete_aliases
 setopt completeinword           # not just at the end
 setopt no_always_to_end         # when complete from middle, move cursor
 
-#Menu
+## Menu
 setopt no_menu_complete		# jump through menus
 setopt automenu			# don't cycle completions
 setopt auto_list                # display a list of completion
@@ -42,18 +42,15 @@ setopt auto_param_keys
 setopt auto_param_slash         # auto add slash when completing path
 setopt auto_remove_slash
 
-# }}}
-
-# History handling {{{
+## History handling
 setopt append_history           # append to history
 setopt inc_append_history       # append immediately
 setopt hist_verify              # when using ! cmds, confirm first
 setopt extended_history         # add timestamp in history
 setopt hist_no_store            # dont add 'history' command (fc -l) to the history
 setopt histignorespace          # hide from history lines starting with space
-# }}}
 
-# Directory history (use +/- to navigate) {{{
+# Directory history (use +/- to navigate)
 setopt autocd
 setopt autopushd	      # automatically append dirs to the push/pop list
 setopt pushd_minus	      # exchange meaning of + and - for pushd
@@ -63,23 +60,18 @@ setopt pushd_ignoredups	      # ignore duplicates
 setopt noautocd               # dont change to dirs without cd
 alias -- +='pushd +0'
 alias -- -='pushd -1'
-# }}}
 
-# }}}
-
-# Aliases {{{
+# Aliases
 
 alias psgrep='ps aux | grep -v grep | grep'
-
 alias cux='chmod +x'
 
-
-# Better safe than sorry
+## Better safe than sorry
 alias mv="mv -iv"
 alias rm="rm -i"
 alias cp="cp -iv"
 
-# Open pdf files with ./path/to/pdf
+## Open pdf files with ./path/to/pdf
 alias -s pdf=evince
 
 alias gg="git gui &!"
@@ -91,12 +83,10 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias ....="cd ../../../.."
 
-
-# just because
+## just because
 alias kakdir=vidir
-# }}}
 
-# Pretty ls {{{
+## Pretty ls
 if [[ $(uname) == "Darwin" ]] ; then
   # for mac
   export LSCOLORS='dxgxfxexcxegedabagacad'
@@ -109,9 +99,8 @@ fi
 
 alias ll="ls -al"
 
-# }}}
 
-# Misc {{{
+# Misc
 autoload run-help
 
 # Use emacs-mode
@@ -120,6 +109,7 @@ bindkey -e
 bindkey '^[[A' history-beginning-search-backward
 bindkey '^[[B' history-beginning-search-forward
 
+# command-not-found hook
 type pkgfile > /dev/null
 if [[ $? -eq 0 ]]; then
 command_not_found_handler() {
@@ -136,31 +126,29 @@ command_not_found_handler() {
   return 127
 }
 fi
-# }}}
 
-# Global settings {{{
+# Global settings
 export HISTSIZE=50000
 export HISTFILE=~/.zshhistory
 export SAVEHIST=10000
 export BLOCK_SIZE=human-readable
-# depth of the directory history
+## depth of the directory history
 DIRSTACKSIZE=30
 
 top_dir=$(dirname $(dirname $0))
 export PATH="${top_dir}/dm-tools/bin:$HOME/.local/bin:$PATH"
-# See ~/.npmrc
+## See ~/.npmrc
 export PATH="${HOME}/.local/share/node/bin:$PATH"
 
-# required for pure-prompt
+## required for pure-prompt
 fpath=("$HOME/.local/share/zsh/pure-prompt" $fpath)
 
-# Prevent fork bomb
+## Prevent fork bomb
 limit maxproc 1042 2>/dev/null
-# }}}
 
-# Functions {{{
+# Functions
 
-# cd /path/to/file -> cd /path/to
+## cd /path/to/file -> cd /path/to
 smart_cd() {
   if [[ -z "$1" ]]; then
     \cd "$HOME"
@@ -173,7 +161,7 @@ smart_cd() {
 
 alias cd=smart_cd
 
-# go to a path relative to the git top dir
+## go to a path relative to the git top dir
 gcd() {
   topdir=$(git rev-parse --show-toplevel)
   if [[ $? -ne 0 ]]; then
@@ -182,7 +170,7 @@ gcd() {
   cd "${topdir}/${1}"
 }
 
-# create an archive with a sensible name
+## create an archive with a sensible name
 gitar() {
   toplevel=$(git rev-parse --show-toplevel)
   desc=$(git describe --always --tags)
@@ -192,12 +180,12 @@ gitar() {
   echo "archive generated in: ${output}"
 }
 
-# Display most recent file in the current directory
+## display most recent file in the current directory
 latest() {
   echo $(\ls --quoting-style=shell -t | head -n1)
 }
 
-# Insert latest file in the current prompt
+## insert latest file in the current prompt
 latest-file-widget () {
   LBUFFER="${LBUFFER} $(latest)"
   local ret=$?
@@ -208,20 +196,20 @@ latest-file-widget () {
 zle -N latest-file-widget
 bindkey '^[l' latest-file-widget
 
-# Move the latest downloaded file
+## move the latest downloaded file
 mvdl() {
   last=$(\ls -t "${HOME}/Downloads" | head -n1)
   mv "${HOME}/Downloads/${last}" $@
 }
 
 
-# Open all the conflicting files in $EDITOR
+## open all the conflicting files in $EDITOR
 resolve() {
   (gitcd && git diff --name-only --diff-filter=U | xargs $EDITOR)
 }
 
 
-# open the script you just ran in $EDITOR
+## open the script you just ran in $EDITOR
 kakbin() {
   # which is a builtin that works with aliases and functions,
   # prefer /usr/bin/which
@@ -234,7 +222,7 @@ kakbin() {
   fi
 }
 
-# extract various archives given their names
+## extract various archives given their names
 xt() {
  if [ -f "$1" ]; then
     case "$1" in
@@ -263,51 +251,30 @@ xt() {
 }
 
 
+## show where the binaries are at
 whereal() {
   where "$1" | xargs -I{} ls -l {}
 }
 
-# }}}
 
-# Prompt {{{
+# Prompt
 autoload -U promptinit
 promptinit
 
 export PURE_GIT_UNTRACKED_DIRTY=1
 prompt pure
-# }}}
 
-# {{{ kakoune
-
+# kakoune
 export VISUAL="kak"
 export EDITOR="kak"
 
-kak-start() {
-  echo "starting new 'main' session"
-  kak -s main -d
-}
-
-# Connect to 'main' session, sets
-# the project_working_dir option so that
-# we can change it globally later
-# (see kakrc for details
-k() {
-  kak -c main -e "set-option global project_working_dir $(pwd)" $@
-}
-
-
-# }}}
-
-# {{{ fzf
-
+# fzf & dm-tools binaries
 if [[ -d ~/.fzf ]] ; then
   export PATH=$PATH:$HOME/.fzf/bin
   source ~/.fzf/shell/completion.zsh
   source ~/.fzf/shell/key-bindings.zsh
 fi
 
-# re-implement 'z', but backed by fzf
-# and the registerscwd script in bin/
 register_cwd() {
   cwd-history add "$(pwd)"
 }
@@ -340,23 +307,22 @@ bindkey '^N' up-line-or-history
 bindkey '^P' down-line-or-history
 
 
-# }}}
-# {{{ python
+# python
 
 activate() {
-    activate_file=$(dmenv show:venv_path)/bin/activate 2>/dev/null
+  activate_file=$(dmenv show:venv_path)/bin/activate 2>/dev/null
+  if [[ ! -e "${activate_file}" ]]; then
+    activate_file=$(pipenv --venv 2>/dev/null)/bin/activate
     if [[ ! -e "${activate_file}" ]]; then
-      activate_file=$(pipenv --venv 2>/dev/null)/bin/activate
-      if [[ ! -e "${activate_file}" ]]; then
-        activate_file=$(poetry debug:info 2>/dev/null | awk '/Path:/ {print $3}')/bin/activate
-      fi
+      activate_file=$(poetry debug:info 2>/dev/null | awk '/Path:/ {print $3}')/bin/activate
     fi
-    if [[ ! -e "${activate_file}" ]]; then
-      echo "no venv manager found"
-      return 1
-    else
-      source $activate_file
-    fi
+  fi
+  if [[ ! -e "${activate_file}" ]]; then
+    echo "no venv manager found"
+    return 1
+  else
+    source $activate_file
+  fi
 }
 
 alias a=activate
