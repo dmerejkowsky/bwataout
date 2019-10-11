@@ -161,7 +161,7 @@ limit maxproc 1042 2>/dev/null
 # Functions {{{
 
 # cd /path/to/file -> cd /path/to
-function smart_cd() {
+smart_cd() {
   if [[ -z "$1" ]]; then
     \cd "$HOME"
   elif [[ -f "$1" ]]; then
@@ -174,7 +174,7 @@ function smart_cd() {
 alias cd=smart_cd
 
 # go to a path relative to the git top dir
-function gcd() {
+gcd() {
   topdir=$(git rev-parse --show-toplevel)
   if [[ $? -ne 0 ]]; then
     return 1
@@ -183,7 +183,7 @@ function gcd() {
 }
 
 # create an archive with a sensible name
-function gitar() {
+gitar() {
   toplevel=$(git rev-parse --show-toplevel)
   desc=$(git describe --always --tags)
   name="$(basename ${toplevel})-${desc}"
@@ -193,7 +193,7 @@ function gitar() {
 }
 
 # Display most recent file in the current directory
-function latest() {
+latest() {
   echo $(\ls --quoting-style=shell -t | head -n1)
 }
 
@@ -209,20 +209,20 @@ zle -N latest-file-widget
 bindkey '^[l' latest-file-widget
 
 # Move the latest downloaded file
-function mvdl() {
+mvdl() {
   last=$(\ls -t "${HOME}/Downloads" | head -n1)
   mv "${HOME}/Downloads/${last}" $@
 }
 
 
 # Open all the conflicting files in $EDITOR
-function resolve() {
+resolve() {
   (gitcd && git diff --name-only --diff-filter=U | xargs $EDITOR)
 }
 
 
 # open the script you just ran in $EDITOR
-function kakbin() {
+kakbin() {
   # which is a builtin that works with aliases and functions,
   # prefer /usr/bin/which
   full_path=$(/usr/bin/which $1 2> /dev/null)
@@ -235,7 +235,7 @@ function kakbin() {
 }
 
 # extract various archives given their names
-function xt() {
+xt() {
  if [ -f "$1" ]; then
        case "$1" in
       *.7z)        7z x "$1"         ;;
@@ -263,7 +263,7 @@ function xt() {
 }
 
 
-function whereal() {
+whereal() {
   where "$1" | xargs -I{} ls -l {}
 }
 
@@ -282,7 +282,7 @@ prompt pure
 export VISUAL="kak"
 export EDITOR="kak"
 
-function kak-start {
+kak-start() {
   echo "starting new 'main' session"
   kak -s main -d
 }
@@ -291,7 +291,7 @@ function kak-start {
 # the project_working_dir option so that
 # we can change it globally later
 # (see kakrc for details
-function k {
+k() {
   kak -c main -e "set-option global project_working_dir $(pwd)" $@
 }
 
@@ -308,13 +308,13 @@ fi
 
 # re-implement 'z', but backed by fzf
 # and the registerscwd script in bin/
-function register_cwd() {
+register_cwd() {
   cwd-history add "$(pwd)"
 }
 typeset -gaU chpwd_functions
 chpwd_functions+=register_cwd
 
-function register_cmd() {
+register_cmd() {
   cmd-history add $1
 }
 typeset -gaU preexec_functions
@@ -323,7 +323,7 @@ preexec_functions+=register_cmd
 export FZF_DEFAULT_OPTS="--tac --no-sort"
 export FZF_CTRL_R_OPTS="--exact"
 
-function z() {
+z() {
   cwd_list=$(cwd-history list)
   ret="$(echo $cwd_list| fzf --exact --query=${1})"
   builtin cd "${ret}"
