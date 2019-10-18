@@ -51,13 +51,12 @@ setopt hist_no_store            # dont add 'history' command (fc -l) to the hist
 setopt histignorespace          # hide from history lines starting with space
 
 # Directory history (use +/- to navigate)
-setopt autocd
+setopt autocd             # change directory if given its path
 setopt autopushd	      # automatically append dirs to the push/pop list
 setopt pushd_minus	      # exchange meaning of + and - for pushd
 setopt pushd_silent	      # don't tell me about automatic pushd
 setopt pushd_to_home	      # use $HOME when no arguments specified
 setopt pushd_ignoredups	      # ignore duplicates
-setopt noautocd               # dont change to dirs without cd
 alias -- +='pushd +0'
 alias -- -='pushd -1'
 
