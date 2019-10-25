@@ -71,7 +71,10 @@ def main():
         os.remove(FIFO_PATH)
     os.mkfifo(FIFO_PATH)
 
-    loop(url=url, cmd=cmd, browser=browser)
+    try:
+        loop(url=url, cmd=cmd, browser=browser)
+    except KeyboardInterrupt:
+        sys.exit()
 
 
 if __name__ == "__main__":
