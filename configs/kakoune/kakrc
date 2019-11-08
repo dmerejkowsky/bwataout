@@ -123,7 +123,8 @@ map global spell e '<esc>:spell en_US<ret>' -docstring 'run spell check in Engli
 map global spell f '<esc>:spell fr_FR<ret>' -docstring 'run spell check in French'
 map global spell n '<esc>:spell-next<ret>' -docstring 'go to next spell error'
 map global spell r '<esc>:spell-replace<ret>' -docstring 'suggest a list of replacements'
-map global spell a '<esc>:spell-add<ret>' -docstring 'add the word under the cursor to the user dict'
+map global spell a '<esc>:spell-add<ret>' -docstring 'add the selection to the user dict'
+map global spell x '<esc>:spell-add<ret>' -docstring 'remove the selection from the user dict'
 
 ## Custom commands
 define-command show-line-numbers -docstring "show line numbers" \
