@@ -124,7 +124,7 @@ map global spell f '<esc>:spell fr_FR<ret>' -docstring 'run spell check in Frenc
 map global spell n '<esc>:spell-next<ret>' -docstring 'go to next spell error'
 map global spell r '<esc>:spell-replace<ret>' -docstring 'suggest a list of replacements'
 map global spell a '<esc>:spell-add<ret>' -docstring 'add the selection to the user dict'
-map global spell x '<esc>:spell-add<ret>' -docstring 'remove the selection from the user dict'
+map global spell x '<esc>:spell-remove<ret>' -docstring 'remove the selection from the user dict'
 
 ## Custom commands
 define-command show-line-numbers -docstring "show line numbers" \
