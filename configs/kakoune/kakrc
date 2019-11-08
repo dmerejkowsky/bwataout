@@ -118,13 +118,9 @@ plug 'delapouite/kakoune-cd' %{
 ## Spell check
 declare-user-mode spell
 map global user s ':enter-user-mode spell<ret>' -docstring 'enter spell user mode'
-define-command spell-add -docstring "add the word under the cursor to the user dict" %{
-  nop %sh{  kak-spell-add $kak_selection > /tmp/kak-spell.out }
-}
-
 map global spell c '<esc>:spell-clear<ret>' -docstring 'clear spelling highlighters'
-map global spell e '<esc>:spell en<ret>' -docstring 'run spell check in English'
-map global spell f '<esc>:spell fr<ret>' -docstring 'run spell check in French'
+map global spell e '<esc>:spell en_US<ret>' -docstring 'run spell check in English'
+map global spell f '<esc>:spell fr_FR<ret>' -docstring 'run spell check in French'
 map global spell n '<esc>:spell-next<ret>' -docstring 'go to next spell error'
 map global spell r '<esc>:spell-replace<ret>' -docstring 'suggest a list of replacements'
 map global spell a '<esc>:spell-add<ret>' -docstring 'add the word under the cursor to the user dict'
