@@ -115,7 +115,7 @@ plug 'delapouite/kakoune-cd' %{
 }
 
 
-## Spell check
+# Spell check
 declare-user-mode spell
 map global user s ':enter-user-mode spell<ret>' -docstring 'enter spell user mode'
 map global spell c '<esc>:spell-clear<ret>' -docstring 'clear spelling highlighters'
@@ -133,6 +133,14 @@ define-command hide-line-numbers  -docstring "hide line numbers" \
   "remove-highlighter buffer/number-lines"
 define-command disable-markdown-highlighters  -docstring "disable markdown highlighters" \
   "remove-highlighter shared/markdown"
+
+
+## Always use spell check for commit messages
+hook global WinSetOption filetype=git-commit %{
+    spell en_US
+}
+
+# Show line numbers by default
 hook global BufOpenFile .*  show-line-numbers
 
 
