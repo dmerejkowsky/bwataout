@@ -24,10 +24,9 @@ def main():
                 f"""\
                  #!{env_path}/bin/python
 
-                 import sys
                  from importlib import import_module
                  module = import_module("{module}")
-                 module.{func}(sys.argv[1:])
+                 module.{func}()
                  """
             )
             script_path = os.path.join(SCRIPTS_PATH, name)
