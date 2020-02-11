@@ -1,7 +1,3 @@
-## My kakoune config
-# * depends on binaries from this repo (../../dm-tools)
-# * use at your own risk
-
 source "%val{config}/plugins/plug.kak/rc/plug.kak"
 # keep this is sync with i3
 set global termcmd "termite  -e "
