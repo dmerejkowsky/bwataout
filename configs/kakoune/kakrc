@@ -1,5 +1,7 @@
 source "%val{config}/plugins/plug.kak/rc/plug.kak"
-# keep this is sync with i3
+
+# keep this is sync with i3 config
+declare-option str termcmd
 set global termcmd "termite  -e "
 
 ranger-open-on-edit-directory
