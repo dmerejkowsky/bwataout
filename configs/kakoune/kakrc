@@ -32,6 +32,7 @@ plug "andreyorst/smarttab.kak" %{
   hook global BufCreate Makefile "noexpandtab"
 }
 
+plug "ul/kak-tree"
 
 ## kak-tree
 declare-user-mode tree
