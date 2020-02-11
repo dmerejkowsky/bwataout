@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# get a randow fortune from the server.
+# you can pass a category as parameter to limit search
+# TODO: move to dm-tools
+
+URL=https://dmerej.info/fortunes
+
+if [[ -z "$1" ]] ; then
+  curl ${URL}/fortune?format=text
+else
+  curl ${URL}/fortune/${1}?format=text
+fi
