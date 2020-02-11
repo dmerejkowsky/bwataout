@@ -11,7 +11,7 @@ set global ignored_files "(.*\.egg-info)|(__pycache__)|(\.mypy_cache)|(build/)"
 
 ## Hide release notes from latest version
 # Bump the number when you've read them!
-set-option global startup_info_version 20190120
+set-option global startup_info_version 20200117
 
 ## LSP
 eval %sh{kak-lsp --kakoune -s $kak_session}
