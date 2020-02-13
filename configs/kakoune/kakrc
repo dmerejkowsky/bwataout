@@ -4,8 +4,7 @@ source "%val{config}/plugins/plug.kak/rc/plug.kak"
 declare-option str termcmd
 set global termcmd "termite  -e "
 
-# TODO
-# ranger-open-on-edit-directory
+ranger-open-on-edit-directory
 
 ## Completion
 set global ignored_files "(.*\.egg-info)|(__pycache__)|(\.mypy_cache)|(build/)"
