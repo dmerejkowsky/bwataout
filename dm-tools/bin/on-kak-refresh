@@ -15,6 +15,11 @@ def clear_screen():
     subprocess.run(["clear"])
 
 
+def print_sep():
+    term_size = shutil.get_terminal_size()
+    print("-" * term_size.columns)
+
+
 def sanitize_url(url):
     as_path = path.Path(url)
     if as_path.exists():
@@ -26,6 +31,7 @@ def loop(*, url, cmd, browser=None):
     # Run `cmd` once so that we don't start
     # the loop on some failing command ...
     subprocess.run(cmd, shell=True, check=True)
+    print_sep()
 
     driver = None
     if url:
@@ -53,8 +59,7 @@ def loop(*, url, cmd, browser=None):
                 print("Process failed")
             if driver:
                 driver.refresh()
-            term_size = shutil.get_terminal_size()
-            print("-" * term_size.columns)
+            print_sep()
 
 
 def main():
