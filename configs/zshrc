@@ -314,13 +314,7 @@ bindkey '^P' down-line-or-history
 # python
 
 activate() {
-  activate_file=$(dmenv show:venv_path)/bin/activate 2>/dev/null
-  if [[ ! -e "${activate_file}" ]]; then
-    activate_file=$(pipenv --venv 2>/dev/null)/bin/activate
-    if [[ ! -e "${activate_file}" ]]; then
-      activate_file=$(poetry debug:info 2>/dev/null | awk '/Path:/ {print $3}')/bin/activate
-    fi
-  fi
+  activate_file=$(poetry env info -p)/bin/activate
   if [[ ! -e "${activate_file}" ]]; then
     echo "no venv manager found"
     return 1
