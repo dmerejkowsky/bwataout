@@ -1,5 +1,6 @@
 # pyenv
 .python-version
+.mypy_cache/
 
 # vscode is a good debugger
 # for go and js
