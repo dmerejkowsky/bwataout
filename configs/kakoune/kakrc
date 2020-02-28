@@ -33,6 +33,8 @@ plug "andreyorst/smarttab.kak" %{
 
 plug "ul/kak-tree"
 
+plug "dmerejkowsky/kak-spell"
+
 ## kak-tree
 declare-user-mode tree
 map global user t ' :enter-user-mode tree<ret>' -docstring 'enter treesitter mode'
@@ -114,15 +116,15 @@ plug 'delapouite/kakoune-cd' %{
 
 
 # Spell check
-declare-user-mode spell
-map global user s ':enter-user-mode spell<ret>' -docstring 'enter spell user mode'
-map global spell c '<esc>:spell-clear<ret>' -docstring 'clear spelling highlighters'
-map global spell e '<esc>:spell en_US<ret>' -docstring 'run spell check in English'
-map global spell f '<esc>:spell fr_FR<ret>' -docstring 'run spell check in French'
-map global spell n '<esc>:spell-next<ret>' -docstring 'go to next spell error'
-map global spell r '<esc>:spell-replace<ret>' -docstring 'suggest a list of replacements'
-map global spell a '<esc>:spell-add<ret>' -docstring 'add the selection to the user dict'
-map global spell x '<esc>:spell-remove<ret>' -docstring 'remove the selection from the user dict'
+declare-user-mode kak-spell
+map global user s ': enter-user-mode kak-spell<ret>' -docstring 'enter spell user mode'
+map global kak-spell c ': kak-spell-clear<ret>' -docstring 'clear spelling highlighters'
+map global kak-spell e ': kak-spell en_US<ret>' -docstring 'run spell check in English'
+map global kak-spell f ': kak-spell fr_FR<ret>' -docstring 'run spell check in French'
+map global kak-spell n ': kak-spell-next<ret>' -docstring 'go to next spell error'
+map global kak-spell r ': kak-spell-replace<ret>' -docstring 'suggest a list of replacements'
+map global kak-spell a ': kak-spell-add<ret>' -docstring 'add the selection to the user dict'
+map global kak-spell x ': kak-spell-remove<ret>' -docstring 'remove the selection from the user dict'
 
 
 # Subvert
@@ -149,7 +151,7 @@ define-command disable-markdown-highlighters  -docstring "disable markdown highl
 
 ## Always use spell check for commit messages
 hook global WinSetOption filetype=git-commit %{
-    spell en_US
+    kak-spell en_US
 }
 
 # Show line numbers by default
