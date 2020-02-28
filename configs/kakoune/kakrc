@@ -195,6 +195,13 @@ map global user p '<a-!>system-clipboard-paste<ret>' -docstring 'yank from syste
 hook global BufOpenFile .* %{ nop %sh{ mru-files add  "${kak_hook_param}" } }
 map global user o ':evaluate-commands %sh{ mru-files list --kakoune }<ret>' -docstring 'open old files'
 
+# Backup everything!
+hook global BufWritePost .* %{ nop %sh{ kak-back backup  "${kak_hook_param}" } }
+define-command restore-backup %{
+  nop %sh{
+    kak-back restore "${kak_buffile}"
+  }
+}
 
 ## Whitespace cleaning
 # * Clean trailing whitespace

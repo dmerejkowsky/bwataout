@@ -1,0 +1,66 @@
+#!/usr/bin/env python3
+
+""" Creates a copy of every written kak file in
+./local/share/kak/backups/%path%to%file
+
+so that it can be restored later on
+"""
+
+import argparse
+import os
+import shutil
+import sys
+
+
+BACKUPS_PATH = os.path.expanduser("~/.local/share/kak/backups")
+
+
+def to_backup_path(path):
+    name = path.replace("/", "%")
+    return os.path.join(BACKUPS_PATH, name)
+
+
+def canonalize_path(path):
+    abspath = os.path.abspath(path)
+    return os.path.realpath(abspath)
+
+
+def backup(src):
+    src = canonalize_path(src)
+    os.makedirs(BACKUPS_PATH, exist_ok=True)
+    backup_path = to_backup_path(src)
+    shutil.copy(src, backup_path)
+
+
+def restore(dest):
+    dest = canonalize_path(dest)
+    backup_path = to_backup_path(dest)
+    if os.path.exists(backup_path):
+        shutil.copy(backup_path, dest)
+    else:
+        sys.exit(f"Expected backup in {backup_path}, but no such file exists")
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    subparsers = parser.add_subparsers(title="commands", dest="command")
+
+    backup_parser = subparsers.add_parser("backup")
+    backup_parser.add_argument("path")
+
+    restore_parser = subparsers.add_parser("restore")
+    restore_parser.add_argument("path")
+
+    args = parser.parse_args()
+    command = args.command
+    if command == "backup":
+        backup(args.path)
+    elif command == "restore":
+        restore(args.path)
+    else:
+        parser.print_help()
+        sys.exit(1)
+
+
+if __name__ == "__main__":
+    main()
