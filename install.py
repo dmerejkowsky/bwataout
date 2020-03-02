@@ -69,10 +69,19 @@ class Installer:
         src.write_text(contents)
 
     def do_symlink(self, src, dest):
-        src = self.this_dir / "configs" / src
+        self._do_simlink(src, dest, is_dir=False)
+
+    def do_symlink_dir(self, src, dest):
+        self._do_simlink(src, dest, is_dir=True)
+
+    def _do_simlink(self, src, dest, *, is_dir):
         dest = Path(dest).expanduser()
         pretty_dest = self.pretty_path(dest)
-        dest.parent.makedirs_p()
+        if is_dir:
+            dest.parent.parent.makedirs_p()
+        else:
+            dest.parent.makedirs_p()
+
         if dest.exists() and not self.force:
             ui.info_2("Skipping", pretty_dest)
             return
@@ -81,8 +90,9 @@ class Installer:
             # else, we know it's a broken symlink
             # in any case: remove it
             dest.remove()
-        ui.info_2("Symlink", pretty_dest)
-        src.symlink(dest)
+        ui.info_2("Symlink", pretty_dest, "->", src)
+        src_full = self.this_dir / "configs" / src
+        src_full.symlink(dest)
 
     def do_run(self, args):
         ui.info_2("Running", "`%s`" % " ".join(args))
