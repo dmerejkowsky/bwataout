@@ -35,6 +35,10 @@ plug "ul/kak-tree"
 
 plug "dmerejkowsky/kak-spell"
 
+plug "occivink/kakoune-snippets" %{
+}
+
+
 ## kak-tree
 declare-user-mode tree
 map global user t ' :enter-user-mode tree<ret>' -docstring 'enter treesitter mode'

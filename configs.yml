@@ -52,12 +52,16 @@ i3:
     - ~/.local/bin/passmenu
 
 kakoune:
+  - symlink_dir:
+    - kakoune/snippets
+    - ~/.config/kak/snippets
   - symlink:
     - kakoune/kakrc
     - ~/.config/kak/kakrc
   - clone:
     - https://github.com/andreyorst/plug.kak.git
     - ~/.config/kak/plugins/plug.kak
+
 
 mpv:
   - symlink:
