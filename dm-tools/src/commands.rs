@@ -21,7 +21,7 @@ impl EntriesCollection for Commands {
     }
 
     fn add(&mut self, entry: &str) {
-        if entry.starts_with(" ") {
+        if entry.starts_with(' ') {
             return;
         }
         self.entries = insert_last_and_dedup(&self.entries, entry);
