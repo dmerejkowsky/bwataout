@@ -23,6 +23,12 @@ pub struct CommandsHistory {
 
 #[derive(StructOpt, Debug)]
 pub enum SubCommand {
+    #[structopt(name = "init", about = "init storage")]
+    Init {
+        #[structopt(long = "--kakoune", help = "dump kakoune script")]
+        kakoune: bool,
+    },
+
     #[structopt(name = "add", about = "add a new entry")]
     Add { entry: String },
 
@@ -37,10 +43,7 @@ pub enum SubCommand {
 
     #[structopt(name = "list", about = "list entries")]
     List {
-        #[structopt(
-            long = "--kakoune",
-            help = "use output suitable for kakoune integration"
-        )]
-        kakoune: bool,
+        #[structopt(long = "--reversed", help = "reverse order")]
+        reversed: bool,
     },
 }

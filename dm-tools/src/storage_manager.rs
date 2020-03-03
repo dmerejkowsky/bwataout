@@ -60,16 +60,19 @@ impl StorageManager {
         }
     }
 
-    pub fn print_self(self) {
-        let entries = self.storage.list();
-        println!("{}", entries.join("\n"))
+    pub fn list(self) {
+        for entry in self.storage.list() {
+            println!("{}", entry)
+        }
     }
 
-    pub fn for_kakoune(self) {
-        print!("menu ");
-        for entry in self.storage.list().iter().rev().take(10) {
-            let cmd = self.storage.kakoune_cmd(&entry);
-            print!("\"{entry}\" \"{cmd}\" ", cmd = cmd, entry = entry)
+    pub fn list_reversed(self) {
+        for entry in self.storage.list().iter().rev() {
+            println!("{}", entry)
         }
+    }
+
+    pub fn init_kakoune(&self) {
+        self.storage.init_kakoune()
     }
 }

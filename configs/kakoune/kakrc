@@ -112,9 +112,8 @@ set-option global grepcmd 'rg --no-heading --line-number --column --sort path'
 ## Working dir stuff
 declare-option str project_working_dir %sh{ pwd }
 plug 'delapouite/kakoune-cd' %{
-  map global user c ':enter-user-mode cd<ret>' -docstring 'enter cd user mode'
-  map global cd c ':change-directory %val{opt_project_working_dir}<ret>' -docstring 'reset working directory'
-  map global cd o ':evaluate-commands %sh{ cwd-history list --kakoune }<ret>' -docstring 'open old working directory'
+  map global user c ': enter-user-mode cd<ret>' -docstring 'enter cd user mode'
+  map global cd c ': change-directory %val{opt_project_working_dir}<ret>' -docstring 'reset working dir'
   alias global pwd print-working-directory
 }
 
@@ -195,9 +194,12 @@ map global user p '<a-!>system-clipboard-paste<ret>' -docstring 'yank from syste
 
 
 ## Persistent file and working dirs history
-# (forgive me, mawwww, but persisting state is cool sometimes)
-hook global BufOpenFile .* %{ nop %sh{ mru-files add  "${kak_hook_param}" } }
-map global user o ':evaluate-commands %sh{ mru-files list --kakoune }<ret>' -docstring 'open old files'
+eval %sh{mru-files init --kakoune}
+map global user o ': mru <ret>' -docstring 'browse recently opened files'
+
+eval %sh{cwd-history init --kakoune}
+map global cd o ': cwd-history <ret>' -docstring 'open a buffer containing list of recent working dirs'
+
 
 # Backup everything!
 hook global BufWritePost .* %{ nop %sh{ kak-back backup  "${kak_hook_param}" } }

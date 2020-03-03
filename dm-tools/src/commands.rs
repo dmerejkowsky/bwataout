@@ -16,10 +16,6 @@ impl EntriesCollection for Commands {
         "commands-history".to_string()
     }
 
-    fn kakoune_cmd(&self, _entry: &str) -> String {
-        "n/a".to_string()
-    }
-
     fn add(&mut self, entry: &str) {
         if entry.starts_with(' ') {
             return;
@@ -42,4 +38,6 @@ impl EntriesCollection for Commands {
     fn remove(&mut self, entry: &str) {
         self.entries.retain(|x| x != entry);
     }
+
+    fn init_kakoune(&self) {}
 }

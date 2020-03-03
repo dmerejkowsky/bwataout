@@ -31,10 +31,6 @@ impl EntriesCollection for MruFiles {
         &self.entries
     }
 
-    fn kakoune_cmd(&self, entry: &str) -> String {
-        format!("edit -existing '{}'", entry)
-    }
-
     fn add(&mut self, entry: &str) {
         if is_blacklisted(entry) {
             return;
@@ -53,5 +49,10 @@ impl EntriesCollection for MruFiles {
     fn clean(&mut self) {
         self.entries = remove_non_existing(&self.entries);
         self.entries.retain(|x| !is_blacklisted(x));
+    }
+
+    fn init_kakoune(&self) {
+        let kak_script = include_str!("mru_files.kak");
+        print!("{}", kak_script);
     }
 }

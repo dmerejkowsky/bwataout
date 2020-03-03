@@ -21,10 +21,6 @@ impl EntriesCollection for WorkingDirs {
         &self.entries
     }
 
-    fn kakoune_cmd(&self, entry: &str) -> String {
-        format!("change-directory '{}'", entry)
-    }
-
     fn add_all(&mut self, entries: Vec<String>) {
         self.entries = entries;
     }
@@ -54,5 +50,10 @@ impl EntriesCollection for WorkingDirs {
 
     fn clean(&mut self) {
         self.entries = remove_non_existing(&self.entries);
+    }
+
+    fn init_kakoune(&self) {
+        let kak_script = include_str!("working_dirs.kak");
+        print!("{}", kak_script);
     }
 }

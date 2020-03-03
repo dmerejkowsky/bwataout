@@ -11,7 +11,7 @@ fn write_db(path: &std::path::PathBuf, entries: &[String]) {
     if !parent_path.exists() {
         std::fs::create_dir_all(parent_path).expect("could not create db parent path");
     }
-    std::fs::write(path, entries.join("\n")).expect("Could not write db")
+    std::fs::write(path, entries.join("\n") + "\n").expect("Could not write db")
 }
 
 pub trait EntriesCollection {
@@ -19,9 +19,9 @@ pub trait EntriesCollection {
     fn add(&mut self, entry: &str);
     fn add_all(&mut self, entries: Vec<String>);
     fn clean(&mut self);
-    fn kakoune_cmd(&self, entry: &str) -> String;
     fn list(&self) -> &[String];
     fn remove(&mut self, entry: &str);
+    fn init_kakoune(&self);
 }
 
 pub struct Storage {
@@ -47,7 +47,7 @@ impl Storage {
         self.db_path.to_path_buf()
     }
 
-    pub fn list(&self) -> &Vec<String> {
+    pub fn list(&self) -> &[String] {
         &self.entries_collection.list()
     }
 
@@ -66,7 +66,7 @@ impl Storage {
         write_db(&self.db_path, &self.list())
     }
 
-    pub fn kakoune_cmd(&self, entry: &str) -> String {
-        self.entries_collection.kakoune_cmd(entry)
+    pub fn init_kakoune(&self) {
+        self.entries_collection.init_kakoune()
     }
 }
