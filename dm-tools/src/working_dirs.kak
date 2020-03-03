@@ -10,3 +10,5 @@ define-command cwd-history -docstring "open a buffer containing list of recent w
   '
   hook buffer -group cwd-history NormalKey <ret> cwd-jump
 }
+
+hook global ClientClose .* %{ nop %sh{ cwd-history add $(pwd) } }
