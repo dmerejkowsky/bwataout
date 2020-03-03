@@ -1,5 +1,5 @@
 define-command mru-jump -hidden %{
-  execute-keys -draft -with-hooks 'x H gf <ret>'
+  execute-keys -with-hooks 'x H gf <ret>'
 }
 
 define-command mru -docstring "open a buffer containing list of recently opened files" %{
