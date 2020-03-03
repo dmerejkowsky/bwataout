@@ -12,8 +12,8 @@ impl Commands {
 }
 
 impl EntriesCollection for Commands {
-    fn name(&self) -> String {
-        "commands-history".to_string()
+    fn name(&self) -> &'static str {
+        "commands-history"
     }
 
     fn add(&mut self, entry: &str) {

@@ -13,8 +13,8 @@ impl WorkingDirs {
 }
 
 impl EntriesCollection for WorkingDirs {
-    fn name(&self) -> String {
-        "cwd-history".to_string()
+    fn name(&self) -> &'static str {
+        "cwd-history"
     }
 
     fn list(&self) -> &[String] {

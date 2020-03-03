@@ -15,7 +15,7 @@ fn write_db(path: &std::path::PathBuf, entries: &[String]) {
 }
 
 pub trait EntriesCollection {
-    fn name(&self) -> String;
+    fn name(&self) -> &'static str;
     fn add(&mut self, entry: &str);
     fn add_all(&mut self, entries: Vec<String>);
     fn clean(&mut self);

@@ -23,8 +23,8 @@ fn is_blacklisted(entry: &str) -> bool {
 }
 
 impl EntriesCollection for MruFiles {
-    fn name(&self) -> String {
-        "mru-files".to_string()
+    fn name(&self) -> &'static str {
+        "mru-files"
     }
 
     fn list(&self) -> &[String] {
