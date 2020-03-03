@@ -20,7 +20,7 @@ pub trait EntriesCollection {
     fn add_all(&mut self, entries: Vec<String>);
     fn clean(&mut self);
     fn kakoune_cmd(&self, entry: &str) -> String;
-    fn list(&self) -> &Vec<String>;
+    fn list(&self) -> &[String];
     fn remove(&mut self, entry: &str);
 }
 

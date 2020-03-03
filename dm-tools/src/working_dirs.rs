@@ -17,7 +17,7 @@ impl EntriesCollection for WorkingDirs {
         "cwd-history".to_string()
     }
 
-    fn list(&self) -> &Vec<String> {
+    fn list(&self) -> &[String] {
         &self.entries
     }
 

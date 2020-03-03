@@ -31,7 +31,7 @@ impl EntriesCollection for Commands {
         self.entries = entries;
     }
 
-    fn list(&self) -> &Vec<String> {
+    fn list(&self) -> &[String] {
         &self.entries
     }
 

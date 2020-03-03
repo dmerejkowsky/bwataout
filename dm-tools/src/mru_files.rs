@@ -27,7 +27,7 @@ impl EntriesCollection for MruFiles {
         "mru-files".to_string()
     }
 
-    fn list(&self) -> &Vec<String> {
+    fn list(&self) -> &[String] {
         &self.entries
     }
 
