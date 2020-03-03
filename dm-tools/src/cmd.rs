@@ -15,6 +15,13 @@ pub struct FilesHistory {
 }
 
 #[derive(StructOpt, Debug)]
+#[structopt(name = "cmd-history", about = "Manage commands history")]
+pub struct CommandsHistory {
+    #[structopt(subcommand)]
+    pub sub_cmd: SubCommand,
+}
+
+#[derive(StructOpt, Debug)]
 pub enum SubCommand {
     #[structopt(name = "add", about = "add a new entry")]
     Add { entry: String },
