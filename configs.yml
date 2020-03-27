@@ -62,6 +62,11 @@ kakoune:
     - https://github.com/andreyorst/plug.kak.git
     - ~/.config/kak/plugins/plug.kak
 
+kitty:
+ - symlink:
+    - kitty.conf
+    - ~/.config/kitty/kitty.conf
+
 
 mpv:
   - symlink:

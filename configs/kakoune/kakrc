@@ -84,7 +84,7 @@ eval %sh{
 if [ "$(uname)" = "Darwin" ]; then
   echo "colorscheme default"
 else
-  echo "colorscheme zenburn"
+  echo "colorscheme desertex"
 fi
 }
 add-highlighter global/ wrap -word
