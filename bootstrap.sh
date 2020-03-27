@@ -9,4 +9,4 @@ curl https://sh.rustup.rs -sSf | sh
 cargo install fd-find
 cargo install exa
 
-sudo cp ./xkb-symbols-dmerej /usr/share/x11/xkb/symbols/dmerej
+sudo cp ./xkb-symbols-dmerej /usr/share/X11/xkb/symbols/dmerej
