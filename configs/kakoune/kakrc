@@ -32,7 +32,6 @@ plug "andreyorst/smarttab.kak" %{
 }
 
 plug "ul/kak-tree"
-plug "dmerejkowsky/kak-spell"
 plug "occivink/kakoune-snippets"{
 
 
@@ -117,15 +116,19 @@ plug 'dmerejkowsky/kakoune-cd' %{
 
 
 # Spell check
-declare-user-mode kak-spell
-map global user s ': enter-user-mode kak-spell<ret>' -docstring 'enter spell user mode'
-map global kak-spell c ': kak-spell-clear<ret>' -docstring 'clear spelling highlighters'
-map global kak-spell e ': kak-spell en_US<ret>' -docstring 'run spell check in English'
-map global kak-spell f ': kak-spell fr_FR<ret>' -docstring 'run spell check in French'
-map global kak-spell n ': kak-spell-next<ret>' -docstring 'go to next spell error'
-map global kak-spell r ': kak-spell-replace<ret>' -docstring 'suggest a list of replacements'
-map global kak-spell a ': kak-spell-add<ret>' -docstring 'add the selection to the user dict'
-map global kak-spell x ': kak-spell-remove<ret>' -docstring 'remove the selection from the user dict'
+plug "dmerejkowsky/kak-spell" %{
+  declare-user-mode kak-spell
+  map global user s ': enter-user-mode kak-spell<ret>' -docstring 'enter spell user mode'
+  map global kak-spell a ': kak-spell-add<ret>' -docstring 'add the selection to the user dict'
+  map global kak-spell d ': kak-spell-disable<ret>' -docstring 'clear spelling highlighters'
+  map global kak-spell e ': kak-spell-enable en_US<ret> :kak-spell <ret>' -docstring 'run spell check in English'
+  map global kak-spell f ': kak-spell-enable fr_FR<ret> :kak-spell <ret>' -docstring 'run spell check in French'
+  map global kak-spell l ': kak-spell-list <ret>' -docstring 'list spelling errors in a buffer'
+  map global kak-spell n ': kak-spell-next<ret>' -docstring 'go to next spell error'
+  map global kak-spell p ': kak-spell-previous<ret>' -docstring 'go to next spell error'
+  map global kak-spell r ': kak-spell-replace<ret>' -docstring 'suggest a list of replacements'
+  map global kak-spell x ': kak-spell-remove<ret>' -docstring 'remove the selection from the user dict'
+}
 
 
 # Subvert
