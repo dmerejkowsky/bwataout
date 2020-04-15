@@ -155,7 +155,8 @@ define-command disable-markdown-highlighters  -docstring "disable markdown highl
 
 ## Always use spell check for commit messages
 hook global WinSetOption filetype=git-commit %{
-    kak-spell en_US
+    kak-spell-enable en_US
+    kak-spell
 }
 
 # Show line numbers by default
