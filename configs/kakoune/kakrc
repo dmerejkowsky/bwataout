@@ -32,7 +32,7 @@ plug "andreyorst/smarttab.kak" %{
 }
 
 plug "ul/kak-tree"
-plug "occivink/kakoune-snippets"{
+plug "occivink/kakoune-snippets"
 
 
 ## kak-tree
