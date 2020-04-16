@@ -33,7 +33,10 @@ plug "andreyorst/smarttab.kak" %{
 
 plug "ul/kak-tree"
 plug "occivink/kakoune-snippets"
-
+plug "Screwtapello/kakoune-inc-dec" domain "gitlab.com" config %{
+ map global normal <c-a> ': inc-dec-modify-numbers + %val{count}<ret>'
+ map global normal <c-x> ': inc-dec-modify-numbers - %val{count}<ret>'
+}
 
 ## kak-tree
 declare-user-mode tree
