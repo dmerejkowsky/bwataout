@@ -2,17 +2,18 @@
 
 """ Creates a copy of every written kak file in
 ./local/share/kak/backups/%path%to%file
-
 so that it can be restored later on
 """
 
 import argparse
+import datetime
 import os
 import shutil
 import sys
 
 
 BACKUPS_PATH = os.path.expanduser("~/.local/share/kak/backups")
+ONE_MONTH = 60 * 60 * 24 * 30  # à une vache près
 
 
 def to_backup_path(path):
@@ -41,6 +42,28 @@ def restore(dest):
         sys.exit(f"Expected backup in {backup_path}, but no such file exists")
 
 
+def clean(*, dry_run):
+    total = 0
+    cleaned = 0
+    now = datetime.datetime.now().timestamp()
+    for name in os.listdir(BACKUPS_PATH):
+        full_path = os.path.join(BACKUPS_PATH, name)
+        if not os.path.isfile(full_path):
+            continue
+        total += 1
+        mtime = os.stat(full_path).st_mtime
+        if now - mtime > ONE_MONTH:
+            cleaned += 1
+            if not dry_run:
+                os.remove(full_path)
+    if dry_run:
+        print(f"Would remove {cleaned}/{total} entries")
+    else:
+         print(f"Removed {cleaned}/{total} entries")
+
+
+
+
 def main():
     parser = argparse.ArgumentParser()
     subparsers = parser.add_subparsers(title="commands", dest="command")
@@ -51,12 +74,17 @@ def main():
     restore_parser = subparsers.add_parser("restore")
     restore_parser.add_argument("path")
 
+    clean_parser = subparsers.add_parser("clean")
+    clean_parser.add_argument("--dry-run", action="store_true")
+
     args = parser.parse_args()
     command = args.command
     if command == "backup":
         backup(args.path)
     elif command == "restore":
         restore(args.path)
+    elif command == "clean":
+        clean(dry_run=args.dry_run)
     else:
         parser.print_help()
         sys.exit(1)
