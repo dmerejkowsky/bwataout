@@ -138,6 +138,7 @@ plug "dmerejkowsky/kak-spell" config %{
 declare-user-mode subvert
 map global user y ':enter-user-mode subvert<ret>' -docstring 'enter subvert user mode'
 map global subvert c '| kak-subvert camel <ret>'     -docstring 'camelCase'
+map global subvert h '| kak-subvert camel <ret>'     -docstring 'Http-Case'
 map global subvert k '| kak-subvert kebab <ret>'     -docstring 'kebab-case'
 map global subvert p '| kak-subvert pascal <ret>'    -docstring 'PascalCase'
 map global subvert . '| kak-subvert sentence <ret>'  -docstring 'Sentence case'
