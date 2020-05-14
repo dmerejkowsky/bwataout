@@ -137,15 +137,15 @@ plug "dmerejkowsky/kak-spell" config %{
 # Subvert
 declare-user-mode subvert
 map global user y ':enter-user-mode subvert<ret>' -docstring 'enter subvert user mode'
-map global subvert c '| kak-subvert camel <ret>' -docstring 'convert to camel case'
-map global subvert k '| kak-subvert kebab <ret>' -docstring 'convert to kebab case'
-map global subvert p '| kak-subvert pascal <ret>' -docstring 'convert to pascal case'
-map global subvert . '| kak-subvert sentence <ret>' -docstring 'convert to sentence case'
-map global subvert s '| kak-subvert snake <ret>' -docstring 'convert to snake case'
-map global subvert S '| kak-subvert screaming <ret>' -docstring 'convert to screaming case'
-map global subvert t '| kak-subvert train <ret>' -docstring 'convert to train case'
-map global subvert T '| kak-subvert title <ret>' -docstring 'convert to title case'
-map global subvert u '| kak-subvert ugly <ret>' -docstring 'convert to ugly case'
+map global subvert c '| kak-subvert camel <ret>'     -docstring 'camelCase'
+map global subvert k '| kak-subvert kebab <ret>'     -docstring 'kebab-case'
+map global subvert p '| kak-subvert pascal <ret>'    -docstring 'PascalCase'
+map global subvert . '| kak-subvert sentence <ret>'  -docstring 'Sentence case'
+map global subvert s '| kak-subvert snake <ret>'     -docstring 'snake_case'
+map global subvert S '| kak-subvert screaming <ret>' -docstring 'SCREAMING_CASE'
+map global subvert t '| kak-subvert train <ret>'     -docstring 'Train-Case'
+map global subvert T '| kak-subvert title <ret>'     -docstring 'Title Case'
+map global subvert u '| kak-subvert ugly <ret>'      -docstring 'Ugly_Case'
 
 ## Custom commands
 define-command show-line-numbers -docstring "show line numbers" \
