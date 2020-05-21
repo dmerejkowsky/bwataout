@@ -200,10 +200,10 @@ map global user p '<a-!>system-clipboard-paste<ret>' -docstring 'yank from syste
 
 
 ## Persistent file and working dirs history
-eval %sh{mru-files init --kakoune}
+eval %sh{mru-files init-kakoune}
 map global user o ': mru <ret>' -docstring 'browse recently opened files'
 
-eval %sh{cwd-history init --kakoune}
+eval %sh{cwd-history init-kakoune}
 map global cd o ': cwd-history <ret>' -docstring 'open a buffer containing list of recent working dirs'
 
 
