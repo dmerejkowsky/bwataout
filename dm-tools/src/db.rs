@@ -42,29 +42,22 @@ where
     }
 
     pub fn list(&self) -> Result<Vec<String>> {
-        let mut statement = self
-            .connection
-            .prepare("SELECT entry FROM entries ORDER BY date ASC")?;
-
-        let mut rows = statement.query(NO_PARAMS)?;
-        let mut names = vec![];
-        while let Some(row) = rows.next()? {
-            names.push(row.get(0)?);
-        }
-        Ok(names)
+        self.execute_list_query("SELECT entry FROM entries ORDER BY date ASC")
     }
 
     pub fn list_reversed(&self) -> Result<Vec<String>> {
-        let mut statement = self
-            .connection
-            .prepare("SELECT entry FROM entries ORDER BY date DESC")?;
+        self.execute_list_query("SELECT entry FROM entries ORDER BY date DESC")
+    }
+
+    fn execute_list_query(&self, sql: &'static str) -> Result<Vec<String>> {
+        let mut statement = self.connection.prepare(sql)?;
 
         let mut rows = statement.query(NO_PARAMS)?;
-        let mut names = vec![];
+        let mut res = vec![];
         while let Some(row) = rows.next()? {
-            names.push(row.get(0)?);
+            res.push(row.get(0)?);
         }
-        Ok(names)
+        Ok(res)
     }
 
     pub fn clean(&self, max: Option<isize>) -> Result<()> {
