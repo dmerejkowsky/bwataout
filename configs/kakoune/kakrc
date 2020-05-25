@@ -175,7 +175,9 @@ map global user a ':addimport ' -docstring 'run addimport'
 declare-user-mode grep
 map global user g ':enter-user-mode grep<ret>' -docstring 'enter grep mode'
 map global grep g ':grep ' -docstring 'run grep'
+map global grep p ': grep-next-match<ret>' -docstring 'run grep-previous-match'
 map global grep n ': grep-next-match<ret>' -docstring 'run grep-next-match'
+map global grep l ': edit -existing *grep* <ret>' -docstring 'show grep results'
 
 map global user b ':set-option buffer filetype ' -docstring 'set filetype for the current buffer'
 set-option global autowrap_column 80
