@@ -80,7 +80,7 @@ kakoune:
 
 
 kitty:
- - symlink:
+ - copy:
     - kitty.conf
     - ~/.config/kitty/kitty.conf
 
