@@ -1,5 +1,3 @@
-# pyenv
-.python-version
 .mypy_cache/
 
 # vscode is a good debugger
