@@ -50,6 +50,12 @@ map global linting n ': lint-next-error<ret>' -docstring 'go to next lint error'
 
 ## Formatting
 
+# Dart: use dartfmt
+hook global WinSetOption filetype=dart %{
+  set window formatcmd 'dartfmt'
+  format-on-save
+}
+
 # Go: use goimports
 hook global BufWritePre .*\.go "go-format -use-goimports"
 
