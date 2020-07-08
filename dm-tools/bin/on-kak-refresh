@@ -30,7 +30,7 @@ def sanitize_url(url):
 def loop(*, url, cmd, browser=None):
     # Run `cmd` once so that we don't start
     # the loop on some failing command ...
-    subprocess.run(cmd, shell=True, check=True)
+    subprocess.run(cmd, shell=True)
     print_sep()
 
     driver = None
