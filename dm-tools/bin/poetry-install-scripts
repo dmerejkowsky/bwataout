@@ -17,7 +17,7 @@ def main():
         r = subprocess.run(
             ["poetry", "env", "info", "-p"], stdout=subprocess.PIPE, text=True
         )
-        env_path = r.stdout
+        env_path = r.stdout.rstrip()
         for name, script in poetry_cfg["scripts"].items():
             module, func = script.split(":")
             to_write = textwrap.dedent(
