@@ -30,14 +30,14 @@ disk "/" {
 }
 
 battery 0 {
-       format = "%status %percentage %remaining %emptytime"
+       format = "%percentage %status %remaining"
        integer_battery_capacity = true
        last_full_capacity = true
        format_down = "No battery"
-       status_chr = "⚡ CHR"
-       status_bat = "🔋 BAT"
-       status_unk = "? UNK"
-       status_full = "☻ FULL"
+       status_chr = "charging"
+       status_bat = "remaining"
+       status_unk = "unknown"
+       status_full = "full"
        path = "/sys/class/power_supply/BAT%d/uevent"
        low_threshold = 10
 }
