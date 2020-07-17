@@ -41,10 +41,10 @@ git:
       email =
 
 i3:
-  - symlink:
+  - copy:
     - i3/config
     - ~/.config/i3/config
-  - symlink:
+  - copy:
     - i3/status
     - ~/.config/i3status/config
   - symlink:
