@@ -105,11 +105,6 @@ npm:
       # Allow using npm install -g without being root
       prefix = ~/.local/share/node/
 
-ruby:
-  - symlink:
-    - gemrc
-    - ~/.gemrc
-
 screen:
   - symlink:
     - screenrc
