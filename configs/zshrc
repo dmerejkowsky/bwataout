@@ -323,6 +323,11 @@ activate() {
   fi
 }
 
+# If we were called from poetry-activate, source the script now
+if [[ -n $DM_TOOLS_ACTIVATE ]]; then
+  source $DM_TOOLS_ACTIVATE
+fi
+
 alias a=activate
 alias d=deactivate
 alias da="deactivate;activate"

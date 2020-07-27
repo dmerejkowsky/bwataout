@@ -1,0 +1,41 @@
+#!/usr/bin/env python3
+
+import os
+import subprocess
+import sys
+
+import cli_ui as ui
+from path import Path
+
+
+def get_src(venv_path):
+    lib_path = venv_path / "lib"
+    lib_dirs = lib_path.dirs()
+    (py_ver,) = lib_dirs
+
+    site_packages_path = py_ver / "site-packages"
+    (egg_link,) = site_packages_path.files("*.egg-link")
+    return egg_link.lines(retain=False)[0]
+
+
+def main():
+    project_name = sys.argv[1]
+    venv_path = get_matching_venv(project_name)
+    env = os.environ.copy()
+    env["DM_TOOLS_ACTIVATE"] = venv_path / "bin/activate"
+    subprocess.run(["zsh", "-l"], env=env)
+
+
+def get_matching_venv(project_name):
+    venv_path = Path("~/.cache/pypoetry/virtualenvs/").expanduser()
+    candidates = venv_path.dirs()
+    candidates = [x for x in candidates if x.name.startswith(project_name)]
+    if len(candidates) == 1:
+        (res,) = candidates
+        return res
+    else:
+        return ui.ask_choice("Choose a venv", choices=candidates, func_desc=get_src)
+
+
+if __name__ == "__main__":
+    main()
