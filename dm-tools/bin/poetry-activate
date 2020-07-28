@@ -14,12 +14,18 @@ def get_src(venv_path):
     (py_ver,) = lib_dirs
 
     site_packages_path = py_ver / "site-packages"
-    (egg_link,) = site_packages_path.files("*.egg-link")
+    egg_links = site_packages_path.files("*.egg-link")
+    if len(egg_links) != 1:
+        sys.exit(f"{venv_path}: Expecting one egg link, got {egg_links}")
+    egg_link, = egg_links
     return egg_link.lines(retain=False)[0]
 
 
 def main():
-    project_name = sys.argv[1]
+    try:
+        project_name, = sys.argv[1:]
+    except ValueError:
+        sys.exit("Expecting a project name")
     venv_path = get_matching_venv(project_name)
     env = os.environ.copy()
     env["DM_TOOLS_ACTIVATE"] = venv_path / "bin/activate"
