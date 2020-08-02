@@ -242,5 +242,10 @@ define-command -docstring "trigger a run from on-kak-refresh" ipc-run %{
 }
 map global user i ':write-all<ret> :ipc-run<ret>' -docstring "call ipc-run"
 
+declare-user-mode comments
+map global user d ' :enter-user-mode comments<ret>' -docstring 'enter comments mode'
+map global comments d ': comment-line <ret>' -docstring 'toggle line comment'
+map global comments D ': comment-block <ret>' -docstring 'toggle block comment'
+
 ## Source local config
 source "%val{config}/local.kak"
