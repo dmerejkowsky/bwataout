@@ -115,11 +115,6 @@ sway:
     - sway
     - ~/.config/sway/config
 
-termite:
-  - copy:
-    - termite
-    - ~/.config/termite/config
-
 tmux:
   - symlink:
     - tmux.conf
