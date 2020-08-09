@@ -6,6 +6,18 @@ set global termcmd "termite  -e "
 
 ranger-open-on-edit-directory
 
+## Connect
+
+plug alexherbo2/prelude.kak
+plug alexherbo2/terminal-mode.kak
+plug alexherbo2/connect.kak
+
+define-command fzf-files -params .. -file-completion -docstring 'Open selected files with fzf' %{
+  connect-terminal sh -c %{
+    edit $(fd --type file . "$@" | fzf)
+  } -- %arg{@}
+}
+
 ## Completion
 set global ignored_files "(.*\.egg-info)|(__pycache__)|(\.mypy_cache)|(build/)"
 
@@ -175,7 +187,7 @@ hook global BufOpenFile .*  show-line-numbers
 
 ## Custom mappings
 map global user m ': write-all<ret> :make<ret>' -docstring 'run make'
-map global user f ':find ' -docstring 'run find'
+map global user f ': fzf-files <ret>' -docstring 'find files with fzf'
 map global user a ':addimport ' -docstring 'run addimport'
 
 declare-user-mode grep
