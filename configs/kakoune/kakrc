@@ -1,3 +1,7 @@
+## Hide release notes from latest version
+set-option global startup_info_version 20200804
+
+## Setup plug.kak
 source "%val{config}/plugins/plug.kak/rc/plug.kak"
 
 ## Connect
@@ -28,10 +32,6 @@ plug alexherbo2/connect.kak %{
 
 ## Completion
 set global ignored_files "(.*\.egg-info)|(__pycache__)|(\.mypy_cache)|(build/)"
-
-## Hide release notes from latest version
-# Bump the number when you've read them!
-set-option global startup_info_version 20200117
 
 ## LSP
 eval %sh{kak-lsp --kakoune -s $kak_session}
