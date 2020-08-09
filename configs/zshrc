@@ -6,7 +6,7 @@
 
 # Shell is non-interactive.  Be done now
 if [[ $- != *i* ]] || [ a$HOST = agate-ssh ]; then
-    return
+  return
 fi
 
 # Options
