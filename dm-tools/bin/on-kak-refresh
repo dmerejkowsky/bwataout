@@ -11,9 +11,6 @@ import sys
 import path
 
 
-def clear_screen():
-    subprocess.run(["clear"])
-
 
 def print_sep():
     term_size = shutil.get_terminal_size()
@@ -52,7 +49,6 @@ def loop(*, url, cmd, browser=None):
             if cmd == "quit\n":
                 stream.close()
                 break
-            clear_screen()
             print(cmd)
             process = subprocess.run(cmd, shell=True)
             if process.returncode != 0:
