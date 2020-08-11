@@ -1,0 +1,17 @@
+set shell sh
+
+set shellopts '-eu'
+
+set ifs "\n"
+
+set scrolloff 10
+
+# use enter for editing files
+map <enter>  $$EDITOR $f
+
+# dedicated keys for file opener actions
+map o &xdg-open $f
+
+map r push :rename<space>
+
+set previewer ~/.config/lf/pv.sh

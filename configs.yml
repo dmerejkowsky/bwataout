@@ -78,6 +78,11 @@ kakoune:
         --force
      ]
 
+lf:
+  - symlink:
+    - lf
+    - ~/.config/lf
+
 
 kitty:
  - copy:
