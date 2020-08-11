@@ -15,14 +15,14 @@ plug alexherbo2/connect.kak %{
     } -- %arg{@}
   }
 
-  define-command ranger -params .. -file-completion -docstring 'Start ranger' %{
-    connect-terminal ranger %arg{@}
+  define-command lf -params .. -file-completion -docstring 'Start lf' %{
+    connect-terminal lf %arg{@}
   }
 
   hook global RuntimeError "\d+:\d+: '\w+' (.*): is a directory" %{
     evaluate-commands %sh{
       directory=$kak_hook_param_capture_1
-      echo ranger $directory
+      echo lf $directory
     }
   }
 
