@@ -332,6 +332,7 @@ fi
 alias a=activate
 alias d=deactivate
 alias da="deactivate;activate"
+alias icat="kitty +kitten icat"
 
 export DMENV_VENV_OUTSIDE_PROJECT=1
 export DMENV_SCRIPTS_PATH=/home/dmerej/.local/bin
