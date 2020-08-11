@@ -14,4 +14,14 @@ map o &xdg-open $f
 
 map r push :rename<space>
 
+cmd mkdir %mkdir -p "$@"
+map a push :mkdir<space>
+
+map \% push :glob-select<space>*<enter>
+map \* push :glob-unselect<space>*<enter>
+
+cmd bulk_rename $printf "%s\n" $fx | vidir -
+map b push :bulk_rename<enter>
+
+
 set previewer ~/.config/lf/pv.sh
