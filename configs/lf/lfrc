@@ -17,7 +17,7 @@ map r push :rename<space>
 cmd mkdir %mkdir -p "$@"
 map a push :mkdir<space>
 
-map \% push :glob-select<space>*<enter>
+map A push :glob-select<space>*<enter>
 
 cmd bulk_rename $printf "%s\n" $fx | vidir -
 map b push :bulk_rename<enter>
