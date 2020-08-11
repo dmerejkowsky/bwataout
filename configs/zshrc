@@ -78,6 +78,7 @@ alias cp="cp -iv"
 alias -s pdf=evince
 
 alias gg="git gui &!"
+export GIT_EDITOR="kak -s git"  # make sure only one kak is used by git
 
 alias tv="vlc http://mafreebox.freebox.fr/freeboxtv/playlist.m3u &!"
 
