@@ -1,0 +1,33 @@
+verbosity = 2
+
+[server]
+# exit session if no requests were received during given period in seconds
+# works only in unix sockets mode (-s/--session)
+# set to 0 to disable
+timeout = 1800 # seconds = 30 minutes
+
+[language.rust]
+filetypes = ["rust"]
+roots = ["Cargo.toml"]
+command = "rust-analyzer"
+
+[language.javascript]
+filetypes = ["javascript"]
+roots = [".flowconfig"]
+command = "flow"
+args = ["lsp"]
+
+[language.python]
+filetypes = ["python"]
+roots = ["requirements.txt", "setup.py", ".git", ".hg"]
+command = "pyls"
+
+[language.go]
+filetypes = ["go"]
+roots = ["go.mod"]
+command = "gopls"
+
+[language.dart]
+filetypes = ["dart"]
+roots = ["pubspec.yaml"]
+command = "dart_language_server"

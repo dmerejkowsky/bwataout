@@ -55,6 +55,9 @@ kakoune:
   - symlink_dir:
     - kakoune/snippets
     - ~/.config/kak/snippets
+  - symlink_dir:
+    - kak-lsp/
+    - ~/.config/kak-lsp
   - symlink:
     - kakoune/kakrc
     - ~/.config/kak/kakrc
