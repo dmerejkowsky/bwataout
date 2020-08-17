@@ -207,7 +207,8 @@ map global grep l ': edit -existing *grep* <ret>' -docstring 'show grep results'
 
 map global user b ':set-option buffer filetype ' -docstring 'set filetype for the current buffer'
 set-option global autowrap_column 80
-map global normal = '|dfmt -w $kak_opt_autowrap_column<ret>'
+declare-option int comments_line_length 72
+map global normal = '|dfmt -w $kak_opt_comments_line_length <ret>'
 
 # Yeah, I know waq is the default alias, but muscle memory, you know ...
 alias global wqa write-all-quit
