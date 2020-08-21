@@ -12,8 +12,6 @@ map <enter>  $$EDITOR $f
 # dedicated keys for file opener actions
 map o &xdg-open $f
 
-map r push :rename<space>
-
 cmd mkdir %mkdir -p "$@"
 map a push :mkdir<space>
 
