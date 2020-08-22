@@ -15,7 +15,7 @@ const ONE_MONTH: std::time::Duration = std::time::Duration::from_secs(60 * 60 * 
 #[derive(Debug, StructOpt)]
 #[structopt(
     name = "kak-back",
-    about = "backup and restore files edited with kakoune"
+    about = "backup and restore files edited with Kakoune"
 )]
 struct Command {
     #[structopt(subcommand)]
@@ -115,9 +115,9 @@ impl BackupStore {
     }
 
     fn restore(&self, dest: &Path) -> Result<()> {
-        // Note: canoncalize returs Err() if dest does not exist because reasons,
+        // Note: canoncalize returns Err() if dest does not exist because reasons,
         // so if `dest` does not exist, create an empty file beforehand.
-        // Worst case scenario: we get an empty file instead of notning
+        // Worst case scenario: we get an empty file instead of nothing
         if !dest.exists() {
             std::fs::write(dest, "")
                 .with_context(|| "Could not create restored file".to_string())?;
