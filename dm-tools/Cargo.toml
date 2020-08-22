@@ -5,11 +5,11 @@ name = "dm-tools"
 version = "0.1.0"
 
 [dependencies]
-app_dirs = "1.2.1"
-structopt = "*"
-clipboard = "0.5.0"
 anyhow = "1.0.31"
+app_dirs = "1.2.1"
+clipboard = "0.5.0"
 rusqlite = "0.23.1"
+structopt = "*"
 
 [dev-dependencies]
 tempdir = "0.3.7"
