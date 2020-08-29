@@ -51,7 +51,6 @@ plug "andreyorst/smarttab.kak" %{
   hook global BufCreate Makefile "noexpandtab"
 }
 
-plug "ul/kak-tree"
 plug "occivink/kakoune-snippets"
 plug "Screwtapello/kakoune-inc-dec" domain "gitlab.com" config %{
  map global normal <c-a> ': inc-dec-modify-numbers + %val{count}<ret>'
@@ -59,6 +58,7 @@ plug "Screwtapello/kakoune-inc-dec" domain "gitlab.com" config %{
 }
 
 ## kak-tree
+plug "ul/kak-tree"
 declare-user-mode tree
 map global user t ' :enter-user-mode tree<ret>' -docstring 'enter treesitter mode'
 map global tree p ': tree-select-parent-node<ret>' -docstring 'select parent node'
