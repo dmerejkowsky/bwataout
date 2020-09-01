@@ -1,27 +1,15 @@
+set ifs "\n"
+set previewer ~/.config/lf/pv.sh
+set scrolloff 10
+set shellopts '-eu'
 set shell sh
 
-set shellopts '-eu'
-
-set ifs "\n"
-
-set scrolloff 10
-
-# use enter for editing files
-map <enter>  $$EDITOR $f
-
-# dedicated keys for file opener actions
-map o &xdg-open $f
-
-cmd mkdir %mkdir -p "$@"
-map a push :mkdir<space>
-
-map A push :glob-select<space>*<enter>
-
 cmd bulk_rename $printf "%s\n" $fx | vidir -
-map b push :bulk_rename<enter>
-
-
-set previewer ~/.config/lf/pv.sh
-
-
 cmd make_executable %chmod +x $f
+cmd mkdir %mkdir -p "$@"
+
+map <enter> $$EDITOR $f
+map a push :mkdir<space>
+map A push :glob-select<space>*<enter>
+map b push :bulk_rename<enter>
+map o &xdg-open $f
