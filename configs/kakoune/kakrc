@@ -81,7 +81,7 @@ hook global BufWritePre .*\.go "go-format -use-goimports"
 
 # Rust: use rustfmt
 hook global WinSetOption filetype=rust %{
-  set window formatcmd 'rustfmt --edtion 2018'
+  set window formatcmd 'rustfmt --edition 2018'
   format-on-save
 }
 
