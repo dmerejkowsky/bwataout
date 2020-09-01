@@ -22,3 +22,6 @@ map b push :bulk_rename<enter>
 
 
 set previewer ~/.config/lf/pv.sh
+
+
+cmd make_executable %chmod +x $f
