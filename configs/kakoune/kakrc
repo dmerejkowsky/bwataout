@@ -6,18 +6,10 @@ source "%val{config}/plugins/plug.kak/rc/plug.kak"
 
 ## Connect
 plug alexherbo2/prelude.kak
-plug alexherbo2/terminal-mode.kak
-
 plug alexherbo2/connect.kak %{
-  define-command fzf-files -params .. -file-completion -docstring 'Open selected files with fzf' %{
-    connect-terminal sh -c %{
-      :edit $(fd --type file . "$@" | fzf)
-    } -- %arg{@}
-  }
-
-  define-command lf -params .. -file-completion -docstring 'Start lf' %{
-    connect-terminal lf %arg{@}
-  }
+  require-module connect
+  require-module connect-lf
+  require-module connect-fzf
 
   hook global RuntimeError "\d+:\d+: '\w+' (.*): is a directory" %{
     evaluate-commands %sh{
