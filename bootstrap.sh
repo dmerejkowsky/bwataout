@@ -8,5 +8,6 @@ curl https://sh.rustup.rs -sSf | sh
 
 cargo install fd-find
 cargo install exa
+cargo install bat
 
 sudo cp ./xkb-symbols-dmerej /usr/share/X11/xkb/symbols/dmerej
