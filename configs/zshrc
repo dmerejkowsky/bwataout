@@ -337,3 +337,10 @@ alias icat="kitty +kitten icat"
 
 export DMENV_VENV_OUTSIDE_PROJECT=1
 export DMENV_SCRIPTS_PATH=/home/dmerej/.local/bin
+
+# Tanker
+confluence () {
+	args=${@//\'/\\\'}
+	search=$(node -e "console.log(encodeURIComponent('$args'));")
+	chromium https://tanker.atlassian.net/wiki/search\?text=$search
+}
