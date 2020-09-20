@@ -18,7 +18,7 @@ plug alexherbo2/connect.kak %{
     }
   }
 
-  map global user h ": connect-terminal <ret>"
+  map global user h ": connect-terminal <ret>" -docstring "Spawn a connected terminal"
 }
 
 
