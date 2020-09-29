@@ -52,6 +52,7 @@ i3:
     - ~/.local/bin/passmenu
 
 kakoune:
+  # TODO: install kak-lsp
   - write:
     - ~/.config/kak/local.kak
     -  "# Put local kakoune config here"
