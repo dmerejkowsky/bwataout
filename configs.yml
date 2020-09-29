@@ -52,6 +52,9 @@ i3:
     - ~/.local/bin/passmenu
 
 kakoune:
+  - write:
+    - ~/.config/kak/local.kak
+    -  "# Put local kakoune config here"
   - symlink_dir:
     - kakoune/snippets
     - ~/.config/kak/snippets
