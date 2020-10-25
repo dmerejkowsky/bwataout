@@ -27,6 +27,10 @@ set global ignored_files "(.*\.egg-info)|(__pycache__)|(\.mypy_cache)|(build/)"
 
 ## LSP
 eval %sh{kak-lsp --kakoune -s $kak_session}
+
+# Note: uncomment the following line if LSP stops working:
+# set global lsp_cmd "kak-lsp -s %val{session} -vvv --log /tmp/kak-lsp.log"
+
 # Note: call lsp-enable-window when ready
 set-option global lsp_server_configuration pyls.plugins.jedi_completion.include_params=false
 map global user l ': enter-user-mode lsp<ret>' -docstring 'enter lsp user mode'
