@@ -70,6 +70,9 @@ declare-user-mode linting
 map global user n ' :enter-user-mode linting<ret>' -docstring 'enter linting mode'
 map global linting n ': lint-next-error<ret>' -docstring 'go to next lint error'
 
+## save-state
+plug "https://gitlab.com/Screwtapello/kakoune-state-save"
+
 ## Formatting
 
 # Dart: use dartfmt
