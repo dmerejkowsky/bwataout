@@ -44,12 +44,16 @@ map global lsp l ': lsp-enable<ret>' -docstring 'enable lsp for the whole sessio
 hook global BufCreate .* "try %{editorconfig-load} "
 set-option global tabstop 4
 
+## smart tab
 plug "andreyorst/smarttab.kak" %{
   hook global BufCreate .* "expandtab"
   hook global BufCreate Makefile "noexpandtab"
 }
 
+## snippets
 plug "occivink/kakoune-snippets"
+
+## inc/dec
 plug "Screwtapello/kakoune-inc-dec" domain "gitlab.com" config %{
  map global normal <c-a> ': inc-dec-modify-numbers + %val{count}<ret>'
  map global normal <c-x> ': inc-dec-modify-numbers - %val{count}<ret>'
