@@ -33,6 +33,7 @@ eval %sh{kak-lsp --kakoune -s $kak_session}
 
 # Note: call lsp-enable-window when ready
 set-option global lsp_server_configuration pyls.plugins.jedi_completion.include_params=false
+set-option global lsp_server_configuration pyls.plugins.pyls_mypy.enabled=true
 map global user l ': enter-user-mode lsp<ret>' -docstring 'enter lsp user mode'
 map global lsp n ': lsp-find-error --include-warnings<ret>' -docstring 'find next warning or error'
 map global lsp l ': lsp-enable<ret>' -docstring 'enable lsp for the whole session'
