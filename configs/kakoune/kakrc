@@ -21,6 +21,16 @@ plug alexherbo2/connect.kak %{
   map global user h ": connect-terminal <ret>" -docstring "Spawn a connected terminal"
 }
 
+## gmi files are plain text
+hook global BufCreate .*\.gmi$ %{
+  set-option buffer filetype text
+}
+
+## jinja2 files are jinja
+hook global WinCreate .*\.jinja2 %{
+    require-module jinja
+    add-highlighter window/ ref jinja
+}
 
 ## Completion
 set global ignored_files "(.*\.egg-info)|(__pycache__)|(\.mypy_cache)|(build/)"
