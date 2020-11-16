@@ -84,3 +84,18 @@
 
 [rerere]
 	enabled = true
+
+[credential]
+	helper = cache
+	timeout = 500
+
+# How to include a different ID for work/home projects
+# (for instance)
+# [includeIf "gitdir:/path/to/work/src"]
+
+# Config for git-sendemail and fastmail.com
+[sendemail]
+smtpserver = smtp.fastmail.com
+smtpencryption = ssl
+smtpserverport = 465
+confirm = always
