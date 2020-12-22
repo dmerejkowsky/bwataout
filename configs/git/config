@@ -44,6 +44,12 @@
 
 	hub = repo hub
 
+[core]
+    pager = delta
+
+[delta]
+    line-numbers = true
+
 [diff]
 	compactionHeuristic = true
 	colorMoved = true
