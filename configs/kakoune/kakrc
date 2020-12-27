@@ -47,6 +47,7 @@ set-option global lsp_server_configuration pyls.plugins.pyls_mypy.enabled=true
 map global user l ': enter-user-mode lsp<ret>' -docstring 'enter lsp user mode'
 map global lsp n ': lsp-find-error --include-warnings<ret>' -docstring 'find next warning or error'
 map global lsp l ': lsp-enable<ret>' -docstring 'enable lsp for the whole session'
+map global lsp R ': lsp-rename-prompt<ret>' -docstring 'rename symbol under cursor'
 
 ## EditorConfig support
 # .editorconfig file should exist somewhere
