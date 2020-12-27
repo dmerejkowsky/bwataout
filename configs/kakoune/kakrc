@@ -64,6 +64,12 @@ plug "andreyorst/smarttab.kak" %{
 ## snippets
 plug "occivink/kakoune-snippets"
 
+## buffers #
+plug "occivink/kakoune-buffer-switcher" %{
+    map global user b ': buffer-switcher<ret>'
+}
+
+
 ## inc/dec
 plug "Screwtapello/kakoune-inc-dec" domain "gitlab.com" config %{
  map global normal <c-a> ': inc-dec-modify-numbers + %val{count}<ret>'
