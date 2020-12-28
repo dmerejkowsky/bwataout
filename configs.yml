@@ -58,9 +58,6 @@ kakoune:
   - symlink_dir:
     - kakoune/snippets
     - ~/.config/kak/snippets
-  - symlink_dir:
-    - kak-lsp/
-    - ~/.config/kak-lsp
   - symlink:
     - kakoune/kakrc
     - ~/.config/kak/kakrc
@@ -73,6 +70,22 @@ kakoune:
     - [cargo, install, --git, https://github.com/tux3/mdfmt, --rev, f0143922dad22b8ec3ff3800959f9a159921a1b5]
   - run:
     - [cargo, install, kak-subvert, --force]
+
+kak-lsp:
+  #- symlink_dir:
+  #  - kak-lsp/
+  #  - ~/.config/kak-lsp
+
+  - download:
+     url: https://github.com/kak-lsp/kak-lsp/releases/download/v8.0.0/kak-lsp-v8.0.0-x86_64-unknown-linux-musl.tar.gz
+     dest: ~/.local/bin/kak-lsp
+     extract_member: kak-lsp
+     executable: true
+
+  - download:
+     url: https://github.com/rust-analyzer/rust-analyzer/releases/download/2020-12-14/rust-analyzer-linux
+     dest: ~/.local/bin/rust-analyzer
+     executable: true
 
 lf:
   - symlink:
