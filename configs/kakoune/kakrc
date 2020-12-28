@@ -6,7 +6,7 @@ source "%val{config}/plugins/plug.kak/rc/plug.kak"
 
 ## Connect
 plug alexherbo2/prelude.kak
-plug alexherbo2/connect.kak %{
+plug alexherbo2/connect.kak commit 625375f %{
   require-module connect
   require-module connect-lf
   require-module connect-fzf
