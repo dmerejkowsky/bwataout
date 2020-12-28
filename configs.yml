@@ -52,7 +52,6 @@ i3:
     - ~/.local/bin/passmenu
 
 kakoune:
-  # TODO: install kak-lsp
   - write:
     - ~/.config/kak/local.kak
     -  "# Put local kakoune config here"
@@ -66,7 +65,7 @@ kakoune:
     - kakoune/kakrc
     - ~/.config/kak/kakrc
   - clone:
-    - https://github.com/andreyorst/plug.kak.git
+    - https://github.com/robertmeta/plug.kak.git
     - ~/.config/kak/plugins/plug.kak
   - run:
     - [pipx, install, kak-spell]
