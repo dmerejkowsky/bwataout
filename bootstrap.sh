@@ -6,8 +6,6 @@ python3 -m pip install -r requirements.txt --user
 
 curl https://sh.rustup.rs -sSf | sh
 
-cargo install fd-find
-cargo install exa
-cargo install bat
+cargo install bat exa fd-find
 
 sudo cp ./xkb-symbols-dmerej /usr/share/X11/xkb/symbols/dmerej
