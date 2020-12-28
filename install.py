@@ -1,10 +1,12 @@
 import argparse
 import subprocess
-from urllib.request import urlretrieve
-
+import httpx
 from path import Path
+import tarfile
 import ruamel.yaml
+import shutil
 
+from io import BytesIO
 import cli_ui as ui
 
 
@@ -43,17 +45,40 @@ class Installer:
         ui.info_2("Copy", src, "->", self.pretty_path(src))
         src.copy(dest)
 
-    def do_download(self, *, url, dest, executable=False):
+    def do_download(self, *, url, dest, executable=False, extract_member=None):
         dest = Path(dest).expanduser()
         dest.parent.makedirs_p()
+        if extract_member:
+            self._download_and_extract_member(url, dest, member=extract_member)
+        else:
+            self._download(url, dest)
+        if executable:
+            dest.chmod(0o755)
+
+
+    def _download(self, url, dest):
         pretty_dest = self.pretty_path(dest)
         if dest.exists() and not self.force:
             ui.info_2("Skipping", pretty_dest)
         else:
             ui.info_2("Fetching", url, "->", pretty_dest)
-            urlretrieve(url, dest)
-        if executable:
-            dest.chmod(0o755)
+            with open(dest, "wb") as o:
+                with httpx.stream("GET", url) as r:
+                    for buffer in r.iter_bytes():
+                        o.write(buffer)
+
+
+    def _download_and_extract_member(self, url, dest, *, member):
+        pretty_dest = self.pretty_path(dest)
+        if dest.exists() and not self.force:
+            ui.info_2("Skipping", pretty_dest)
+        else:
+            ui.info_2("Fetching", url, "->", pretty_dest)
+            r = httpx.get(url)
+            ar = tarfile.open(fileobj=BytesIO(r.content), mode="r:gz")
+            with ar.extractfile(member) as f, open(dest, "wb") as o:
+                shutil.copyfileobj(f, o)
+
 
     def do_write(self, src, contents):
         src = Path(src).expanduser()
