@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "bwatout"
+name = "bwataout"
 version = "0.1.0"
-description = ""
+description = "My personal toolbox"
 authors = ["Dimitri Merejkowsky <dimitri@dmerej.info>"]
 
 [tool.poetry.dependencies]
@@ -20,4 +20,4 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-bwatout-install = "bwatout.install:main"
+bwataout-install = "bwataout.install:main"

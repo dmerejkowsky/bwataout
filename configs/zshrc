@@ -140,7 +140,7 @@ export BLOCK_SIZE=human-readable
 DIRSTACKSIZE=30
 
 top_dir=$(dirname $(dirname $0))
-export PATH="${top_dir}/dm-tools/bin:$HOME/.local/bin:$PATH"
+export PATH="${top_dir}/bin:$HOME/.local/bin:$PATH"
 ## See ~/.npmrc
 export PATH="${HOME}/.local/share/node/bin:$PATH"
 export PATH="${HOME}/.config/kak/plugins/connect.kak/bin/:$PATH"

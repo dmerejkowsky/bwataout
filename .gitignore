@@ -1,4 +1,3 @@
-README.html
 get-pip.py
-
 target/
+__pycache__

@@ -13,11 +13,13 @@ from ruamel.yaml import YAML  # type: ignore
 import cli_ui as ui
 
 
+TOP_DIR = Path(__file__).parent.parent.resolve()
+
 class Installer:
     def __init__(self, force: bool = False):
         yaml = YAML(typ="safe")
-        self.conf = yaml.load(Path("configs.yml").read_text())
-        self.this_dir = Path.cwd()
+        conf_path = TOP_DIR / "programs.yml"
+        self.conf = yaml.load(Path(conf_path).read_text())
         self.home = Path("~").expanduser()
         self.force = force
 
@@ -25,6 +27,7 @@ class Installer:
         return f"~/{p.relative_to(self.home)}"
 
     def do_clone(self, url: str, dest: str, branch: str = "master") -> None:
+        breakpoint()
         dest_path = Path(dest).expanduser()
         pretty_dest = self.pretty_path(dest_path)
         dest_path.parent.mkdir(parents=True, exist_ok=True)
@@ -35,7 +38,7 @@ class Installer:
                 ui.info_2("Skipping", pretty_dest)
                 return
         ui.info_2("Cloning", url, "->", pretty_dest)
-        subprocess.check_call(["git", "clone", url, dest, "--branch", branch])
+        subprocess.check_call(["git", "clone", url, str(dest_path), "--branch", branch])
 
     def do_copy(self, src: str, dest: str) -> None:
         dest_path = Path(dest).expanduser()
@@ -44,7 +47,7 @@ class Installer:
         if dest_path.exists() and not self.force:
             ui.info_2("Skipping", pretty_dest)
             return
-        src_path = self.this_dir / "configs/" / src
+        src_path = TOP_DIR / "configs/" / src
         ui.info_2("Copy", src, "->", self.pretty_path(src_path))
         shutil.copy(src_path, dest_path)
 
@@ -101,7 +104,7 @@ class Installer:
             return
         ui.info_2("Creating", pretty_src)
         src.parent.mkdir(parents=True, exist_ok=True)
-        contents = contents.format(this_dir=self.this_dir, home=self.home)
+        contents = contents.format(top_dir=TOP_DIR, home=self.home)
         if not contents.endswith("\n"):
             contents += "\n"
         src.write_text(contents)
@@ -129,10 +132,10 @@ class Installer:
             # in any case: remove it
             dest_path.unlink()
         ui.info_2("Symlink", pretty_dest, "->", src)
-        src_full = self.this_dir / "configs" / src
-        src_full.symlink_to(dest)
+        src_path = TOP_DIR / "configs" / src
+        dest_path.symlink_to(src_path)
 
-    def do_run(self, args: List[str]) -> None:
+    def do_run(self, *args: str) -> None:
         ui.info_2("Running", "`%s`" % " ".join(args))
         fixed_args = [x.format(home=self.home) for x in args]
         subprocess.check_call(fixed_args)
