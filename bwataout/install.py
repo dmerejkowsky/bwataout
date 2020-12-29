@@ -165,11 +165,16 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("programs", nargs="*")
     parser.add_argument("--force", action="store_true", help="Overwite existing files")
+    parser.add_argument("--list", action="store_true", help="List available programs")
     args = parser.parse_args()
 
     force = args.force
     programs = args.programs
     installer = Installer(force=force)
+    if args.list:
+        for key in installer.conf.keys():
+            print(key)
+        return
     installer.install(programs=programs)
 
 
