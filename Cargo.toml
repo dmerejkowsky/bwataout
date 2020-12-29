@@ -1,7 +1,7 @@
 [package]
 authors = ["Dimitri Merejkowsky <dimitri.merejkowsky@tanker.io>"]
 edition = "2018"
-name = "dm-tools"
+name = "bwataout"
 version = "0.1.0"
 
 [dependencies]

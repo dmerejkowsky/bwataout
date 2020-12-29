@@ -1,8 +1,8 @@
 use anyhow::Result;
 use structopt::StructOpt;
 
-use dm_tools::db::Filter;
-use dm_tools::SubCommand;
+use bwataout::db::Filter;
+use bwataout::SubCommand;
 
 #[derive(StructOpt, Debug)]
 #[structopt(name = "cmd-history", about = "Manage list of commands")]
@@ -30,6 +30,6 @@ fn main() -> Result<()> {
     let cmd = CommandsHistory::from_args();
     let filter = CommandsFilter {};
     let kak_script = "";
-    let storage_command = dm_tools::StorageCommand::new("commands", kak_script, filter);
+    let storage_command = bwataout::StorageCommand::new("commands", kak_script, filter);
     storage_command.run(cmd.sub_cmd)
 }

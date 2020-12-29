@@ -3,8 +3,8 @@ use std::path::Path;
 use anyhow::Result;
 use structopt::StructOpt;
 
-use dm_tools::db::Filter;
-use dm_tools::SubCommand;
+use bwataout::db::Filter;
+use bwataout::SubCommand;
 
 const BLACK_LISTED_NAMES: [&str; 2] = [".git/COMMIT_EDITMSG", "git-rebase-todo"];
 
@@ -46,6 +46,6 @@ fn main() -> Result<()> {
     let cmd = MruFiles::from_args();
     let filter = MruFilter {};
     let kak_script = include_str!("../mru_files.kak");
-    let storage_command = dm_tools::StorageCommand::new("files", kak_script, filter);
+    let storage_command = bwataout::StorageCommand::new("files", kak_script, filter);
     storage_command.run(cmd.sub_cmd)
 }
