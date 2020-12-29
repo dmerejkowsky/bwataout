@@ -1,5 +1,8 @@
+bat:
+  - run: [cargo, install, bat]
+
 conky:
-  - symlink:
+    - symlink:
     - conky.conf
     - ~/.config/conky/conky.conf
 
@@ -8,6 +11,8 @@ editorconfig:
     - editorconfig
     - ~/.editorconfig
 
+fd-find:
+  - run: [cargo, install, fd-find]
 
 fzf:
  - clone:

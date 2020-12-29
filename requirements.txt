@@ -1,6 +1,0 @@
-cli-ui
-colorama
-unidecode
-ruamel.yaml
-path.py
-tomlkit
