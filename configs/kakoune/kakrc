@@ -101,9 +101,15 @@ hook global WinSetOption filetype=dart %{
 # Go: use goimports
 hook global BufWritePre .*\.go "go-format -use-goimports"
 
-# Rust: use rustfmt
+# Python: use black
 hook global WinSetOption filetype=rust %{
   set window formatcmd 'rustfmt --edition 2018'
+  format-on-save
+}
+
+# Rust: use rustfmt
+hook global WinSetOption filetype=python %{
+  set window formatcmd 'black -'
   format-on-save
 }
 
