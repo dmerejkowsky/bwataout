@@ -93,6 +93,13 @@ kak-lsp:
      dest: ~/.local/bin/rust-analyzer
      executable: true
 
+hugo:
+  - download:
+      url: https://github.com/gohugoio/hugo/releases/download/v0.79.1/hugo_extended_0.79.1_Linux-64bit.tar.gz
+      dest: ~/.local/bin/hugo
+      extract_member: hugo
+      executable: true
+
 kitty:
  - copy:
     - kitty.conf
