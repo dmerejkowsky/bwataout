@@ -15,6 +15,7 @@ import cli_ui as ui
 
 TOP_DIR = Path(__file__).parent.parent.resolve()
 
+
 class Installer:
     def __init__(self, force: bool = False):
         yaml = YAML(typ="safe")
@@ -27,7 +28,6 @@ class Installer:
         return f"~/{p.relative_to(self.home)}"
 
     def do_clone(self, url: str, dest: str, branch: str = "master") -> None:
-        breakpoint()
         dest_path = Path(dest).expanduser()
         pretty_dest = self.pretty_path(dest_path)
         dest_path.parent.mkdir(parents=True, exist_ok=True)
