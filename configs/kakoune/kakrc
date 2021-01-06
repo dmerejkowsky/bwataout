@@ -98,6 +98,12 @@ hook global WinSetOption filetype=dart %{
   format-on-save
 }
 
+# terraform: use `terraform fmt`
+hook global WinSetOption filetype=terraform %{
+  set window formatcmd 'terraform fmt - '
+  format-on-save
+}
+
 # Go: use goimports
 hook global BufWritePre .*\.go "go-format -use-goimports"
 
