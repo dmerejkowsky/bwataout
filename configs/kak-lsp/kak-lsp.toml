@@ -26,6 +26,7 @@ command = "pyls"
 filetypes = ["go"]
 roots = ["go.mod"]
 command = "gopls"
+args = ["serve"]
 
 [language.dart]
 filetypes = ["dart"]
