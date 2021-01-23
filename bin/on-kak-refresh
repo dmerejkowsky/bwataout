@@ -8,8 +8,7 @@ import shutil
 import subprocess
 import sys
 
-import path
-
+from pathlib import Path
 
 
 def print_sep():
@@ -18,9 +17,9 @@ def print_sep():
 
 
 def sanitize_url(url):
-    as_path = path.Path(url)
+    as_path = Path(url)
     if as_path.exists():
-        url = "file://" + as_path.abspath()
+        url = "file://" + as_path.resolve()
     return url
 
 
