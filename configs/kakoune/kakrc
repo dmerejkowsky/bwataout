@@ -43,7 +43,7 @@ if [[ -n "${KAK_USE_NATHAIR}" ]]; then
   echo 'set global lsp_cmd "/home/dmerej/src/kak-lsp/target/debug/kak-lsp -c /home/dmerej/src/nathair/tests/data/nathair.toml -s %val{session} -vvv --log /tmp/kak-lsp-nathair.log"'
   echo 'echo -debug "Using nathair"'
 else
-  echo 'set global lsp_cmd "kak-lsp -s %val{session} -vvv --log /tmp/kak-lsp.log"'
+  echo 'set global lsp_cmd "kak-lsp -s %val{session}"'
   echo 'echo -debug "Using pyls"'
 fi
 }
