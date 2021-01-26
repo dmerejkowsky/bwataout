@@ -89,7 +89,7 @@ kak-lsp:
      executable: true
 
   - download:
-     url: https://github.com/rust-analyzer/rust-analyzer/releases/download/2020-12-14/rust-analyzer-linux
+     url: https://github.com/rust-analyzer/rust-analyzer/releases/download/2021-01-25/rust-analyzer-linux
      dest: ~/.local/bin/rust-analyzer
      executable: true
 
