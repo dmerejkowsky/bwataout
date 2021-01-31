@@ -1,0 +1,5 @@
+fn new() -> Self {
+  Self {
+    $1
+  }
+}
