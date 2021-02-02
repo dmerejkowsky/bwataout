@@ -110,7 +110,7 @@ lf:
     - lf
     - ~/.config/lf
   - download:
-      url: https://github.com/gokcehan/lf/releases/download/r19/lf-linux-amd64.tar.gz
+      url: https://github.com/gokcehan/lf/releases/download/r20/lf-linux-amd64.tar.gz
       dest: ~/.local/bin/lf
       extract_member: lf
       executable: true
