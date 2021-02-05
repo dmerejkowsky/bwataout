@@ -38,15 +38,7 @@ set global ignored_files "(.*\.egg-info)|(__pycache__)|(\.mypy_cache)|(build/)"
 ## LSP
 eval %sh{kak-lsp --kakoune -s $kak_session}
 
-eval %sh{
-if [[ -n "${KAK_USE_NATHAIR}" ]]; then
-  echo 'set global lsp_cmd "/home/dmerej/src/kak-lsp/target/debug/kak-lsp -c /home/dmerej/src/nathair/tests/data/nathair.toml -s %val{session} -vvv --log /tmp/kak-lsp-nathair.log"'
-  echo 'echo -debug "Using nathair"'
-else
-  echo 'set global lsp_cmd "kak-lsp -s %val{session}"'
-  echo 'echo -debug "Using pyls"'
-fi
-}
+set global lsp_cmd "kak-lsp -s %val{session}"
 
 # Note: call lsp-enable-window when ready
 set-option global lsp_server_configuration pyls.plugins.jedi_completion.include_params=false
