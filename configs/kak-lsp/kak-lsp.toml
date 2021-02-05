@@ -21,6 +21,10 @@ args = ["lsp"]
 filetypes = ["python"]
 roots = ["requirements.txt", "setup.py", "pyproject.toml"]
 command = "pyls"
+[language.python.initialization_options]
+pyls.plugins.mypy.enabled=true
+pyls.plugins.jedi_completion.include_params=false
+
 
 [language.go]
 filetypes = ["go"]
