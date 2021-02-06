@@ -11,6 +11,7 @@ plug alexherbo2/connect.kak commit 625375f %{
   require-module connect-lf
   require-module connect-fzf
 
+  # Start `lf` when trying to edit a directory
   hook global RuntimeError "\d+:\d+: '\w+' (.*): is a directory" %{
     evaluate-commands %sh{
       directory=$kak_hook_param_capture_1
