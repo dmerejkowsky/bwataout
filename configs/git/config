@@ -58,7 +58,7 @@
 	prune = true
 
 [gui]
-	spellingdictionary = en_US
+	spellingDictionary = en_US
 
 [guitool "pull-rebase"]
 	cmd = git pull --rebase
@@ -76,7 +76,7 @@
 
 
 [mergetool]
-	keepbackup = false
+	keepBackup = false
 
 [pull]
 	rebase = true
@@ -101,7 +101,7 @@
 
 # Config for git-sendemail and fastmail.com
 [sendemail]
-smtpserver = smtp.fastmail.com
-smtpencryption = ssl
-smtpserverport = 465
+smtpServer = smtp.fastmail.com
+smtpEncryption = ssl
+smtpServerport = 465
 confirm = always
