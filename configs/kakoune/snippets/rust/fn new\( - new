@@ -1,5 +1,5 @@
-fn new() -> Self {
+fn new($1) -> Self {
   Self {
-    $1
+
   }
 }
