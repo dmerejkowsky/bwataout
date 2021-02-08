@@ -71,6 +71,9 @@
 	cmd = git reset --hard
 	confirm = true
 
+[init]
+  defaultBranch = master
+
 [merge]
 	tool = kdiff3
 
