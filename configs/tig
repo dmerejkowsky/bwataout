@@ -1,0 +1,7 @@
+bind status C !git commit -v
+bind generic + !git commit --amend -v
+bind generic ! ?git reset --hard %(commit)
+bind main ? ?git reset --soft %(commit)
+bind refs ! ?git reset --hard %(commit)
+bind refs x ?git branch -D %(ref)
+bind main P !git push

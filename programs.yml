@@ -149,6 +149,11 @@ sway:
     - sway
     - ~/.config/sway/config
 
+tig:
+  - symlink:
+    - tig
+    - ~/.config/tig/config
+
 tmux:
   - symlink:
     - tmux.conf
