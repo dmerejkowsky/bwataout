@@ -37,4 +37,5 @@ args = ["serve"]
 [language.dart]
 filetypes = ["dart"]
 roots = ["pubspec.yaml"]
-command = "dart_language_server"
+command = "dart"
+args = ["/opt/dart-sdk/bin/snapshots/analysis_server.dart.snapshot", "--lsp"]
