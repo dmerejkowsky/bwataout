@@ -49,6 +49,13 @@ git:
       dest: ~/.local/bin/delta
       executable: true
 
+hugo:
+  - download:
+      url: https://github.com/gohugoio/hugo/releases/download/v0.81.0/hugo_extended_0.81.0_Linux-64bit.tar.gz
+      dest: ~/.local/bin/hugo
+      extract_member: hugo
+      executable: true
+
 i3:
   - copy:
     - i3/config
@@ -88,13 +95,6 @@ kak-lsp:
      extract_member: kak-lsp
      executable: true
 
-
-hugo:
-  - download:
-      url: https://github.com/gohugoio/hugo/releases/download/v0.81.0/hugo_extended_0.81.0_Linux-64bit.tar.gz
-      dest: ~/.local/bin/hugo
-      extract_member: hugo
-      executable: true
 
 kitty:
  - copy:
