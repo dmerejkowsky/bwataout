@@ -84,6 +84,12 @@ kakoune:
   - run: [cargo, install, --git, https://github.com/tux3/mdfmt, --rev, f0143922dad22b8ec3ff3800959f9a159921a1b5]
   - run: [cargo, install, kak-subvert]
 
+kakmerge:
+  - download:
+      url: https://raw.githubusercontent.com/lenormf/kakmerge/105893428ad6fd875f30b538d63a3454e76abf47/kakmerge
+      dest: ~/.local/bin/kakmerge
+      executable: true
+
 kak-lsp:
   - symlink_dir:
     - kak-lsp/
