@@ -88,11 +88,6 @@ kak-lsp:
      extract_member: kak-lsp
      executable: true
 
-rust-analyzer:
-  - download:
-     url: https://github.com/rust-analyzer/rust-analyzer/releases/download/2021-02-22/rust-analyzer-linux
-     dest: ~/.local/bin/rust-analyzer
-     executable: true
 
 hugo:
   - download:
@@ -139,6 +134,12 @@ npm:
 pip:
  - run: [curl, -O, https://bootstrap.pypa.io/get-pip.py]
  - run: [python3, get-pip.py, --user]
+
+rust-analyzer:
+  - download:
+     url: https://github.com/rust-analyzer/rust-analyzer/releases/download/2021-02-22/rust-analyzer-linux
+     dest: ~/.local/bin/rust-analyzer
+     executable: true
 
 screen:
   - symlink:
