@@ -101,7 +101,6 @@ kak-lsp:
      extract_member: kak-lsp
      executable: true
 
-
 kitty:
  - copy:
     - kitty.conf
