@@ -275,6 +275,8 @@ map global user o ': mru <ret>' -docstring 'browse recently opened files'
 eval %sh{cwd-history init-kakoune}
 map global cd o ': cwd-history <ret>' -docstring 'open a buffer containing list of recent working dirs'
 
+map global user H ': change-directory-current-buffer <ret> : connect-terminal <ret>'
+
 
 # Backup everything!
 hook global BufWritePost .* %{ nop %sh{ kak-back backup  "${kak_hook_param}" } }
