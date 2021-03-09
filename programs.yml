@@ -116,6 +116,12 @@ lf:
       extract_member: lf
       executable: true
 
+litecli:
+  - run: [pipx, install, litecli]
+  - symlink:
+    - litecli
+    - ~/.config/litecli/config
+
 mpv:
   - symlink:
     - mpv/input.conf
