@@ -81,7 +81,7 @@ kakoune:
     - https://github.com/robertmeta/plug.kak.git
     - ~/.config/kak/plugins/plug.kak
   - run: [pipx, install, kak-spell]
-  - run: [cargo, install, --git, https://github.com/tux3/mdfmt, --rev, f0143922dad22b8ec3ff3800959f9a159921a1b5]
+  - run: [cargo, install, --git, "https://github.com/tux3/mdfmt", --rev, f0143922dad22b8ec3ff3800959f9a159921a1b5]
   - run: [cargo, install, kak-subvert]
 
 kakmerge:
@@ -141,10 +141,6 @@ npm:
     - |
       # Allow using npm install -g without being root
       prefix = ~/.local/share/node/
-
-pip:
- - run: [curl, -O, https://bootstrap.pypa.io/get-pip.py]
- - run: [python3, get-pip.py, --user]
 
 rust-analyzer:
   - download:
