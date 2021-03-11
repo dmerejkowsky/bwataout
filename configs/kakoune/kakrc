@@ -240,7 +240,7 @@ hook global BufOpenFile .*  show-line-numbers
 
 
 ## Custom mappings
-map global user m ': write-all<ret> :make<ret>' -docstring 'run make'
+
 map global user f ': fzf-files <ret>' -docstring 'find files with fzf'
 map global user a ':addimport ' -docstring 'run addimport'
 
@@ -250,6 +250,14 @@ map global grep g ':grep ' -docstring 'run grep'
 map global grep p ': grep-next-match<ret>' -docstring 'run grep-previous-match'
 map global grep n ': grep-next-match<ret>' -docstring 'run grep-next-match'
 map global grep l ': edit -existing *grep* <ret>' -docstring 'show grep results'
+
+declare-user-mode make
+map global user m ': enter-user-mode make<ret>' -docstring 'enter make mdoe'
+map global make m ': make<ret>' -docstring 'run make'
+map global make n ': make-next-error<ret>' -docstring 'go to next error'
+map global make p ': make-previous-error<ret>' -docstring 'go to previous error'
+map global make s ':set global makecmd ' -docstring 'configure makecmmd'
+map global make l ': edit -existing *make* <ret>' -docstring 'show make output'
 
 map global user B ':set-option buffer filetype ' -docstring 'set filetype for the current buffer'
 set-option global autowrap_column 80
