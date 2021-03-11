@@ -117,6 +117,12 @@ hook global WinSetOption filetype=rust %{
   format-on-save
 }
 
+define-command isort %{
+  write
+  nop %sh{ isort . }
+  edit!
+}
+
 # Rust: use rustfmt
 hook global WinSetOption filetype=python %{
   set window formatcmd 'black -'
