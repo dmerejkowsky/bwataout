@@ -326,3 +326,12 @@ map global comments D ': comment-block <ret>' -docstring 'toggle block comment'
 
 ## Source local config
 source "%val{config}/local.kak"
+
+## Source project config if it exists
+hook global KakBegin .* %{
+  evaluate-commands %sh{
+    if [ -f .kakrc ]; then
+       printf %s\\n "source '.kakrc'"
+    fi
+  }
+}
