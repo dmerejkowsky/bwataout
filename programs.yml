@@ -119,7 +119,7 @@ lf:
 litecli:
   - run: [pipx, install, litecli]
   - symlink:
-    - litecli
+    - litecli.ini
     - ~/.config/litecli/config
 
 mpv:
