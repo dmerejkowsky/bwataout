@@ -289,7 +289,9 @@ map global user o ': mru <ret>' -docstring 'browse recently opened files'
 eval %sh{cwd-history init-kakoune}
 map global cd o ': cwd-history <ret>' -docstring 'open a buffer containing list of recent working dirs'
 
-map global user H ': change-directory-current-buffer <ret> : connect-terminal <ret>'
+map global user H \
+    ': change-directory-current-buffer <ret> : connect-terminal <ret>' \
+    -docstring 'start terminal in the parent directory of the current buffer'
 
 
 # Backup everything!
