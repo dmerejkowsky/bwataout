@@ -150,6 +150,10 @@ define-command lint-on-save "hook buffer BufWritePre .* lint"
 define-command format-on-save "hook buffer BufWritePre .* format"
 define-command format-project-on-save "hook global BufWritePre .* format-project"
 
+define-command word-count -docstring "show word count of the selection" %{
+  execute-keys '! wc -w <ret> <a-;> k x "cd'
+  echo %reg{c} words in selection
+}
 
 ## UI options
 eval %sh{
