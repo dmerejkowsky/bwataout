@@ -102,9 +102,10 @@
 # (for instance)
 # [includeIf "gitdir:/path/to/work/src"]
 
-# Config for git-sendemail and fastmail.com
 [sendemail]
-smtpServer = smtp.fastmail.com
-smtpEncryption = ssl
-smtpServerport = 465
-confirm = always
+# How to use git-send-email with fastmail
+# smtpserver = smtp.fastmail.com
+# smtpServerPort = 465
+# smtpEncryption = ssl
+# smtpUser= <user@host.tld>
+# smtpPass = <app password>
