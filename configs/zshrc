@@ -77,6 +77,7 @@ alias cp="cp -iv"
 ## Open pdf files with ./path/to/pdf
 alias -s pdf=okular
 alias -s ods=loffice
+alias -s docx=loffice
 
 alias gg="git gui &!"
 export GIT_EDITOR="kak -s git"  # make sure only one kak is used by git
