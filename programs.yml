@@ -49,13 +49,6 @@ git:
       dest: ~/.local/bin/delta
       executable: true
 
-gtk:
-  - write:
-    - ~/.config/gtk-4.0/Compose
-    - |
-      <dead_acute> <space> : "'" apostrophe # Keep apostrophe working
-
-
 hugo:
   - download:
       url: https://github.com/gohugoio/hugo/releases/download/v0.82.1/hugo_extended_0.82.1_Linux-64bit.tar.gz
