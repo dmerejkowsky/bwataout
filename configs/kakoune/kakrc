@@ -3,6 +3,7 @@ set-option global startup_info_version 20200901
 
 ## Setup plug.kak
 source "%val{config}/plugins/plug.kak/rc/plug.kak"
+plug "andreyorst/plug.kak" noload
 
 ## Connect
 plug alexherbo2/prelude.kak

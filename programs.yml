@@ -78,7 +78,7 @@ kakoune:
     - kakoune/kakrc
     - ~/.config/kak/kakrc
   - clone:
-    - https://github.com/robertmeta/plug.kak.git
+    - https://github.com/andreyorst/plug.kak.git
     - ~/.config/kak/plugins/plug.kak
   - run: [pipx, install, kak-spell]
   - run: [cargo, install, --git, "https://github.com/tux3/mdfmt", --rev, f0143922dad22b8ec3ff3800959f9a159921a1b5]
