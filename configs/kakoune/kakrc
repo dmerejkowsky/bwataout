@@ -112,7 +112,7 @@ hook global WinSetOption filetype=terraform %{
 # Go: use goimports
 hook global BufWritePre .*\.go "go-format -use-goimports"
 
-# Python: use black
+# Rust: use rustfmt
 hook global WinSetOption filetype=rust %{
   set window formatcmd 'rustfmt --edition 2018'
   format-on-save
@@ -124,13 +124,13 @@ define-command isort %{
   edit!
 }
 
-# Rust: use rustfmt
+# Python: use black
 hook global WinSetOption filetype=python %{
   set window formatcmd 'black -'
   format-on-save
 }
 
-# Other languages: add hoc, sadly
+# Other languages: ad hoc, sadly
 declare-option str format_project_cmd
 define-command format-project %{
   evaluate-commands %sh{
