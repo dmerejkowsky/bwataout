@@ -24,12 +24,6 @@ filetypes = ["python"]
 roots = ["requirements.txt", "setup.py", "pyproject.toml"]
 command = "jedi-language-server"
 
-# command = "pyls"
-# [language.python.initialization_options]
-# pyls.plugins.mypy.enabled=true
-# pyls.plugins.jedi_completion.include_params=false
-
-
 [language.go]
 filetypes = ["go"]
 roots = ["go.mod"]
