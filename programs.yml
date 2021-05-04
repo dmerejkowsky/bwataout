@@ -83,10 +83,12 @@ kakoune:
 
 kak-spell:
   - run: [pipx, install, kak-spell]
-  - run: [cargo, install, --git, "https://github.com/tux3/mdfmt", --rev, f0143922dad22b8ec3ff3800959f9a159921a1b5]
 
 kak-subvert:
   - run: [cargo, install, kak-subvert]
+
+mdfmt:
+  - run: [cargo, install, --git, "https://github.com/tux3/mdfmt", --rev, e79c6fe8d2813a047a0f6e290d94162359678fcd]
 
 kakmerge:
   - download:
