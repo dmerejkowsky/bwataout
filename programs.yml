@@ -80,8 +80,12 @@ kakoune:
   - clone:
     - https://github.com/andreyorst/plug.kak.git
     - ~/.config/kak/plugins/plug.kak
+
+kak-spell:
   - run: [pipx, install, kak-spell]
   - run: [cargo, install, --git, "https://github.com/tux3/mdfmt", --rev, f0143922dad22b8ec3ff3800959f9a159921a1b5]
+
+kak-subvert:
   - run: [cargo, install, kak-subvert]
 
 kakmerge:
