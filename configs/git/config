@@ -72,7 +72,7 @@
 	confirm = true
 
 [init]
-  defaultBranch = master
+  defaultBranch = main
 
 [merge]
 	tool = kdiff3
