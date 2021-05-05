@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -e
+
+function main() {
+  if [[ -z "$1" ]] ; then
+    echo "Missing PR number name"
+    return 1
+  fi
+  remote_ref="pull/$1/head"
+  local_ref="pr-$1"
+  git fetch github $remote_ref:$local_ref
+}
+
+main $@
+
