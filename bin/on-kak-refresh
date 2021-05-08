@@ -43,11 +43,9 @@ def loop(*, url, cmd, browser=None):
     while True:
         message = stream.readline()
         if message == "quit\n":
-            break
+            stream.close()
+            return
         if message == "run\n":
-            if cmd == "quit\n":
-                stream.close()
-                break
             print(cmd)
             process = subprocess.run(cmd, shell=True)
             if process.returncode != 0:
