@@ -286,6 +286,13 @@ hook global NormalKey y %{ nop %sh{
 map global user P '!system-clipboard-paste<ret>'  -docstring 'yank from system clipboard after selection'
 map global user p '<a-!>system-clipboard-paste<ret>' -docstring 'yank from system clipboard before selection'
 
+## Python refactoring
+
+plug "https://git.sr.ht/~dmerej/kak-rope" config %{
+  declare-user-mode rope
+  map global user r ' :enter-user-mode rope<ret>' -docstring 'enter rope mode'
+  map global rope a ':rope-add-import ' -docstring 'add import'
+}
 
 ## Persistent file and working dirs history
 eval %sh{mru-files init-kakoune}
