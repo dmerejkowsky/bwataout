@@ -27,7 +27,7 @@ class Installer:
     def pretty_path(self, p: Path) -> str:
         return f"~/{p.relative_to(self.home)}"
 
-    def do_clone(self, url: str, dest: str, branch: str = "master") -> None:
+    def do_clone(self, url: str, dest: str, branch: str = "main") -> None:
         dest_path = Path(dest).expanduser()
         pretty_dest = self.pretty_path(dest_path)
         dest_path.parent.mkdir(parents=True, exist_ok=True)

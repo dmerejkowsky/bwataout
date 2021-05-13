@@ -17,7 +17,7 @@
 	logp = log --find-renames --patch-with-stat
 	logu = log @{u}
 	diffu = diff @{u}
-	diffo = diff origin/master
+	diffo = diff origin/main
 	mend = commit --amend
 
 	pa = push-all-and-fetch
@@ -36,9 +36,9 @@
 	rc = rebase --continue
 	rcr = commit-and-rebase
 	ri = rebase --interactive
-	ro = rebase -i origin/master
+	ro = rebase -i origin/main
 	rs = rebase --skip
-	ru = rebase -i upstream/master
+	ru = rebase -i upstream/main
 
 	st = status --branch
 

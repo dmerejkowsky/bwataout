@@ -5,7 +5,7 @@ import sys
 
 def main():
     if len(sys.argv) == 1:
-        cmd = ["git", "push", "all", "master"]
+        cmd = ["git", "push", "all", "main"]
     else:
         cmd = ["git", "push", "all"] + sys.argv[1:]
 

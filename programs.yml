@@ -202,9 +202,9 @@ zsh:
       # Put your local settings here
 
   - download:
-      url: https://raw.githubusercontent.com/dmerejkowsky/zsh-pure-prompt/master/pure.zsh
+      url: https://raw.githubusercontent.com/dmerejkowsky/zsh-pure-prompt/main/pure.zsh
       dest: ~/.local/share/zsh/pure-prompt/prompt_pure_setup
 
   - download:
-      url: https://raw.githubusercontent.com/dmerejkowsky/zsh-pure-prompt/master/async.zsh
+      url: https://raw.githubusercontent.com/dmerejkowsky/zsh-pure-prompt/main/async.zsh
       dest: ~/.local/share/zsh/pure-prompt/async
