@@ -5,22 +5,23 @@ set-option global startup_info_version 20200901
 source "%val{config}/plugins/plug.kak/rc/plug.kak"
 plug "andreyorst/plug.kak" noload
 
-## Connect
-plug alexherbo2/prelude.kak
-plug alexherbo2/connect.kak commit 625375f %{
-  require-module connect
-  require-module connect-lf
-  require-module connect-fzf
+## kakoune.cr
+evaluate-commands %sh{
+  kcr init kakoune
+}
 
-  # Start `lf` when trying to edit a directory
-  hook global RuntimeError "\d+:\d+: '\w+' (.*): is a directory" %{
-    evaluate-commands %sh{
-      directory=$kak_hook_param_capture_1
-      echo lf $directory
-    }
-  }
+map global user h \
+  ": connect-terminal <ret>"\
+  -docstring "Spawn a connected terminal"
 
-  map global user h ": connect-terminal <ret>" -docstring "Spawn a connected terminal"
+map global user H \
+    ': change-directory-current-buffer <ret> : connect-terminal <ret>' \
+    -docstring 'Start terminal in the parent directory of the current buffer'
+
+map global user f ': connect-terminal <ret>' -docstring 'Find files with fzf'
+
+define-command -params .. -file-completion lf -docstring "Start lf" %{
+  connect-terminal lf %arg{@}
 }
 
 ## gmi files are plain text
@@ -195,6 +196,14 @@ plug 'dmerejkowsky/kakoune-cd' %{
 }
 
 
+# Start `lf` when trying to edit a directory
+hook global RuntimeError "\d+:\d+: '\w+' (.*): is a directory" %{
+  evaluate-commands %sh{
+    directory=$kak_hook_param_capture_1
+    echo lf $directory
+  }
+}
+
 # Spell check
 plug "dmerejkowsky/kak-spell" config %{
   declare-user-mode kak-spell
@@ -248,7 +257,6 @@ hook global BufOpenFile .*  show-line-numbers
 
 ## Custom mappings
 
-map global user f ': fzf-files <ret>' -docstring 'find files with fzf'
 map global user a ':addimport ' -docstring 'run addimport'
 
 declare-user-mode grep
@@ -303,9 +311,6 @@ map global user o ': mru <ret>' -docstring 'browse recently opened files'
 eval %sh{cwd-history init-kakoune}
 map global cd o ': cwd-history <ret>' -docstring 'open a buffer containing list of recent working dirs'
 
-map global user H \
-    ': change-directory-current-buffer <ret> : connect-terminal <ret>' \
-    -docstring 'start terminal in the parent directory of the current buffer'
 
 
 # Backup everything!
