@@ -118,17 +118,19 @@ hook global WinSetOption filetype=rust %{
   format-on-save
 }
 
+# Python: use black
+hook global WinSetOption filetype=python %{
+  set window formatcmd 'black -'
+  format-on-save
+}
+
+# Python -- and also an `isort` command
 define-command isort %{
   write
   nop %sh{ isort . }
   edit!
 }
 
-# Python: use black
-hook global WinSetOption filetype=python %{
-  set window formatcmd 'black -'
-  format-on-save
-}
 
 # Other languages: ad hoc, sadly
 declare-option str format_project_cmd
