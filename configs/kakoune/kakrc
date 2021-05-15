@@ -190,7 +190,7 @@ set-option global grepcmd 'rg --no-heading --line-number --column --sort path'
 declare-option str project_working_dir %sh{ pwd }
 plug 'dmerejkowsky/kakoune-cd' %{
   map global user c ': enter-user-mode cd<ret>' -docstring 'enter cd user mode'
-  map global user f ': open-current-buffer-directory<ret>' -docstring 'open current buffer dir in kakoune'
+  map global cd f ': open-current-buffer-directory<ret>' -docstring 'open current buffer dir in kakoune'
   map global cd c ': change-directory %val{opt_project_working_dir}<ret>' -docstring 'reset working dir'
   alias global pwd print-working-directory
 }
