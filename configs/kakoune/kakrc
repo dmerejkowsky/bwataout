@@ -18,7 +18,7 @@ map global user H \
     ': change-directory-current-buffer <ret> : connect-terminal <ret>' \
     -docstring 'Start terminal in the parent directory of the current buffer'
 
-map global user f ': connect-terminal <ret>' -docstring 'Find files with fzf'
+map global user f ': connect-terminal kcr-fzf-files <ret>' -docstring 'Find files with fzf'
 
 define-command -params .. -file-completion lf -docstring "Start lf" %{
   connect-terminal lf %arg{@}
