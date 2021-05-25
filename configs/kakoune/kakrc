@@ -301,6 +301,7 @@ map global user p '<a-!>system-clipboard-paste<ret>' -docstring 'yank from syste
 plug "https://git.sr.ht/~dmerej/kak-rope" config %{
   declare-user-mode rope
   map global user r ' :enter-user-mode rope<ret>' -docstring 'enter rope mode'
+  map global rope r ':rope-' -docstring 'start a rope command'
   map global rope a ':rope-add-import ' -docstring 'add import'
 }
 
