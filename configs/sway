@@ -125,3 +125,11 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 include ~/.config/sway/config.local
+
+input * {
+  xkb_layout "dmerej"
+  xkb_variant "dvorak-intl"
+}
+
+input keyboard xkb_model "pc101"
+
