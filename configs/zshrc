@@ -346,3 +346,15 @@ confluence () {
 	search=$(node -e "console.log(encodeURIComponent('$args'));")
 	chromium https://tanker.atlassian.net/wiki/search\?text=$search
 }
+
+kak-beamer () {
+  cmd="pandoc -t beamer $1 -o ${1/.md/.pdf}"
+  echo $cmd
+  on-kak-refresh --cmd $cmd
+}
+
+kak-latex () {
+  cmd="pandoc $1 -o ${1/.md/.pdf}"
+  echo $cmd
+  on-kak-refresh --cmd $cmd
+}
