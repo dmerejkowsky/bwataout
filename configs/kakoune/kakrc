@@ -72,7 +72,7 @@ plug "occivink/kakoune-snippets"
 
 ## buffers #
 plug "occivink/kakoune-buffer-switcher" %{
-    map global user b ': buffer-switcher<ret>'
+    map global user b ': buffer-switcher<ret>' -docstring 'explore buffer list'
 }
 
 
