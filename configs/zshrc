@@ -151,9 +151,6 @@ export PATH="${HOME}/.config/kak/plugins/connect.kak/bin/:$PATH"
 fpath=("$HOME/.local/share/zsh/pure-prompt" $fpath)
 
 
-## Prevent fork bomb
-limit maxproc 1042 2>/dev/null
-
 # Functions
 
 ## cd /path/to/file -> cd /path/to
