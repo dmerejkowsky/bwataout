@@ -350,8 +350,16 @@ kak-beamer () {
   on-kak-refresh --cmd $cmd
 }
 
+p-beamer() {
+  pandoc -t beamer $1 -o ${1/.md/.pdf}
+}
+
 kak-latex () {
   cmd="pandoc $1 -o ${1/.md/.pdf}"
   echo $cmd
   on-kak-refresh --cmd $cmd
+}
+
+p-latex() {
+  pandoc $1 -o ${1/.md/.pdf}
 }
