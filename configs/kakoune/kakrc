@@ -205,7 +205,7 @@ hook global RuntimeError "\d+:\d+: '\w+' (.*): is a directory" %{
 }
 
 # Spell check
-plug "dmerejkowsky/kak-spell" config %{
+plug "https://git.sr.ht/~dmerej/kak-spell" config %{
   declare-user-mode kak-spell
   map global user s ': enter-user-mode kak-spell<ret>' -docstring 'enter spell user mode'
   map global kak-spell a ': kak-spell-add<ret>' -docstring 'add the selection to the user dict'
