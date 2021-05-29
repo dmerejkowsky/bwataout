@@ -206,8 +206,7 @@ hook global RuntimeError "\d+:\d+: '\w+' (.*): is a directory" %{
 
 # Spell check
 evaluate-commands %sh{
-  export kak_spell=1
-  kak-spell init
+  kak-spell init-kakoune
 }
 
 declare-user-mode kak-spell
