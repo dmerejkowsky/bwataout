@@ -59,10 +59,11 @@ map global lsp R ': lsp-rename-prompt<ret>' -docstring 'rename symbol under curs
 # .editorconfig file should exist somewhere
 # `editorconfig` binary should exist
 hook global BufCreate .* "try %{editorconfig-load} "
-set-option global tabstop 4
 
 ## smart tab
-plug "andreyorst/smarttab.kak" %{
+plug "andreyorst/smarttab.kak" defer smarttab %{
+  set-option global softtabstop 4
+} config %{
   hook global BufCreate .* "expandtab"
   hook global BufCreate Makefile "noexpandtab"
 }
