@@ -212,7 +212,6 @@ evaluate-commands %sh{
 
 declare-user-mode kak-spell
 map global user s ': enter-user-mode kak-spell<ret>' -docstring 'enter spell user mode'
-map global kak-spell a ': kak-spell-add<ret>' -docstring 'add the selection to the user dict'
 map global kak-spell d ': kak-spell-disable<ret>' -docstring 'clear spelling highlighters'
 map global kak-spell e ': kak-spell-enable en_US<ret> :kak-spell-check <ret>' -docstring 'run spell check in English'
 map global kak-spell f ': kak-spell-enable fr_FR<ret> :kak-spell-check <ret>' -docstring 'run spell check in French'
