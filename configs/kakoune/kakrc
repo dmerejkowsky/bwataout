@@ -25,7 +25,7 @@ define-command -params .. -file-completion lf -docstring "Start lf" %{
 }
 
 ## gmi files are plain text
-hook global BufCreate .*\.gmi$ %{
+hook global BufCreate .*(\.gmi|\.txt)$ %{
   set-option buffer filetype text
 }
 
