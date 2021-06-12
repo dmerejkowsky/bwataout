@@ -207,19 +207,19 @@ hook global RuntimeError "\d+:\d+: '\w+' (.*): is a directory" %{
 
 # Spell check
 evaluate-commands %sh{
-  kak-spell init-kakoune
+  skyspell kak init
 }
 
-declare-user-mode kak-spell
-map global user s ': enter-user-mode kak-spell<ret>' -docstring 'enter spell user mode'
-map global kak-spell d ': kak-spell-disable<ret>' -docstring 'clear spelling highlighters'
-map global kak-spell e ': kak-spell-enable en_US<ret> :kak-spell-check <ret>' -docstring 'run spell check in English'
-map global kak-spell f ': kak-spell-enable fr_FR<ret> :kak-spell-check <ret>' -docstring 'run spell check in French'
-map global kak-spell l ': kak-spell-list <ret>' -docstring 'list spelling errors in a buffer'
-map global kak-spell h ': kak-spell-help <ret>' -docstring 'show help message'
-map global kak-spell n ': kak-spell-next<ret>' -docstring 'go to next spell error'
-map global kak-spell p ': kak-spell-previous<ret>' -docstring 'go to previous spell error'
-map global kak-spell r ': kak-spell-replace<ret>' -docstring 'suggest a list of replacements'
+declare-user-mode skyspell
+map global user s ': enter-user-mode skyspell<ret>' -docstring 'enter spell user mode'
+map global skyspell d ': skyspell-disable<ret>' -docstring 'clear spelling highlighters'
+map global skyspell e ': skyspell-enable en_US<ret> :skyspell-check <ret>' -docstring 'run spell check in English'
+map global skyspell f ': skyspell-enable fr_FR<ret> :skyspell-check <ret>' -docstring 'run spell check in French'
+map global skyspell l ': skyspell-list <ret>' -docstring 'list spelling errors in a buffer'
+map global skyspell h ': skyspell-help <ret>' -docstring 'show help message'
+map global skyspell n ': skyspell-next<ret>' -docstring 'go to next spell error'
+map global skyspell p ': skyspell-previous<ret>' -docstring 'go to previous spell error'
+map global skyspell r ': skyspell-replace<ret>' -docstring 'suggest a list of replacements'
 
 
 # Subvert
@@ -249,8 +249,8 @@ define-command markdown-format -docstring "format selection into clean markdown"
 
 ## Always use spell check for commit messages
 hook global WinSetOption filetype=git-commit %{
-    kak-spell-enable en_US
-    kak-spell-check
+    skyspell-enable en_US
+    skyspell-check
 }
 
 # Show line numbers by default
