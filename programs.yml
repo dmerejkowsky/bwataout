@@ -83,9 +83,6 @@ kakoune:
     - https://github.com/andreyorst/plug.kak.git
     - ~/.config/kak/plugins/plug.kak
 
-kak-spell:
-  - run: [pipx, install, kak-spell]
-
 kak-subvert:
   - run: [cargo, install, kak-subvert]
 
