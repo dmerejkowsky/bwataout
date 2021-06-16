@@ -334,25 +334,33 @@ alias d=deactivate
 alias da="deactivate;activate"
 alias icat="kitty +kitten icat"
 
-
-}
-
-kak-beamer () {
-  cmd="pandoc -t beamer $1 -o ${1/.md/.pdf}"
-  echo $cmd
-  on-kak-refresh --cmd $cmd
+p-latex() {
+  pdf=${1/.md/.pdf}
+  pandoc $1 -o $pdf
+  okular $pdf &!
 }
 
 p-beamer() {
-  pandoc -t beamer $1 -o ${1/.md/.pdf}
+  pdf=${1/.md/.pdf}
+  pandoc $1 -t beamer -o $pdf
+  okular $pdf &!
 }
 
-kak-latex () {
-  cmd="pandoc $1 -o ${1/.md/.pdf}"
+kak-latex() {
+  pdf=${1/.md/.pdf}
+  cmd="pandoc $1 -o $pdf"
   echo $cmd
+  eval $cmd
+  okular $pdf &
   on-kak-refresh --cmd $cmd
 }
 
-p-latex() {
-  pandoc $1 -o ${1/.md/.pdf}
+kak-beamer () {
+  pdf=${1/.md/.pdf}
+  cmd="pandoc -t beamer $1 -o $pdf"
+  echo $cmd
+  eval $cmd
+  okular $pdf &
+  on-kak-refresh --cmd $cmd
 }
+
