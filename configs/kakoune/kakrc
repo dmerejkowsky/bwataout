@@ -20,6 +20,8 @@ map global user H \
 
 map global user f ': connect-terminal kcr-fzf-files <ret>' -docstring 'Find files with fzf'
 
+map global user B ': connect-terminal kcr-fzf-buffers <ret>' -docstring 'Open buffers with fzf'
+
 define-command -params .. -file-completion lf -docstring "Start lf" %{
   connect-terminal lf %arg{@}
 }
@@ -276,7 +278,6 @@ map global make p ': make-previous-error<ret>' -docstring 'go to previous error'
 map global make s ':set global makecmd ' -docstring 'configure makecmmd'
 map global make l ': edit -existing *make* <ret>' -docstring 'show make output'
 
-map global user B ':set-option buffer filetype ' -docstring 'set filetype for the current buffer'
 set-option global autowrap_column 80
 declare-option int comments_line_length 72
 map global normal = '|dfmt -w $kak_opt_comments_line_length <ret>'
