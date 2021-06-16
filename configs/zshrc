@@ -335,11 +335,6 @@ alias da="deactivate;activate"
 alias icat="kitty +kitten icat"
 
 
-# Tanker
-confluence () {
-	args=${@//\'/\\\'}
-	search=$(node -e "console.log(encodeURIComponent('$args'));")
-	chromium https://tanker.atlassian.net/wiki/search\?text=$search
 }
 
 kak-beamer () {
