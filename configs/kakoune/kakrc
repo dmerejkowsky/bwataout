@@ -116,6 +116,13 @@ hook global WinSetOption filetype=terraform %{
 # Go: use goimports
 hook global BufWritePre .*\.go "go-format -use-goimports"
 
+# Haskell: use hindent
+hook global WinSetOption filetype=haskell %{
+  set window formatcmd 'hindent'
+  format-on-save
+}
+
+
 # Rust: use rustfmt
 hook global WinSetOption filetype=rust %{
   set window formatcmd 'rustfmt --edition 2018'

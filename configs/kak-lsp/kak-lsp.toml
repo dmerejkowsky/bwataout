@@ -35,3 +35,9 @@ filetypes = ["dart"]
 roots = ["pubspec.yaml"]
 command = "dart"
 args = ["/opt/dart-sdk/bin/snapshots/analysis_server.dart.snapshot", "--lsp"]
+
+[language.haskell]
+filetypes = ["haskell"]
+roots = ["Setup.hs", "stack.yaml", "*.cabal"]
+command = "haskell-language-server-wrapper"
+args = ["--lsp"]
