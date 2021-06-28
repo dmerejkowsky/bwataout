@@ -11,6 +11,7 @@ import httpx
 from ruamel.yaml import YAML  # type: ignore
 
 import cli_ui as ui
+import gzip
 
 
 TOP_DIR = Path(__file__).parent.parent.resolve()
@@ -58,17 +59,40 @@ class Installer:
         dest: str,
         executable: bool = False,
         extract_member: Optional[str] = None,
+        unzip: bool = False,
     ) -> None:
         dest_path = Path(dest).expanduser()
         dest_path.parent.mkdir(parents=True, exist_ok=True)
         if extract_member:
             self._download_and_extract_member(url, dest_path, member=extract_member)
         else:
-            self._download(url, dest_path)
+            self._download(url, dest_path, unzip=unzip)
         if executable:
             dest_path.chmod(0o755)
 
-    def _download(self, url: str, dest_path: Path) -> None:
+    def _download(self, url: str, dest_path: Path, unzip: bool = False) -> None:
+        if unzip:
+            self._download_and_unzip(url, dest_path)
+        else:
+            self._simple_download()
+
+    def _download_and_unzip(self, url: str, dest_path: Path) -> None:
+        pretty_dest = self.pretty_path(dest_path)
+        if dest_path.exists() and not self.force:
+            ui.info_2("Skipping", pretty_dest)
+        else:
+            ui.info_2("Fetching", url, "->", pretty_dest)
+            r = httpx.get(url)
+            if r.is_error:
+                ui.fatal(f"Got status {r.status_code} when fetching {url}")
+            r = httpx.get(url)
+            if r.is_error:
+                ui.fatal(f"Got status {r.status_code} when fetching {url}")
+            buffer = gzip.GzipFile(fileobj=BytesIO(r.content))
+            with open(dest_path, "wb") as output_file:
+                shutil.copyfileobj(buffer, output_file)
+
+    def _simple_download(self, url: str, dest_path: Path) -> None:
         pretty_dest = self.pretty_path(dest_path)
         if dest_path.exists() and not self.force:
             ui.info_2("Skipping", pretty_dest)
