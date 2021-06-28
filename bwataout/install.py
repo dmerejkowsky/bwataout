@@ -76,6 +76,8 @@ class Installer:
             ui.info_2("Fetching", url, "->", pretty_dest)
             with open(dest_path, "wb") as o:
                 with httpx.stream("GET", url) as r:
+                    if r.is_error:
+                        ui.fatal(f"Got status {r.status_code} when fetching {url}")
                     for buffer in r.iter_bytes():
                         o.write(buffer)
 
@@ -88,6 +90,8 @@ class Installer:
         else:
             ui.info_2("Fetching", url, "->", pretty_dest)
             r = httpx.get(url)
+            if r.is_error:
+                ui.fatal(f"Got status {r.status_code} when fetching {url}")
             archive = tarfile.open(fileobj=BytesIO(r.content), mode="r:gz")
             if not archive.getmember(member):
                 sys.exit(f"No member named '{member}' found in the archive!")
