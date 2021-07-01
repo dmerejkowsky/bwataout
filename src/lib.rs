@@ -9,7 +9,7 @@ pub use db::DB;
 use app_dirs::{AppDataType, AppInfo};
 
 const APP_INFO: AppInfo = AppInfo {
-    name: "dm-tools",
+    name: "bwataout",
     author: "Dimitri Merejkowsky",
 };
 
