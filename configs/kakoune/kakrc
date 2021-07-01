@@ -1,5 +1,5 @@
 ## Hide release notes from latest version
-set-option global startup_info_version 20200901
+set-option global startup_info_version 20210701
 
 ## Setup plug.kak
 source "%val{config}/plugins/plug.kak/rc/plug.kak"
