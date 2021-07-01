@@ -273,7 +273,7 @@ prompt pure
 export VISUAL="kak"
 export EDITOR="kak"
 
-# fzf & dm-tools binaries
+# fzf & bwataout binaries
 if [[ -d ~/.fzf ]] ; then
   export PATH=$PATH:$HOME/.fzf/bin
   source ~/.fzf/shell/completion.zsh
