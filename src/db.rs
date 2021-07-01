@@ -1,6 +1,6 @@
 use anyhow::{Context, Result};
-use rusqlite::{params, Connection, NO_PARAMS};
-use std::path::Path;
+use rusqlite::{params, Connection};
+use std::{io::Write, path::Path};
 
 pub trait Filter {
     fn parse(&self, input: &str) -> Option<String>;
@@ -52,7 +52,7 @@ where
     fn execute_list_query(&self, sql: &'static str) -> Result<Vec<String>> {
         let mut statement = self.connection.prepare(sql)?;
 
-        let mut rows = statement.query(NO_PARAMS)?;
+        let mut rows = statement.query([])?;
         let mut res = vec![];
         while let Some(row) = rows.next()? {
             res.push(row.get(0)?);
@@ -69,27 +69,42 @@ where
                 .connection
                 .prepare("SELECT entry FROM entries ORDER BY date DESC")?,
         };
-
         let mut select_query = match max {
             Some(m) => select_statement.query(params![m]),
-            None => select_statement.query(NO_PARAMS),
+            None => select_statement.query([]),
         }?;
 
-        let mut delete_statement = self
-            .connection
-            .prepare("DELETE FROM entries WHERE entry = ?")?;
+        let count = match max {
+            Some(m) => m,
+            None => {
+                let mut statement = self.connection.prepare("SELECT COUNT(*) FROM ENTRIES")?;
+                let mut query = statement.query([])?;
+                let res = query.next()?;
+                res.unwrap().get(0)?
+            }
+        };
 
-        let mut total = 0;
-        let mut cleaned = 0;
+        let mut to_clean = vec![];
         while let Some(row) = select_query.next()? {
-            total += 1;
             let value: String = row.get(0)?;
             if self.filter.should_clean(&value) {
-                delete_statement.execute(&[&value])?;
-                cleaned += 1;
+                to_clean.push(value);
             }
         }
-        println!("Cleaned {} entries over {}", cleaned, total);
+
+        let n = to_clean.len();
+        let mut i = 0;
+        for name in to_clean {
+            i += 1;
+            print!("{}/{}\r", i, n);
+            let _ = std::io::stdout().flush();
+            let mut delete_statement = self
+                .connection
+                .prepare("DELETE FROM ENTRIES WHERE entry = ?")?;
+            delete_statement.execute([name])?;
+        }
+
+        println!("Cleaned {} entries over {}", n, count);
         Ok(())
     }
 
