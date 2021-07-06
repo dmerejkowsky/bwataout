@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -x
+set -e
+
+out=$1
+device=alsa_output.pci-0000_00_1b.0.analog-stereo.monitor
+gst-launch-1.0 -e pulsesrc device=$device ! audioconvert ! \
+    lamemp3enc target=1 bitrate=64 cbr=true ! \
+        filesink location=$out.mp3
