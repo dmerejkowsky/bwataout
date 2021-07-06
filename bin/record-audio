@@ -3,8 +3,9 @@
 set -x
 set -e
 
-out=$1
-device=alsa_output.pci-0000_00_1b.0.analog-stereo.monitor
+# check for a `monitor` device in `pactl list`
+device=$1
+out=$2
 gst-launch-1.0 -e pulsesrc device=$device ! audioconvert ! \
     lamemp3enc target=1 bitrate=64 cbr=true ! \
-        filesink location=$out.mp3
+        filesink location=$out
