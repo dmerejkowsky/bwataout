@@ -74,7 +74,7 @@ class Installer:
         if unzip:
             self._download_and_unzip(url, dest_path)
         else:
-            self._simple_download()
+            self._simple_download(url, dest_path)
 
     def _download_and_unzip(self, url: str, dest_path: Path) -> None:
         pretty_dest = self.pretty_path(dest_path)
