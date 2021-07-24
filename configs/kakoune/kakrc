@@ -221,8 +221,8 @@ evaluate-commands %sh{
 declare-user-mode skyspell
 map global user s ': enter-user-mode skyspell<ret>' -docstring 'enter spell user mode'
 map global skyspell d ': skyspell-disable<ret>' -docstring 'clear spelling highlighters'
-map global skyspell e ': skyspell-enable en_US<ret> :skyspell-check <ret>' -docstring 'run spell check in English'
-map global skyspell f ': skyspell-enable fr_FR<ret> :skyspell-check <ret>' -docstring 'run spell check in French'
+map global skyspell e ': skyspell-enable en_US<ret>' -docstring 'enable spell checking in English'
+map global skyspell f ': skyspell-enable fr_FR<ret>' -docstring 'enable spell check in French'
 map global skyspell l ': skyspell-list <ret>' -docstring 'list spelling errors in a buffer'
 map global skyspell h ': skyspell-help <ret>' -docstring 'show help message'
 map global skyspell n ': skyspell-next<ret>' -docstring 'go to next spell error'
