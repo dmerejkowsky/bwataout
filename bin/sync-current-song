@@ -22,8 +22,11 @@ def main():
     to_create.mkdir(exist_ok=True, parents=True)
     dest = to_create / song_path.name
     src = music_path / song_path
-    print(src, "->", dest)
-    shutil.copy(src, dest)
+    if dest.exists():
+        print("Already synced")
+    else:
+        print(src, "->", dest)
+        shutil.copy(src, dest)
 
 
 if __name__ == "__main__":
