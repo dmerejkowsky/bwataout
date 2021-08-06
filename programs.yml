@@ -53,7 +53,7 @@ delta:
 
 hugo:
   - download:
-      url: https://github.com/gohugoio/hugo/releases/download/v0.86.1/hugo_extended_0.86.1_Linux-64bit.tar.gz
+      url: https://github.com/gohugoio/hugo/releases/download/v0.87.0/hugo_extended_0.87.0_Linux-64bit.tar.gz
       dest: ~/.local/bin/hugo
       extract_member: hugo
       executable: true
