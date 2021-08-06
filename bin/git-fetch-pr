@@ -3,13 +3,15 @@
 set -e
 
 function main() {
-  if [[ -z "$1" ]] ; then
-    echo "Missing PR number name"
+  if [[ "$#" -ne 2 ]] ; then
+    echo "usage: $(basename $0) REMOTE_NAME PR_NUMBER"
     return 1
   fi
-  remote_ref="pull/$1/head"
-  local_ref="pr-$1"
-  git fetch github $remote_ref:$local_ref
+  origin=$1
+  number=$2
+  remote_ref="pull/$number/head"
+  local_ref="pr-$number"
+  git fetch $origin $remote_ref:$local_ref
 }
 
 main $@
