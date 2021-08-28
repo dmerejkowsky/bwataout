@@ -1,5 +1,5 @@
 ## Hide release notes from latest version
-set-option global startup_info_version 20210701
+set-option global startup_info_version 20210828
 
 ## Setup plug.kak
 source "%val{config}/plugins/plug.kak/rc/plug.kak"
@@ -178,7 +178,7 @@ else
 fi
 }
 add-highlighter global/ wrap -word
-set-option global ui_options 'ncurses_assistant=cat'
+set-option global ui_options 'terminal_assistant=cat'
 
 # Use only gutter signs for LSP diagnostics,
 # but keep the color in the rest of the line as-is
