@@ -276,6 +276,12 @@ map global grep p ': grep-previous<ret>' -docstring 'run grep-previous-match'
 map global grep n ': grep-next-match<ret>' -docstring 'run grep-next-match'
 map global grep l ': edit -existing *grep* <ret>' -docstring 'show grep results'
 
+declare-user-mode lsp-goto
+map global user G ':enter-user-mode lsp-goto<ret>' -docstring 'enter goto mode'
+map global lsp-goto n ': lsp-goto-next-match<ret>' -docstring 'goto next lsp match'
+map global lsp-goto p ': lsp-goto-previous-match<ret>' -docstring 'goto previous lsp match'
+map global lsp-goto l ': edit -existing *goto* <ret>' -docstring 'show lsp results'
+
 declare-user-mode make
 map global user m ': enter-user-mode make<ret>' -docstring 'enter make mdoe'
 map global make m ': make<ret>' -docstring 'run make'
