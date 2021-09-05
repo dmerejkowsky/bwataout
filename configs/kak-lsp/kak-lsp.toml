@@ -10,7 +10,7 @@ timeout = 1800 # seconds = 30 minutes
 filetypes = ["rust"]
 roots = ["Cargo.toml"]
 command = "rust-analyzer"
-[language.rust.initialization_options]
+[language.rust.settings]
 diagnostics.disabled = ["unresolved-proc-macro"]
 
 [language.javascript]

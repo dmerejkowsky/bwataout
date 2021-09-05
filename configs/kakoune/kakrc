@@ -278,8 +278,8 @@ map global grep l ': edit -existing *grep* <ret>' -docstring 'show grep results'
 
 declare-user-mode lsp-goto
 map global user G ':enter-user-mode lsp-goto<ret>' -docstring 'enter goto mode'
-map global lsp-goto n ': lsp-goto-next-match<ret>' -docstring 'goto next lsp match'
-map global lsp-goto p ': lsp-goto-previous-match<ret>' -docstring 'goto previous lsp match'
+map global lsp-goto n ': lsp-next-location *goto*<ret>' -docstring 'goto next lsp location'
+map global lsp-goto p ': lsp-previous-location *goto*<ret>' -docstring 'goto previous lsp location'
 map global lsp-goto l ': edit -existing *goto* <ret>' -docstring 'show lsp results'
 
 declare-user-mode make
