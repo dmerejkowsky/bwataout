@@ -41,3 +41,8 @@ filetypes = ["haskell"]
 roots = ["Setup.hs", "stack.yaml", "*.cabal"]
 command = "haskell-language-server-wrapper"
 args = ["--lsp"]
+
+[language.ocaml]
+filetypes = ["ocaml"]
+roots = ["Makefile", "opam", "*.opam", "dune"]
+command = "ocamllsp"
