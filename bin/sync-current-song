@@ -23,7 +23,7 @@ def main():
     dest = to_create / song_path.name
     src = music_path / song_path
     if dest.exists():
-        print("Already synced")
+        print(f"{song_path}: Already synced")
     else:
         print(src, "->", dest)
         shutil.copy(src, dest)
