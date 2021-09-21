@@ -170,6 +170,12 @@ define-command word-count -docstring "show word count of the selection" %{
   echo %reg{c} words in selection
 }
 
+define-command jump-random -docstring "jump to random place in the code" %{
+  evaluate-commands %sh{
+    jump-random --kak
+  }
+}
+
 ## UI options
 eval %sh{
 if [ "$(uname)" = "Darwin" ]; then
