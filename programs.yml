@@ -160,9 +160,13 @@ screen:
     - ~/.screenrc
 
 sway:
-  - symlink:
-    - sway
+  - copy:
+    - sway/config
     - ~/.config/sway/config
+
+  - copy:
+    - sway/custom.xkb
+    - ~/.config/xkb/custom.xkb
 
 tig:
   - symlink:
