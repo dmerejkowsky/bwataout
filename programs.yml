@@ -167,6 +167,9 @@ sway:
   - copy:
     - sway/custom.xkb
     - ~/.config/xkb/custom.xkb
+  - symlink:
+    - bin/wpassmenu
+    - ~/.local/bin/wpassmenu
 
 tig:
   - symlink:
