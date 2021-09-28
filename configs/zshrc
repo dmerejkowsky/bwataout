@@ -334,23 +334,20 @@ alias da="deactivate;activate"
 alias icat="kitty +kitten icat"
 
 p-latex() {
-  export TMPDIR=.
   pdf=${1/.md/.pdf}
-  pandoc $1 -o $pdf
+  TMPDIR=. pandoc $1 -o $pdf
   okular $pdf &!
 }
 
 p-beamer() {
-  export TMPDIR=.
   pdf=${1/.md/.pdf}
-  pandoc $1 -t beamer -o $pdf
+  TMPDIR=. pandoc $1 -t beamer -o $pdf
   okular $pdf &!
 }
 
 kak-latex() {
-  export TMPDIR=.
   pdf=${1/.md/.pdf}
-  cmd="pandoc $1 -o $pdf"
+  cmd="TMPDIR=. pandoc $1 -o $pdf"
   echo $cmd
   eval $cmd
   okular $pdf &
@@ -358,9 +355,8 @@ kak-latex() {
 }
 
 kak-beamer () {
-  export TMPDIR=.
   pdf=${1/.md/.pdf}
-  cmd="pandoc -t beamer $1 -o $pdf"
+  cmd="TMPDIR=. pandoc -t beamer $1 -o $pdf"
   echo $cmd
   eval $cmd
   okular $pdf &
