@@ -141,7 +141,7 @@ hook global WinSetOption filetype=python %{
 # Python -- and also an `isort` command
 define-command isort %{
   write
-  nop %sh{ isort . }
+  nop %sh{ isort $kak_buffile }
   edit!
 }
 
