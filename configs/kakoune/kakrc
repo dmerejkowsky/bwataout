@@ -224,7 +224,7 @@ hook global RuntimeError ".* (.*): is a directory" %{
 
 # Spell check
 evaluate-commands %sh{
-  skyspell kak init
+  skyspell-kak init
 }
 # For next kakoune version
 # set global skyspell_underline_errors true
