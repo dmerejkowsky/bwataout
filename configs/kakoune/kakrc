@@ -281,11 +281,15 @@ hook global BufOpenFile .*  show-line-numbers
 map global user a ':addimport ' -docstring 'run addimport'
 
 declare-user-mode grep
+define-command grep-selection %{
+  execute-keys ":grep <space> <c-r>. <ret>"
+}
 map global user g ':enter-user-mode grep<ret>' -docstring 'enter grep mode'
 map global grep g ':grep ' -docstring 'run grep'
 map global grep p ': grep-previous<ret>' -docstring 'run grep-previous-match'
 map global grep n ': grep-next-match<ret>' -docstring 'run grep-next-match'
 map global grep l ': edit -existing *grep* <ret>' -docstring 'show grep results'
+map global grep s ': grep-selection <ret>' -docstring 'grep selection'
 
 declare-user-mode lsp-goto
 map global user G ':enter-user-mode lsp-goto<ret>' -docstring 'enter goto mode'
