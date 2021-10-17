@@ -16,6 +16,7 @@ fzf:
  - clone:
    - git@github.com:dmerejkowsky/fzf.git
    - ~/.fzf
+   - master
  - run: [bash, "{home}/.fzf/install", --bin]
 
 gdb:
