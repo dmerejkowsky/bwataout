@@ -91,12 +91,6 @@ kak-subvert:
 mdfmt:
   - run: [cargo, install, --git, "https://github.com/tux3/mdfmt", --rev, e79c6fe8d2813a047a0f6e290d94162359678fcd]
 
-kakmerge:
-  - download:
-      url: https://raw.githubusercontent.com/lenormf/kakmerge/105893428ad6fd875f30b538d63a3454e76abf47/kakmerge
-      dest: ~/.local/bin/kakmerge
-      executable: true
-
 kak-lsp:
   - symlink_dir:
     - kak-lsp/
