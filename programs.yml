@@ -118,7 +118,6 @@ lf:
       executable: true
 
 litecli:
-  - run: [pipx, install, litecli]
   - symlink:
     - litecli.ini
     - ~/.config/litecli/config
