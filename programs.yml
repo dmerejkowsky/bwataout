@@ -83,6 +83,7 @@ kakoune:
   - clone:
     - https://github.com/andreyorst/plug.kak.git
     - ~/.config/kak/plugins/plug.kak
+    - master
 
 kak-subvert:
   - run: [cargo, install, kak-subvert]
