@@ -307,6 +307,10 @@ map global make p ': make-previous-error<ret>' -docstring 'go to previous error'
 map global make s ':set global makecmd ' -docstring 'configure makecmmd'
 map global make l ': edit -existing *make* <ret>' -docstring 'show make output'
 
+define-command xml-format %{
+  execute-keys -draft '| xmllint --format - | tail +2 <ret>'
+}
+
 set-option global autowrap_column 80
 declare-option int comments_line_length 72
 map global normal = '|dfmt -w $kak_opt_comments_line_length <ret>'
