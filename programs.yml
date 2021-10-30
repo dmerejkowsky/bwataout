@@ -1,5 +1,9 @@
 bat:
-  - run: [cargo, install, bat]
+  - download:
+      url:  https://github.com/sharkdp/bat/releases/download/v0.18.3/bat-v0.18.3-x86_64-unknown-linux-gnu.tar.gz
+      extract_member: bat-v0.18.3-x86_64-unknown-linux-gnu/bat
+      dest: ~/.local/bin/bat
+      executable: true
 
 bwataout:
   - run: [cargo, install, --path, . ,--force]
