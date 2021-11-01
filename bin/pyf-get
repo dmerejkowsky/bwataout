@@ -3,7 +3,7 @@
 URL=https://dmerej.info/fortunes
 
 if [[ -z "$1" ]] ; then
-  curl ${URL}/fortune?format=text
+  curl --location ${URL}/fortune?format=text
 else
-  curl ${URL}/fortune/${1}?format=text
+  curl --location ${URL}/fortune/${1}?format=text
 fi
