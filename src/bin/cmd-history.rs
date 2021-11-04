@@ -15,7 +15,7 @@ struct CommandsFilter {}
 
 impl Filter for CommandsFilter {
     fn parse(&self, input: &str) -> Option<String> {
-        if input.starts_with(" ") {
+        if input.starts_with(' ') {
             return None;
         }
         Some(input.to_string())

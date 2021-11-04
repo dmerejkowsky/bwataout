@@ -6,7 +6,7 @@ use std::fs::File;
 use std::os::unix::fs::PermissionsExt;
 use std::path::Path;
 use std::process::{Command, Stdio};
-use toml;
+
 
 #[derive(Deserialize, Debug)]
 struct PyProject {
@@ -48,14 +48,14 @@ from importlib import import_module
 module = import_module("{module}")
 module.{func}()
 "#
-    .replace("{env_path}", &env_path);
+    .replace("{env_path}", env_path);
 
     let py_project: PyProject =
         toml::from_str(&toml_contents).context("Could not parse pyproject.toml")?;
 
     for (name, script) in py_project.tool.poetry.scripts.iter() {
         let [module, func]: [&str; 2] = script
-            .split(":")
+            .split(':')
             .collect::<Vec<_>>()
             .try_into()
             .map_err(|_| anyhow!("Expected exactly one ':' in {}", script))?;
