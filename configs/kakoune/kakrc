@@ -111,29 +111,29 @@ hook global WinSetOption filetype=dart %{
 }
 
 # terraform: use `terraform fmt`
-hook global WinSetOption filetype=terraform %{
+hook -group format global WinSetOption filetype=terraform %{
   set window formatcmd 'terraform fmt - '
   format-on-save
 }
 
 # Go: use goimports
-hook global BufWritePre .*\.go "go-format -use-goimports"
+hook -group format global BufWritePre .*\.go "go-format -use-goimports"
 
 # Haskell: use hindent
-hook global WinSetOption filetype=haskell %{
+hook -group format global WinSetOption filetype=haskell %{
   set window formatcmd 'hindent'
   format-on-save
 }
 
 
 # Rust: use rustfmt
-hook global WinSetOption filetype=rust %{
+hook -group format global WinSetOption filetype=rust %{
   set window formatcmd 'rustfmt --edition 2018'
   format-on-save
 }
 
 # Python: use black
-hook global WinSetOption filetype=python %{
+hook -group format global WinSetOption filetype=python %{
   set window formatcmd 'black -'
   format-on-save
 }
@@ -164,8 +164,8 @@ define-command format-project %{
 }
 
 define-command lint-on-save "hook buffer BufWritePre .* lint"
-define-command format-on-save "hook buffer BufWritePre .* format"
-define-command format-project-on-save "hook global BufWritePre .* format-project"
+define-command format-on-save "hook -group format buffer BufWritePre .* format"
+define-command format-project-on-save "hook -group format global BufWritePre .* format-project"
 
 define-command word-count -docstring "show word count of the selection" %{
   execute-keys '! wc -w <ret> <a-;> k Gl "cd d'
