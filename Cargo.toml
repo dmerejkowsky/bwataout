@@ -9,7 +9,9 @@ anyhow = "1.0.31"
 clipboard = "0.5.0"
 directories = "4.0"
 rusqlite = "0.25.3"
+serde = { version = "1.0", features = ["derive"] }
 structopt = "*"
+toml = "0.5"
 
 [dev-dependencies]
 tempdir = "0.3.7"
