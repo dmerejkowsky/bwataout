@@ -1,17 +1,12 @@
 use std::path::PathBuf;
 
-use anyhow::{Context, Result};
+use anyhow::{anyhow, Result};
 use structopt::StructOpt;
 
 pub mod db;
 pub use db::DB;
 
-use app_dirs::{AppDataType, AppInfo};
-
-const APP_INFO: AppInfo = AppInfo {
-    name: "bwataout",
-    author: "Dimitri Merejkowsky",
-};
+use directories::ProjectDirs;
 
 #[derive(StructOpt, Debug)]
 pub enum SubCommand {
@@ -37,8 +32,11 @@ pub enum SubCommand {
     },
 }
 pub fn get_app_dir() -> Result<PathBuf> {
-    app_dirs::app_dir(AppDataType::UserData, &APP_INFO, "")
-        .with_context(|| "Could not create app dir")
+    let project_dirs = ProjectDirs::from("info", "dmerej", "bwataout")
+        .ok_or_else(|| anyhow!("Could not get project dirs"))?;
+    let data_dir = project_dirs.data_dir();
+    std::fs::create_dir_all(data_dir).map_err(|e| anyhow!("Could not create data dir: {}", e))?;
+    Ok(data_dir.to_path_buf())
 }
 
 pub struct StorageCommand<T>

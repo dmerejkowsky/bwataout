@@ -2,12 +2,7 @@ use std::path::{Path, PathBuf};
 use structopt::StructOpt;
 
 use anyhow::{anyhow, Context, Result};
-use app_dirs::{AppDataType, AppInfo};
-
-const APP_INFO: AppInfo = AppInfo {
-    name: "kak",
-    author: "Dimitri Merejkowsky",
-};
+use directories::ProjectDirs;
 
 // À une vache près, c'est pas une scrience exacte
 const ONE_MONTH: std::time::Duration = std::time::Duration::from_secs(60 * 60 * 24 * 30);
@@ -171,9 +166,13 @@ impl BackupStore {
 
 fn main() -> Result<()> {
     let args = Command::from_args();
-    let app_dir = app_dirs::app_dir(AppDataType::UserData, &APP_INFO, "backups")
-        .with_context(|| "Could not create app dir")?;
-    let backup_store = BackupStore::new(&app_dir)?;
+    let project_dirs = ProjectDirs::from("info", "dmerej", "kak")
+        .ok_or_else(|| anyhow!("Could not get project dirs"))?;
+    let backups_dir = project_dirs.data_dir().join("backups");
+    std::fs::create_dir_all(&backups_dir)
+        .map_err(|e| anyhow!("Could not create backups dir: {}", e))?;
+    dbg!("using backups_dir: {}", &backups_dir);
+    let backup_store = BackupStore::new(&backups_dir)?;
 
     match args.sub_cmd {
         SubCommand::Backup { path } => backup_store.backup(&path),
