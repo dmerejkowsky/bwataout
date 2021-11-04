@@ -1,7 +1,7 @@
 use std::path::Path;
 
 use anyhow::Result;
-use structopt::StructOpt;
+use clap::Parser;
 
 use bwataout::db::Filter;
 use bwataout::SubCommand;
@@ -17,10 +17,10 @@ fn is_blacklisted(entry: &str) -> bool {
     false
 }
 
-#[derive(StructOpt, Debug)]
-#[structopt(name = "mru-files", about = "Manage list of edited files")]
+#[derive(Parser, Debug)]
+#[clap(name = "mru-files", about = "Manage list of edited files")]
 pub struct MruFiles {
-    #[structopt(subcommand)]
+    #[clap(subcommand)]
     pub sub_cmd: SubCommand,
 }
 
@@ -43,7 +43,7 @@ impl Filter for MruFilter {
 }
 
 fn main() -> Result<()> {
-    let cmd = MruFiles::from_args();
+    let cmd = MruFiles::parse();
     let filter = MruFilter {};
     let kak_script = include_str!("../mru_files.kak");
     let storage_command = bwataout::StorageCommand::new("files", kak_script, filter);

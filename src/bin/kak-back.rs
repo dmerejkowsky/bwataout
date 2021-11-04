@@ -1,40 +1,40 @@
 use std::path::{Path, PathBuf};
-use structopt::StructOpt;
 
 use anyhow::{anyhow, Context, Result};
+use clap::Parser;
 use directories::ProjectDirs;
 
 // À une vache près, c'est pas une scrience exacte
 const ONE_MONTH: std::time::Duration = std::time::Duration::from_secs(60 * 60 * 24 * 30);
 
-#[derive(Debug, StructOpt)]
-#[structopt(
+#[derive(Debug, Parser)]
+#[clap(
     name = "kak-back",
     about = "backup and restore files edited with Kakoune"
 )]
 struct Command {
-    #[structopt(subcommand)]
+    #[clap(subcommand)]
     pub sub_cmd: SubCommand,
 }
 
-#[derive(Debug, StructOpt)]
+#[derive(Debug, Parser)]
 pub enum SubCommand {
-    #[structopt(name = "backup", about = "backup the given file")]
+    #[clap(name = "backup", about = "backup the given file")]
     Backup {
-        #[structopt(help = "path to back up")]
+        #[clap(about = "path to back up")]
         path: PathBuf,
     },
 
-    #[structopt(name = "clean", about = "clean old backups")]
+    #[clap(name = "clean", about = "clean old backups")]
     Clean {
-        #[structopt(long = "dry-run", help = "don't actually clean the files")]
+        #[clap(long = "dry-run", about = "don't actually clean the files")]
         dry_run: bool,
     },
 
-    #[structopt(name = "list", about = "list known backups")]
+    #[clap(name = "list", about = "list known backups")]
     List {},
 
-    #[structopt(name = "restore", about = "try and restore a backup")]
+    #[clap(name = "restore", about = "try and restore a backup")]
     Restore { dest: PathBuf },
 }
 
@@ -165,7 +165,7 @@ impl BackupStore {
 }
 
 fn main() -> Result<()> {
-    let args = Command::from_args();
+    let args = Command::parse();
     let project_dirs = ProjectDirs::from("info", "dmerej", "kak")
         .ok_or_else(|| anyhow!("Could not get project dirs"))?;
     let backups_dir = project_dirs.data_dir().join("backups");

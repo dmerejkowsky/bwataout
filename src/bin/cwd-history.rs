@@ -1,15 +1,15 @@
 use std::path::Path;
 
 use anyhow::Result;
-use structopt::StructOpt;
+use clap::Parser;
 
 use bwataout::db::Filter;
 use bwataout::SubCommand;
 
-#[derive(StructOpt, Debug)]
-#[structopt(name = "cwd-history", about = "Manage list of visited directories")]
+#[derive(Parser, Debug)]
+#[clap(name = "cwd-history", about = "Manage list of visited directories")]
 pub struct CWDHistory {
-    #[structopt(subcommand)]
+    #[clap(subcommand)]
     pub sub_cmd: SubCommand,
 }
 
@@ -42,7 +42,7 @@ impl Filter for WorkingDirsFilter {
 }
 
 fn main() -> Result<()> {
-    let cmd = CWDHistory::from_args();
+    let cmd = CWDHistory::parse();
     let filter = WorkingDirsFilter {};
     let kak_script = include_str!("../working_dirs.kak");
     let storage_command = bwataout::StorageCommand::new("working-dirs", kak_script, filter);

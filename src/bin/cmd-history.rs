@@ -1,13 +1,13 @@
 use anyhow::Result;
-use structopt::StructOpt;
+use clap::Parser;
 
 use bwataout::db::Filter;
 use bwataout::SubCommand;
 
-#[derive(StructOpt, Debug)]
-#[structopt(name = "cmd-history", about = "Manage list of commands")]
+#[derive(Parser, Debug)]
+#[clap(name = "cmd-history", about = "Manage list of commands")]
 pub struct CommandsHistory {
-    #[structopt(subcommand)]
+    #[clap(subcommand)]
     pub sub_cmd: SubCommand,
 }
 
@@ -27,7 +27,7 @@ impl Filter for CommandsFilter {
 }
 
 fn main() -> Result<()> {
-    let cmd = CommandsHistory::from_args();
+    let cmd = CommandsHistory::parse();
     let filter = CommandsFilter {};
     let kak_script = "";
     let storage_command = bwataout::StorageCommand::new("commands", kak_script, filter);

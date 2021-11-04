@@ -1,36 +1,37 @@
 use std::path::PathBuf;
 
 use anyhow::{anyhow, Result};
-use structopt::StructOpt;
+use clap::Parser;
 
 pub mod db;
 pub use db::DB;
 
 use directories::ProjectDirs;
 
-#[derive(StructOpt, Debug)]
+#[derive(Parser, Debug)]
 pub enum SubCommand {
-    #[structopt(name = "init-kakoune", about = "dump kakoune initial script")]
+    #[clap(about = "dump kakoune initial script")]
     InitKakoune,
 
-    #[structopt(name = "add", about = "add a new entry")]
+    #[clap(about = "add a new entry")]
     Add { entry: String },
 
-    #[structopt(name = "remove", about = "remove an entry")]
+    #[clap(about = "remove an entry")]
     Remove { entry: String },
 
-    #[structopt(name = "clean", about = "clean entriess")]
+    #[clap(about = "clean invalid entries")]
     Clean {
-        #[structopt(long = "--max", help = "only clean the last <max> entries")]
+        #[clap(long = "--max", about = "only clean the last <max> entries")]
         max: Option<isize>,
     },
 
-    #[structopt(name = "list", about = "list entries")]
+    #[clap(about = "list entries")]
     List {
-        #[structopt(long = "--reversed", help = "reverse order")]
+        #[clap(long = "--reversed", about = "reverse order")]
         reversed: bool,
     },
 }
+
 pub fn get_app_dir() -> Result<PathBuf> {
     let project_dirs = ProjectDirs::from("info", "dmerej", "bwataout")
         .ok_or_else(|| anyhow!("Could not get project dirs"))?;
