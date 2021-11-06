@@ -1,6 +1,9 @@
 ## Hide release notes from latest version
 set-option global startup_info_version 20211028
 
+## Disable kitty integration
+set-option global windowing_modules 'tmux' 'x11'
+
 ## Setup plug.kak
 source "%val{config}/plugins/plug.kak/rc/plug.kak"
 plug "andreyorst/plug.kak" noload
