@@ -1,5 +1,5 @@
 ## Hide release notes from latest version
-set-option global startup_info_version 20211028
+set-option global startup_info_version 20211108
 
 ## Disable kitty integration
 set-option global windowing_modules 'tmux' 'x11'
