@@ -1,6 +1,6 @@
 use anyhow::{Context, Result};
 use rusqlite::{params, Connection};
-use std::{io::Write, path::Path};
+use std::path::Path;
 
 pub trait Filter {
     fn parse(&self, input: &str) -> Option<String>;
