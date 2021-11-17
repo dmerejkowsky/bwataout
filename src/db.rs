@@ -30,11 +30,11 @@ where
         self.connection
             .execute(
                 "
-            CREATE TABLE IF NOT EXISTS entries (
-              entry TEXT UNIQUE,
-              date TEXT DEFAULT CURRENT_TIMESTAMP
-            )
-       ",
+                CREATE TABLE IF NOT EXISTS entries (
+                  entry TEXT UNIQUE,
+                  date TEXT DEFAULT CURRENT_TIMESTAMP
+                )
+                ",
                 params![],
             )
             .with_context(|| "Could not migrate db")?;
