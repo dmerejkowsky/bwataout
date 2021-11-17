@@ -60,7 +60,35 @@ where
         Ok(res)
     }
 
-    pub fn clean(&self, max: Option<isize>) -> Result<()> {
+    pub fn clean(&mut self, max: Option<isize>) -> Result<()> {
+        let count = if let Some(m) = max {
+            m
+        } else {
+            self.entries_count()?
+        };
+        let to_clean = self.entries_to_clean(max)?;
+        self.connection.transaction()?;
+        let n = to_clean.len();
+        for name in to_clean {
+            let mut delete_statement = self
+                .connection
+                .prepare("DELETE FROM ENTRIES WHERE entry = ?")?;
+            delete_statement.execute([name])?;
+        }
+
+        println!("Cleaned {} entries over {}", n, count);
+        Ok(())
+    }
+
+    fn entries_count(&self) -> Result<isize> {
+        let mut statement = self.connection.prepare("SELECT COUNT(*) FROM ENTRIES")?;
+        let mut query = statement.query([])?;
+        let row = query.next()?;
+        let res = row.unwrap().get(0)?;
+        Ok(res)
+    }
+
+    fn entries_to_clean(&self, max: Option<isize>) -> Result<Vec<String>> {
         let mut select_statement = match max {
             Some(_) => self
                 .connection
@@ -74,16 +102,6 @@ where
             None => select_statement.query([]),
         }?;
 
-        let count = match max {
-            Some(m) => m,
-            None => {
-                let mut statement = self.connection.prepare("SELECT COUNT(*) FROM ENTRIES")?;
-                let mut query = statement.query([])?;
-                let res = query.next()?;
-                res.unwrap().get(0)?
-            }
-        };
-
         let mut to_clean = vec![];
         while let Some(row) = select_query.next()? {
             let value: String = row.get(0)?;
@@ -92,20 +110,7 @@ where
             }
         }
 
-        let n = to_clean.len();
-        let mut i = 0;
-        for name in to_clean {
-            i += 1;
-            print!("{}/{}\r", i, n);
-            let _ = std::io::stdout().flush();
-            let mut delete_statement = self
-                .connection
-                .prepare("DELETE FROM ENTRIES WHERE entry = ?")?;
-            delete_statement.execute([name])?;
-        }
-
-        println!("Cleaned {} entries over {}", n, count);
-        Ok(())
+        Ok(to_clean)
     }
 
     pub fn add(&mut self, input: &str) -> Result<()> {
