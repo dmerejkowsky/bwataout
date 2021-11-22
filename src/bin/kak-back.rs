@@ -171,7 +171,6 @@ fn main() -> Result<()> {
     let backups_dir = project_dirs.data_dir().join("backups");
     std::fs::create_dir_all(&backups_dir)
         .map_err(|e| anyhow!("Could not create backups dir: {}", e))?;
-    dbg!("using backups_dir: {}", &backups_dir);
     let backup_store = BackupStore::new(&backups_dir)?;
 
     match args.sub_cmd {
