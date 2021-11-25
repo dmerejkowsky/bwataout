@@ -166,6 +166,10 @@ starship:
      executable: true
      unzip: true
 
+ - symlink:
+   - starship.toml
+   - ~/.config/starship.toml
+
 sway:
   - copy:
     - sway/config

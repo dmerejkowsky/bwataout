@@ -1,0 +1,32 @@
+command_timeout = 1000
+
+[aws]
+disabled = true
+
+[cmd_duration]
+disabled = true
+
+[directory]
+truncate_to_repo = false
+
+[gcloud]
+disabled = true
+
+[git_branch]
+symbol = ""
+format = "[$symbol$branch](bold blue)"
+
+[git_status]
+stashed = ""
+modified = "*"
+diverged = "⇡⇣"
+format = " [$all_status](dimmed cyan)[$ahead_behind](dimmed cyan)"
+
+[package]
+disabled = true
+
+[python]
+disabled = true
+
+[rust]
+disabled = true
