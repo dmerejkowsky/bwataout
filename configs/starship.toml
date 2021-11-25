@@ -33,6 +33,9 @@ disabled = true
 [python]
 disabled = true
 
+[status]
+disabled = false
+
 [rust]
 disabled = true
 
