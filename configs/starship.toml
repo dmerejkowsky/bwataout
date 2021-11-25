@@ -7,6 +7,7 @@ disabled = true
 disabled = true
 
 [directory]
+truncation_symbol = "…/"
 truncate_to_repo = false
 
 [gcloud]
@@ -20,7 +21,7 @@ format = "[$symbol$branch](bold blue)"
 stashed = ""
 modified = "*"
 diverged = "⇡⇣"
-format = " [$all_status](dimmed cyan)[$ahead_behind](dimmed cyan)"
+format = " [$all_status](dimmed cyan)[$ahead_behind](dimmed cyan) "
 
 [hostname]
 ssh_only = true
@@ -30,14 +31,8 @@ format = "@[$hostname](bold yellow) "
 [package]
 disabled = true
 
-[python]
-disabled = true
-
 [status]
 disabled = false
-
-[rust]
-disabled = true
 
 [username]
 format = "[$user](bold yellow)"
