@@ -22,6 +22,11 @@ modified = "*"
 diverged = "⇡⇣"
 format = " [$all_status](dimmed cyan)[$ahead_behind](dimmed cyan)"
 
+[hostname]
+ssh_only = true
+trim_at = ""
+format = "@[$hostname](bold yellow) "
+
 [package]
 disabled = true
 
@@ -30,3 +35,6 @@ disabled = true
 
 [rust]
 disabled = true
+
+[username]
+format = "[$user](bold yellow)"
