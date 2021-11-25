@@ -146,10 +146,6 @@ export PATH="${top_dir}/bin:$HOME/.local/bin:$PATH"
 ## See ~/.npmrc
 export PATH="${HOME}/.local/share/node/bin:$PATH"
 
-## required for pure-prompt
-fpath=("$HOME/.local/share/zsh/pure-prompt" $fpath)
-
-
 # Functions
 
 ## cd /path/to/file -> cd /path/to
@@ -261,13 +257,6 @@ whereal() {
 }
 
 
-# Prompt
-autoload -U promptinit
-promptinit
-
-export PURE_GIT_UNTRACKED_DIRTY=1
-prompt pure
-
 # kakoune
 export VISUAL="kak"
 export EDITOR="kak"
@@ -363,3 +352,8 @@ kak-beamer () {
   on-kak-refresh --cmd $cmd
 }
 
+
+source $HOME/.cargo/env
+
+# starship
+eval "$(starship init zsh)"
