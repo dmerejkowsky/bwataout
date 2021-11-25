@@ -158,6 +158,14 @@ screen:
     - screenrc
     - ~/.screenrc
 
+starship:
+ - download:
+     url: https://github.com/starship/starship/releases/download/v1.0.0/starship-x86_64-unknown-linux-gnu.tar.gz
+     dest: ~/.local/bin/starship
+     extract_member: starship
+     executable: true
+     unzip: true
+
 sway:
   - copy:
     - sway/config
