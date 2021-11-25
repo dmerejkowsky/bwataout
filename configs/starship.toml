@@ -21,7 +21,7 @@ format = "[$symbol$branch](bold blue)"
 stashed = ""
 modified = "*"
 diverged = "⇡⇣"
-format = " [$all_status](dimmed cyan)[$ahead_behind](dimmed cyan) "
+format = "[$all_status](dimmed cyan)[$ahead_behind](dimmed cyan) "
 
 [hostname]
 ssh_only = true
