@@ -9,13 +9,14 @@ disabled = true
 [directory]
 truncation_symbol = "…/"
 truncate_to_repo = false
+style = "green"
 
 [gcloud]
 disabled = true
 
 [git_branch]
 symbol = ""
-format = "[$symbol$branch](bold blue)"
+format = "[$symbol$branch](dimmed cyan)"
 
 [git_status]
 stashed = ""
