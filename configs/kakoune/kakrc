@@ -231,7 +231,6 @@ hook global RuntimeError ".* (.*): is a directory" %{
 evaluate-commands %sh{
   skyspell-kak init
 }
-set global skyspell_underline_errors true
 
 declare-user-mode skyspell
 map global user s ': enter-user-mode skyspell<ret>' -docstring 'enter spell user mode'
