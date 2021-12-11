@@ -5,9 +5,6 @@ bat:
       dest: ~/.local/bin/bat
       executable: true
 
-bwataout:
-  - run: [cargo, install, --path, . ,--force]
-
 editorconfig:
   - symlink:
     - editorconfig
