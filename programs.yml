@@ -89,6 +89,13 @@ kakoune:
 kak-subvert:
   - run: [cargo, install, kak-subvert]
 
+kcr:
+ - clone:
+   - git@github.com:dmerejkowsky/kakoune.cr
+   - ~/Sources/kakoune.cr
+   - stable
+ - run: [make, install, -C, ~/Sources/kakoune.cr/]
+
 mdfmt:
   - run: [cargo, install, --git, "https://github.com/tux3/mdfmt", --rev, e79c6fe8d2813a047a0f6e290d94162359678fcd]
 
