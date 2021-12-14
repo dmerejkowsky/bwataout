@@ -45,7 +45,10 @@ class Installer:
                 ui.info_2("Skipping", pretty_dest)
                 return
         ui.info_2("Cloning", url, "->", pretty_dest)
-        subprocess.check_call(["git", "clone", url, str(dest_path), "--branch", branch])
+        cmd = ["git", "clone", url, str(dest_path), "--branch", branch]
+        if submodules:
+            cmd.append("--recurse-submodules")
+        subprocess.check_call(cmd)
 
     def do_copy(self, src: str, dest: str) -> None:
         dest_path = Path(dest).expanduser()
