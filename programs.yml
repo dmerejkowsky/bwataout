@@ -105,7 +105,7 @@ kak-lsp:
     - ~/.config/kak-lsp
 
   - download:
-     url: https://github.com/kak-lsp/kak-lsp/releases/download/v11.0.1/kak-lsp-v11.0.1-x86_64-unknown-linux-musl.tar.gz
+     url: https://github.com/kak-lsp/kak-lsp/releases/download/v11.1.0/kak-lsp-v11.1.0-x86_64-unknown-linux-musl.tar.gz
      dest: ~/.local/bin/kak-lsp
      extract_member: kak-lsp
      executable: true
