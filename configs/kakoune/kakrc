@@ -324,8 +324,6 @@ set-option global autowrap_column 80
 declare-option int comments_line_length 72
 map global normal = '|dfmt -w $kak_opt_comments_line_length <ret>'
 
-# Yeah, I know waq is the default alias, but muscle memory, you know ...
-alias global wqa write-all-quit
 define-command cq 'quit! 2' -docstring "force quit with non-zero exit code"
 
 
