@@ -30,6 +30,9 @@ ssh_only = true
 trim_at = ""
 format = "@[$hostname](bold yellow) "
 
+[nodejs]
+symbol = "🖧 "
+
 [package]
 disabled = true
 
