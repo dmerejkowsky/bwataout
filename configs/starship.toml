@@ -4,7 +4,8 @@ command_timeout = 1000
 disabled = true
 
 [cmd_duration]
-disabled = true
+disabled = false
+format = "[(took $duration)](blue)"
 
 [directory]
 truncation_symbol = "…/"
