@@ -5,8 +5,8 @@ from pathlib import Path
 import shutil
 import subprocess
 
-music_path = Path("~/media/music").expanduser()
-shared_path = Path("~/media/phone/shared/music/").expanduser()
+music_path = Path("~/Music").expanduser()
+shared_path = Path("~/Phone/shared/music/").expanduser()
 
 
 def main():
