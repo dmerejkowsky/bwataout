@@ -248,6 +248,7 @@ map global skyspell h ': skyspell-help <ret>' -docstring 'show help message'
 map global skyspell n ': skyspell-next<ret>' -docstring 'go to next spell error'
 map global skyspell p ': skyspell-previous<ret>' -docstring 'go to previous spell error'
 map global skyspell r ': skyspell-replace<ret>' -docstring 'suggest a list of replacements'
+map global skyspell c ': skyspell-ci-enable<ret>' -docstring 'use skyspell-ci as makecmd'
 
 
 # Subvert
