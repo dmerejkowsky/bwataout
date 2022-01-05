@@ -21,13 +21,13 @@ struct Command {
 pub enum SubCommand {
     #[clap(name = "backup", about = "backup the given file")]
     Backup {
-        #[clap(about = "path to back up")]
+        #[clap(help = "path to back up")]
         path: PathBuf,
     },
 
     #[clap(name = "clean", about = "clean old backups")]
     Clean {
-        #[clap(long = "dry-run", about = "don't actually clean the files")]
+        #[clap(long = "dry-run", help = "don't actually clean the files")]
         dry_run: bool,
     },
 
