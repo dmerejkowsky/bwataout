@@ -66,6 +66,7 @@ define-command -hidden -params 6 -override lsp-handle-progress %{
 # Note: call lsp-enable-window when ready
 map global user l ': enter-user-mode lsp<ret>' -docstring 'enter lsp user mode'
 map global lsp n ': lsp-find-error --include-warnings<ret>' -docstring 'find next warning or error'
+map global lsp E ': lsp-find-error<ret>' -docstring 'find next error'
 map global lsp l ': lsp-enable<ret>' -docstring 'enable lsp for the whole session'
 map global lsp R ': lsp-rename-prompt<ret>' -docstring 'rename symbol under cursor'
 
