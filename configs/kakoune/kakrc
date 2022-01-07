@@ -210,7 +210,7 @@ set-option global lsp_diagnostic_line_warning_sign !
 set-option global lsp_diagnostic_line_error_sign  ✘
 
 # Status line
-set-option global modelinefmt '%opt{lsp_diagnostic_error_count}✘  %opt{lsp_diagnostic_warning_count}! %opt{modeline_progress} %val{bufname} %val{cursor_line}:%val{cursor_char_column} {{context_info}} {{mode_info}} - %val{client}@[%val{session}]'
+set-option global modelinefmt '%opt{modeline_progress} %opt{lsp_diagnostic_error_count}✘  %opt{lsp_diagnostic_warning_count}! %val{bufname} %val{cursor_line}:%val{cursor_char_column} {{context_info}} {{mode_info}} - %val{client}@[%val{session}]'
 
 
 ## Plugins customisation
