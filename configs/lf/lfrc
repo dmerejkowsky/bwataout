@@ -8,7 +8,7 @@ cmd bulk_rename $printf "%s\n" $fx | vidir -
 cmd make_executable %chmod +x $f
 cmd mkdir %mkdir -p "$@"
 
-map <enter> $$EDITOR $f
+map <enter> $kcr edit $f
 map a push :mkdir<space>
 map A push :glob-select<space>*<enter>
 map b push :bulk_rename<enter>
