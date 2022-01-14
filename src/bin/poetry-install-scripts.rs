@@ -7,7 +7,6 @@ use std::os::unix::fs::PermissionsExt;
 use std::path::Path;
 use std::process::{Command, Stdio};
 
-
 #[derive(Deserialize, Debug)]
 struct PyProject {
     tool: Tool,
@@ -58,7 +57,7 @@ module.{func}()
             .split(':')
             .collect::<Vec<_>>()
             .try_into()
-            .map_err(|_| anyhow!("Expected exactly one ':' in {}", script))?;
+            .map_err(|_| anyhow!("Expected exactly one ':' in {script}"))?;
         generate_script(&scripts_path, &script_template, name, module, func)?;
     }
     Ok(())
@@ -76,30 +75,18 @@ fn generate_script(
         .replace("{func}", func);
     let script_path = scripts_path.join(name);
     std::fs::write(&script_path, to_write)
-        .with_context(|| format!("Could not write '{}'", script_path.display()))?;
+        .with_context(|| format!("Could not write {script_path:?}"))?;
 
-    let script_file = File::open(&script_path).with_context(|| {
-        format!(
-            "Could not open '{}' to set permission",
-            script_path.display()
-        )
-    })?;
+    let script_file = File::open(&script_path)
+        .with_context(|| format!("Could not open {script_path:?} to set permission",))?;
     let mut perms = script_file
         .metadata()
-        .with_context(|| {
-            format!(
-                "Could not get filesystem metadata of '{}'",
-                script_path.display()
-            )
-        })?
+        .with_context(|| format!("Could not get filesystem metadata of {script_path:?}",))?
         .permissions();
     perms.set_mode(0o777);
-    script_file.set_permissions(perms).with_context(|| {
-        format!(
-            "Could not set executable permissions for '{}'",
-            script_path.display()
-        )
-    })?;
-    println!("Generated: {}", script_path.display());
+    script_file
+        .set_permissions(perms)
+        .with_context(|| format!("Could not set executable permissions for {script_path:?}",))?;
+    println!("Generated: {script_path:?}");
     Ok(())
 }

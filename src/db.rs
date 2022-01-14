@@ -76,7 +76,7 @@ where
             delete_statement.execute([name])?;
         }
 
-        println!("Cleaned {} entries over {}", n, count);
+        println!("Cleaned {n} entries over {count}");
         Ok(())
     }
 

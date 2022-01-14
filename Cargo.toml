@@ -5,7 +5,7 @@ name = "bwataout"
 version = "0.1.0"
 
 [dependencies]
-anyhow = "1.0.31"
+anyhow = "1.0.52"
 clap = { version = "3.0.0", features = ["derive"] }
 clipboard = "0.5.0"
 directories = "4.0"

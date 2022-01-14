@@ -62,16 +62,16 @@ impl BackupStore {
             let entry = entry?;
             let metadata = entry
                 .metadata()
-                .with_context(|| format!("Could not get file metadata for {:?}", entry))?;
+                .with_context(|| format!("Could not get file metadata for {entry:?}"))?;
             let file_type = metadata.file_type();
             if file_type.is_file() {
                 let mtime = metadata
                     .modified()
-                    .with_context(|| format!("Could not get mtime for {:?}", entry))?;
+                    .with_context(|| format!("Could not get mtime for {entry:?}"))?;
                 let file_name = entry.file_name();
                 let relative_path = file_name
                     .into_string()
-                    .map_err(|_| anyhow!("Invalid file name for {:?}", entry))?;
+                    .map_err(|_| anyhow!("Invalid file name for {entry:?}"))?;
                 let backup_file = BackupFile {
                     relative_path,
                     mtime,
@@ -97,15 +97,10 @@ impl BackupStore {
     fn backup(&self, path: &Path) -> Result<()> {
         let full_path = path
             .canonicalize()
-            .with_context(|| format!("Could not canoncalize: {}", path.display()))?;
+            .with_context(|| format!("Could not canoncalize: {path:?}"))?;
         let backup_path = self.full_path_to_backup_path(&full_path)?;
-        std::fs::copy(&full_path, &backup_path).with_context(|| {
-            format!(
-                "Could not copy from\n{}\nto\n{}",
-                full_path.display(),
-                backup_path.display()
-            )
-        })?;
+        std::fs::copy(&full_path, &backup_path)
+            .with_context(|| format!("Could not copy from\n{full_path:?}\nto\n{backup_path:?}",))?;
         Ok(())
     }
 
@@ -119,15 +114,10 @@ impl BackupStore {
         }
         let full_path = dest
             .canonicalize()
-            .with_context(|| format!("Could not canoncalize: {}", dest.display()))?;
+            .with_context(|| format!("Could not canoncalize: {dest:?}"))?;
         let backup_path = self.full_path_to_backup_path(&full_path)?;
-        std::fs::copy(&backup_path, dest).with_context(|| {
-            format!(
-                "Could not copy from\n{}\nto\n{}",
-                backup_path.display(),
-                dest.display()
-            )
-        })?;
+        std::fs::copy(&backup_path, dest)
+            .with_context(|| format!("Could not copy from\n{backup_path:?}\nto\n{dest:?}",))?;
         Ok(())
     }
 
@@ -136,29 +126,31 @@ impl BackupStore {
         let mut cleaned = 0;
         let now = std::time::SystemTime::now();
         for file in &self.files {
+            let relative_path = &file.relative_path;
             let duration = now
                 .duration_since(file.mtime)
-                .with_context(|| format!("mtime in the future for {}", file.relative_path))?;
+                .with_context(|| format!("mtime in the future for {relative_path}"))?;
             if duration > ONE_MONTH {
                 cleaned += 1;
                 if !dry_run {
                     let full_path = &self.path.join(&file.relative_path);
                     std::fs::remove_file(&full_path)
-                        .with_context(|| format!("Could not remove {:?}", full_path))?;
+                        .with_context(|| format!("Could not remove {full_path:?}"))?;
                 }
             }
         }
         if dry_run {
-            println!("Would have cleaned {} entries over {}", cleaned, total);
+            println!("Would have cleaned {cleaned} entries over {total}");
         } else {
-            println!("Cleaned {} entries over {}", cleaned, total);
+            println!("Cleaned {cleaned} entries over {total}");
         }
         Ok(())
     }
 
     fn list(&self) -> Result<()> {
         for file in &self.files {
-            println!("{}", file.full_path());
+            let full_path = file.full_path();
+            println!("{full_path}");
         }
         Ok(())
     }
@@ -170,7 +162,7 @@ fn main() -> Result<()> {
         .ok_or_else(|| anyhow!("Could not get project dirs"))?;
     let backups_dir = project_dirs.data_dir().join("backups");
     std::fs::create_dir_all(&backups_dir)
-        .map_err(|e| anyhow!("Could not create backups dir: {}", e))?;
+        .map_err(|e| anyhow!("Could not create backups dir: {e}"))?;
     let backup_store = BackupStore::new(&backups_dir)?;
 
     match args.sub_cmd {

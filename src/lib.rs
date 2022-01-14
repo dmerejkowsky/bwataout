@@ -36,7 +36,7 @@ pub fn get_app_dir() -> Result<PathBuf> {
     let project_dirs = ProjectDirs::from("info", "dmerej", "bwataout")
         .ok_or_else(|| anyhow!("Could not get project dirs"))?;
     let data_dir = project_dirs.data_dir();
-    std::fs::create_dir_all(data_dir).map_err(|e| anyhow!("Could not create data dir: {}", e))?;
+    std::fs::create_dir_all(data_dir).map_err(|e| anyhow!("Could not create data dir: {e}"))?;
     Ok(data_dir.to_path_buf())
 }
 
@@ -62,11 +62,15 @@ where
     }
     pub fn run(self, cmd: SubCommand) -> Result<()> {
         let app_dir = crate::get_app_dir()?;
-        let db_path = format!("{}.db", self.name);
+        let name = &self.name;
+        let db_path = format!("{name}.db");
         let mut db = DB::new(&app_dir.join(db_path), self.filter)?;
 
         match cmd {
-            SubCommand::InitKakoune => println!("{}", &self.kak_script),
+            SubCommand::InitKakoune => {
+                let kak_script = &self.kak_script;
+                println!("{}", kak_script)
+            }
             SubCommand::List { reversed } => {
                 let list = if reversed {
                     db.list_reversed()
@@ -74,7 +78,7 @@ where
                     db.list()
                 }?;
                 for v in list {
-                    println!("{}", v);
+                    println!("{v}");
                 }
             }
             SubCommand::Add { entry } => {

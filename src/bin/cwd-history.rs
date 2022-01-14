@@ -28,10 +28,10 @@ impl Filter for WorkingDirsFilter {
         };
         let clean_path = abs_path
             .canonicalize()
-            .unwrap_or_else(|_| panic!("Could not canonicalize {}", input));
+            .unwrap_or_else(|_| panic!("Could not canonicalize {input}"));
         let entry = clean_path
             .to_str()
-            .unwrap_or_else(|| panic!("Could not convert {} to string", clean_path.display()));
+            .unwrap_or_else(|| panic!("Could not convert {clean_path:?} to string"));
         Some(entry.to_string())
     }
 
