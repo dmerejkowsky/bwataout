@@ -13,8 +13,6 @@ evaluate-commands %sh{
   kcr init kakoune
 }
 
-set global windowing_modules 'x11'
-
 map global user h \
   ": connect-terminal <ret>"\
   -docstring "Spawn a connected terminal"
