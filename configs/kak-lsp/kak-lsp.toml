@@ -22,7 +22,7 @@ args = ["lsp"]
 [language.python]
 filetypes = ["python"]
 roots = ["requirements.txt", "setup.py", "pyproject.toml"]
-command = "jedi-language-server"
+command = "pylsp"
 
 [language.go]
 filetypes = ["go"]
