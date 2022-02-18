@@ -310,7 +310,7 @@ map global lsp-goto l ': edit -existing *goto* <ret>' -docstring 'show lsp resul
 
 declare-user-mode make
 map global user m ': enter-user-mode make<ret>' -docstring 'enter make mdoe'
-map global make m ': make<ret>' -docstring 'run make'
+map global make m ': write-all <ret> : make<ret>' -docstring 'run make'
 map global make n ': make-next-error<ret>' -docstring 'go to next error'
 map global make p ': make-previous-error<ret>' -docstring 'go to previous error'
 map global make s ':set global makecmd ' -docstring 'configure makecmmd'
