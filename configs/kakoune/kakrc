@@ -208,7 +208,26 @@ set-option global lsp_diagnostic_line_warning_sign !
 set-option global lsp_diagnostic_line_error_sign  ✘
 
 # Status line
-set-option global modelinefmt '%opt{modeline_progress} %opt{lsp_diagnostic_error_count}✘  %opt{lsp_diagnostic_warning_count}! %val{bufname} %val{cursor_line}:%val{cursor_char_column} {{context_info}} {{mode_info}} - %val{client}@[%val{session}]'
+declare-option str modeline_percent
+
+hook global WinCreate .* %{
+  hook window NormalIdle .* %{
+    evaluate-commands %sh{
+      percent=$(($kak_cursor_line * 100 / $kak_buf_line_count))
+      case $percent in
+         0)
+           res="Top";;
+        100)
+           res="Bot";;
+         *)
+           res="${percent}%";;
+      esac
+      echo "set window modeline_percent $res"
+    }
+  }
+}
+
+set-option global modelinefmt '%opt{modeline_progress} %opt{lsp_diagnostic_error_count}✘  %opt{lsp_diagnostic_warning_count}! %val{bufname} %val{cursor_line}:%val{cursor_char_column} {{context_info}} {{mode_info}} - %val{client}@[%val{session}] %opt{modeline_percent}'
 
 
 ## Plugins customisation
