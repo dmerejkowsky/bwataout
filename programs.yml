@@ -10,9 +10,6 @@ editorconfig:
     - editorconfig
     - ~/.editorconfig
 
-fd-find:
-  - run: [cargo, install, fd-find]
-
 fzf:
  - clone:
    - git@github.com:dmerejkowsky/fzf.git
