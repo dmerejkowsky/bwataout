@@ -5,6 +5,7 @@ dmenu
 i3lock
 i3status
 j4-dmenu-desktop
+htop
 python
 python3-pip
 python-is-python3
