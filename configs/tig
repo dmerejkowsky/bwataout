@@ -3,6 +3,8 @@ bind status C !git commit -v
 bind generic + !git commit --amend -v
 bind generic ! ?git reset --hard %(commit)
 bind main ? ?git reset --soft %(commit)
+bind main i !git rebase -i %(commit)
+bind main F !git fetch --all --tags
 
 bind status x ?rm -f %(file)
 
