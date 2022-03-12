@@ -11,5 +11,5 @@ bind status x ?rm -f %(file)
 bind main P !git push
 bind refs ! ?git reset --hard %(commit)
 bind refs x ?git branch -D %(ref)
-bind refs X ?git push origin --delete %(branch)
+bind refs X ?git push %(remote) --delete %(branch)
 bind refs a !git checkout -b "%(prompt New branch name: )"
