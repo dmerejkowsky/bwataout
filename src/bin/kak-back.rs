@@ -45,7 +45,7 @@ struct BackupFile {
 
 impl BackupFile {
     fn full_path(&self) -> String {
-        self.relative_path.replace("%", "/")
+        self.relative_path.replace('%', "/")
     }
 }
 
@@ -90,7 +90,7 @@ impl BackupStore {
         let full_path_name = full_path
             .to_str()
             .ok_or_else(|| anyhow!("non-unicode full path"))?;
-        let backup_name = &full_path_name.replace("/", "%");
+        let backup_name = &full_path_name.replace('/', "%");
         Ok(self.path.join(backup_name))
     }
 
