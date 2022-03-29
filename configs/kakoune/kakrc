@@ -40,6 +40,12 @@ hook global WinCreate .*\.jinja2 %{
     add-highlighter window/ ref jinja
 }
 
+## pp files are puppet class and should
+## not have any syntax highlighters
+hook global WinCreate .*\.pp %{
+set-option buffer filetype ''
+}
+
 # mky files are for the Monkey programming language, but I don't want to
 # write a kakoune syntax file, so I do the next best thing
 hook global BufCreate .*\.mky$ %{
