@@ -97,9 +97,9 @@ mdfmt:
   - run: [cargo, install, --git, "https://github.com/tux3/mdfmt", --rev, e79c6fe8d2813a047a0f6e290d94162359678fcd]
 
 kak-lsp:
-  - symlink_dir:
-    - kak-lsp/
-    - ~/.config/kak-lsp
+  - copy:
+    - kak-lsp/kak-lsp.toml
+    - ~/.config/kak-lsp/kak-lsp.toml
 
   - download:
      url: https://github.com/kak-lsp/kak-lsp/releases/download/v12.0.0/kak-lsp-v12.0.0-x86_64-unknown-linux-musl.tar.gz
