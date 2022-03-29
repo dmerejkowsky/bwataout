@@ -21,7 +21,7 @@
 	mend = commit --amend
 
 	pa = push-all-and-fetch
-	prune-merged = !git branch --merged | grep -v "\\*" | xargs -n1 git branch -d
+	prune-merged = !git branch --merged | grep -v "\\*" | grep -v main | grep -v master | xargs -n1 git branch -d
 
 	outgoing = log --oneline @{u}..HEAD
 	whatsnew = log --oneline HEAD..@{u}
