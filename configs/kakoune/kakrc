@@ -161,7 +161,7 @@ define-command isort %{
   edit!
 }
 
-define-command Kwargs-to-dict \
+define-command kwargs-to-dict \
   -docstring "Convert keyword arguments to a dict"\
 %{
   execute-keys <a-s> gi i" <esc> t= l i" <esc> r :
