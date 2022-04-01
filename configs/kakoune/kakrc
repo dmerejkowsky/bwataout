@@ -161,6 +161,18 @@ define-command isort %{
   edit!
 }
 
+define-command Kwargs-to-dict \
+  -docstring "Convert keyword arguments to a dict"\
+%{
+  execute-keys <a-s> gi i" <esc> t= l i" <esc> r :
+}
+
+define-command dict-to-kwargs \
+  -docstring "Convert dict to keyword arguments"\
+%{
+  execute-keys <a-s> gi d t" l d r=
+}
+
 
 # Other languages: ad hoc, sadly
 declare-option str format_project_cmd
