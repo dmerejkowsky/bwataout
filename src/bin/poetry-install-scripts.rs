@@ -5,7 +5,7 @@ use std::collections::HashMap;
 use std::fs::File;
 use std::os::unix::fs::PermissionsExt;
 use std::path::Path;
-use std::process::{Command, Stdio};
+use std::process::{Command, Output, Stdio};
 
 #[derive(Deserialize, Debug)]
 struct PyProject {
@@ -26,7 +26,7 @@ fn main() -> Result<()> {
     let base_dirs = BaseDirs::new().ok_or_else(|| anyhow!("Could not get base dirs"))?;
     let scripts_path = base_dirs.home_dir().join(".local/bin");
 
-    let output = Command::new("poetry")
+    let Output { status, stdout, .. } = Command::new("poetry")
         .args(&["env", "info", "-p"])
         .stdout(Stdio::piped())
         .spawn()
@@ -34,13 +34,11 @@ fn main() -> Result<()> {
         .wait_with_output()
         .context("When running `poetry env info -p`")?;
 
-    let status = output.status;
     if !status.success() {
         bail!("`poetry env info -p` exited with non-zero status code or was interrupted");
     }
 
-    let env_path =
-        String::from_utf8(output.stdout).context("Non-utf8 output for `poetry env info -p`")?;
+    let env_path = String::from_utf8(stdout).context("Non-utf8 output for `poetry env info -p`")?;
     let env_path = env_path.trim_end();
 
     let toml_contents = std::fs::read_to_string(Path::new("pyproject.toml"))
