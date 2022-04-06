@@ -1,4 +1,4 @@
-use anyhow::{anyhow, Context, Result};
+use anyhow::{anyhow, bail, Context, Result};
 use directories::BaseDirs;
 use serde::Deserialize;
 use std::collections::HashMap;
@@ -33,6 +33,11 @@ fn main() -> Result<()> {
         .context("When spawning `poetry env info -p`")?
         .wait_with_output()
         .context("When running `poetry env info -p`")?;
+
+    let status = output.status;
+    if !status.success() {
+        bail!("`poetry env info -p` exited with non-zero status code or was interrupted");
+    }
 
     let env_path =
         String::from_utf8(output.stdout).context("Non-utf8 output for `poetry env info -p`")?;
