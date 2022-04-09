@@ -428,6 +428,24 @@ map global user d ' :enter-user-mode comments<ret>' -docstring 'enter comments m
 map global comments d ': comment-line <ret>' -docstring 'toggle line comment'
 map global comments D ': comment-block <ret>' -docstring 'toggle block comment'
 
+## ReStructuredText helpers
+
+define-command h1 -docstring 'insert a h1 title' %{
+  execute-keys 'x y p j x r= <semicolon> Gl d'
+}
+
+define-command h2 -docstring 'insert a h2 title' %{
+  execute-keys 'x y p j x r- <semicolon> Gl d'
+}
+
+define-command h3 -docstring 'insert a h3 title' %{
+  execute-keys 'x y p j x r+ <semicolon> Gl d'
+}
+
+define-command h4 -docstring 'insert a h4 title' %{
+  execute-keys 'x y p j x r~ <semicolon> Gl d'
+}
+
 ## Source local config
 source "%val{config}/local.kak"
 
