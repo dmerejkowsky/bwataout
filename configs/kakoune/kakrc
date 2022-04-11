@@ -195,11 +195,6 @@ define-command lint-on-save "hook buffer BufWritePre .* lint"
 define-command format-on-save "hook -group format buffer BufWritePre .* format"
 define-command format-project-on-save "hook -group format global BufWritePre .* format-project"
 
-define-command word-count -docstring "show word count of the selection" %{
-  execute-keys '! wc -w <ret> <a-;> k Gl "cd d'
-  echo %reg{c} words in selection
-}
-
 define-command jump-random -docstring "jump to random place in the code" %{
   evaluate-commands %sh{
     jump-random --kak
@@ -353,10 +348,6 @@ map global make p ': make-previous-error<ret>' -docstring 'go to previous error'
 map global make s ':set global makecmd ' -docstring 'configure makecmmd'
 map global make l ': edit -existing *make* <ret>' -docstring 'show make output'
 
-define-command xml-format %{
-  execute-keys -draft '| xmllint --format - | tail +2 <ret>'
-}
-
 set-option global autowrap_column 80
 declare-option int comments_line_length 72
 map global normal = '|dfmt -w $kak_opt_comments_line_length <ret>'
@@ -393,8 +384,6 @@ map global user o ': mru <ret>' -docstring 'browse recently opened files'
 
 eval %sh{cwd-history init-kakoune}
 map global cd o ': cwd-history <ret>' -docstring 'open a buffer containing list of recent working dirs'
-
-
 
 # Backup everything!
 hook global BufWritePost .* %{ nop %sh{ kak-back backup  "${kak_hook_param}" } }
@@ -457,3 +446,15 @@ hook global KakBegin .* %{
     fi
   }
 }
+
+# various helpers
+
+define-command xml-format -docstring "format selection with xmllint" %{
+  execute-keys -draft '| xmllint --format - | tail +2 <ret>'
+}
+
+define-command word-count -docstring "show word count of the selection" %{
+  execute-keys '! wc -w <ret> <a-;> k Gl "cd d'
+  echo %reg{c} words in selection
+}
+
