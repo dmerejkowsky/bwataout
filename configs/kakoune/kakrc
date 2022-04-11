@@ -437,6 +437,10 @@ define-command h4 -docstring 'insert a h4 title' %{
 
 ## Various helpers
 
+define-command clean-imports %{
+  write
+  nop %sh{ autoflake8 --in-place $kak_buffile }
+  edit!
 }
 
 define-command xml-format -docstring "format selection with xmllint" %{
