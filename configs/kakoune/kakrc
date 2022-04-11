@@ -435,19 +435,9 @@ define-command h4 -docstring 'insert a h4 title' %{
   execute-keys 'x y p j x r~ <semicolon> Gl d'
 }
 
-## Source local config
-source "%val{config}/local.kak"
+## Various helpers
 
-## Source project config if it exists
-hook global KakBegin .* %{
-  evaluate-commands %sh{
-    if [ -f .kakrc ]; then
-       printf %s\\n "source '.kakrc'"
-    fi
-  }
 }
-
-# various helpers
 
 define-command xml-format -docstring "format selection with xmllint" %{
   execute-keys -draft '| xmllint --format - | tail +2 <ret>'
@@ -458,3 +448,15 @@ define-command word-count -docstring "show word count of the selection" %{
   echo %reg{c} words in selection
 }
 
+
+## Source project config if it exists
+hook global KakBegin .* %{
+  evaluate-commands %sh{
+    if [ -f .kakrc ]; then
+       printf %s\\n "source '.kakrc'"
+    fi
+  }
+}
+
+## Source local config (must be last)
+source "%val{config}/local.kak"
