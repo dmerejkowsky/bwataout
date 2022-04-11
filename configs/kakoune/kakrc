@@ -452,6 +452,10 @@ define-command word-count -docstring "show word count of the selection" %{
   echo %reg{c} words in selection
 }
 
+define-command char-count -docstring "show char count of the selection" %{
+  execute-keys '! wc -c <ret> <a-;> k Gl "cd d'
+  echo %reg{c} chars in selection
+}
 
 ## Source project config if it exists
 hook global KakBegin .* %{
