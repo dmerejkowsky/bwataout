@@ -239,7 +239,9 @@ hook global WinCreate .* %{
   }
 }
 
-declare-option -hidden str modeline_buddy
+# Default: happy face
+declare-option -hidden str modeline_buddy ":-)"
+
 hook global WinCreate .* %{
   # Rotate nose while typing
   hook window InsertChar .* %{
@@ -258,19 +260,26 @@ hook global WinCreate .* %{
       echo "set window modeline_buddy $res"
     }
   }
-  # Default to smiling when idle, but frowns if there are spelling
-  # errors or lsp errors
+  hook window InsertIdle  .* %{
+    update-buddy
+  }
   hook window NormalIdle  .* %{
-    evaluate-commands %sh{
-      res=":-)"
-      if [ ${kak_opt_lsp_diagnostic_error_count:-0} -ge 1 ]; then
-        res=":-("
-      fi
-      if [ ${kak_opt_skyspell_error_count:-0} -ge 1 ]; then
-        res=":-("
-      fi
-      echo "set window modeline_buddy $res"
-    }
+    update-buddy
+  }
+
+}
+
+define-command -hidden update-buddy %{
+  # Default to smiling when idle, but frowns if there are spelling
+  evaluate-commands %sh{
+    res=":-)"
+    if [ ${kak_opt_lsp_diagnostic_error_count:-0} -ge 1 ]; then
+      res=":-("
+    fi
+    if [ ${kak_opt_skyspell_error_count:-0} -ge 1 ]; then
+      res=":-("
+    fi
+    echo "set window modeline_buddy $res"
   }
 }
 
