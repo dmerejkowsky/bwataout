@@ -226,15 +226,14 @@ declare-option str modeline_percent
 hook global WinCreate .* %{
   hook window NormalIdle .* %{
     evaluate-commands %sh{
-      percent=$(($kak_cursor_line * 100 / $kak_buf_line_count))
-      case $percent in
-         0)
-           res="Top";;
-        100)
-           res="Bot";;
-         *)
-           res="${percent}%";;
-      esac
+      if [ $kak_cursor_line -eq 1 ]; then
+        res="Top"
+      elif [ $kak_cursor_line -eq  $kak_buf_line_count ]; then
+        res="Bot"
+      else
+          percent=$(($kak_cursor_line * 100 / $kak_buf_line_count))
+          res="${percent}%"
+      fi
       echo "set window modeline_percent $res"
     }
   }
