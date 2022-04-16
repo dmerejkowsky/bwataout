@@ -481,6 +481,11 @@ define-command xml-format -docstring "format selection with xmllint" %{
   execute-keys -draft '| xmllint --format - | tail +2 <ret>'
 }
 
+define-command line-count -docstring "show line count of the selection" %{
+  execute-keys '! wc -l <ret> <a-;> k Gl "cd d'
+  echo %reg{c}  lines in selection
+}
+
 define-command word-count -docstring "show word count of the selection" %{
   execute-keys '! wc -w <ret> <a-;> k Gl "cd d'
   echo %reg{c} words in selection
