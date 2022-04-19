@@ -18,8 +18,8 @@ map global user h \
   -docstring "Spawn a connected terminal"
 
 map global user H \
-    ': change-directory-current-buffer <ret> : connect-terminal <ret>' \
-    -docstring 'Start terminal in the parent directory of the current buffer'
+  ': change-directory-current-buffer <ret> : connect-terminal <ret>' \
+  -docstring 'Start terminal in the parent directory of the current buffer'
 
 map global user f ': connect-terminal kcr-fzf-files <ret>' -docstring 'Find files with fzf'
 
@@ -36,14 +36,14 @@ hook global BufCreate .*(\.gmi|\.txt)$ %{
 
 ## jinja2 files are jinja
 hook global WinCreate .*\.jinja2 %{
-    require-module jinja
-    add-highlighter window/ ref jinja
+  require-module jinja
+  add-highlighter window/ ref jinja
 }
 
 ## pp files are puppet class and should
 ## not have any syntax highlighters
 hook global WinCreate .*\.pp %{
-set-option buffer filetype ''
+  set-option buffer filetype ''
 }
 
 # mky files are for the Monkey programming language, but I don't want to
@@ -64,7 +64,7 @@ define-command -hidden -params 6 -override lsp-handle-progress %{
   set global modeline_progress %sh{
     if ! "$6"; then
       echo "$2${5:+" ($5%)"}${4:+": $4"}"
-   fi
+    fi
   }
 }
 # Note: call lsp-enable-window when ready
@@ -92,14 +92,14 @@ plug "occivink/kakoune-snippets"
 
 ## buffers #
 plug "occivink/kakoune-buffer-switcher" %{
-    map global user b ': buffer-switcher<ret>' -docstring 'explore buffer list'
+  map global user b ': buffer-switcher<ret>' -docstring 'explore buffer list'
 }
 
 
 ## inc/dec
 plug "Screwtapello/kakoune-inc-dec" domain "gitlab.com" config %{
- map global normal <c-a> ': inc-dec-modify-numbers + %val{count}<ret>'
- map global normal <c-x> ': inc-dec-modify-numbers - %val{count}<ret>'
+  map global normal <c-a> ': inc-dec-modify-numbers + %val{count}<ret>'
+  map global normal <c-x> ': inc-dec-modify-numbers - %val{count}<ret>'
 }
 
 ## kak-tree
@@ -354,8 +354,8 @@ define-command markdown-format -docstring "format selection into clean markdown"
 
 ## Always use spell check for commit messages
 hook global WinSetOption filetype=git-commit %{
-    skyspell-enable en_US
-    skyspell-check
+  skyspell-enable en_US
+  skyspell-check
 }
 
 # Show line numbers by default
@@ -509,7 +509,7 @@ define-command char-count -docstring "show char count of the selection" %{
 hook global KakBegin .* %{
   evaluate-commands %sh{
     if [ -f .kakrc ]; then
-       printf %s\\n "source '.kakrc'"
+      printf %s\\n "source '.kakrc'"
     fi
   }
 }
