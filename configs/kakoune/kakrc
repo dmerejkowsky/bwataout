@@ -239,51 +239,7 @@ hook global WinCreate .* %{
   }
 }
 
-# Default: happy face
-declare-option -hidden str modeline_buddy ":-)"
-
-hook global WinCreate .* %{
-  # Rotate nose while typing
-  hook window InsertChar .* %{
-    evaluate-commands %sh{
-      n=$(( $kak_cursor_display_column % 4))
-      case $n in
-         1)
-           res=":-/)";;
-         2)
-           res=":-)";;
-         3)
-           res=":-\\)";;
-         0)
-           res=":-|)";;
-      esac
-      echo "set window modeline_buddy $res"
-    }
-  }
-  hook window InsertIdle  .* %{
-    update-buddy
-  }
-  hook window NormalIdle  .* %{
-    update-buddy
-  }
-
-}
-
-define-command -hidden update-buddy %{
-  # Default to smiling when idle, but frowns if there are spelling
-  evaluate-commands %sh{
-    res=":-)"
-    if [ ${kak_opt_lsp_diagnostic_error_count:-0} -ge 1 ]; then
-      res=":-("
-    fi
-    if [ ${kak_opt_skyspell_error_count:-0} -ge 1 ]; then
-      res=":-("
-    fi
-    echo "set window modeline_buddy $res"
-  }
-}
-
-set-option global modelinefmt '%opt{modeline_buddy} %opt{modeline_progress} %opt{lsp_diagnostic_error_count}✘  %opt{lsp_diagnostic_warning_count}! %val{bufname} %val{cursor_line}:%val{cursor_char_column} {{context_info}} {{mode_info}} - %val{client}@[%val{session}] %opt{modeline_percent}'
+set-option global modelinefmt '%opt{modeline_progress} %opt{lsp_diagnostic_error_count}✘  %opt{lsp_diagnostic_warning_count}! %val{bufname} %val{cursor_line}:%val{cursor_char_column} {{context_info}} {{mode_info}} - %val{client}@[%val{session}] %opt{modeline_percent}'
 
 
 ## Plugins customisation
