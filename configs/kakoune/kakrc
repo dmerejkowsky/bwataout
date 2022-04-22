@@ -90,7 +90,7 @@ plug "andreyorst/smarttab.kak" defer smarttab %{
 ## snippets
 plug "occivink/kakoune-snippets"
 
-## buffers #
+## buffers switcher
 plug "occivink/kakoune-buffer-switcher" %{
   map global user b ': buffer-switcher<ret>' -docstring 'explore buffer list'
 }
