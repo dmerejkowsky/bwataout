@@ -54,6 +54,9 @@
 	compactionHeuristic = true
 	colorMoved = true
 
+[diff "lockdiff"]
+	textconv = lock-diff
+
 [fetch]
 	prune = true
 
