@@ -105,6 +105,12 @@ plug "kak-lsp/kak-lsp" tag "v12.1.0" config %{
   set-option global lsp_diagnostic_line_error_sign  ✘
 
   set-option global modelinefmt '%opt{lsp_modeline_progress} %opt{lsp_diagnostic_error_count}✘  %opt{lsp_diagnostic_warning_count}! %val{bufname} %val{cursor_line}:%val{cursor_char_column} {{context_info}} {{mode_info}} - %val{client}@[%val{session}] %opt{modeline_percent}'
+
+  declare-user-mode lsp-goto
+  map global user G ':enter-user-mode lsp-goto<ret>' -docstring 'enter goto mode'
+  map global lsp-goto n ': lsp-next-location *goto*<ret>' -docstring 'goto next lsp location'
+  map global lsp-goto p ': lsp-previous-location *goto*<ret>' -docstring 'goto previous lsp location'
+  map global lsp-goto l ': edit -existing *goto* <ret>' -docstring 'show lsp results'
 }
 
 ## EditorConfig support
@@ -341,12 +347,6 @@ map global grep p ': grep-previous<ret>' -docstring 'run grep-previous-match'
 map global grep n ': grep-next-match<ret>' -docstring 'run grep-next-match'
 map global grep l ': edit -existing *grep* <ret>' -docstring 'show grep results'
 map global grep s ': grep-selection <ret>' -docstring 'grep selection'
-
-declare-user-mode lsp-goto
-map global user G ':enter-user-mode lsp-goto<ret>' -docstring 'enter goto mode'
-map global lsp-goto n ': lsp-next-location *goto*<ret>' -docstring 'goto next lsp location'
-map global lsp-goto p ': lsp-previous-location *goto*<ret>' -docstring 'goto previous lsp location'
-map global lsp-goto l ': edit -existing *goto* <ret>' -docstring 'show lsp results'
 
 declare-user-mode make
 map global user m ': enter-user-mode make<ret>' -docstring 'enter make mdoe'
