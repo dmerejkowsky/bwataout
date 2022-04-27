@@ -4,6 +4,27 @@ set-option global startup_info_version 20211108
 ## Disable kitty integration
 set-option global windowing_modules 'tmux' 'x11'
 
+## Status line
+
+# Display 'Top', 'Bot' or 'XX%' position in the modeline
+declare-option str modeline_percent
+hook global WinCreate .* %{
+  hook window NormalIdle .* %{
+    evaluate-commands %sh{
+      if [ $kak_cursor_line -eq 1 ]; then
+        res="Top"
+      elif [ $kak_cursor_line -eq  $kak_buf_line_count ]; then
+        res="Bot"
+      else
+          percent=$(($kak_cursor_line * 100 / $kak_buf_line_count))
+          res="${percent}%"
+      fi
+      echo "set window modeline_percent $res"
+    }
+  }
+}
+set-option global modelinefmt '%val{bufname} %val{cursor_line}:%val{cursor_char_column} {{context_info}} {{mode_info}} - %val{client}@[%val{session}] %opt{modeline_percent}'
+
 ## Setup plug.kak
 source "%val{config}/plugins/plug.kak/rc/plug.kak"
 plug "andreyorst/plug.kak" noload
@@ -56,23 +77,35 @@ hook global BufCreate .*\.mky$ %{
 set global ignored_files "(.*\.egg-info)|(__pycache__)|(\.mypy_cache)|(build/)"
 
 ## LSP
-eval %sh{kak-lsp --kakoune -s $kak_session}
-set global lsp_cmd "kak-lsp -s %val{session}"
-# set global lsp_cmd "kak-lsp -s %val{session} -vvv --log /tmp/kak-lsp.log"
-declare-option -hidden str modeline_progress ""
-define-command -hidden -params 6 -override lsp-handle-progress %{
-  set global modeline_progress %sh{
-    if ! "$6"; then
-      echo "$2${5:+" ($5%)"}${4:+": $4"}"
-    fi
+
+# note: - no need for do %{} block, installation of the binary is handled by
+# the bwataout script
+plug "kak-lsp/kak-lsp" tag "v12.1.0" config %{
+  set global lsp_cmd "kak-lsp -s %val{session}"
+  # for troubleshooting:
+  # set global lsp_cmd "kak-lsp -s %val{session} -vvv --log /tmp/kak-lsp.log"
+
+  declare-option -hidden str modeline_progress ""
+  define-command -hidden -params 6 -override lsp-handle-progress %{
+    set global lsp_modeline_progress %sh{
+      if ! "$6"; then
+        echo "$2${5:+" ($5%)"}${4:+": $4"}"
+      fi
+    }
   }
+
+  # Note: call lsp-enable-window when ready
+  map global user l ': enter-user-mode lsp<ret>' -docstring 'enter lsp user mode'
+  map global lsp n ': lsp-find-error --include-warnings<ret>' -docstring 'find next warning or error'
+  map global lsp E ': lsp-find-error<ret>' -docstring 'find next error'
+  map global lsp l ': lsp-enable<ret>' -docstring 'enable lsp for the whole session'
+  map global lsp R ': lsp-rename-prompt<ret>' -docstring 'rename symbol under cursor'
+
+  set-option global lsp_diagnostic_line_warning_sign !
+  set-option global lsp_diagnostic_line_error_sign  ✘
+
+  set-option global modelinefmt '%opt{lsp_modeline_progress} %opt{lsp_diagnostic_error_count}✘  %opt{lsp_diagnostic_warning_count}! %val{bufname} %val{cursor_line}:%val{cursor_char_column} {{context_info}} {{mode_info}} - %val{client}@[%val{session}] %opt{modeline_percent}'
 }
-# Note: call lsp-enable-window when ready
-map global user l ': enter-user-mode lsp<ret>' -docstring 'enter lsp user mode'
-map global lsp n ': lsp-find-error --include-warnings<ret>' -docstring 'find next warning or error'
-map global lsp E ': lsp-find-error<ret>' -docstring 'find next error'
-map global lsp l ': lsp-enable<ret>' -docstring 'enable lsp for the whole session'
-map global lsp R ': lsp-rename-prompt<ret>' -docstring 'rename symbol under cursor'
 
 ## EditorConfig support
 # .editorconfig file should exist somewhere
@@ -217,30 +250,6 @@ set-option global ui_options 'terminal_assistant=cat'
 unset-face global DiagnosticWarning
 unset-face global DiagnosticError
 set-face global LineFlagErrors green+bi
-set-option global lsp_diagnostic_line_warning_sign !
-set-option global lsp_diagnostic_line_error_sign  ✘
-
-# Status line
-declare-option str modeline_percent
-
-hook global WinCreate .* %{
-  hook window NormalIdle .* %{
-    evaluate-commands %sh{
-      if [ $kak_cursor_line -eq 1 ]; then
-        res="Top"
-      elif [ $kak_cursor_line -eq  $kak_buf_line_count ]; then
-        res="Bot"
-      else
-          percent=$(($kak_cursor_line * 100 / $kak_buf_line_count))
-          res="${percent}%"
-      fi
-      echo "set window modeline_percent $res"
-    }
-  }
-}
-
-set-option global modelinefmt '%opt{modeline_progress} %opt{lsp_diagnostic_error_count}✘  %opt{lsp_diagnostic_warning_count}! %val{bufname} %val{cursor_line}:%val{cursor_char_column} {{context_info}} {{mode_info}} - %val{client}@[%val{session}] %opt{modeline_percent}'
-
 
 ## Plugins customisation
 set-option global grepcmd 'rg --no-heading --line-number --column --sort path'
