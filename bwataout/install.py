@@ -91,10 +91,7 @@ class Installer:
             ui.info_2("Skipping", pretty_dest)
         else:
             ui.info_2("Fetching", url, "->", pretty_dest)
-            r = httpx.get(url)
-            if r.is_error:
-                ui.fatal(f"Got status {r.status_code} when fetching {url}")
-            r = httpx.get(url)
+            r = httpx.get(url, follow_redirects=True)
             if r.is_error:
                 ui.fatal(f"Got status {r.status_code} when fetching {url}")
             buffer = gzip.GzipFile(fileobj=BytesIO(r.content))
@@ -108,7 +105,7 @@ class Installer:
         else:
             ui.info_2("Fetching", url, "->", pretty_dest)
             with open(dest_path, "wb") as o:
-                with httpx.stream("GET", url) as r:
+                with httpx.stream("GET", url, follow_redirects=True) as r:
                     if r.is_error:
                         ui.fatal(f"Got status {r.status_code} when fetching {url}")
                     for buffer in r.iter_bytes():
@@ -122,7 +119,7 @@ class Installer:
             ui.info_2("Skipping", pretty_dest)
         else:
             ui.info_2("Fetching", url, "->", pretty_dest)
-            r = httpx.get(url)
+            r = httpx.get(url, follow_redirects=True)
             if r.is_error:
                 ui.fatal(f"Got status {r.status_code} when fetching {url}")
             archive = tarfile.open(fileobj=BytesIO(r.content), mode="r:gz")
