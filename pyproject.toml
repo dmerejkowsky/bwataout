@@ -6,7 +6,7 @@ authors = ["Dimitri Merejkowsky <dimitri@dmerej.info>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-httpx = "^0.22.0"
+httpx = "^0.23.0"
 cli-ui = "^0.11.0"
 "ruamel.yaml" = "^0.17"
 tomlkit = "^0.10.2"
