@@ -1,0 +1,13 @@
+#!/bin/env python3
+
+import secrets
+
+
+def main():
+    for i in range(0, 6):
+        print(secrets.randbelow(10), end="")
+    print()
+
+
+if __name__ == "__main__":
+    main()
