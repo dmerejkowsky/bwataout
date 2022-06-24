@@ -141,14 +141,6 @@ plug "Screwtapello/kakoune-inc-dec" domain "gitlab.com" config %{
   map global normal <c-x> ': inc-dec-modify-numbers - %val{count}<ret>'
 }
 
-## kak-tree
-plug "ul/kak-tree"
-declare-user-mode tree
-map global user t ' :enter-user-mode -lock tree<ret>' -docstring 'enter treesitter mode'
-map global tree a ': tree-select-parent-node<ret>' -docstring 'select parent node'
-map global tree n ': tree-select-next-node<ret>' -docstring 'select parent node'
-map global tree p ': tree-select-previous-node<ret>' -docstring 'select parent node'
-
 ## linter
 declare-user-mode linting
 map global user n ' :enter-user-mode linting<ret>' -docstring 'enter linting mode'
