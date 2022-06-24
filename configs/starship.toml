@@ -4,11 +4,6 @@ command_timeout = 1000
 symbol = "aws "
 disabled = true
 
-[character]
-success_symbol = "[>](bold green)"
-error_symbol = "[x](bold red)"
-vicmd_symbol = "[<](bold green)"
-
 [conda]
 symbol = "conda "
 
@@ -40,10 +35,10 @@ symbol = "elm "
 tag_symbol = " tag "
 
 [git_status]
-ahead = ">"
-behind = "<"
+ahead = "⇡"
+behind = "⇣"
 renamed = "r"
-deleted = "x"
+deleted = "!"
 stashed = ""
 modified = "*"
 diverged = "⇡⇣"
