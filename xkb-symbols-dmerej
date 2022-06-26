@@ -1,4 +1,5 @@
 // TODO: put me in /usr/share/X11/xkb/symbols/dmerej
+// Then use: setxkbmap dmerej dvorak-intl
 
 default  partial alphanumeric_keys modifier_keys
 xkb_symbols "basic" {
