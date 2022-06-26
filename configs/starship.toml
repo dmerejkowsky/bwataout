@@ -35,13 +35,13 @@ symbol = "elm "
 tag_symbol = " tag "
 
 [git_status]
-ahead = "⇡"
-behind = "⇣"
-renamed = "r"
-deleted = "!"
-stashed = ""
-modified = "*"
-diverged = "⇡⇣"
+ahead = " ⇡"
+behind = " ⇣"
+deleted = " !"
+diverged = " ⇡⇣"
+modified = " *"
+renamed = " »"
+stashed = " "
 format = "[$all_status](dimmed cyan)[$ahead_behind](dimmed cyan) "
 
 [golang]
