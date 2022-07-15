@@ -1,0 +1,4 @@
+#/bin/sh
+
+url=$(echo $1 | sed s/twitter.com/nitter.fdn.fr/)
+firefox $url
