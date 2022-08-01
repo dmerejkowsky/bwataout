@@ -42,6 +42,12 @@ git:
       name =
       email =
 
+gpg:
+  - write:
+    - ~/.gnupg/gpg-agent.conf
+    - |
+      pinentry-program /usr/bin/pinentry-qt
+
 
 delta:
   - download:
