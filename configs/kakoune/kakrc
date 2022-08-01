@@ -78,9 +78,7 @@ set global ignored_files "(.*\.egg-info)|(__pycache__)|(\.mypy_cache)|(build/)"
 
 ## LSP
 
-# note: - no need for do %{} block, installation of the binary is handled by
-# the bwataout script
-plug "kak-lsp/kak-lsp" tag "v12.1.0" config %{
+plug "kak-lsp/kak-lsp" tag "v12.2.1" config %{
   set global lsp_cmd "kak-lsp -s %val{session}"
   # for troubleshooting:
   # set global lsp_cmd "kak-lsp -s %val{session} -vvv --log /tmp/kak-lsp.log"
