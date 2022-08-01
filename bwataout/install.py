@@ -58,7 +58,7 @@ class Installer:
             ui.info_2("Skipping", pretty_dest)
             return
         src_path = TOP_DIR / "configs/" / src
-        ui.info_2("Copy", src, "->", self.pretty_path(src_path))
+        ui.info_2("Copy", self.pretty_path(src_path), "->", dest_path)
         shutil.copy(src_path, dest_path)
 
     def do_download(
