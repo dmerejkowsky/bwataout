@@ -19,7 +19,7 @@ def print_sep():
 def sanitize_url(url):
     as_path = Path(url)
     if as_path.exists():
-        url = "file://" + as_path.resolve()
+        url = f"file://{as_path.resolve()}"
     return url
 
 
