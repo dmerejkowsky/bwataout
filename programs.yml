@@ -102,13 +102,6 @@ kcr:
 mdfmt:
   - run: [cargo, install, --git, "https://github.com/tux3/mdfmt", --rev, e79c6fe8d2813a047a0f6e290d94162359678fcd]
 
-kak-lsp-binary:
-  - download:
-     url: https://github.com/kak-lsp/kak-lsp/releases/download/v12.2.1/kak-lsp-v12.2.1-x86_64-unknown-linux-musl.tar.gz
-     dest: ~/.local/bin/kak-lsp
-     extract_member: kak-lsp
-     executable: true
-
 kak-lsp-config:
   - copy:
     - kak-lsp/kak-lsp.toml
