@@ -18,10 +18,6 @@ style = "green"
 [gcloud]
 disabled = true
 
-[git_branch]
-symbol = ""
-format = "[$symbol$branch](dimmed cyan)"
-
 [hostname]
 ssh_only = true
 trim_at = ""
