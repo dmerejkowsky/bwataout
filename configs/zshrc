@@ -330,7 +330,7 @@ p-latex() {
 
 p-beamer() {
   pdf=${1/.tex/.pdf}
-  TMPDIR=. pandoc -f markdown $1 -t beamer -o $pdf
+  TMPDIR=. pandoc -f markdown $1 -t beamer --slide-level 2 -o $pdf
   okular $pdf &!
 }
 
@@ -345,7 +345,7 @@ kak-latex() {
 
 kak-beamer () {
   pdf=${1/.tex/.pdf}
-  cmd="TMPDIR=. pandoc -f markdown -t beamer $1 -o $pdf"
+  cmd="TMPDIR=. pandoc -f markdown -t beamer --slide-level 2 $1 -o $pdf"
   echo $cmd
   eval $cmd
   okular $pdf &
