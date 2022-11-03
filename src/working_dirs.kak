@@ -1,5 +1,5 @@
 define-command cwd-jump -hidden %{
-  execute-keys 'x H <esc>: cd <c-r>. <ret> : e '
+  execute-keys x H <esc>: cd <space> <c-r>. <ret> : e
 }
 
 define-command cwd-history -docstring "open a buffer containing list of recent working dirs" %{
