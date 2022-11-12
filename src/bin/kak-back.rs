@@ -57,7 +57,7 @@ struct BackupStore {
 impl BackupStore {
     fn new(path: &Path) -> Result<Self> {
         let mut files = vec![];
-        let dir = std::fs::read_dir(&path).with_context(|| "Could not read backups dir")?;
+        let dir = std::fs::read_dir(path).with_context(|| "Could not read backups dir")?;
         for entry in dir {
             let entry = entry?;
             let metadata = entry
@@ -134,7 +134,7 @@ impl BackupStore {
                 cleaned += 1;
                 if !dry_run {
                     let full_path = &self.path.join(&file.relative_path);
-                    std::fs::remove_file(&full_path)
+                    std::fs::remove_file(full_path)
                         .with_context(|| format!("Could not remove {full_path:?}"))?;
                 }
             }

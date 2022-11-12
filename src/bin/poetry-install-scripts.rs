@@ -27,7 +27,7 @@ fn main() -> Result<()> {
     let scripts_path = base_dirs.home_dir().join(".local/bin");
 
     let Output { status, stdout, .. } = Command::new("poetry")
-        .args(&["env", "info", "-p"])
+        .args(["env", "info", "-p"])
         .stdout(Stdio::piped())
         .spawn()
         .context("When spawning `poetry env info -p`")?

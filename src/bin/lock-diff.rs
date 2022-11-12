@@ -51,7 +51,7 @@ fn main() -> Result<()> {
     }
 
     let lock_path = &args[1];
-    let lock_contents = std::fs::read_to_string(&lock_path).context("Could not read lock file")?;
+    let lock_contents = std::fs::read_to_string(lock_path).context("Could not read lock file")?;
     let lock: Lock = toml::from_str(&lock_contents).context("Could not parse lock")?;
     for package in lock.package {
         println!("{package}");
