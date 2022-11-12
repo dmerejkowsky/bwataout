@@ -369,11 +369,11 @@ map global user p '<a-!>system-clipboard-paste<ret>' -docstring 'yank from syste
 
 plug "https://git.sr.ht/~dmerej/kak-rope" config %{
   declare-user-mode rope
-  map global user r ' :enter-user-mode rope<ret>' -docstring 'enter rope mode'
+  map global user r ':enter-user-mode rope<ret>' -docstring 'enter rope mode'
   map global rope r ':rope-' -docstring 'start a rope command'
   map global rope a ':rope-add-import ' -docstring 'add import'
   map global rope e ':rope-extract-' -docstring 'start a rope-extract command'
-  map global rope i ': rope-inline <ret> ' -docstring 'inline'
+  map global rope i ':rope-inline <ret>' -docstring 'inline'
 }
 
 ## Persistent file and working dirs history
