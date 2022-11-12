@@ -21,13 +21,13 @@ pub enum SubCommand {
 
     #[clap(about = "clean invalid entries")]
     Clean {
-        #[clap(long = "--max", long_help = "only clean the last <max> entries")]
+        #[clap(long = "max", long_help = "only clean the last <max> entries")]
         max: Option<isize>,
     },
 
     #[clap(about = "list entries")]
     List {
-        #[clap(long = "--reversed", long_help = "reverse order")]
+        #[clap(long = "reversed", long_help = "reverse order")]
         reversed: bool,
     },
 }
