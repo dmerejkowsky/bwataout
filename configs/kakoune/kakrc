@@ -405,10 +405,12 @@ hook global InsertChar j %{ try %{
 }}
 
 ## IPC
-define-command -docstring "trigger a run from on-kak-refresh" ipc-run %{
+define-command -hidden -docstring "trigger a run from on-kak-refresh" ipc-run %{
   nop %sh{ echo "run" >> /tmp/kak-refresh }
 }
-map global user i ':write-all<ret> :ipc-run<ret>' -docstring "call ipc-run"
+define-command build-on-save %{
+  hook -group format buffer BufWritePre .* ipc-run
+}
 
 declare-user-mode comments
 map global user d ' :enter-user-mode comments<ret>' -docstring 'enter comments mode'
