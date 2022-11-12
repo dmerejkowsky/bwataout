@@ -35,16 +35,16 @@ evaluate-commands %sh{
 }
 
 map global user h \
-  ": connect-terminal <ret>"\
+  ":connect-terminal <ret>"\
   -docstring "Spawn a connected terminal"
 
 map global user H \
-  ': change-directory-current-buffer <ret> : connect-terminal <ret>' \
+  ':change-directory-current-buffer <ret>:connect-terminal <ret>' \
   -docstring 'Start terminal in the parent directory of the current buffer'
 
-map global user f ': connect-terminal kcr-fzf-files <ret>' -docstring 'Find files with fzf'
+map global user f ':connect-terminal kcr-fzf-files <ret>' -docstring 'Find files with fzf'
 
-map global user B ': connect-terminal kcr-fzf-buffers <ret>' -docstring 'Open buffers with fzf'
+map global user B ':connect-terminal kcr-fzf-buffers <ret>' -docstring 'Open buffers with fzf'
 
 define-command -params .. -file-completion lf -docstring "Start lf" %{
   connect-terminal lf %arg{@}
@@ -141,7 +141,7 @@ plug "Screwtapello/kakoune-inc-dec" domain "gitlab.com" config %{
 
 ## linter
 declare-user-mode linting
-map global user n ' :enter-user-mode linting<ret>' -docstring 'enter linting mode'
+map global user n ':enter-user-mode linting<ret>' -docstring 'enter linting mode'
 map global linting n ': lint-next-error<ret>' -docstring 'go to next lint error'
 
 ## save-state
