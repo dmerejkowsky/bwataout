@@ -1,5 +1,5 @@
 define-command mru-jump -hidden %{
-  execute-keys -with-hooks x H gf
+  execute-keys -client %val{client} -with-hooks x H gf
 }
 
 # Each open file is added to the list
