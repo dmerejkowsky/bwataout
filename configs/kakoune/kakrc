@@ -93,11 +93,11 @@ plug "kak-lsp/kak-lsp" tag "v14.1.0" config %{
   }
 
   # Note: call lsp-enable-window when ready
-  map global user l ': enter-user-mode lsp<ret>' -docstring 'enter lsp user mode'
-  map global lsp n ': lsp-find-error --include-warnings<ret>' -docstring 'find next warning or error'
-  map global lsp E ': lsp-find-error<ret>' -docstring 'find next error'
-  map global lsp l ': lsp-enable<ret>' -docstring 'enable lsp for the whole session'
-  map global lsp R ': lsp-rename-prompt<ret>' -docstring 'rename symbol under cursor'
+  map global user l ':enter-user-mode lsp<ret>' -docstring 'enter lsp user mode'
+  map global lsp n ':lsp-find-error --include-warnings<ret>' -docstring 'find next warning or error'
+  map global lsp E ':lsp-find-error<ret>' -docstring 'find next error'
+  map global lsp l ':lsp-enable<ret>' -docstring 'enable lsp for the whole session'
+  map global lsp R ':lsp-rename-prompt<ret>' -docstring 'rename symbol under cursor'
 
   set-option global lsp_diagnostic_line_warning_sign !
   set-option global lsp_diagnostic_line_error_sign  ✘
@@ -106,9 +106,9 @@ plug "kak-lsp/kak-lsp" tag "v14.1.0" config %{
 
   declare-user-mode lsp-goto
   map global user G ':enter-user-mode lsp-goto<ret>' -docstring 'enter goto mode'
-  map global lsp-goto n ': lsp-next-location *goto*<ret>' -docstring 'goto next lsp location'
-  map global lsp-goto p ': lsp-previous-location *goto*<ret>' -docstring 'goto previous lsp location'
-  map global lsp-goto l ': edit -existing *goto* <ret>' -docstring 'show lsp results'
+  map global lsp-goto n ':lsp-next-location *goto*<ret>' -docstring 'goto next lsp location'
+  map global lsp-goto p ':lsp-previous-location *goto*<ret>' -docstring 'goto previous lsp location'
+  map global lsp-goto l ':edit -existing *goto* <ret>' -docstring 'show lsp results'
 }
 
 ## EditorConfig support
@@ -129,20 +129,20 @@ plug "occivink/kakoune-snippets"
 
 ## buffers switcher
 plug "occivink/kakoune-buffer-switcher" %{
-  map global user b ': buffer-switcher<ret>' -docstring 'explore buffer list'
+  map global user b ':buffer-switcher<ret>' -docstring 'explore buffer list'
 }
 
 
 ## inc/dec
 plug "Screwtapello/kakoune-inc-dec" domain "gitlab.com" config %{
-  map global normal <c-a> ': inc-dec-modify-numbers + %val{count}<ret>'
-  map global normal <c-x> ': inc-dec-modify-numbers - %val{count}<ret>'
+  map global normal <c-a> ':inc-dec-modify-numbers + %val{count}<ret>'
+  map global normal <c-x> ':inc-dec-modify-numbers - %val{count}<ret>'
 }
 
 ## linter
 declare-user-mode linting
 map global user n ':enter-user-mode linting<ret>' -docstring 'enter linting mode'
-map global linting n ': lint-next-error<ret>' -docstring 'go to next lint error'
+map global linting n ':lint-next-error<ret>' -docstring 'go to next lint error'
 
 ## save-state
 plug "https://gitlab.com/Screwtapello/kakoune-state-save"
@@ -254,9 +254,9 @@ set-option global grepcmd 'rg --no-heading --line-number --column --sort path'
 ## Working dir stuff
 declare-option str project_working_dir %sh{ pwd }
 plug 'dmerejkowsky/kakoune-cd' %{
-  map global user c ': enter-user-mode cd<ret>' -docstring 'enter cd user mode'
-  map global cd f ': open-current-buffer-directory<ret>' -docstring 'open current buffer dir in lf'
-  map global cd c ': change-directory %val{opt_project_working_dir}<ret>' -docstring 'reset working dir'
+  map global user c ':enter-user-mode cd<ret>' -docstring 'enter cd user mode'
+  map global cd f ':open-current-buffer-directory<ret>' -docstring 'open current buffer dir in lf'
+  map global cd c ':change-directory %val{opt_project_working_dir}<ret>' -docstring 'reset working dir'
   alias global pwd print-working-directory
 }
 
@@ -274,16 +274,16 @@ evaluate-commands %sh{
 }
 
 declare-user-mode skyspell
-map global user s ': enter-user-mode skyspell<ret>' -docstring 'enter spell user mode'
-map global skyspell d ': skyspell-disable<ret>' -docstring 'clear spelling highlighters'
-map global skyspell e ': skyspell-enable en_US<ret>' -docstring 'enable spell checking in English'
-map global skyspell f ': skyspell-enable fr_FR<ret>' -docstring 'enable spell check in French'
-map global skyspell l ': skyspell-list <ret>' -docstring 'list spelling errors in a buffer'
-map global skyspell h ': skyspell-help <ret>' -docstring 'show help message'
-map global skyspell n ': skyspell-next<ret>' -docstring 'go to next spell error'
-map global skyspell p ': skyspell-previous<ret>' -docstring 'go to previous spell error'
-map global skyspell r ': skyspell-replace<ret>' -docstring 'suggest a list of replacements'
-map global skyspell c ': skyspell-ci-enable<ret>' -docstring 'use skyspell-ci as makecmd'
+map global user s ':enter-user-mode skyspell<ret>' -docstring 'enter spell user mode'
+map global skyspell d ':skyspell-disable<ret>' -docstring 'clear spelling highlighters'
+map global skyspell e ':skyspell-enable en_US<ret>' -docstring 'enable spell checking in English'
+map global skyspell f ':skyspell-enable fr_FR<ret>' -docstring 'enable spell check in French'
+map global skyspell l ':skyspell-list <ret>' -docstring 'list spelling errors in a buffer'
+map global skyspell h ':skyspell-help <ret>' -docstring 'show help message'
+map global skyspell n ':skyspell-next<ret>' -docstring 'go to next spell error'
+map global skyspell p ':skyspell-previous<ret>' -docstring 'go to previous spell error'
+map global skyspell r ':skyspell-replace<ret>' -docstring 'suggest a list of replacements'
+map global skyspell c ':skyspell-ci-enable<ret>' -docstring 'use skyspell-ci as makecmd'
 
 
 # Subvert
@@ -333,18 +333,18 @@ define-command grep-selection %{
 }
 map global user g ':enter-user-mode grep<ret>' -docstring 'enter grep mode'
 map global grep g ':grep ' -docstring 'run grep'
-map global grep p ': grep-previous-match<ret>' -docstring 'run grep-previous-match'
-map global grep n ': grep-next-match<ret>' -docstring 'run grep-next-match'
-map global grep l ': edit -existing *grep* <ret>' -docstring 'show grep results'
-map global grep s ': grep-selection <ret>' -docstring 'grep selection'
+map global grep p ':grep-previous-match<ret>' -docstring 'run grep-previous-match'
+map global grep n ':grep-next-match<ret>' -docstring 'run grep-next-match'
+map global grep l ':edit -existing *grep* <ret>' -docstring 'show grep results'
+map global grep s ':grep-selection <ret>' -docstring 'grep selection'
 
 declare-user-mode make
-map global user m ': enter-user-mode make<ret>' -docstring 'enter make mdoe'
-map global make m ': write-all <ret> : make<ret>' -docstring 'run make'
-map global make n ': make-next-error<ret>' -docstring 'go to next error'
-map global make p ': make-previous-error<ret>' -docstring 'go to previous error'
+map global user m ':enter-user-mode make<ret>' -docstring 'enter make mdoe'
+map global make m ':write-all<ret>:make<ret>' -docstring 'run make'
+map global make n ':make-next-error<ret>' -docstring 'go to next error'
+map global make p ':make-previous-error<ret>' -docstring 'go to previous error'
 map global make s ':set global makecmd ' -docstring 'configure makecmmd'
-map global make l ': edit -existing *make* <ret>' -docstring 'show make output'
+map global make l ':edit -existing *make* <ret>' -docstring 'show make output'
 
 set-option global autowrap_column 80
 declare-option int comments_line_length 72
