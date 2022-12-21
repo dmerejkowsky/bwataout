@@ -109,6 +109,9 @@ plug "kak-lsp/kak-lsp" tag "v14.1.0" config %{
   map global lsp-goto n ':lsp-next-location *goto*<ret>' -docstring 'goto next lsp location'
   map global lsp-goto p ':lsp-previous-location *goto*<ret>' -docstring 'goto previous lsp location'
   map global lsp-goto l ':edit -existing *goto* <ret>' -docstring 'show lsp results'
+
+  map global object e '<a-semicolon>lsp-object Function Method<ret>' -docstring 'LSP function or method'
+  map global object k '<a-semicolon>lsp-object Class Interface Struct<ret>' -docstring 'LSP class interface or struct'
 }
 
 ## EditorConfig support
