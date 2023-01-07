@@ -4,6 +4,7 @@ use anyhow::{anyhow, Result};
 use clap::Parser;
 
 pub mod db;
+pub mod ikv;
 pub use db::DB;
 
 use directories::ProjectDirs;
