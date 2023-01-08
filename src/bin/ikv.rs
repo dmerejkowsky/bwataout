@@ -4,8 +4,8 @@ use std::path::PathBuf;
 
 fn main() -> Result<(), String> {
     let args: Vec<_> = std::env::args().collect();
-    let nargs = args.len();
-    if nargs != 2 {
+    let nargs = args.len() - 1;
+    if nargs != 1 {
         return Err(format!("Expecting 1 argument, got {nargs}"));
     };
     let dir = PathBuf::from(&args[1]);
