@@ -51,13 +51,18 @@ impl BackupFile {
 
 struct BackupStore {
     path: PathBuf,
-    files: Vec<BackupFile>,
 }
 
 impl BackupStore {
     fn new(path: &Path) -> Result<Self> {
+        Ok(BackupStore {
+            path: path.to_path_buf(),
+        })
+    }
+
+    fn get_all_files(&self) -> Result<Vec<BackupFile>> {
         let mut files = vec![];
-        let dir = std::fs::read_dir(path).with_context(|| "Could not read backups dir")?;
+        let dir = std::fs::read_dir(&self.path).with_context(|| "Could not read backups dir")?;
         for entry in dir {
             let entry = entry?;
             let metadata = entry
@@ -80,10 +85,7 @@ impl BackupStore {
             }
         }
         files.sort_by_key(|x| x.mtime);
-        Ok(BackupStore {
-            files,
-            path: path.to_path_buf(),
-        })
+        Ok(files)
     }
 
     fn full_path_to_backup_path(&self, full_path: &Path) -> Result<PathBuf> {
@@ -122,10 +124,11 @@ impl BackupStore {
     }
 
     fn clean(&self, dry_run: bool) -> Result<()> {
-        let total = self.files.len();
+        let files = self.get_all_files()?;
+        let total = files.len();
         let mut cleaned = 0;
         let now = std::time::SystemTime::now();
-        for file in &self.files {
+        for file in files {
             let relative_path = &file.relative_path;
             let duration = now
                 .duration_since(file.mtime)
@@ -148,7 +151,8 @@ impl BackupStore {
     }
 
     fn list(&self) -> Result<()> {
-        for file in &self.files {
+        let files = self.get_all_files()?;
+        for file in files {
             let full_path = file.full_path();
             println!("{full_path}");
         }
