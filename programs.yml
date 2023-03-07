@@ -107,21 +107,21 @@ kak-lsp-config:
     - kak-lsp/kak-lsp.toml
     - ~/.config/kak-lsp/kak-lsp.toml
 
-kak-tree:
-  - clone:
-      url: https://github.com/ul/kak-tree
-      dest: ~/Sources/kak-tree
-      branch: master
-  - run: [git, -C, '{home}/Sources/kak-tree/', submodule, update, --init, vendor/tree-sitter-javascript]
-  - run: [git, -C, '{home}/Sources/kak-tree/', submodule, update, --init, vendor/tree-sitter-python]
-  - run: [git, -C, '{home}/Sources/kak-tree/', submodule, update, --init, vendor/tree-sitter-rust]
-  - run: [
-      cargo, install,
-      --path, '{home}/Sources/kak-tree/',
-      --force,
-      --features, "javascript python rust"
-     ]
-
+# kak-tree:
+#   - clone:
+#       url: https://github.com/ul/kak-tree
+#       dest: ~/Sources/kak-tree
+#       branch: master
+#   - run: [git, -C, '{home}/Sources/kak-tree/', submodule, update, --init, vendor/tree-sitter-javascript]
+#   - run: [git, -C, '{home}/Sources/kak-tree/', submodule, update, --init, vendor/tree-sitter-python]
+#   - run: [git, -C, '{home}/Sources/kak-tree/', submodule, update, --init, vendor/tree-sitter-rust]
+#   - run: [
+#       cargo, install,
+#       --path, '{home}/Sources/kak-tree/',
+#       --force,
+#       --features, "javascript python rust"
+#      ]
+ 
 
 
 kitty:
