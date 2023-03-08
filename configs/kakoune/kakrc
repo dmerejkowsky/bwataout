@@ -225,6 +225,7 @@ define-command format-project %{
 
 define-command lint-on-save "hook buffer BufWritePre .* lint"
 define-command format-on-save "hook -group format buffer BufWritePre .* format"
+define-command lsp-format-on-save "hook -group format global BufWritePre .* lsp-formatting-sync"
 define-command format-project-on-save "hook -group format global BufWritePre .* format-project"
 
 define-command jump-random -docstring "jump to random place in the code" %{
