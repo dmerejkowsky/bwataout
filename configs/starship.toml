@@ -3,6 +3,14 @@ command_timeout = 1000
 [aws]
 disabled = true
 
+[battery]
+full_symbol = 'batt: '
+charging_symbol = 'batt:️ '
+discharging_symbol = 'batt: '
+
+[[battery.display]]
+threshold = 10
+
 [package]
 disabled = true
 
