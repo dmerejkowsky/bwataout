@@ -121,7 +121,7 @@ kak-lsp-config:
 #       --force,
 #       --features, "javascript python rust"
 #      ]
- 
+
 
 
 kitty:
@@ -144,6 +144,11 @@ litecli:
     - litecli.ini
     - ~/.config/litecli/config
 
+mpd:
+  - symlink:
+    - mpd.conf
+    - ~/.config/mpd/mpd.conf
+
 mpv:
   - symlink:
     - mpv/input.conf
@@ -153,7 +158,7 @@ mpv:
     - ~/.config/mpv/mpv.conf
 
 ncmpcpp:
-  - copy:
+  - symlink:
     - ncmpcpp
     - ~/.config/ncmpcpp/config
 

@@ -1,4 +1,4 @@
-mpd_music_dir = <>
+mpd_music_dir = /home/dmerej/Music/
 autocenter_mode = yes
 external_editor = kak
 use_console_editor = yes
