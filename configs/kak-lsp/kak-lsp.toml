@@ -9,7 +9,7 @@ timeout = 1800 # seconds = 30 minutes
 [language.rust]
 filetypes = ["rust"]
 roots = ["Cargo.toml"]
-command = "rust-analyzer"
+command = ""  # TODO: `rustup which --toolchain stable rust-analyzer`
 [language.rust.settings]
 diagnostics.disabled = ["unresolved-proc-macro"]
 
