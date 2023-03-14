@@ -1,3 +1,5 @@
+use chrono::prelude::*;
+use std::path::{Path, PathBuf};
 use std::{collections::HashMap, str::FromStr};
 
 /// A Map is created with an slice of tuples (start, destination, distance)
@@ -73,7 +75,7 @@ impl FromStr for Map {
 }
 
 pub fn parse_trip(s: &str) -> Vec<&str> {
-    s.split("->").map(|x| x.trim()).collect()
+    s.split(' ').map(|x| x.trim()).collect()
 }
 
 // Compute the traveled distance of a trip
@@ -89,6 +91,45 @@ pub fn traveled_distance(map: &Map, trip: &[&str]) -> Result<u32, String> {
         }
     }
     Ok(total)
+}
+
+pub fn get_ikv_dir_from_args() -> Result<PathBuf, String> {
+    let args: Vec<_> = std::env::args().collect();
+    let nargs = args.len() - 1;
+    if nargs != 1 {
+        return Err(format!("Expecting 1 argument, got {nargs}"));
+    };
+    let dir = PathBuf::from(&args[1]);
+    Ok(dir)
+}
+
+pub fn read_trips_md(dir: &Path, date: DateTime<Local>) -> Result<String, String> {
+    let year = date.year();
+    let month = date.month();
+    let trip_path = dir.join(format!("{}-{:0>2}.md", year, month));
+    std::fs::read_to_string(&trip_path)
+        .map_err(|e| format!("Could not read {}: {e}", trip_path.display()))
+}
+
+pub fn parse_map(dir: &Path) -> Result<Map, String> {
+    let map_path = dir.join("map.txt");
+    let map_txt = std::fs::read_to_string(&map_path)
+        .map_err(|e| format!("Could not read {}: {e}", map_path.display()))?;
+    map_txt
+        .parse::<Map>()
+        .map_err(|e| format!("Could not read {}: {e}", map_path.display()))
+}
+
+pub fn parse_trips(trips_md: &str) -> Vec<(&str, Vec<&str>)> {
+    let mut trips = vec![];
+    for line in trips_md.split_terminator('\n') {
+        if line.starts_with(|c: char| c.is_ascii_digit()) {
+            let mut split: Vec<_> = line.split_whitespace().collect();
+            split.remove(0);
+            trips.push((line, split));
+        }
+    }
+    trips
 }
 
 #[cfg(test)]
