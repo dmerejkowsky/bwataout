@@ -1,10 +1,3 @@
-bat:
-  - download:
-      url:  https://github.com/sharkdp/bat/releases/download/v0.18.3/bat-v0.18.3-x86_64-unknown-linux-gnu.tar.gz
-      extract_member: bat-v0.18.3-x86_64-unknown-linux-gnu/bat
-      dest: ~/.local/bin/bat
-      executable: true
-
 editorconfig:
   - symlink:
     - editorconfig
@@ -48,13 +41,6 @@ gpg:
     - |
       pinentry-program /usr/bin/pinentry-qt
 
-
-delta:
-  - download:
-      url: https://github.com/dandavison/delta/releases/download/0.12.0/delta-0.12.0-x86_64-unknown-linux-gnu.tar.gz
-      extract_member: delta-0.12.0-x86_64-unknown-linux-gnu/delta
-      dest: ~/.local/bin/delta
-      executable: true
 
 hugo:
   - download:
@@ -129,16 +115,6 @@ kitty:
     - kitty.conf
     - ~/.config/kitty/kitty.conf
 
-lf:
-  - symlink:
-    - lf
-    - ~/.config/lf
-  - download:
-      url: https://github.com/gokcehan/lf/releases/download/r27/lf-linux-amd64.tar.gz
-      dest: ~/.local/bin/lf
-      extract_member: lf
-      executable: true
-
 litecli:
   - symlink:
     - litecli.ini
@@ -173,18 +149,6 @@ screen:
   - symlink:
     - screenrc
     - ~/.screenrc
-
-starship:
- - download:
-     url: https://github.com/starship/starship/releases/download/v1.0.0/starship-x86_64-unknown-linux-gnu.tar.gz
-     dest: ~/.local/bin/starship
-     extract_member: starship
-     executable: true
-     unzip: true
-
- - symlink:
-   - starship.toml
-   - ~/.config/starship.toml
 
 skyspell:
  - clone:
