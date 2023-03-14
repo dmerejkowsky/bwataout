@@ -117,16 +117,34 @@ pub fn parse_map(dir: &Path) -> Result<Map, String> {
         .map_err(|e| format!("Could not read {}: {e}", map_path.display()))?;
     map_txt
         .parse::<Map>()
-        .map_err(|e| format!("Could not read {}: {e}", map_path.display()))
+        .map_err(|e| format!("Could not parse {}: {e}", map_path.display()))
 }
 
-pub fn parse_trips(trips_md: &str) -> Vec<(&str, Vec<&str>)> {
+pub struct Trip<'a> {
+    description: &'a str,
+    places: Vec<&'a str>,
+}
+
+impl<'a> Trip<'a> {
+    pub fn description(&self) -> &str {
+        self.description
+    }
+
+    pub fn places(&self) -> &[&str] {
+        self.places.as_ref()
+    }
+}
+
+pub fn parse_trips(trips_md: &str) -> Vec<Trip> {
     let mut trips = vec![];
     for line in trips_md.split_terminator('\n') {
         if line.starts_with(|c: char| c.is_ascii_digit()) {
             let mut split: Vec<_> = line.split_whitespace().collect();
             split.remove(0);
-            trips.push((line, split));
+            trips.push(Trip {
+                description: line,
+                places: split,
+            });
         }
     }
     trips

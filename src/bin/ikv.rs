@@ -12,10 +12,10 @@ fn main() -> Result<(), String> {
     let trips = parse_trips(&trips_md);
 
     let mut total = 0;
-    for (line, trip) in trips.iter() {
-        let d = traveled_distance(&map, trip)?;
+    for trip in trips {
+        let d = traveled_distance(&map, trip.places())?;
         total += d;
-        println!("{d:2}km - {line}");
+        println!("{d:2}km - {}", trip.description());
     }
 
     let year = now.year();
