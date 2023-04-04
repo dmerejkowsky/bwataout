@@ -103,7 +103,7 @@ pub fn get_md_path() -> Result<PathBuf, String> {
 }
 
 pub fn read_trips_md(trips_md: &Path) -> Result<String, String> {
-    std::fs::read_to_string(&trips_md)
+    std::fs::read_to_string(trips_md)
         .map_err(|e| format!("Could not read {}: {e}", trips_md.display()))
 }
 
