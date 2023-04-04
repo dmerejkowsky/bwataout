@@ -63,7 +63,7 @@ fn test_compute_traveled_distance_missing_places_in_map() {
 
 #[test]
 fn test_parse_trip_ok() {
-    let trip_str = "a -> b -> c";
+    let trip_str = "a bb ccc";
     let places = parse_trip(trip_str);
-    assert_eq!(places, vec!["a", "b", "c"]);
+    assert_eq!(places, vec!["a", "bb", "ccc"]);
 }
