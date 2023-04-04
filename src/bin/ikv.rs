@@ -1,21 +1,21 @@
 use bwataout::ikv::*;
-use chrono::prelude::*;
 
 fn main() -> Result<(), String> {
-    let dir = get_ikv_dir_from_args()?;
-    let map = parse_map(&dir)?;
-    let now: DateTime<Local> = Local::now();
-    let trips_md = read_trips_md(&dir, now)?;
+    let md_path = get_md_path()?;
+    let display = md_path.display();
+    println!("{}", display);
+    println!("{}", "-".repeat(display.to_string().len()));
+    let dir = md_path.parent().expect("md path should have a parent");
+    let trips_md = read_trips_md(&md_path)?;
     let trips = parse_trips(&trips_md);
+    let map = parse_map(&dir)?;
     let mut total_distance = 0;
     for trip in trips {
         let distance = traveled_distance(&map, trip.places())?;
         total_distance += distance;
         println!("{distance:2}km - {}", trip.description());
     }
-    let year = now.year();
-    let month = now.month();
-    println!("---\nIKV for {year} {month:0>2} = {total_distance}km");
+    println!("---\nIKV = {total_distance}km");
 
     Ok(())
 }

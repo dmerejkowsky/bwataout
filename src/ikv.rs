@@ -93,7 +93,7 @@ pub fn traveled_distance(map: &Map, trip: &[&str]) -> Result<u32, String> {
     Ok(total)
 }
 
-pub fn get_ikv_dir_from_args() -> Result<PathBuf, String> {
+pub fn get_md_path() -> Result<PathBuf, String> {
     let args: Vec<_> = std::env::args().collect();
     let nargs = args.len() - 1;
     if nargs != 1 {
@@ -103,12 +103,9 @@ pub fn get_ikv_dir_from_args() -> Result<PathBuf, String> {
     Ok(dir)
 }
 
-pub fn read_trips_md(dir: &Path, date: DateTime<Local>) -> Result<String, String> {
-    let year = date.year();
-    let month = date.month();
-    let trip_path = dir.join(format!("{}-{:0>2}.md", year, month));
-    std::fs::read_to_string(&trip_path)
-        .map_err(|e| format!("Could not read {}: {e}", trip_path.display()))
+pub fn read_trips_md(trips_md: &Path) -> Result<String, String> {
+    std::fs::read_to_string(&trips_md)
+        .map_err(|e| format!("Could not read {}: {e}", trips_md.display()))
 }
 
 pub fn parse_map(dir: &Path) -> Result<Map, String> {
