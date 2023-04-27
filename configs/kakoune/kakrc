@@ -293,6 +293,7 @@ map global skyspell c ':skyspell-ci-enable<ret>' -docstring 'use skyspell-ci as 
 # Subvert
 declare-user-mode subvert
 map global user y ':enter-user-mode subvert<ret>' -docstring 'enter subvert user mode'
+map global subvert a '| kak-subvert ada <ret>'      -docstring 'Ada_Case'
 map global subvert c '| kak-subvert camel <ret>'     -docstring 'camelCase'
 map global subvert h '| kak-subvert camel <ret>'     -docstring 'Http-Case'
 map global subvert k '| kak-subvert kebab <ret>'     -docstring 'kebab-case'
@@ -302,7 +303,6 @@ map global subvert s '| kak-subvert snake <ret>'     -docstring 'snake_case'
 map global subvert S '| kak-subvert screaming <ret>' -docstring 'SCREAMING_CASE'
 map global subvert t '| kak-subvert train <ret>'     -docstring 'Train-Case'
 map global subvert T '| kak-subvert title <ret>'     -docstring 'Title Case'
-map global subvert u '| kak-subvert ugly <ret>'      -docstring 'Ugly_Case'
 
 ## Custom commands
 define-command show-line-numbers -docstring "show line numbers" \
