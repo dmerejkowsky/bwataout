@@ -16,7 +16,7 @@ fn main() -> Result<(), String> {
     for trip in trips {
         let distance = traveled_distance(&map, trip.places())?;
         total_distance += distance;
-        println!("{distance:2}km - {}", trip.description());
+        println!("{:0>2} {distance:2}km - {}", trip.day(), trip.description());
     }
     println!("---\nIKV = {total_distance}km");
 

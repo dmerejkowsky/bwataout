@@ -1,5 +1,8 @@
 use std::path::{Path, PathBuf};
-use std::{collections::HashMap, str::FromStr};
+use std::{
+    collections::{HashMap, VecDeque},
+    str::FromStr,
+};
 
 /// A Map is created with an slice of tuples (start, destination, distance)
 /// It then can lookup any couple of (start, destination)
@@ -119,6 +122,7 @@ pub fn parse_map(dir: &Path) -> Result<Map, String> {
 pub struct Trip<'a> {
     description: &'a str,
     places: Vec<&'a str>,
+    day: &'a str,
 }
 
 impl<'a> Trip<'a> {
@@ -129,17 +133,22 @@ impl<'a> Trip<'a> {
     pub fn places(&self) -> &[&str] {
         self.places.as_ref()
     }
+
+    pub fn day(&self) -> &str {
+        self.day
+    }
 }
 
 pub fn parse_trips(trips_md: &str) -> Vec<Trip> {
     let mut trips = vec![];
     for line in trips_md.split_terminator('\n') {
         if line.starts_with(|c: char| c.is_ascii_digit()) {
-            let mut split: Vec<_> = line.split_whitespace().collect();
-            split.remove(0);
+            let mut split: VecDeque<_> = line.split_whitespace().collect();
+            let day = split.pop_front().expect("A split can nevery be empty");
             trips.push(Trip {
+                day,
                 description: line,
-                places: split,
+                places: split.into(),
             });
         }
     }
