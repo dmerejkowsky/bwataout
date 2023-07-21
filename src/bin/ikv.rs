@@ -4,7 +4,7 @@ fn main() -> Result<(), String> {
     let md_path = get_md_path()?;
     let display = md_path
         .file_name()
-        .ok_or_else(|| "markdown path has no parent")?
+        .ok_or("markdown path has no parent")?
         .to_string_lossy();
     println!("{}", display);
     println!("{}", "-".repeat(display.to_string().len()));
