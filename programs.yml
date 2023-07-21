@@ -44,7 +44,7 @@ gpg:
 
 hugo:
   - download:
-      url: https://github.com/gohugoio/hugo/releases/download/v0.103.1/hugo_0.103.1_linux-amd64.tar.gz
+      url: https://github.com/gohugoio/hugo/releases/download/v0.115.3/hugo_extended_0.115.3_Linux-64bit.tar.gz
       dest: ~/.local/bin/hugo
       extract_member: hugo
       executable: true
