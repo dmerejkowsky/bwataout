@@ -138,6 +138,11 @@ ncmpcpp:
     - ncmpcpp
     - ~/.config/ncmpcpp/config
 
+ncdu:
+ - symlink:
+   - ncdu.conf
+   - ~/.config/ncdu/config
+
 npm:
   - write:
     - ~/.npmrc
