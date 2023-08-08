@@ -7,7 +7,7 @@ version = "0.1.0"
 [dependencies]
 anyhow = "1.0.52"
 clap = { version = "4.0.0", features = ["derive"] }
-clipboard = "0.5.0"
+arboard = "3.2.0"
 directories = "5.0"
 rusqlite = "0.26.3"
 serde = { version = "1.0", features = ["derive"] }

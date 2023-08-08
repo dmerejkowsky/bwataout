@@ -1,7 +1,7 @@
-use clipboard::{ClipboardContext, ClipboardProvider};
+use arboard::Clipboard;
 
 fn main() {
-    let mut ctx: ClipboardContext = ClipboardProvider::new().unwrap();
-    let contents = ctx.get_contents().unwrap();
+    let mut clipboard = Clipboard::new().unwrap();
+    let contents = clipboard.get_text().unwrap();
     print!("{contents}");
 }
