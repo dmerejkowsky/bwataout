@@ -35,6 +35,7 @@
 	ra = rebase --abort
 	rc = rebase --continue
 	rcr = commit-and-rebase
+	rd = rebase -i origin/develop
 	ri = rebase --interactive
 	ro = rebase -i origin/main
 	rs = rebase --skip
