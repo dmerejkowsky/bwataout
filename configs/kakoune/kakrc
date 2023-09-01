@@ -447,6 +447,11 @@ define-command clean-imports %{
   edit!
 }
 
+define-command ruff-fix %{
+  nop %sh{ ruff check --fix $kak_buffile }
+  edit!
+}
+
 define-command xml-format -docstring "format selection with xmllint" %{
   execute-keys -draft '| xmllint --format - | tail +2 <ret>'
 }
