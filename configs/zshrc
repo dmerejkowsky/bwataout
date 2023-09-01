@@ -303,9 +303,14 @@ bindkey '^P' down-line-or-history
 # python
 
 activate() {
+  if [[ -d .venv ]] ; then
+    echo "Using .venv"
+    source .venv/bin/activate
+    return
+  fi
   activate_file=$(poetry env info -p)/bin/activate
   if [[ ! -e "${activate_file}" ]]; then
-    echo "no venv manager found"
+    echo "No poetry venv"
     return 1
   else
     source $activate_file
