@@ -400,7 +400,7 @@ define-command restore-backup %{
 define-command cleanup-whitespace %{
   try %{ execute-keys -draft \% s \h+$ <ret> d }
 }
-hook global BufWritePre .* cleanup-whitespace
+hook -group format global BufWritePre .* cleanup-whitespace
 
 ## jj is escape
 hook global InsertChar j %{ try %{
