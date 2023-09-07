@@ -15,7 +15,7 @@ def main():
             sys.exit(e)
     try:
         as_json = json.dumps(data, indent=2)
-    except TypeError:
+    except TypeError as e:
         sys.exit(e)
 
     print(as_json)
