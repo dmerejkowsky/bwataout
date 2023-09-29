@@ -417,7 +417,7 @@ define-command build-on-save %{
 }
 
 declare-user-mode comments
-map global user d ' :enter-user-mode comments<ret>' -docstring 'enter comments mode'
+map global user d ':enter-user-mode comments<ret>' -docstring 'enter comments mode'
 map global comments d ': comment-line <ret>' -docstring 'toggle line comment'
 map global comments D ': comment-block <ret>' -docstring 'toggle block comment'
 
