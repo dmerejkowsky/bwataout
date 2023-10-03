@@ -180,11 +180,17 @@ hook -group format global WinSetOption filetype=rust %{
   format-on-save
 }
 
+# Clean trailing whitespace before
+# writing
+# define-command cleanup-whitespace %{
+#   try %{ execute-keys -draft \% s \h+$ <ret> d }
+# }
+# hook -group format global BufWritePre .* cleanup-whitespace
 # Python: use black
-hook -group format global WinSetOption filetype=python %{
-  set window formatcmd 'black -'
-  format-on-save
-}
+# hook -group format global WinSetOption filetype=python %{
+#   set window formatcmd 'black -'
+#   format-on-save
+# }
 
 # Python -- and also an `isort` command
 define-command isort %{
@@ -394,13 +400,6 @@ define-command restore-backup %{
     kak-back restore "${kak_buffile}"
   }
 }
-
-# Clean trailing whitespace before
-# writing
-define-command cleanup-whitespace %{
-  try %{ execute-keys -draft \% s \h+$ <ret> d }
-}
-hook -group format global BufWritePre .* cleanup-whitespace
 
 ## jj is escape
 hook global InsertChar j %{ try %{
