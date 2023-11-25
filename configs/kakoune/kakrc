@@ -242,6 +242,7 @@ define-command jump-random -docstring "jump to random place in the code" %{
 
 ## UI options
 colorscheme default
+face global Error white,red
 add-highlighter global/ wrap -word
 set-option global ui_options 'terminal_assistant=cat'
 
