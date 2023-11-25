@@ -144,6 +144,10 @@ bindsym $mod+g mode "resize"
 
 bar {
   status_command i3status
+  colors {
+    background #ffffff
+    statusline #000000
+  }
 }
 
 # scratch pad
