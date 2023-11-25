@@ -241,13 +241,7 @@ define-command jump-random -docstring "jump to random place in the code" %{
 }
 
 ## UI options
-eval %sh{
-if [ "$(uname)" = "Darwin" ]; then
-  echo "colorscheme default"
-else
-  echo "colorscheme desertex"
-fi
-}
+colorscheme default
 add-highlighter global/ wrap -word
 set-option global ui_options 'terminal_assistant=cat'
 
