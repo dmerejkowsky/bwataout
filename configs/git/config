@@ -50,6 +50,7 @@
 
 [delta]
     line-numbers = true
+    light = true
 
 [diff]
 	compactionHeuristic = true
