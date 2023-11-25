@@ -46,8 +46,8 @@ map global user f ':connect-terminal kcr-fzf-files <ret>' -docstring 'Find files
 
 map global user B ':connect-terminal kcr-fzf-buffers <ret>' -docstring 'Open buffers with fzf'
 
-define-command -params .. -file-completion lf -docstring "Start lf" %{
-  connect-terminal lf %arg{@}
+define-command -params .. -file-completion yazi -docstring "Start yazi" %{
+  connect-terminal yazi %arg{@}
 }
 
 ## gmi files are plain text
@@ -182,9 +182,9 @@ hook -group format global WinSetOption filetype=rust %{
 
 # Clean trailing whitespace before
 # writing
-# define-command cleanup-whitespace %{
-#   try %{ execute-keys -draft \% s \h+$ <ret> d }
-# }
+define-command cleanup-whitespace %{
+  try %{ execute-keys -draft \% s \h+$ <ret> d }
+}
 # hook -group format global BufWritePre .* cleanup-whitespace
 # Python: use black
 # hook -group format global WinSetOption filetype=python %{
@@ -259,16 +259,16 @@ set-option global grepcmd 'rg --no-heading --line-number --column --sort path'
 declare-option str project_working_dir %sh{ pwd }
 plug 'dmerejkowsky/kakoune-cd' %{
   map global user c ':enter-user-mode cd<ret>' -docstring 'enter cd user mode'
-  map global cd f ':open-current-buffer-directory<ret>' -docstring 'open current buffer dir in lf'
+  map global cd f ':open-current-buffer-directory<ret>' -docstring 'open current buffer dir in yazi'
   map global cd c ':change-directory %val{opt_project_working_dir}<ret>' -docstring 'reset working dir'
   alias global pwd print-working-directory
 }
 
 
-# Start `lf` when trying to edit a directory
+# Start `yazi` when trying to edit a directory
 hook global RuntimeError ".* (.*): is a directory" %{
   evaluate-commands %sh{
-    echo lf $kak_hook_param_capture_1
+    echo yazi $kak_hook_param_capture_1
   }
 }
 
