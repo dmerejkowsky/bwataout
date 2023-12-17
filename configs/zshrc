@@ -387,3 +387,6 @@ use-sdkman() {
 
 export PYTHONBREAKPOINT="ipdb.set_trace"
 
+autoload bashcompinit && bashcompinit
+complete -C '/usr/local/bin/aws_completer' aws
+
