@@ -1,0 +1,12 @@
+customCommands:
+  - key: '<c-c>'
+    context: 'global'
+    command: "git commit -v"
+    subprocess: true
+  - key: x
+    context: 'files'
+    command: "git clean -fd"
+    prompts:
+    - type: confirm
+      title: "Clean"
+      body: "Are you want to remove all untracked files?"

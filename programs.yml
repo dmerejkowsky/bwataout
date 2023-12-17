@@ -118,6 +118,11 @@ kitty:
     - configs/kitty/theme.conf
     - ~/.config/kitty/theme.conf
 
+lazygit:
+  - symlink:
+    - lazygit/config.yml
+    - ~/.config/lazygit/config.yml
+
 litecli:
   - symlink:
     - litecli.ini
