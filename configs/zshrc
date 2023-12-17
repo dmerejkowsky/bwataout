@@ -371,3 +371,17 @@ alias t="tig --all"
 
 source /usr/share/doc/find-the-command/ftc.zsh info
 
+use-pyenv() {
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init -)"
+}
+
+use-rbenv() {
+  eval "$(rbenv init -)"
+}
+
+use-sdkman() {
+  source "/home/dmerej/.sdkman/bin/sdkman-init.sh"
+}
+
