@@ -368,3 +368,6 @@ if [[ -f /etc/zsh_command_not_found ]]; then
 fi
 
 alias t="tig --all"
+
+source /usr/share/doc/find-the-command/ftc.zsh info
+
