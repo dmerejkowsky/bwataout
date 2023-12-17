@@ -385,3 +385,5 @@ use-sdkman() {
   source "/home/dmerej/.sdkman/bin/sdkman-init.sh"
 }
 
+export PYTHONBREAKPOINT="ipdb.set_trace"
+
