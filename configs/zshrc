@@ -385,6 +385,12 @@ use-sdkman() {
   source "/home/dmerej/.sdkman/bin/sdkman-init.sh"
 }
 
+new-day() {
+  setxkbmap dmerej dvorak-intl
+  setxkbmap -option ctrl:nocaps
+  feh --bg-fill ~/Pictures/white-wallpaper.jpg
+}
+
 export PYTHONBREAKPOINT="ipdb.set_trace"
 
 autoload bashcompinit && bashcompinit
