@@ -89,7 +89,7 @@ mdfmt:
   - run: [cargo, install, --git, "https://github.com/tux3/mdfmt", --rev, e79c6fe8d2813a047a0f6e290d94162359678fcd]
 
 kak-lsp-config:
-  - copy:
+  - symlink:
     - kak-lsp/kak-lsp.toml
     - ~/.config/kak-lsp/kak-lsp.toml
 
