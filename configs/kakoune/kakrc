@@ -78,7 +78,7 @@ set global ignored_files "(.*\.egg-info)|(__pycache__)|(\.mypy_cache)|(build/)"
 
 ## LSP
 
-plug "kak-lsp/kak-lsp" tag "v14.1.0" config %{
+plug "kak-lsp/kak-lsp" tag "v15.0.1" config %{
   set global lsp_cmd "kak-lsp -s %val{session}"
   # for troubleshooting:
   # set global lsp_cmd "kak-lsp -s %val{session} -vvv --log /tmp/kak-lsp.log"
