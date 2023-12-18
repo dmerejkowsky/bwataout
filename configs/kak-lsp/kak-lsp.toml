@@ -279,7 +279,7 @@ settings_section = "_"
 [language_server.pylsp.settings._]
 # See https://github.com/python-lsp/python-lsp-server#configuration
 # pylsp.configurationSources = ["flake8"]
-pylsp.plugins.jedi_completion.include_params = true
+pylsp.plugins.jedi_completion.include_params = false
 
 # [language_server.pyright]
 # filetypes = ["python"]
