@@ -1,8 +1,4 @@
 customCommands:
-  - key: '<c-c>'
-    context: 'global'
-    command: "git commit -v"
-    subprocess: true
   - key: x
     context: 'files'
     command: "git clean -fd"
