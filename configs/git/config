@@ -45,6 +45,9 @@
 
 	hub = repo hub
 
+[commit]
+  verbose = true
+
 [core]
     pager = delta
 
