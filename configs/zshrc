@@ -399,5 +399,6 @@ complete -C '/usr/local/bin/aws_completer' aws
 
 export BAT_THEME=GitHub
 export PYTEST_THEME_MODE=light
+export LS_COLORS=""  # Fixes fd and ls for me
 
 export CARGO_TARGET_DIR=/home/dmerej/Temp/cargo/
