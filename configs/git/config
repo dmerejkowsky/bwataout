@@ -60,7 +60,7 @@
 	colorMoved = true
 
 [diff "lockdiff"]
-	textconv = lock-diff
+	textconv = lockdiff
 
 [fetch]
 	prune = true
