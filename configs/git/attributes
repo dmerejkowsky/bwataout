@@ -1,0 +1,4 @@
+Cargo.lock diff=lockdiff
+package-lock.json diff=lockdiff
+poetry.lock diff=lockdiff
+yarn.lock diff=lockdiff

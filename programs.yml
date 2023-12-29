@@ -35,6 +35,10 @@ git:
       name =
       email =
 
+  - symlink:
+    - git/attributes
+    - ~/.config/git/attributes
+
 gpg:
   - write:
     - ~/.gnupg/gpg-agent.conf
