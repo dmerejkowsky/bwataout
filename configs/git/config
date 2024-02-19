@@ -62,6 +62,9 @@
 [diff "lockdiff"]
 	textconv = lockdiff
 
+[diff "xlsx2csv"]
+	textconv = xlsx2csv
+
 [fetch]
 	prune = true
 
