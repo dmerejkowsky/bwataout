@@ -164,9 +164,6 @@ hook -group format global WinSetOption filetype=terraform %{
   format-on-save
 }
 
-# Go: use goimports
-hook -group format global BufWritePre .*\.go "go-format -use-goimports"
-
 # Haskell: use hindent
 hook -group format global WinSetOption filetype=haskell %{
   set window formatcmd 'hindent'
