@@ -1,18 +1,17 @@
 aspell
 aspell-en
-build-esential
+crystal
 dmenu
 i3lock
 i3status
 j4-dmenu-desktop
-jq # for kcr
+jq
 htop
-python
 python3-pip
-python-is-python3
 fd-find
 git
 kakoune
+llvm
 libenchant-2-dev
 libsqlite3-dev
 libxcb1-dev
@@ -21,4 +20,5 @@ libxcb-shape0-dev
 libxcb-xfixes0-dev
 ripgrep
 tig
+tmux
 xsel
