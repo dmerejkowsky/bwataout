@@ -169,7 +169,7 @@ screen:
 
 skyspell:
  - clone:
-   - git@git.sr.ht:~dmerej/skyspell
+   - https://git.sr.ht/~dmerej/skyspell
    - ~/Sources/skyspell
    - main
  - run: [cargo, install, --locked, --path, '{home}/Sources/skyspell/crates/cli']
