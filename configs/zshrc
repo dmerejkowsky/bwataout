@@ -370,7 +370,9 @@ fi
 
 alias t="tig --all"
 
-source /usr/share/doc/find-the-command/ftc.zsh info
+if [[ -f /usr/share/doc/find-the-command/ftc.zsh ]]; then
+    source /usr/share/doc/find-the-command/ftc.zsh info
+fi
 
 use-pyenv() {
   export PYENV_ROOT="$HOME/.pyenv"
