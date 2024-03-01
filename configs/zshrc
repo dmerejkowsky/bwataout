@@ -402,3 +402,5 @@ export PYTEST_THEME_MODE=light
 export LS_COLORS=""  # Fixes fd and ls for me
 
 export CARGO_TARGET_DIR=/home/dmerej/Temp/cargo/
+
+export PATH=$HOME/go/bin:$PATH
