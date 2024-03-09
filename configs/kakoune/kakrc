@@ -29,22 +29,14 @@ set-option global modelinefmt '%val{bufname} %val{cursor_line}:%val{cursor_char_
 source "%val{config}/plugins/plug.kak/rc/plug.kak"
 plug "andreyorst/plug.kak" noload
 
-## kakoune.cr
-evaluate-commands %sh{
-  kcr init kakoune
-}
 
-map global user h \
-  ":connect-terminal <ret>"\
-  -docstring "Spawn a connected terminal"
+## Fuzzy-finding files
+define-command find-with-fd -docstring "find files" -params 1 %{ edit %arg{1} }
+complete-command find-with-fd shell-script-candidates %{ fd }
+map global user f ':find-with-fd ' -docstring 'Find files with fzf'
 
-map global user H \
-  ':change-directory-current-buffer <ret>:connect-terminal <ret>' \
-  -docstring 'Start terminal in the parent directory of the current buffer'
-
-map global user f ':connect-terminal kcr-fzf-files <ret>' -docstring 'Find files with fzf'
-
-map global user B ':connect-terminal kcr-fzf-buffers <ret>' -docstring 'Open buffers with fzf'
+## Fuzzy-finding buffers
+map global user B ':buffer '
 
 ## Yazi
 define-command -params .. -file-completion yazi -docstring "Start yazi" %{
