@@ -46,6 +46,7 @@ map global user f ':connect-terminal kcr-fzf-files <ret>' -docstring 'Find files
 
 map global user B ':connect-terminal kcr-fzf-buffers <ret>' -docstring 'Open buffers with fzf'
 
+## Yazi
 define-command -params .. -file-completion yazi -docstring "Start yazi" %{
   connect-terminal yazi %arg{@}
 }
