@@ -40,7 +40,7 @@ map global user B ':buffer '
 
 ## Yazi
 define-command -params .. -file-completion yazi -docstring "Start yazi" %{
-  connect-terminal yazi %arg{@}
+  terminal yazi %arg{@}
 }
 
 ## gmi files are plain text
