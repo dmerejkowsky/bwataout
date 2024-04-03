@@ -1,3 +1,8 @@
+direnv:
+  - symlink:
+    - direnv.toml
+    - ~/.config/direnv/direnv.toml
+
 editorconfig:
   - symlink:
     - editorconfig
