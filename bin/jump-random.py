@@ -7,17 +7,25 @@ from pathlib import Path
 def main():
     parser = ArgumentParser()
     parser.add_argument(
-        "--kak", default=False, help="Open with kakoune", action="store_true"
+        "--open-with",
+        choices=["code", "kakoune", "vim"],
+        default=None,
+        help="Open with the given editor",
     )
     args = parser.parse_args()
 
-    kak = args.kak
+    open_with = args.open_with
 
     source_file = get_random_source_file()
     line_number = get_random_line_number(source_file)
 
     print(f"{source_file}:{line_number}")
-    if kak:
+
+    if open_with == "code":
+        subprocess.run(["code", "--goto", f"{source_file}:{line_number}"])
+    elif open_with == "vim":
+        subprocess.run(["vim", f"+{line_number}", source_file])
+    elif open_with == "kakoune":
         subprocess.run(["kak", "-e", f"edit -existing %[{source_file}]  {line_number}"])
 
 
