@@ -1,3 +1,9 @@
+"""
+Jump to a random line in a random file
+
+Useful for *synchronous* code reviews
+"""
+
 import random
 import subprocess
 from argparse import ArgumentParser
@@ -5,7 +11,7 @@ from pathlib import Path
 
 
 def main():
-    parser = ArgumentParser()
+    parser = ArgumentParser(prog="jump-random", description=__doc__)
     parser.add_argument(
         "--open-with",
         choices=["code", "kakoune", "vim"],
