@@ -1,33 +1,44 @@
 #!/usr/bin/env python
 
-import sys
-from bisect import bisect_right
-from random import randint
+import random
 import subprocess
+from argparse import ArgumentParser
+from pathlib import Path
 
-process = subprocess.run(
-    "fd --type f -0 | xargs -0 wc -l", shell=True, capture_output=True, text=True
-)
-line_counts = process.stdout
 
-result = []
-cumulative_count = 0
-for x in line_counts.split("\n"):
-    foo = x.strip().split(" ")
-    if len(foo) == 2 and foo[1] != "total":
-        count, filename = foo
-        count = int(count)
-        cumulative_count += count
-        result.append((count, cumulative_count, filename))
+def main():
+    parser = ArgumentParser()
+    parser.add_argument(
+        "--kak", default=False, help="Open with kakoune", action="store_true"
+    )
+    args = parser.parse_args()
 
-total_count = sum(x[0] for x in result)
+    kak = args.kak
 
-random_place = randint(0, total_count)
-index = bisect_right([x[1] for x in result], random_place)
-filename = result[index][-1]
-line_number = result[index][1] - random_place
+    source_file = get_random_source_file()
+    line_number = get_random_line_number(source_file)
 
-if "--kak" in sys.argv:
-    print(f"edit -existing %[{filename}]  {line_number}")
-else:
-    print("%s:%s" % (filename, line_number))
+    print(f"{source_file}:{line_number}")
+    if kak:
+        subprocess.run(["kak", "-e", f"edit -existing %[{source_file}]  {line_number}"])
+
+
+def get_random_source_file():
+    git_ls = subprocess.run(
+        ["git", "ls-files"],
+        capture_output=True,
+        text=True,
+        check=True,
+    )
+    sources = git_ls.stdout.splitlines(keepends=False)
+    random_source = random.choice(sources)
+    return Path(random_source)
+
+
+def get_random_line_number(source_file: Path):
+    lines = source_file.read_text().splitlines()
+    return random.randint(1, len(lines) + 1)
+
+
+if __name__ == "__main__":
+    main()
