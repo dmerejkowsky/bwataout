@@ -23,7 +23,7 @@ hook global WinCreate .* %{
     }
   }
 }
-set-option global modelinefmt '%val{bufname} %val{cursor_line}:%val{cursor_char_column} {{context_info}} {{mode_info}} - %val{client}@[%val{session}] %opt{modeline_percent}'
+set-option global modelinefmt '%val{bufname} %val{cursor_line}:%val{cursor_char_column} {{context_info}} {{mode_info}} - %val{client}@[%val{session}] %opt{lsp_diagnostic_error_count}✘  %opt{lsp_diagnostic_warning_count}⚠  %opt{modeline_percent}'
 
 ## Setup plug.kak
 source "%val{config}/plugins/plug.kak/rc/plug.kak"
@@ -71,19 +71,11 @@ set global ignored_files "(.*\.egg-info)|(__pycache__)|(\.mypy_cache)|(build/)"
 
 ## LSP
 
-plug "kak-lsp/kak-lsp" tag "v15.0.1" config %{
+plug "kakoune-lsp/kakoune-lsp" tag "v17.0.0" config %{
   set global lsp_cmd "kak-lsp -s %val{session}"
   # for troubleshooting:
   # set global lsp_cmd "kak-lsp -s %val{session} -vvv --log /tmp/kak-lsp.log"
 
-  declare-option -hidden str modeline_progress ""
-  define-command -hidden -params 6 -override lsp-handle-progress %{
-    set global lsp_modeline_progress %sh{
-      if ! "$6"; then
-        echo "$2${5:+" ($5%)"}${4:+": $4"}"
-      fi
-    }
-  }
 
   # Note: call lsp-enable-window when ready
   map global user l ':enter-user-mode lsp<ret>' -docstring 'enter lsp user mode'
@@ -95,7 +87,6 @@ plug "kak-lsp/kak-lsp" tag "v15.0.1" config %{
   set-option global lsp_diagnostic_line_warning_sign !
   set-option global lsp_diagnostic_line_error_sign  ✘
 
-  set-option global modelinefmt '%opt{lsp_modeline_progress} %opt{lsp_diagnostic_error_count}✘  %opt{lsp_diagnostic_warning_count}! %val{bufname} %val{cursor_line}:%val{cursor_char_column} {{context_info}} {{mode_info}} - %val{client}@[%val{session}] %opt{modeline_percent}'
 
   declare-user-mode lsp-goto
   map global user G ':enter-user-mode lsp-goto<ret>' -docstring 'enter goto mode'
