@@ -391,6 +391,7 @@ use-sdkman() {
 new-day() {
   setxkbmap dmerej dvorak-intl
   setxkbmap -option ctrl:nocaps
+  feh --bg-fill ~/Pictures/white-wallpaper.jpg
 }
 
 export PYTHONBREAKPOINT="ipdb.set_trace"
