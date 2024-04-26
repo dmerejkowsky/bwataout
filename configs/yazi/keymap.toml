@@ -1,0 +1,4 @@
+[manager]
+prepend_keymap = [
+  { on = ["d"], run = "remove --permanently", desc = "Remove file permanently" }
+]

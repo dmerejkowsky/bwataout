@@ -205,6 +205,14 @@ xinitrc:
     - |
       # Run your window manager from here
 
+yazi:
+ - symlink:
+   - yazi/yazi.toml
+   - ~/.config/yazi/yazi.toml
+ - symlink:
+   - yazi/keymap.toml
+   - ~/.config/yazi/keymap.toml
+
 youtube-dl:
   - symlink:
     - youtube-dl
