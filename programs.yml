@@ -168,10 +168,10 @@ screen:
 skyspell:
  - clone:
    - https://git.sr.ht/~dmerej/skyspell
-   - ~/Sources/skyspell
+   - ~/Sources/your-tools/skyspell
    - main
- - run: [cargo, install, --locked, --path, '{home}/Sources/skyspell/crates/cli']
- - run: [cargo, install, --locked, --path, '{home}/Sources/skyspell/crates/kak']
+ - run: [cargo, install, --locked, --path, '{home}/Sources/your-tools/skyspell/crates/cli']
+ - run: [cargo, install, --locked, --path, '{home}/Sources/your-tools/skyspell/crates/kak']
 
 
 sway:
