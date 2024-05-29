@@ -300,6 +300,10 @@ rs = [
     "ty",
     "usize",
 ]
+rst = [
+    "maxdepth",
+    "toctree",
+]
 sh = [
     "chmod",
     "fi",
