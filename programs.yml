@@ -172,10 +172,6 @@ skyspell:
    - main
  - run: [cargo, install, --locked, --path, '{home}/Sources/your-tools/skyspell/crates/cli']
  - run: [cargo, install, --locked, --path, '{home}/Sources/your-tools/skyspell/crates/kak']
- - symlink:
-   - skyspell/global.toml
-   - ~/.local/share/skyspell/global.toml
-
 
 
 sway:
