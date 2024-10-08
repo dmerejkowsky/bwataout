@@ -10,6 +10,7 @@ httpx = "^0.23.0"
 cli-ui = "^0.11.0"
 "ruamel.yaml" = "^0.17"
 tomlkit = "^0.10.2"
+ics = "^0.7.2"
 
 [tool.poetry.dev-dependencies]
 mypy = "^0.950"
@@ -22,3 +23,4 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
 bwataout-install = "bwataout.install:main"
+bwataout-ics-to-markdown = "bwataout.ics_to_markdown:main"
