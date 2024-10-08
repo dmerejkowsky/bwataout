@@ -293,16 +293,8 @@ z() {
   fi
 }
 
-# bind CTRL-N and CTRL-P to navigate in history
-# Note have CTRL-N is 'previous', and CTRL-P is
-# 'next', that's because in dvorak (and on mac),
-# CTRL-N is much easier to type :)
-bindkey '^N' up-line-or-history
-bindkey '^P' down-line-or-history
-
 
 # python
-
 activate() {
   if [[ -d .venv ]] ; then
     echo "Using .venv"
